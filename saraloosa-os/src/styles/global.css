@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom system style overrides if necessary */
+body {
+  background-color: #121110;
+}

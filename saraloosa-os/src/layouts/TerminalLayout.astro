@@ -1,0 +1,31 @@
+---
+const { title } = Astro.props;
+import '../styles/global.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} // Saraloosa OS</title>
+  </head>
+  <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:p-8 flex flex-col selection:bg-terminal-amber selection:text-soil-900">
+    <header class="border-b border-soil-700 pb-4 mb-8 flex justify-between items-center text-xs tracking-mono text-soil-100">
+      <div>
+        <span class="text-terminal-amber font-bold">SYS_NODE:</span> saraloosa.org // online
+      </div>
+      <nav class="space-x-4">
+        <a href="/" class="hover:text-terminal-amber transition-colors">/root</a>
+        <a href="/the_syllabus" class="hover:text-terminal-amber transition-colors">/syllabus</a>
+        <a href="/the_compost" class="hover:text-terminal-amber transition-colors">/compost</a>
+      </nav>
+    </header>
+    
+    <main class="flex-grow max-w-4xl mx-auto w-full">
+      <slot />
+    </main>
+    
+    <footer class="border-t border-soil-700 mt-12 pt-4 text-center text-[10px] uppercase text-soil-700 tracking-wider">
+      SYS_VERSION: 1.0.0 // STATUS: COMPOSTING_CONFUSION // © 2026 LIEZL COETZEE
+    </footer>
+  </body>
+</html>
