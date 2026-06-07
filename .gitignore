@@ -1,2 +1,6 @@
+# Heavy local media folders
 _media/
+wildroots/_media/
+
+# Local helper dependencies
 .tools/
