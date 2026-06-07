@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-06-07T11:06:00.882Z",
+  "results": [
+    {
+      "input": "wildroots\\new-branding\\The_Dirt_Alchemists_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\new-branding\\The_Dirt_Alchemists_Batch Compress - branded.pdf",
+      "pages": 12
+    },
+    {
+      "input": "wildroots\\new-branding\\The_Living_Pharmacy_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\new-branding\\The_Living_Pharmacy_Batch Compress - branded.pdf",
+      "pages": 13
+    },
+    {
+      "input": "wildroots\\new-branding\\The_Soil_Engine_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\new-branding\\The_Soil_Engine_Batch Compress - branded.pdf",
+      "pages": 10
+    },
+    {
+      "input": "wildroots\\new-branding\\The_Vitality_Engine_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\new-branding\\The_Vitality_Engine_Batch Compress - branded.pdf",
+      "pages": 13
+    },
+    {
+      "input": "wildroots\\new-branding\\Wild_Rooted_Alchemy_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\new-branding\\Wild_Rooted_Alchemy_Batch Compress - branded.pdf",
+      "pages": 15
+    },
+    {
+      "input": "wildroots\\original_batch\\field-guides\\Roots_and_Shoots_Field_Journal_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\field-guides\\Roots_and_Shoots_Field_Journal_Batch Compress - branded.pdf",
+      "pages": 10
+    },
+    {
+      "input": "wildroots\\original_batch\\field-guides\\Soil_Explorer_Field_Guide_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\field-guides\\Soil_Explorer_Field_Guide_Batch Compress - branded.pdf",
+      "pages": 12
+    },
+    {
+      "input": "wildroots\\original_batch\\field-guides\\The_Food_Explorer_Field_Journal_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\field-guides\\The_Food_Explorer_Field_Journal_Batch Compress - branded.pdf",
+      "pages": 15
+    },
+    {
+      "input": "wildroots\\original_batch\\flour_eggs\\From_Soil_to_Soul_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\flour_eggs\\From_Soil_to_Soul_Batch Compress - branded.pdf",
+      "pages": 14
+    },
+    {
+      "input": "wildroots\\original_batch\\flour_eggs\\Mama_Mya_s_Flour_and_Egg_Journey.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\flour_eggs\\Mama_Mya_s_Flour_and_Egg_Journey - branded.pdf",
+      "pages": 12
+    },
+    {
+      "input": "wildroots\\original_batch\\Roots_and_Shoots_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\Roots_and_Shoots_Batch Compress - branded.pdf",
+      "pages": 14
+    },
+    {
+      "input": "wildroots\\original_batch\\Solarpunk_Soil_Guide_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\Solarpunk_Soil_Guide_Batch Compress - branded.pdf",
+      "pages": 15
+    },
+    {
+      "input": "wildroots\\original_batch\\The_Artisanal_Homestead_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\The_Artisanal_Homestead_Batch Compress - branded.pdf",
+      "pages": 13
+    },
+    {
+      "input": "wildroots\\storybooks\\1. The Secret of the Roots & Shoots.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\1. The Secret of the Roots & Shoots - branded.pdf",
+      "pages": 10
+    },
+    {
+      "input": "wildroots\\storybooks\\2. The Underground Revolution_ Legacy of the Roots & Shoots.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\2. The Underground Revolution_ Legacy of the Roots & Shoots - branded.pdf",
+      "pages": 10
+    },
+    {
+      "input": "wildroots\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Roots & Shoots.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Roots & Shoots - branded.pdf",
+      "pages": 10
+    }
+  ]
+}
