@@ -1,12 +1,12 @@
-### Roots & Shoots: A Comprehensive Study Guide
+### Wildroots Sprouts: A Comprehensive Study Guide
 
-This study guide provides a detailed review of the "Roots & Shoots" and "From Soil to Soul" curriculum. It explores the interconnectedness of soil health, plant biology, artisanal food preparation, and the philosophy that "Food is Medicine."
+This study guide provides a detailed review of the "Wildroots Sprouts" and "From Soil to Soul" curriculum. It explores the interconnectedness of soil health, plant biology, artisanal food preparation, and the philosophy that "Food is Medicine."
 
 #### Part I: Comprehension Quiz
 
 **Instructions:**  Provide short-answer responses (2–3 sentences) for each of the following questions based on the provided texts.
 
-**According to the "Roots & Shoots" philosophy, what is the relationship between food, the body, and the heart?**  The golden rule states that Good Food leads to Strong Bodies, and Strong Bodies lead to Happy Hearts. This "Soil to Soul" journey emphasizes that the energy we take from the garden directly impacts our physical strength and emotional well-being.
+**According to the "Wildroots Sprouts" philosophy, what is the relationship between food, the body, and the heart?**  The golden rule states that Good Food leads to Strong Bodies, and Strong Bodies lead to Happy Hearts. This "Soil to Soul" journey emphasizes that the energy we take from the garden directly impacts our physical strength and emotional well-being.
 
 **What is the "Freshness Rule" regarding milled flour, and why do commercial shops remove the grain's germ?**  Flour stays at its peak vitality for only three days after being milled because it contains the living germ and natural oils. Commercial shops remove the germ to extend shelf life, as these natural oils can go rancid while sitting on store shelves for months.
 
@@ -58,9 +58,9 @@ This study guide provides a detailed review of the "Roots & Shoots" and "From So
 
 **The Microscopic Kingdom:**  Analyze the various "Microbe Special Forces" found in healthy soil. Explain how bacteria, fungi, and protozoa work together as a "recycling engine" to turn organic waste into life-giving compost.
 
-**The Circle of Suelo:**  Describe the interconnected loop of the "Artisanal Homestead." How do the soil, the grains, the chickens, and humans form a continuous system where "nothing is a byproduct"?
+**The Circle of Vitality:**  Describe the interconnected loop of the "Artisanal Homestead." How do the soil, the grains, the chickens, and humans form a continuous system where "nothing is a byproduct"?
 
-**The Evolution of the Garden:**  Trace the journey of the characters from "The Secret of the Roots & Shoots" to "The Harvest of Wisdom." How did their understanding of the earth as a "pharmacy and a kitchen" evolve over a decade of stewardship?
+**The Evolution of the Garden:**  Trace the journey of the characters from "The Secret of the Wildroots Sprouts" to "The Harvest of Wisdom." How did their understanding of the earth as a "pharmacy and a kitchen" evolve over a decade of stewardship?
 
 #### Part IV: Glossary of Key Terms
 

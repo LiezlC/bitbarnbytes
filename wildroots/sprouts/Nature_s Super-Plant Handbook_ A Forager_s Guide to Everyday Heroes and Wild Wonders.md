@@ -2,7 +2,7 @@
 
 #### 1. Welcome to the Hidden Garden
 
-Behind the rusted iron gates of the dusty city lies a secret that only the most observant explorers ever find: a wild, hidden garden breathing in the shadows. Step inside, and you’ll meet Saffron, the keeper of these green mysteries. She will tell you that the earth is not just dirt—it is a hidden pharmacy and a magical kitchen where nature provides everything we need to thrive. As a young Alchemist of the Earth, your mission is guided by the  **Golden Rule** :**Good Food → Strong Bodies → Happy Hearts.**This is the secret of the "Roots and Shoots." By learning the names of your "Plant Pals," you aren't just looking at weeds; you are identifying the building blocks of energy and health. Every great explorer begins by learning the names of their companions before they can unlock the magic of the soil.
+Behind the rusted iron gates of the dusty city lies a secret that only the most observant explorers ever find: a wild, hidden garden breathing in the shadows. Step inside, and you’ll meet Saffron, the keeper of these green mysteries. She will tell you that the earth is not just dirt—it is a hidden pharmacy and a magical kitchen where nature provides everything we need to thrive. As a young Alchemist of the Earth, your mission is guided by the  **Golden Rule** :**Good Food → Strong Bodies → Happy Hearts.**This is the secret of the "Wildroots Sprouts." By learning the names of your "Plant Pals," you aren't just looking at weeds; you are identifying the building blocks of energy and health. Every great explorer begins by learning the names of their companions before they can unlock the magic of the soil.
 
 #### 2. The Everyday Heroes: Familiar Garden Friends
 
@@ -112,7 +112,7 @@ Small things hold big magic. In the "Ingredient Vault," we collect the strongest
 
 #### 7. The Circle of Goodness: From Soil to Soul
 
-The final lesson every forager must learn is the  **Circle of Suelo** . We are part of a system where nothing is a byproduct and everything is a resource. In this garden, our feathered friends—the  **Chickens** —are our greatest helpers. They eat the seeds and sprouts, and in return, they give us eggs and help the soil stay healthy.**The Loop of Life:**
+The final lesson every forager must learn is the  **Circle of Vitality** . We are part of a system where nothing is a byproduct and everything is a resource. In this garden, our feathered friends—the  **Chickens** —are our greatest helpers. They eat the seeds and sprouts, and in return, they give us eggs and help the soil stay healthy.**The Loop of Life:**
 
 **Soil feeds Seeds:**  The dark, rich "Humus" provides a home for sleeping baby plants.
 

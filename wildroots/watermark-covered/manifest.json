@@ -27,8 +27,8 @@
       "pages": 15
     },
     {
-      "input": "wildroots\\original_batch\\field-guides\\Roots_and_Shoots_Field_Journal_Batch Compress.pdf",
-      "output": "wildroots\\watermark-covered\\original_batch\\field-guides\\Roots_and_Shoots_Field_Journal_Batch Compress - branded.pdf",
+      "input": "wildroots\\original_batch\\field-guides\\Wildroots_Sprouts_Field_Journal_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\field-guides\\Wildroots_Sprouts_Field_Journal_Batch Compress - branded.pdf",
       "pages": 10
     },
     {
@@ -52,8 +52,8 @@
       "pages": 12
     },
     {
-      "input": "wildroots\\original_batch\\Roots_and_Shoots_Batch Compress.pdf",
-      "output": "wildroots\\watermark-covered\\original_batch\\Roots_and_Shoots_Batch Compress - branded.pdf",
+      "input": "wildroots\\original_batch\\Wildroots_Sprouts_Batch Compress.pdf",
+      "output": "wildroots\\watermark-covered\\original_batch\\Wildroots_Sprouts_Batch Compress - branded.pdf",
       "pages": 14
     },
     {
@@ -67,18 +67,18 @@
       "pages": 13
     },
     {
-      "input": "wildroots\\storybooks\\1. The Secret of the Roots & Shoots.pdf",
-      "output": "wildroots\\watermark-covered\\storybooks\\1. The Secret of the Roots & Shoots - branded.pdf",
+      "input": "wildroots\\storybooks\\1. The Secret of the Wildroots Sprouts.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\1. The Secret of the Wildroots Sprouts - branded.pdf",
       "pages": 10
     },
     {
-      "input": "wildroots\\storybooks\\2. The Underground Revolution_ Legacy of the Roots & Shoots.pdf",
-      "output": "wildroots\\watermark-covered\\storybooks\\2. The Underground Revolution_ Legacy of the Roots & Shoots - branded.pdf",
+      "input": "wildroots\\storybooks\\2. The Underground Revolution_ Legacy of the Wildroots Sprouts.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\2. The Underground Revolution_ Legacy of the Wildroots Sprouts - branded.pdf",
       "pages": 10
     },
     {
-      "input": "wildroots\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Roots & Shoots.pdf",
-      "output": "wildroots\\watermark-covered\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Roots & Shoots - branded.pdf",
+      "input": "wildroots\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Wildroots Sprouts.pdf",
+      "output": "wildroots\\watermark-covered\\storybooks\\3. The Harvest of Wisdom_ Legacy of the Wildroots Sprouts - branded.pdf",
       "pages": 10
     }
   ]

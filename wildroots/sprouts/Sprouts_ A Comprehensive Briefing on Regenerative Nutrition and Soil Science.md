@@ -1,8 +1,8 @@
-### Roots & Shoots: A Comprehensive Briefing on Regenerative Nutrition and Soil Science
+### Wildroots Sprouts: A Comprehensive Briefing on Regenerative Nutrition and Soil Science
 
 #### Executive Summary
 
-The "Roots & Shoots" curriculum and accompanying "Suelo Solutions" documentation outline a holistic philosophy termed "From Soil to Soul." This framework posits that human health is inextricably linked to the health of the earth, governed by the central thesis:  **"Good Food. Strong Bodies. Happy Hearts."**The documentation transitions from basic foraging and nutritional awareness to complex artisanal homesteading. Critical takeaways include:
+The "Wildroots Sprouts" curriculum and accompanying "Bitsoil Solutions" documentation outline a holistic philosophy termed "From Soil to Soul." This framework posits that human health is inextricably linked to the health of the earth, governed by the central thesis:  **"Good Food. Strong Bodies. Happy Hearts."**The documentation transitions from basic foraging and nutritional awareness to complex artisanal homesteading. Critical takeaways include:
 
 **The Pharmacy of Nature:**  Wild plants and garden herbs are viewed as medicine, prioritizing prevention over cure.
 
@@ -14,7 +14,7 @@ The "Roots & Shoots" curriculum and accompanying "Suelo Solutions" documentation
 
 #### I. The Foundational Thesis: Food as Medicine
 
-The core of the Roots & Shoots philosophy is that nature provides all necessary resources for health, provided humans act as "alchemists" to unlock their potential.
+The core of the Wildroots Sprouts philosophy is that nature provides all necessary resources for health, provided humans act as "alchemists" to unlock their potential.
 
 ##### Wild Foraging and Supergreens
 
@@ -134,7 +134,7 @@ The soil is ruled by "Microbe Special Forces" that turn waste into life-giving c
 
 **Specialists:**  Including Nitrogen-fixing bacteria, Sulfur-oxidizing bacteria, and Lactic Acid bacteria (which lower pH to preserve organic matter).
 
-#### V. Closing the Loop: The Circle of Suelo
+#### V. Closing the Loop: The Circle of Vitality
 
 The "Harvest of Wisdom" concludes that nothing in a homestead system is a byproduct; everything is a resource.
 
