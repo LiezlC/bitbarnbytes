@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitSoil Farm: The Digital Detox</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --soil-dark: #3e2723;
+            --soil-light: #5d4037;
+            --grass: #558b2f;
+            --sky-dawn: linear-gradient(to bottom, #f3e5f5, #fff9c4);
+            --sky-day: linear-gradient(to bottom, #4fc3f7, #81d4fa);
+            --sky-dusk: linear-gradient(to bottom, #ffcc80, #ffab91);
+            --sky-night: linear-gradient(to bottom, #1a237e, #311b92);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .serif { font-family: 'Lora', serif; }
+
+        /* Animations */
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.8); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        @keyframes fallDown {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(80vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes grow {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 0 20px rgba(255,255,255,0.6); }
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .digital-noise {
+            position: absolute;
+            animation: floatUp 8s linear infinite;
+            cursor: pointer;
+            transition: transform 0.1s;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        .digital-noise:hover { transform: scale(1.2); }
+        .digital-noise:active { transform: scale(0.9); }
+
+        .compost {
+            position: absolute;
+            transition: top 1s ease-in;
+            pointer-events: none;
+            font-size: 1.5rem;
+        }
+
+        .plant {
+            position: absolute;
+            bottom: 20px;
+            transform-origin: bottom center;
+            animation: grow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            font-size: 2.5rem;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .barn-shape {
+            clip-path: polygon(50% 0%, 100% 38%, 100% 100%, 0 100%, 0% 38%);
+        }
+
+        /* Glassmorphism UI */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        
+        .dark .glass-panel {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .buzzing {
+            animation: shake 0.5s;
+            animation-iteration-count: infinite;
+        }
+
+        /* Scene Transitions */
+        #scene-bg { transition: background 2s ease; }
+
+        #background-image-layer {
+            background-image: url('background.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden bg-slate-900 text-slate-800 relative">
+
+<div id="arcade-help-overlay">
+  <div id="ah-card">
+    <div id="ah-kicker">⛏ BARNYARD ARCADE</div>
+    <h1>🚜 BitSoil Farm</h1>
+    <p id="ah-tag">The Digital Detox — turn digital noise into fertile soil.</p>
+    <div class="ah-sec"><span class="ah-h">🎯 Objective</span><p>Drain your Digital Stress to 0% while growing Fertile Soil to 100% — each milestone unlocks a chapter of the Scroller's story.</p></div>
+    <div class="ah-sec"><span class="ah-h">🎮 How to play</span><ul><li>Click the floating <b>digital noise</b> (words & 📱💬🔥 icons) to compost it into soil and growing plants.</li><li>Click passing <b>animals</b> (🐐 🐕 🐓) for a bonus hit of stress relief.</li><li>Read each story card that unlocks, then keep composting.</li></ul></div>
+    <div class="ah-sec"><span class="ah-h">🕹 Controls</span><p>Click / tap · ⏸ pauses</p></div>
+    <button id="ah-play">▶ Play</button>
+  </div>
+</div>
+<button id="arcade-help-btn" title="How to play">❓</button>
+<a id="arcade-back" href="/arcade/" title="Back to the Barnyard Arcade">← Arcade</a>
+<style>
+  #arcade-help-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    padding:20px;background:rgba(18,17,16,.82);backdrop-filter:blur(4px);font-family:'JetBrains Mono','Fira Code',ui-monospace,monospace;}
+  #ah-card{max-width:540px;width:100%;max-height:88vh;overflow-y:auto;background:#fdf6e3;color:#2b1d12;
+    border:3px solid #4e7d3a;border-radius:16px;padding:26px 28px;box-shadow:0 18px 50px rgba(0,0,0,.5);}
+  #ah-kicker{font-size:11px;letter-spacing:2px;color:#4e7d3a;font-weight:700;}
+  #ah-card h1{font-size:26px;margin:6px 0 2px;color:#214d2c;font-weight:800;line-height:1.15;}
+  #ah-tag{font-style:italic;color:#5c4630;margin-bottom:16px;font-family:Georgia,serif;}
+  .ah-sec{margin-bottom:14px;}
+  .ah-h{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#ff9d45;font-weight:700;margin-bottom:4px;}
+  .ah-sec p{line-height:1.5;font-size:14.5px;font-family:Georgia,serif;}
+  .ah-sec ul{margin:0 0 0 18px;line-height:1.55;font-size:14px;font-family:Georgia,serif;}
+  .ah-sec li{margin-bottom:5px;}
+  #ah-play{margin-top:8px;width:100%;padding:13px;background:#4e7d3a;color:#fff;border:2px solid #214d2c;
+    border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;}
+  #ah-play:hover{background:#6aa84f;}
+  #arcade-help-btn{position:fixed;bottom:16px;left:16px;z-index:99998;width:42px;height:42px;border-radius:50%;
+    background:rgba(78,125,58,.92);color:#fff;border:2px solid #fdf6e3;font-size:18px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.4);}
+  #arcade-help-btn:hover{background:#6aa84f;}
+  #arcade-back{position:fixed;top:16px;left:16px;z-index:99998;background:rgba(18,17,16,.7);color:#f5e9c9;
+    text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;padding:7px 12px;border-radius:10px;border:1px solid rgba(245,233,201,.4);}
+  #arcade-back:hover{background:rgba(18,17,16,.9);color:#ffb300;}
+</style>
+<script>
+  (function(){
+    var ov=document.getElementById('arcade-help-overlay'),
+        btn=document.getElementById('arcade-help-btn'),
+        play=document.getElementById('ah-play');
+    function show(){ov.style.display='flex';} function hide(){ov.style.display='none';}
+    if(play) play.onclick=hide;
+    if(btn) btn.onclick=show;
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
+  })();
+</script>
+
+
+    <!-- Background Layer -->
+    <div id="scene-bg" class="absolute inset-0 z-0 bg-gradient-to-b from-blue-200 to-yellow-100"></div>
+    <div id="background-image-layer" class="absolute inset-0 z-0"></div>
+
+    <!-- Scenery Elements (CSS Art) -->
+    <div class="absolute bottom-64 left-10 opacity-80 z-0 pointer-events-none hidden md:block">
+        <!-- Barn -->
+        <div class="w-64 h-64 bg-red-700 barn-shape relative flex justify-center items-end shadow-2xl">
+            <div class="w-20 h-32 bg-black opacity-40 rounded-t-full"></div> <!-- Door -->
+            <div class="absolute top-10 w-12 h-12 bg-white border-4 border-red-800">
+                <div class="w-full h-1/2 border-b-2 border-red-800"></div>
+                <div class="h-full w-1/2 border-r-2 border-red-800 absolute top-0 left-0"></div>
+            </div> <!-- Window -->
+        </div>
+    </div>
+
+    <div class="absolute bottom-64 right-20 opacity-60 z-0 pointer-events-none">
+        <!-- Fence -->
+        <div class="flex space-x-2">
+            <div class="w-4 h-24 bg-amber-800 rounded-t"></div>
+            <div class="w-24 h-2 bg-amber-800 mt-8"></div>
+            <div class="w-4 h-24 bg-amber-800 rounded-t"></div>
+            <div class="w-24 h-2 bg-amber-800 mt-8"></div>
+            <div class="w-4 h-24 bg-amber-800 rounded-t"></div>
+        </div>
+    </div>
+
+    <!-- Ground -->
+    <div class="absolute bottom-0 w-full h-64 bg-gradient-to-b from-green-700 to-green-900 z-10 flex items-end justify-center border-t-4 border-green-600 shadow-inner" id="ground-layer">
+        <!-- Plants will grow here -->
+    </div>
+
+    <!-- Game Layer -->
+    <div id="game-area" class="absolute inset-0 z-20 overflow-hidden">
+        <!-- Digital Noise and Animals will spawn here -->
+    </div>
+
+    <!-- UI Layer -->
+    <div class="absolute top-0 left-0 w-full p-6 z-30 flex justify-between items-start pointer-events-none">
+        <div class="glass-panel rounded-2xl p-4 pointer-events-auto shadow-lg max-w-xs">
+            <h1 class="font-bold text-lg text-slate-800 dark:text-white mb-1">BitSoil Farm</h1>
+            <p class="text-xs text-slate-500 dark:text-slate-300 mb-3">Turn digital noise into fertile soil.</p>
+            
+            <div class="space-y-2">
+                <div>
+                    <div class="flex justify-between text-xs font-semibold mb-1">
+                        <span>Digital Stress</span>
+                        <span id="stress-val">100%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 overflow-hidden">
+                        <div id="stress-bar" class="bg-red-500 h-2.5 rounded-full transition-all duration-500" style="width: 100%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex justify-between text-xs font-semibold mb-1">
+                        <span>Fertile Soil</span>
+                        <span id="soil-val">0%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 overflow-hidden">
+                        <div id="soil-bar" class="bg-green-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-panel rounded-full px-4 py-2 pointer-events-auto cursor-pointer hover:bg-white/90 transition" onclick="togglePause()">
+            <span id="pause-btn">⏸</span>
+        </div>
+    </div>
+
+    <!-- Story Modal -->
+    <div id="story-modal" class="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="glass-panel max-w-lg w-full rounded-xl shadow-2xl overflow-hidden transform transition-all scale-100">
+            <div class="h-32 bg-gradient-to-r from-amber-200 to-orange-100 flex items-center justify-center text-6xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC40Ii8+PC9zdmc+')] opacity-50"></div>
+                <span id="modal-icon">📖</span>
+            </div>
+            <div class="p-8">
+                <h2 id="modal-title" class="text-2xl font-bold mb-2 serif dark:text-white" style="color: #111827 !important;">Chapter Title</h2>
+                <p id="modal-text" class="dark:text-slate-200 leading-relaxed serif text-lg mb-6" style="color: #111827 !important;">
+                    Story text goes here...
+                </p>
+                <button onclick="closeModal()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-medium transition shadow-lg">
+                    Continue Farming
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Overlay -->
+    <div id="tutorial" class="absolute inset-0 z-40 bg-slate-900/90 flex flex-col items-center justify-center text-center p-6">
+        <div class="mb-6 text-6xl animate-bounce">📱</div>
+        <h1 class="text-4xl font-bold text-white mb-4 serif">The Scandal of Forgetting</h1>
+        <p class="text-slate-300 max-w-md mb-8 text-lg">
+            Your digital life is loud. The farm is quiet.<br><br>
+            - <span class="text-blue-400 font-bold">Click floating "digital noise"</span> to reduce your stress and fertilize the soil.<br>
+            - <span class="text-green-400 font-bold">Click passing animals</span> for a bonus stress relief.<br><br>
+            Turn your stress into a peaceful, growing garden.
+        </p>
+        <button onclick="startGame()" class="px-8 py-4 bg-green-600 hover:bg-green-500 text-white rounded-full font-bold text-xl shadow-xl transition transform hover:scale-105">
+            Enter BitSoil Farm
+        </button>
+    </div>
+
+    <script>
+        // Game State
+        let state = {
+            stress: 100,
+            soil: 0,
+            chapter: 0,
+            paused: true,
+            chapterProgress: 0
+        };
+
+        // Configuration
+        const NOISE_WORDS = ["Viral", "Ratio", "Cringe", "DM", "Notification", "Trending", "Cancel", "FOMO", "Doomscroll", "Algorithm", "Clickbait"];
+        const NOISE_ICONS = ["📱", "💬", "💔", "📧", "👎", "🔥", "⚡", "📢"];
+        const PLANTS = ["🌻", "🌷", "🌾", "🌿", "🌽", "🥕", "🥔"];
+        const ANIMALS = ["🐐", "🐈", "🐕", "🐓"];
+        
+        // Story Content extracted from input
+        const STORY = [
+            {
+                title: "The Arrival",
+                icon: "🚜",
+                text: "On the BitSoil farm, dawn smelled of wet hay and slow code. The Scroller—once gaunt with blue-light fatigue—now woke with straw in their hair. They'd forgotten their return ticket. They'd forgotten the city.",
+                bg: "linear-gradient(to bottom, #f3e5f5, #fff9c4)" // Dawn
+            },
+            {
+                title: "The Visitors",
+                icon: "🕶️",
+                text: "Two figures trudged up the dirt track, screens buzzing like hornets in their pockets. Echo and Static. They were exiles. 'Splashed everywhere,' Echo whispered. 'It went viral.'",
+                bg: "linear-gradient(to bottom, #e3f2fd, #90caf9)" // Morning
+            },
+            {
+                title: "The Disconnect",
+                icon: "🔌",
+                text: "Kernel, the old farm dog, gnawed on a discarded USB cable like it was cud. No one cared. Not about the scandal, not about the shame. The barn cat yawned.",
+                bg: "linear-gradient(to bottom, #4fc3f7, #81d4fa)" // Noon
+            },
+            {
+                title: "The Chore",
+                icon: "🪣",
+                text: "The algorithms of the barnyard ran deeper. Every heartbreak, every humiliation—it was all just compost for the soil. They found themselves with buckets in hand, their purpose simple and clear.",
+                bg: "linear-gradient(to bottom, #ffcc80, #ffab91)" // Afternoon
+            },
+            {
+                title: "The Harvest",
+                icon: "🌅",
+                text: "Under the slow sky, no one scrolled. SageByte watched the farm settle. 'In BitSoil,' she murmured, 'every downfall is a seed. Let it rot. Let it root. And watch what grows.'",
+                bg: "linear-gradient(to bottom, #1a237e, #311b92)" // Dusk/Night
+            }
+        ];
+
+        // DOM Elements
+        const gameArea = document.getElementById('game-area');
+        const groundLayer = document.getElementById('ground-layer');
+        const stressBar = document.getElementById('stress-bar');
+        const soilBar = document.getElementById('soil-bar');
+        const stressVal = document.getElementById('stress-val');
+        const soilVal = document.getElementById('soil-val');
+        const modal = document.getElementById('story-modal');
+        const bgLayer = document.getElementById('scene-bg');
+
+        // <<< NEW AUDIO CODE START >>>
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'pop') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(150, now);
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'grow') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, now);
+                osc.frequency.exponentialRampToValueAtTime(800, now + 0.2);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+                osc.start(now);
+                osc.stop(now + 0.2);
+            } else if (type === 'chime') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(900, now);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.5);
+                osc.start(now);
+                osc.stop(now + 0.5);
+            } else if (type === 'boop') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(200, now);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                osc.start(now);
+                osc.stop(now + 0.15);
+            }
+        }
+        // <<< NEW AUDIO CODE END >>>
+        
+        function startGame() {
+            document.getElementById('tutorial').style.display = 'none';
+            state.paused = false;
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            gameLoop();
+            spawnAnimal();
+        }
+
+        function togglePause() {
+            state.paused = !state.paused;
+            document.getElementById('pause-btn').innerText = state.paused ? "▶️" : "⏸";
+        }
+
+        function gameLoop() {
+            if (!state.paused) {
+                // Spawn noise based on stress level (higher stress = more noise)
+                if (Math.random() < (state.stress / 2000) + 0.01) {
+                    createDigitalNoise();
+                }
+                
+                // Randomly spawn an animal
+                if (Math.random() < 0.002) {
+                    spawnAnimal();
+                }
+            }
+            requestAnimationFrame(gameLoop);
+        }
+
+        function createDigitalNoise() {
+            const el = document.createElement('div');
+            const isIcon = Math.random() > 0.5;
+            el.innerText = isIcon ? NOISE_ICONS[Math.floor(Math.random() * NOISE_ICONS.length)] : NOISE_WORDS[Math.floor(Math.random() * NOISE_WORDS.length)];
+            
+            el.className = 'digital-noise absolute text-2xl font-bold select-none';
+            
+            // Random styling
+            if (!isIcon) {
+                el.className += ' bg-white/80 px-2 py-1 rounded shadow text-sm text-slate-700';
+            }
+            
+            // Random position
+            const startX = Math.random() * (window.innerWidth - 50);
+            el.style.left = `${startX}px`;
+            el.style.bottom = '-50px';
+            
+            // Random speed
+            const duration = 5 + Math.random() * 5;
+            el.style.animationDuration = `${duration}s`;
+
+            // Interaction
+            el.onclick = (e) => {
+                e.stopPropagation();
+                popNoise(el, e.clientX, e.clientY);
+            };
+
+            // Auto-remove
+            el.addEventListener('animationend', () => {
+                if(el.parentNode) el.parentNode.removeChild(el);
+                // Penalty for missing noise? Maybe not, keep it chill.
+            });
+
+            gameArea.appendChild(el);
+        }
+
+        function popNoise(el, x, y) {
+            playSound('pop');
+            // Remove element
+            el.remove();
+
+            // Create explosion/compost effect
+            const compost = document.createElement('div');
+            compost.innerText = "🍂"; // Leaf/Compost
+            compost.className = 'compost';
+            compost.style.left = `${x}px`;
+            compost.style.top = `${y}px`;
+            gameArea.appendChild(compost);
+
+            // Animate falling to ground
+            setTimeout(() => {
+                compost.style.top = `${window.innerHeight - 80}px`; // Hit ground
+                compost.style.opacity = '0';
+            }, 50);
+
+            // Update Stats
+            updateStats(-2, 4); // Lower stress, increase soil
+
+            // Grow plant after delay
+            setTimeout(() => {
+                compost.remove();
+                growPlant(x);
+            }, 1000);
+        }
+
+        function growPlant(x) {
+            playSound('grow');
+            const plant = document.createElement('div');
+            plant.innerText = PLANTS[Math.floor(Math.random() * PLANTS.length)];
+            plant.className = 'plant';
+            
+            // Clamp x to screen width
+            const safeX = Math.min(Math.max(x, 20), window.innerWidth - 40);
+            plant.style.left = `${safeX}px`;
+            
+            // Randomize size slightly
+            const scale = 0.8 + Math.random() * 0.5;
+            plant.style.transform = `scale(${scale})`;
+
+            groundLayer.appendChild(plant);
+
+            // Keep max plants to prevent lag
+            if (groundLayer.children.length > 30) {
+                groundLayer.removeChild(groundLayer.firstChild);
+            }
+        }
+
+        function spawnAnimal() {
+            const animal = document.createElement('div');
+            animal.innerText = ANIMALS[Math.floor(Math.random() * ANIMALS.length)];
+            animal.className = 'absolute text-4xl transition-all duration-[10000ms] ease-linear cursor-pointer hover:scale-110';
+            animal.style.bottom = '258px'; // Just above ground
+            animal.style.zIndex = '15';
+            
+            const startLeft = Math.random() > 0.5;
+            animal.style.left = startLeft ? '-50px' : `${window.innerWidth + 50}px`;
+            
+            gameArea.appendChild(animal);
+
+            // Move across screen
+            setTimeout(() => {
+                animal.style.left = startLeft ? `${window.innerWidth + 50}px` : '-50px';
+            }, 100);
+
+            // Interaction
+            animal.onclick = () => {
+                playSound('boop');
+                animal.innerText = "❤️";
+                updateStats(-5, 0); // Bonus stress relief
+                setTimeout(() => animal.remove(), 500);
+            };
+
+            // Cleanup
+            setTimeout(() => {
+                if(animal.parentNode) animal.remove();
+            }, 11000);
+        }
+
+        function updateStats(stressDelta, soilDelta) {
+            state.stress = Math.max(0, Math.min(100, state.stress + stressDelta));
+            state.soil = Math.max(0, Math.min(100, state.soil + soilDelta));
+            
+            // Update UI
+            stressBar.style.width = `${state.stress}%`;
+            stressVal.innerText = `${state.stress}%`;
+            soilBar.style.width = `${state.soil}%`;
+            soilVal.innerText = `${state.soil}%`;
+
+            // Check Story Progression
+            checkProgression();
+        }
+
+        function checkProgression() {
+            // Logic: Unlock a chapter every 25% soil gained
+            const threshold = (state.chapter + 1) * 20; 
+            
+            if (state.soil >= threshold && state.chapter < STORY.length) {
+                openStoryModal(state.chapter);
+                state.chapter++;
+            }
+        }
+
+        function openStoryModal(index) {
+            playSound('chime');
+            state.paused = true;
+            const data = STORY[index];
+            
+            document.getElementById('modal-icon').innerText = data.icon;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-text').innerText = data.text;
+            
+            // Change background based on story beat
+            bgLayer.style.background = data.bg;
+            
+            if (index === STORY.length - 1) {
+                // End game state
+                document.querySelector('#story-modal button').innerText = "Restart Farm";
+                document.querySelector('#story-modal button').onclick = () => location.reload();
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            state.paused = false;
+            // Reset soil for next level loop feel, or keep it? Let's keep it but make it harder?
+            // For this demo, we keep accumulating.
+        }
+
+        // Initial visual setup
+        // Add some clouds
+        for(let i=0; i<3; i++) {
+            const cloud = document.createElement('div');
+            cloud.innerText = "☁️";
+            cloud.className = "absolute text-6xl opacity-60 animate-pulse";
+            cloud.style.top = `${10 + Math.random() * 20}%`;
+            cloud.style.left = `${Math.random() * 80}%`;
+            cloud.style.animationDuration = `${3 + Math.random() * 5}s`;
+            gameArea.appendChild(cloud);
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Peaks Tycoon</title>
+    <style>
+        :root {
+            --sky-left: #a8d8d8;
+            --sky-right: #f4d0a3;
+            --mtn-left: #3b5a6b;
+            --mtn-left-light: #5c7c8d;
+            --mtn-right: #c46c43;
+            --mtn-right-dark: #8a4b2e;
+            --ground-left: #f0e6d2;
+            --ground-right: #f4c568;
+            --river: #5facc6;
+            --machine: #fca503;
+            --machine-dark: #d98e04;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        /* Main Game Container */
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        /* Split Backgrounds */
+        .biome {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: filter 0.3s;
+        }
+
+        .biome:hover {
+            filter: brightness(1.05);
+        }
+
+        #biome-left {
+            background: linear-gradient(to bottom, var(--sky-left) 0%, var(--ground-left) 60%);
+        }
+
+        #biome-right {
+            background: linear-gradient(to bottom, var(--sky-right) 0%, var(--ground-right) 60%);
+        }
+
+        /* Scenery Elements (CSS Shapes) */
+        .mountain {
+            position: absolute;
+            bottom: 40%;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 250px solid var(--mtn-left);
+            z-index: 1;
+        }
+        .mountain.snow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -45px;
+            width: 0;
+            height: 0;
+            border-left: 45px solid transparent;
+            border-right: 45px solid transparent;
+            border-bottom: 75px solid white;
+            transform: translateY(6px); /* Adjust for border offset */
+        }
+
+        .volcano {
+            position: absolute;
+            bottom: 40%;
+            right: 10%;
+            width: 0;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-bottom: 350px solid var(--mtn-right);
+            z-index: 1;
+        }
+        .volcano::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: -60px;
+            width: 0;
+            height: 0;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-bottom: 100px solid white; /* Snow cap */
+        }
+
+        /* Smoke Particle System */
+        .smoke {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: rise 4s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) scale(1); opacity: 0.8; }
+            100% { transform: translateY(-200px) scale(3); opacity: 0; }
+        }
+
+        /* River (SVG Overlay) */
+        #river-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Machines */
+        .machine {
+            position: absolute;
+            z-index: 5;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .machine:active {
+            transform: scale(0.95);
+        }
+
+        /* Left Crane */
+        .crane-body {
+            width: 60px;
+            height: 40px;
+            background: var(--machine);
+            border-radius: 5px;
+            position: relative;
+        }
+        .crane-arm {
+            width: 100px;
+            height: 10px;
+            background: var(--machine-dark);
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            transform-origin: left center;
+            transform: rotate(-20deg);
+            animation: crane-dig 3s infinite ease-in-out;
+        }
+        .crane-cable {
+            width: 2px;
+            height: 40px;
+            background: #333;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .crane-bucket {
+            width: 20px;
+            height: 15px;
+            background: #333;
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+        }
+        .wheels {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: -15px;
+            width: 100%;
+        }
+        .wheel {
+            width: 15px;
+            height: 15px;
+            background: #333;
+            border-radius: 50%;
+            border: 2px solid #555;
+        }
+
+        @keyframes crane-dig {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        /* Right Digger */
+        .digger-body {
+            width: 50px;
+            height: 50px;
+            background: var(--machine);
+            border-radius: 5px 20px 5px 5px;
+            position: relative;
+        }
+        .digger-arm-segment {
+            width: 60px;
+            height: 8px;
+            background: var(--machine-dark);
+            position: absolute;
+            top: 20px;
+            left: -50px;
+            transform-origin: right center;
+            transform: rotate(30deg);
+            animation: digger-move 2s infinite alternate;
+        }
+        @keyframes digger-move {
+            from { transform: rotate(30deg); }
+            to { transform: rotate(10deg); }
+        }
+
+        /* Resources */
+        .resource {
+            position: absolute;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 4;
+            transition: transform 0.2s, opacity 0.5s;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .resource:hover {
+            transform: scale(1.3);
+        }
+        @keyframes popIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-50px); opacity: 0; }
+        }
+
+        /* UI Overlay */
+        #ui-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #stats-bar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            pointer-events: auto;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #controls-bar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            pointer-events: auto;
+            color: white;
+        }
+
+        .btn {
+            background: #4CAF50;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+        .btn:hover { background: #45a049; }
+        .btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
+        .btn span { font-size: 12px; font-weight: normal; margin-top: 4px; opacity: 0.8; }
+
+        /* Floating Text */
+        .floating-text {
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            pointer-events: none;
+            animation: floatUp 1s forwards;
+            z-index: 20;
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.9;
+            animation: drift linear infinite;
+        }
+        .cloud::after, .cloud::before {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+        @keyframes drift {
+            from { transform: translateX(-200px); }
+            to { transform: translateX(100vw); }
+        }
+
+        /* People */
+        .person {
+            position: absolute;
+            width: 6px;
+            height: 14px;
+            background: #333;
+            border-radius: 3px;
+            z-index: 3;
+            animation: walk 10s linear infinite alternate;
+        }
+        .person::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: #d4a373; /* Skin tone */
+            border-radius: 50%;
+        }
+        @keyframes walk {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="arcade-help-overlay">
+  <div id="ah-card">
+    <div id="ah-kicker">⛏ BARNYARD ARCADE</div>
+    <h1>⛰️ Twin Peaks Tycoon</h1>
+    <p id="ah-tag">Mine the twin peaks, build a fortune.</p>
+    <div class="ah-sec"><span class="ah-h">🎯 Objective</span><p>Become a tycoon by mining the two peaks and converting 🪨 Stone and ⚡ Energy into 💰 Cash (Stone ×5 + Energy ×10).</p></div>
+    <div class="ah-sec"><span class="ah-h">🎮 How to play</span><ul><li>Click <b>resources</b> as they surface from the <b>left & right biomes</b> to collect Stone and Energy.</li><li>Cash in your haul to grow your running total.</li><li>Keep both peaks producing to maximise earnings.</li></ul></div>
+    <div class="ah-sec"><span class="ah-h">🕹 Controls</span><p>Click / tap resources</p></div>
+    <button id="ah-play">▶ Play</button>
+  </div>
+</div>
+<button id="arcade-help-btn" title="How to play">❓</button>
+<a id="arcade-back" href="/arcade/" title="Back to the Barnyard Arcade">← Arcade</a>
+<style>
+  #arcade-help-overlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;
+    padding:20px;background:rgba(18,17,16,.82);backdrop-filter:blur(4px);font-family:'JetBrains Mono','Fira Code',ui-monospace,monospace;}
+  #ah-card{max-width:540px;width:100%;max-height:88vh;overflow-y:auto;background:#fdf6e3;color:#2b1d12;
+    border:3px solid #4e7d3a;border-radius:16px;padding:26px 28px;box-shadow:0 18px 50px rgba(0,0,0,.5);}
+  #ah-kicker{font-size:11px;letter-spacing:2px;color:#4e7d3a;font-weight:700;}
+  #ah-card h1{font-size:26px;margin:6px 0 2px;color:#214d2c;font-weight:800;line-height:1.15;}
+  #ah-tag{font-style:italic;color:#5c4630;margin-bottom:16px;font-family:Georgia,serif;}
+  .ah-sec{margin-bottom:14px;}
+  .ah-h{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#ff9d45;font-weight:700;margin-bottom:4px;}
+  .ah-sec p{line-height:1.5;font-size:14.5px;font-family:Georgia,serif;}
+  .ah-sec ul{margin:0 0 0 18px;line-height:1.55;font-size:14px;font-family:Georgia,serif;}
+  .ah-sec li{margin-bottom:5px;}
+  #ah-play{margin-top:8px;width:100%;padding:13px;background:#4e7d3a;color:#fff;border:2px solid #214d2c;
+    border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s;}
+  #ah-play:hover{background:#6aa84f;}
+  #arcade-help-btn{position:fixed;bottom:16px;left:16px;z-index:99998;width:42px;height:42px;border-radius:50%;
+    background:rgba(78,125,58,.92);color:#fff;border:2px solid #fdf6e3;font-size:18px;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.4);}
+  #arcade-help-btn:hover{background:#6aa84f;}
+  #arcade-back{position:fixed;top:16px;left:16px;z-index:99998;background:rgba(18,17,16,.7);color:#f5e9c9;
+    text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;padding:7px 12px;border-radius:10px;border:1px solid rgba(245,233,201,.4);}
+  #arcade-back:hover{background:rgba(18,17,16,.9);color:#ffb300;}
+</style>
+<script>
+  (function(){
+    var ov=document.getElementById('arcade-help-overlay'),
+        btn=document.getElementById('arcade-help-btn'),
+        play=document.getElementById('ah-play');
+    function show(){ov.style.display='flex';} function hide(){ov.style.display='none';}
+    if(play) play.onclick=hide;
+    if(btn) btn.onclick=show;
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') hide(); });
+  })();
+</script>
+
+
+    <div id="game-container">
+        <!-- Left Biome: Mountains -->
+        <div class="biome" id="biome-left">
+            <!-- Clouds -->
+            <div class="cloud" style="width:100px; height:40px; top:10%; left:10%; animation-duration: 40s;"></div>
+            <div class="cloud" style="width:80px; height:30px; top:20%; left:60%; animation-duration: 55s;"></div>
+            
+            <!-- Mountain -->
+            <div class="mountain snow" style="left: 10%;"></div>
+            <div class="mountain" style="left: -10%; bottom: 35%; transform: scale(0.7); z-index: 0; --mtn-left: #2c4452;"></div>
+
+            <!-- Machine -->
+            <div class="machine" id="machine-left" style="bottom: 35%; left: 20%; display: none;">
+                <div class="crane-body">
+                    <div class="crane-arm">
+                        <div class="crane-cable"><div class="crane-bucket"></div></div>
+                    </div>
+                    <div class="wheels">
+                        <div class="wheel"></div><div class="wheel"></div><div class="wheel"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- People -->
+            <div class="person" style="bottom: 30%; left: 40%;"></div>
+            <div class="person" style="bottom: 25%; left: 15%; animation-delay: -2s;"></div>
+        </div>
+
+        <!-- Right Biome: Volcano -->
+        <div class="biome" id="biome-right">
+            <!-- Clouds -->
+            <div class="cloud" style="width:120px; height:50px; top:15%; left:20%; animation-duration: 45s;"></div>
+
+            <!-- Volcano -->
+            <div class="volcano"></div>
+            <div id="smoke-container"></div>
+
+            <!-- Trees -->
+            <div style="position: absolute; bottom: 35%; right: 25%; font-size: 60px; z-index: 2;">🌲</div>
+            <div style="position: absolute; bottom: 30%; right: 10%; font-size: 50px; z-index: 2;">🌲</div>
+
+            <!-- Machine -->
+            <div class="machine" id="machine-right" style="bottom: 32%; right: 35%; display: none;">
+                <div class="digger-body">
+                    <div class="digger-arm-segment"></div>
+                    <div class="wheels">
+                        <div class="wheel"></div><div class="wheel"></div>
+                    </div>
+                </div>
+            </div>
+             <!-- People -->
+             <div class="person" style="bottom: 28%; right: 40%; animation-duration: 8s;"></div>
+        </div>
+
+        <!-- River Overlay -->
+        <svg id="river-overlay" viewBox="0 0 1000 400" preserveAspectRatio="none">
+            <path d="M -50 400 C 200 350, 300 200, 500 250 S 800 300, 1050 400" fill="#5facc6" stroke="none" />
+            <path d="M -50 420 C 200 370, 300 220, 500 270 S 800 320, 1050 420" fill="#4a9bb5" stroke="none" opacity="0.5" />
+        </svg>
+
+        <!-- UI Layer -->
+        <div id="ui-layer">
+            <div id="stats-bar">
+                <div class="stat-item">🪨 Stone: <span id="stat-stone">0</span></div>
+                <div class="stat-item">⚡ Energy: <span id="stat-energy">0</span></div>
+                <div class="stat-item">💰 Cash: <span id="stat-cash">0</span></div>
+            </div>
+            
+            <div id="controls-bar">
+                <button class="btn" id="btn-crane" onclick="buyMachine('crane')">
+                    Buy Crane
+                    <span>Cost: 50 💰</span>
+                </button>
+                <button class="btn" id="btn-drill" onclick="buyMachine('drill')">
+                    Buy Drill
+                    <span>Cost: 100 💰</span>
+                </button>
+                <button class="btn" id="btn-sell" onclick="sellResources()">
+                    Sell All
+                    <span>Get Cash</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Game State
+        const state = {
+            stone: 0,
+            energy: 0,
+            cash: 0,
+            machines: {
+                crane: 0,
+                drill: 0
+            }
+        };
+
+        const costs = {
+            crane: 50,
+            drill: 100
+        };
+
+        // DOM Elements
+        const els = {
+            stone: document.getElementById('stat-stone'),
+            energy: document.getElementById('stat-energy'),
+            cash: document.getElementById('stat-cash'),
+            biomeLeft: document.getElementById('biome-left'),
+            biomeRight: document.getElementById('biome-right'),
+            smokeContainer: document.getElementById('smoke-container'),
+            machineLeft: document.getElementById('machine-left'),
+            machineRight: document.getElementById('machine-right'),
+            btnCrane: document.getElementById('btn-crane'),
+            btnDrill: document.getElementById('btn-drill')
+        };
+
+        // Helper: Random Number
+        const random = (min, max) => Math.random() * (max - min) + min;
+
+        // Helper: Create Floating Text
+        function showFloatingText(x, y, text, color = 'white') {
+            const el = document.createElement('div');
+            el.className = 'floating-text';
+            el.textContent = text;
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            el.style.color = color;
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1000);
+        }
+
+        // Spawn Resources
+        function spawnResource(type, biome) {
+            const el = document.createElement('div');
+            el.className = 'resource';
+            el.textContent = type === 'stone' ? '🪨' : '🔥'; // Stone or Energy Spark
+            
+            // Random position within bottom half of biome
+            const x = random(10, 90);
+            const y = random(60, 90);
+            
+            el.style.left = x + '%';
+            el.style.top = y + '%';
+            
+            el.onclick = (e) => {
+                e.stopPropagation();
+                collectResource(type, e.clientX, e.clientY);
+                el.remove();
+            };
+
+            biome.appendChild(el);
+
+            // Auto remove after some time if not clicked
+            setTimeout(() => {
+                if(el.parentNode) {
+                    el.style.opacity = 0;
+                    setTimeout(() => el.remove(), 500);
+                }
+            }, 5000);
+        }
+
+        // Collection Logic
+        function collectResource(type, x, y) {
+            if (type === 'stone') {
+                state.stone++;
+                showFloatingText(x, y, '+1 Stone', '#ddd');
+            } else if (type === 'energy') {
+                state.energy++;
+                showFloatingText(x, y, '+1 Energy', '#ffaa00');
+            }
+            updateUI();
+        }
+
+        // Manual Collection (Clicking Background)
+        els.biomeLeft.onclick = (e) => {
+            // Chance to find stone
+            spawnResource('stone', els.biomeLeft);
+            // Small cash for manual labor
+            state.cash += 1;
+            showFloatingText(e.clientX, e.clientY, '+1 💰', '#85bb65');
+            updateUI();
+        };
+
+        els.biomeRight.onclick = (e) => {
+            // Chance to find energy
+            spawnResource('energy', els.biomeRight);
+            state.cash += 1;
+            showFloatingText(e.clientX, e.clientY, '+1 💰', '#85bb65');
+            updateUI();
+        };
+
+        // Buy Machines
+        function buyMachine(type) {
+            if (state.cash >= costs[type]) {
+                state.cash -= costs[type];
+                state.machines[type]++;
+                
+                // Visual activation
+                if (type === 'crane') els.machineLeft.style.display = 'block';
+                if (type === 'drill') els.machineRight.style.display = 'block';
+                
+                // Increase cost
+                costs[type] = Math.floor(costs[type] * 1.5);
+                
+                updateUI();
+            }
+        }
+
+        // Sell Resources
+        function sellResources() {
+            const earnings = (state.stone * 5) + (state.energy * 10);
+            if (earnings > 0) {
+                state.cash += earnings;
+                state.stone = 0;
+                state.energy = 0;
+                showFloatingText(window.innerWidth/2, window.innerHeight - 100, `+${earnings} 💰`, '#85bb65');
+                updateUI();
+            }
+        }
+
+        // Update UI
+        function updateUI() {
+            els.stone.textContent = state.stone;
+            els.energy.textContent = state.energy;
+            els.cash.textContent = state.cash;
+
+            els.btnCrane.querySelector('span').textContent = `Cost: ${costs.crane} 💰`;
+            els.btnDrill.querySelector('span').textContent = `Cost: ${costs.drill} 💰`;
+
+            els.btnCrane.disabled = state.cash < costs.crane;
+            els.btnDrill.disabled = state.cash < costs.drill;
+            document.getElementById('btn-sell').disabled = (state.stone === 0 && state.energy === 0);
+        }
+
+        // Game Loop
+        setInterval(() => {
+            // Auto spawn resources naturally
+            if (Math.random() > 0.7) spawnResource('stone', els.biomeLeft);
+            if (Math.random() > 0.7) spawnResource('energy', els.biomeRight);
+
+            // Machine Income
+            if (state.machines.crane > 0) {
+                state.stone += state.machines.crane;
+                // Visual feedback near crane
+                if(Math.random() > 0.5) {
+                    const rect = els.machineLeft.getBoundingClientRect();
+                    showFloatingText(rect.right, rect.top, '+🪨', '#ddd');
+                }
+            }
+            if (state.machines.drill > 0) {
+                state.energy += state.machines.drill;
+                // Visual feedback near drill
+                if(Math.random() > 0.5) {
+                    const rect = els.machineRight.getBoundingClientRect();
+                    showFloatingText(rect.right, rect.top, '+⚡', '#ffaa00');
+                }
+            }
+            updateUI();
+        }, 1000);
+
+        // Smoke Particle System
+        setInterval(() => {
+            const smoke = document.createElement('div');
+            smoke.className = 'smoke';
+            const size = random(20, 50);
+            smoke.style.width = size + 'px';
+            smoke.style.height = size + 'px';
+            smoke.style.left = '50%'; // Relative to volcano container? No, absolute
+            
+            // Position relative to volcano peak
+            // Volcano is right: 10%, bottom 40%. 
+            // Width 400px (border left/right 200). Peak is at right: 10% + 200px approx?
+            // Let's just hardcode approximate peak position
+            const peakX = window.innerWidth * 0.85; 
+            const peakY = window.innerHeight * 0.35;
+
+            smoke.style.left = (peakX + random(-20, 20)) + 'px';
+            smoke.style.top = peakY + 'px';
+            
+            document.body.appendChild(smoke);
+            setTimeout(() => smoke.remove(), 4000);
+        }, 300);
+
+        // Initial UI Update
+        updateUI();
+
+    </script>
+</body>
+</html>

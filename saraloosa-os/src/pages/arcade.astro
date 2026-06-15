@@ -1,0 +1,49 @@
+---
+import TerminalLayout from '../layouts/TerminalLayout.astro';
+
+const games = [
+  { slug: 'bitsoil-farm', emoji: '🚜', title: 'BitSoil Farm', tag: 'The Digital Detox',
+    objective: 'Turn floating digital noise into fertile soil — and unlock the Scroller’s story, chapter by chapter.' },
+  { slug: 'cyber-pastoral', emoji: '🌿', title: 'Cyber-Pastoral', tag: 'Solarpunk Homestead',
+    objective: 'Harvest ⚡ energy, 🧬 bio and 💾 data from the nodes to grow a self-sufficient homestead.' },
+  { slug: 'dreamscape-forager', emoji: '🌙', title: 'Dreamscape Forager', tag: 'Drift & gather',
+    objective: 'Hop through a floating dream collecting glowing dewdrops for the highest score.' },
+  { slug: 'sunset-ranch', emoji: '🌅', title: 'Sunset Ranch', tag: 'Calm sandbox',
+    objective: 'A no-timer, no-fail dusk ranch: scatter grass and keep the animals happily grazing.' },
+  { slug: 'twin-peaks-tycoon', emoji: '⛰️', title: 'Twin Peaks Tycoon', tag: 'Idle miner',
+    objective: 'Mine the twin biomes for stone & energy and cash them in to build a fortune.' },
+];
+---
+<TerminalLayout title="Barnyard Arcade">
+  <section class="space-y-8">
+
+    <!-- ============ HERO ============ -->
+    <div class="border border-soil-700 rounded-lg overflow-hidden bg-soil-800 p-7 md:p-9">
+      <div class="text-[10px] uppercase tracking-[0.2em] text-leaf font-mono mb-2">// the_barnyard_arcade</div>
+      <h1 class="text-3xl md:text-4xl text-terminal-amber font-bold font-mono leading-tight mb-2">⛏ THE BARNYARD ARCADE</h1>
+      <p class="font-serif text-base text-soil-100/90 leading-relaxed max-w-2xl">A wing of small, slow games for the digitally shipwrecked — compost your stress, forage a dream, tend a sunset ranch. Every cabinet opens with its objective spelled out plainly. Pick one and unwind.</p>
+    </div>
+
+    <!-- ============ CABINETS ============ -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {games.map((g) => (
+        <a href={`/arcade/${g.slug}/`} class="group flex flex-col border border-soil-700 hover:border-leaf rounded-lg overflow-hidden bg-soil-800 transition-colors">
+          <div class="h-40 bg-soil-900 overflow-hidden relative">
+            <img src={`/img/arcade/${g.slug}.webp`} alt={`${g.title} — ${g.tag}`} class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition duration-300 group-hover:scale-[1.04]" loading="lazy" />
+            <span class="absolute top-2 right-2 text-[10px] font-mono uppercase tracking-wider bg-soil-900/80 text-leaf px-2 py-1 rounded">{g.tag}</span>
+          </div>
+          <div class="p-5 flex flex-col flex-1 space-y-2">
+            <h2 class="text-terminal-amber font-bold font-mono text-lg leading-snug">{g.emoji} {g.title}</h2>
+            <p class="font-serif text-sm text-soil-100/80 leading-relaxed flex-1"><span class="text-leaf font-mono text-[11px] uppercase tracking-wider block mb-1">🎯 objective</span>{g.objective}</p>
+            <span class="text-xs font-mono text-leaf group-hover:text-terminal-amber transition-colors pt-1">&gt; insert_coin ▶</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <p class="text-center font-serif text-xs text-soil-100/50 italic px-4">
+      Each cabinet shows its goal, how-to and controls before you start — tap ❓ in-game to see them again. More cabinets coming to the wing.
+    </p>
+
+  </section>
+</TerminalLayout>
