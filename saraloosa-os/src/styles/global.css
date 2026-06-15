@@ -1,8 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 entry (this project uses @tailwindcss/vite — the old
+   `@tailwind base/components/utilities` directives generate nothing here). */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Merriweather:wght@400;700&display=swap');
+@import "tailwindcss";
 
-/* Custom system style overrides if necessary */
+/* v4 reads its theme from CSS, not tailwind.config.mjs. These tokens generate
+   the bg-soil-*, text-terminal-*, border-soil-*, font-mono/serif utilities. */
+@theme {
+  --color-soil-900: #121110; /* deep compost black */
+  --color-soil-800: #1c1a18; /* loam charcoal */
+  --color-soil-700: #2a2724; /* bark brown */
+  --color-soil-100: #f5f4f0; /* raw unbleached paper */
+
+  --color-terminal-green: #39ff14;
+  --color-terminal-amber: #ffb300;
+  --color-terminal-white: #ffffff;
+
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-serif: 'Merriweather', 'Playfair Display', Georgia, serif;
+}
+
 body {
-  background-color: #121110;
+  background-color: var(--color-soil-900);
 }
