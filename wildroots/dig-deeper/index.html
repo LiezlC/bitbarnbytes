@@ -503,6 +503,52 @@
   .aiRoute small{display:block; font-size:12px; font-style:italic; opacity:.85; margin-top:3px; font-weight:normal;}
   .aiError{color:#f0a8b8; font-size:14px; text-align:center; padding:12px;}
   .aiThinking{color:var(--lab-glow); font-style:italic; text-align:center; padding:14px; font-size:14.5px;}
+
+  /* ============ SOIL ORACLE (Ask the Underground) ============ */
+  #oracle{
+    position:relative; z-index:3; width:min(680px,92vw); margin:48px auto 0;
+    background:rgba(155,232,200,.08); border:2px solid rgba(155,232,200,.45); border-radius:18px;
+    padding:24px 26px; text-align:center; color:var(--cream);
+  }
+  #oracle .depth-chip{margin-bottom:12px;}
+  #oracle h3{color:var(--lab-glow); font-size:22px; letter-spacing:1px;}
+  #oracle .osub{font-size:13px; color:#dcc9a8; line-height:1.55; margin:8px 0 18px;}
+  #oracle .osub i{color:var(--gold); font-style:italic;}
+  #oracleForm{display:flex; gap:8px; max-width:560px; margin:0 auto; flex-wrap:wrap;}
+  #oracleInput{
+    flex:1; min-width:200px; font-family:inherit; font-size:15px;
+    background:rgba(0,0,0,.22); border:2px solid #6e7e78; color:#f3f8f5; border-radius:12px;
+    padding:12px 16px; outline:none; transition:border-color .2s;
+  }
+  #oracleInput:focus{border-color:var(--lab-glow);}
+  #oracleInput::placeholder{color:#9bb0a8;}
+  #oracleBtn{
+    background:linear-gradient(135deg,var(--lab-glow),var(--potion-green));
+    border:2px solid #1d2620; color:#13201a; font-size:15px; padding:11px 22px; border-radius:12px;
+    transition:transform .15s, opacity .2s;
+  }
+  #oracleBtn:hover:not(:disabled){transform:translateY(-2px);}
+  #oracleBtn:disabled{opacity:.5; cursor:wait;}
+  #oracleResult{margin-top:18px; text-align:left;}
+  .orCard{background:rgba(0,0,0,.2); border:2px solid var(--lab-glow); border-radius:14px; padding:20px 22px; animation:popIn .4s ease;}
+  .orCard.miss{border-color:#caa46a;}
+  .orAnswer{color:#fff; font-size:15.5px; line-height:1.55; margin-bottom:14px;}
+  .orCites{margin-bottom:14px;}
+  .orCites .lbl{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--lab-glow); display:block; margin-bottom:6px;}
+  .orCites a{
+    display:inline-block; margin:0 6px 6px 0; font-size:12.5px; text-decoration:none;
+    background:rgba(155,232,200,.12); border:1px solid rgba(155,232,200,.4); color:#d8f0e6;
+    border-radius:8px; padding:5px 11px;
+  }
+  .orCites a:hover{background:rgba(155,232,200,.22);}
+  .orRoute{
+    display:block; text-align:center; text-decoration:none; background:var(--amber); color:var(--ink);
+    border:2px solid var(--soil2); border-radius:12px; padding:11px 18px; font-size:14.5px;
+  }
+  .orRoute:hover{filter:brightness(1.08);}
+  .orRoute small{display:block; font-size:12px; font-style:italic; opacity:.85; margin-top:3px;}
+  .orThinking{color:var(--lab-glow); font-style:italic; text-align:center; padding:14px;}
+  .orError{color:#f0a8b8; text-align:center; padding:12px;}
 </style>
 </head>
 <body data-season="spring">
@@ -601,6 +647,17 @@
     <div id="factText">Turn the page for a fact from the Academy's five great tables…</div>
     <button id="factBtn">Turn the page 🔄</button>
     <div id="factSrc"></div>
+  </div>
+
+  <div id="oracle">
+    <div class="depth-chip" style="color:var(--lab-glow); border-color:var(--lab-glow);">Ask the library · answers only from the open shelves</div>
+    <h3>🔮 Ask the Underground</h3>
+    <div class="osub">The Soil Oracle reads only from the Wildroots free shelves — and tells you which book goes deeper. Try: <i>“why does fresh flour only last three days?”</i> · <i>“are weeds actually good for me?”</i> · <i>“how does compost work?”</i></div>
+    <div id="oracleForm">
+      <input id="oracleInput" type="text" maxlength="500" autocomplete="off" placeholder="Ask the soil anything…">
+      <button id="oracleBtn">Ask 🔮</button>
+    </div>
+    <div id="oracleResult"></div>
   </div>
 </section>
 
@@ -1412,6 +1469,49 @@ const comicsRow=document.getElementById("comicsRow");
       btn.disabled=false;
       if(cauldron) cauldron.classList.remove("bubbling");
     }
+  }
+  btn.addEventListener("click",go);
+  input.addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+})();
+
+/* ---------- THE SOIL ORACLE (RAG ask, grounded in the corpus) ---------- */
+(function(){
+  const input=document.getElementById("oracleInput");
+  const btn=document.getElementById("oracleBtn");
+  const out=document.getElementById("oracleResult");
+  if(!input||!btn||!out) return;
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const BUNDLE_LINKS={
+    "The Wildroots Storybook Trilogy":"watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf",
+    "The Wildroots Field Guide Set":"watermark-covered/original_batch/field-guides/Wildroots_Sprouts_Field_Journal_Batch Compress - branded.pdf",
+    "The Alchemist's Shelf":"watermark-covered/new-branding/The_Dirt_Alchemists_Batch Compress - branded.pdf",
+    "The Homestead Originals":"watermark-covered/original_batch/Wildroots_Sprouts_Batch Compress - branded.pdf"
+  };
+  function render(v){
+    const bundle=(v.routeTo&&v.routeTo.bundle)||"The Homestead Originals";
+    const link=BUNDLE_LINKS[bundle]||BUNDLE_LINKS["The Homestead Originals"];
+    const cites=(v.citations||[]).map(c=>
+      `<a href="${P(c.src)}">📄 ${esc(c.title)}</a>`).join("");
+    out.innerHTML=`<div class="orCard${v.inCorpus?"":" miss"}">
+      <div class="orAnswer">${esc(v.answer)}</div>
+      ${cites?`<div class="orCites"><span class="lbl">From the free shelves</span>${cites}</div>`:""}
+      <a class="orRoute" href="${P(link)}">📕 Go deeper: ${esc(bundle)}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
+    </div>`;
+    stamp("fact");
+  }
+  async function go(){
+    const question=input.value.trim();
+    if(!question){ input.focus(); return; }
+    btn.disabled=true;
+    out.innerHTML=`<div class="orThinking">…the Oracle listens to the soil…</div>`;
+    try{
+      const r=await fetch("/api/ask",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question})});
+      const data=await r.json();
+      if(!r.ok) throw new Error(data.error||"The Oracle went quiet.");
+      render(data);
+    }catch(err){
+      out.innerHTML=`<div class="orError">⚠️ ${esc(err.message||"The Oracle went quiet.")}</div>`;
+    }finally{ btn.disabled=false; }
   }
   btn.addEventListener("click",go);
   input.addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });

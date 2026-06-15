@@ -1,0 +1,552 @@
+{
+  "generatedFrom": "wildroots/dig-deeper/index.html",
+  "doc": "Wildroots / BitSoil SageByte living library. Free tier = these summaries + the linked .md. Paid tier = the branded PDF bundles on Gumroad.",
+  "docs": [
+    {
+      "key": "adventureMap",
+      "track": "Wildroots Sprouts",
+      "title": "The Adventure Map to Food Literacy",
+      "hook": "Transform dinner-table battles into expeditions. The Magical Food Forest Adventure Map turns nutrition into a journey where kids become food detectives in their own backyards.",
+      "bullets": [
+        "Permission to reject food lowers defenses and builds agency",
+        "Familiar foods become 'Plant Pals' with faces and personalities",
+        "Kids spot hidden edibles — nettle, purslane, plantain — in the backyard",
+        "Real tasks (smoothies, dehydrators) tie learning to results"
+      ],
+      "quote": "When a child identifies a plant in the wild and brings it to the kitchen, the food stops being a generic grocery item — it becomes a personal discovery.",
+      "src": "sprouts/The-Adventure-Map-to-Food-Literacy-mp4-e03cac72-3dee.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "superPlant",
+      "track": "Wildroots Sprouts",
+      "title": "Nature's Super-Plant Handbook",
+      "hook": "Step into Saffron's hidden garden and unlock nature's secret pharmacy — from everyday apples to mysterious wild wonders.",
+      "bullets": [
+        "Good Food → Strong Bodies → Happy Hearts: the Golden Rule",
+        "Enzymes (Amylase, Lipase, Protease) are invisible micro-helpers",
+        "Wild treasures hide in plain sight: Spekboom, Purslane, Nettle, Plantain",
+        "Blend smoothies and dry Superhero Sprinkles to drink the garden"
+      ],
+      "quote": "Even the prickliest plants can be your greatest healers.",
+      "src": "sprouts/Nature_s Super-Plant Handbook_ A Forager_s Guide to Everyday Heroes and Wild Wonders.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "rsBriefing",
+      "track": "Wildroots Sprouts",
+      "title": "Regenerative Nutrition & Soil Science — the Briefing",
+      "hook": "How soil health, living grains and pasture-raised systems form one loop where nothing is wasted — foraging, baking and farming braided into 'From Soil to Soul'.",
+      "bullets": [
+        "Freshly milled flour stays vital ~3 days; processing removes the living germ",
+        "Amylase and Protease transform grain into bread through biology",
+        "Microbe Special Forces turn waste into Black Gold compost",
+        "Chickens + humans + grain close the loop; eggshells become Bug Bouncer"
+      ],
+      "quote": "Everything starts in the garden grocery store, and the quality of that store depends on soil architecture and biology.",
+      "src": "sprouts/Sprouts_ A Comprehensive Briefing on Regenerative Nutrition and Soil Science.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "rsStudy",
+      "track": "Wildroots Sprouts",
+      "title": "Wildroots Sprouts — Study Guide",
+      "hook": "Quizzes, essays and a full glossary weaving soil biology, grain alchemy and homestead wisdom into one learning journey.",
+      "bullets": [
+        "Quizzes on the food–body–heart connection",
+        "Essay prompts on alchemy, grain biology and the microbe guilds",
+        "Glossary of 50+ terms: Black Gold, Humus, Waterglassing, Loam",
+        "Answer key for review and retention"
+      ],
+      "quote": "While the Nettle has fuzzy leaves that sting if touched carelessly, it is one of the strongest medicines in the garden once properly prepared.",
+      "src": "sprouts/Sprouts_ A Comprehensive Study Guide.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "vesgStudy",
+      "track": "Vital Earth Academy",
+      "title": "Study Guide — The Ecology of Wellness",
+      "hook": "The philosophy connecting soil health to human wellness through a Secret Garden's wisdom, where nothing is wasted and everything is medicine.",
+      "bullets": [
+        "Fresh-milled flour peaks for 72 hours, then fades",
+        "Sprouting reduces anti-nutrients and boosts bioavailability",
+        "Soil bacteria and fungi work like an internet, brewing Black Gold",
+        "Wild weeds — Spekboom, Nettle — are potent medicinal treasures"
+      ],
+      "quote": "Real food is a form of medicine and understanding the biology of the soil is essential to achieving true wellness.",
+      "src": "vital-earth-academy/Study Guide_ The Ecology of Wellness and the Vital Earth Academy.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "vesgPrimer",
+      "track": "Vital Earth Academy",
+      "title": "The Ecology of Wellness — Foundational Primer",
+      "hook": "Step through the rusted iron gate: a pharmacy beneath our feet, where every element from soil to soul regenerates vitality.",
+      "bullets": [
+        "Earth is both pharmacy and kitchen",
+        "Stone-milled flour keeps germ and enzymes; commercial flour is a ghost",
+        "Sprouted grains undergo an enzymatic explosion",
+        "Eggshells become calcium-rich Bug Bouncers"
+      ],
+      "quote": "When we see the link between the microscopic Tardigrade in the soil, the sunset-orange of a yolk, and the freshness of our daily bread, we realize our health is inseparable from the health of the earth.",
+      "src": "vital-earth-academy/The Ecology of Wellness_ A Foundational Primer for Vital Living.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "vesgInsights",
+      "track": "Vital Earth Academy",
+      "title": "Insights from the Vital Earth Academy",
+      "hook": "Five pillars of vitality — from the three-day freshness rule to soil ecosystems that reconnect human biology to the living earth.",
+      "bullets": [
+        "The Three-Day Freshness Rule protects volatile oils and enzymes",
+        "Sprouting triggers biological awakening",
+        "Microbe Special Forces — fungi, bacteria, tardigrades — run the soil",
+        "Foraged wild greens often out-nourish cultivated crops"
+      ],
+      "quote": "Modern industrial food systems have stripped the life from nutrition — the body remains biologically hungry despite caloric intake.",
+      "src": "vital-earth-academy/The Ecology of Wellness_ Insights from the Vital Earth Academy.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "kitchenPharmacy",
+      "track": "Vital Earth Academy",
+      "title": "Why Your Kitchen is the Ultimate Pharmacy",
+      "hook": "Follow Arvid and Liora through a hidden sanctuary where the Head Gardener reveals kitchen alchemy turning wellness into regeneration.",
+      "bullets": [
+        "Your flour lives for only 72 hours",
+        "Sprouted seeds unlock hidden nutrition in glass jars",
+        "SOILdiers create Black Gold through underground revolution",
+        "Wild medicines hide in plain sight"
+      ],
+      "quote": "This is the true scent of life: the toasted, nutty aroma of wheat berries spiraling through the stone mill.",
+      "src": "vital-earth-academy/Why Your Kitchen is the Ultimate Pharmacy_ 5 Surprising Lessons from a Secret Garden.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "s2sLessons",
+      "track": "Soil to Soul",
+      "title": "From Soil to Soul — 5 Surprising Lessons",
+      "hook": "Saffron reveals how enzymes in grains, microbes in soil and wild plants form a closed loop of healing.",
+      "bullets": [
+        "Three enzymes keep flour alive for exactly 72 hours",
+        "An underground city: earthworms tunnel, bacteria recycle",
+        "Sprouting feeds the vitality chain: grain → chicken → human",
+        "Crushed eggshells become calcium-rich Bug Bouncers"
+      ],
+      "quote": "The longer the shelf life, the shorter your life. Keep it fresh.",
+      "src": "soil-to-soul/From Soil to Soul_ 5 Surprising Lessons from the Secret Garden of Wellness.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "s2sCompendium",
+      "track": "Soil to Soul",
+      "title": "Nutritional Profile Compendium",
+      "hook": "The technical reference linking phytochemical quality to preventive health — Good Food, Strong Bodies, Happy Hearts, with citations.",
+      "bullets": [
+        "40+ nutrients in wheat germ are lost in commercial processing",
+        "Sprouting raises bioavailability and lowers anti-nutrients",
+        "Sunset-orange yolks signal Vitamin D and Omega-3 density",
+        "The Superhero Sprinkle concentrates dried wild greens"
+      ],
+      "quote": "The closer our food is to nature, the stronger it makes our bodies.",
+      "src": "soil-to-soul/Nutritional Profile Compendium_ The _Soil to Soul_ Technical Reference.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "s2sFramework",
+      "track": "Soil to Soul",
+      "title": "Soil-to-Soul — Strategic Framework",
+      "hook": "A systems view: soil microbiology, enzymatic integrity and closed loops creating wellness at the cellular level.",
+      "bullets": [
+        "SOILdiers transmute waste into bioavailable Black Gold",
+        "Fungi are the garden's internet; bacteria break down protein",
+        "Commercial flour trades living germ for shelf stability",
+        "Wild weeds restore micronutrients lost to over-hybridized crops"
+      ],
+      "quote": "When the earth's biological life is stripped away, the resulting food leaves the body nutritionally hungry despite caloric satiety.",
+      "src": "soil-to-soul/Soil-to-Soul_ A Strategic Framework for Biological Vitality and Nutrient Density.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "s2sStudent",
+      "track": "Soil to Soul",
+      "title": "The Living Earth — a Student's Guide",
+      "hook": "A curriculum of stewardship: the Tardigrade in the soil, the sunset yolk and the fresh loaf as one unbroken chain.",
+      "bullets": [
+        "Dirt becomes living soil through Microbe Special Forces",
+        "Sprouting initiates biological awakening",
+        "The Three-Day Freshness Rule protects the germ",
+        "Bug Bouncer eggshells complete the regenerative cycle"
+      ],
+      "quote": "Modern dead food leaves the human body in a state of hidden hunger, where the belly is full but the cells are starving.",
+      "src": "soil-to-soul/The Living Earth_ A Student’s Guide to the Soil-to-Soul Cycle.md",
+      "tier": "free",
+      "bundle": "The Homestead Originals"
+    },
+    {
+      "key": "fiveSecrets",
+      "track": "Dirt Alchemists",
+      "title": "5 Secrets from the Underground Grimoire",
+      "hook": "Behind a rusted gate, kitchens become laboratories and soil reveals its pharmaceutical secrets — waste transmuted into vitality.",
+      "bullets": [
+        "Flour is awake for only 72 hours after milling",
+        "Sprouted seeds are potions — nutrients pre-digested for the body",
+        "Microbe Guilds turn kitchen scraps into Black Gold",
+        "Weeds are concentrated medicine, once recognized"
+      ],
+      "quote": "When the flour is awake, the bread is best.",
+      "src": "dirt-alchemists/5 Secrets from the Underground Grimoire_ Why Your Kitchen is Actually a Laboratory.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "rustedGate",
+      "track": "Dirt Alchemists",
+      "title": "Beneath the Rusted Gate — a Primer on Living Soil",
+      "hook": "The earth as pharmacy and kitchen, its mysteries unlocked through microscopic transmutation in a living laboratory.",
+      "bullets": [
+        "Microbe Guilds communicate and transform underground",
+        "Fresh-milled flour keeps the vital wheat germ",
+        "Sprouting neutralizes anti-nutrients",
+        "Eggshells return calcium and close the cycle"
+      ],
+      "quote": "You've forgotten that the Earth is a pharmacy and a kitchen all in one.",
+      "src": "dirt-alchemists/Beneath the Rusted Gate_ A Primer on the Alchemy of Living Soil.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "seedAlchemy",
+      "track": "Dirt Alchemists",
+      "title": "The Alchemy of the Seed",
+      "hook": "From dormant kernel to bioavailable superfood — the hidden alchemy connecting soil to satiation.",
+      "bullets": [
+        "Sprouting converts locked nutrients into living forms",
+        "The three-day window catches flour at peak enzyme activity",
+        "Nutrient cascades flow soil → livestock → human",
+        "Closed loops lose no energy between cycles"
+      ],
+      "quote": "True nutrition is an unbroken circle; when we feed the soil and the familiar, we heal ourselves.",
+      "src": "dirt-alchemists/The Alchemy of the Seed_ A Journey from Raw Grain to Living Nutrition.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "daStudy",
+      "track": "Dirt Alchemists",
+      "title": "The Dirt Alchemists — Study Guide",
+      "hook": "Master the Underground Grimoire through structured inquiry: soil science meets traditional homesteading.",
+      "bullets": [
+        "Quiz and glossary of alchemical practice",
+        "Essays on transmutation and stewardship",
+        "Microbe Guild roles decoded",
+        "From Alchemist's Dust to Tardigrade ecosystems"
+      ],
+      "quote": "The pharmacy is planted beneath your feet, waiting for you to recognize its worth.",
+      "src": "dirt-alchemists/The Dirt Alchemists Study Guide.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "daInsights",
+      "track": "Dirt Alchemists",
+      "title": "Insights into the Underground Grimoire",
+      "hook": "The grimoire's philosophy analyzed: the homestead as a laboratory for biological restoration.",
+      "bullets": [
+        "Five secrets bridge soil health to human vitality",
+        "Fresh milling restores what industry strips",
+        "Microbe Guilds run the waste-to-Black-Gold network",
+        "Circular architecture: nothing exits the ecosystem"
+      ],
+      "quote": "The pharmacy is not a store but a permanent installation planted beneath our feet.",
+      "src": "dirt-alchemists/The Dirt Alchemists_ Insights into the Underground Grimoire.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "daProposal",
+      "track": "Dirt Alchemists",
+      "title": "Strategic Proposal — High-Potency Nutritional System",
+      "hook": "The business case for turning kitchens and gardens into high-functioning biological laboratories against hidden hunger.",
+      "bullets": [
+        "From 'full bellies' to 'truly alive' as the success metric",
+        "Bio-available grain management unlocks dormant potential",
+        "The Underground Revolution converts waste streams",
+        "Eggshells become Bug Bouncer plant protection"
+      ],
+      "quote": "Industrial milling removes the wheat germ to prevent natural oils from turning rancid during storage.",
+      "src": "dirt-alchemists/Strategic Proposal_ The Dirt Alchemists’ High-Potency Nutritional System.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "protocolClosedLoop",
+      "track": "Protocols",
+      "title": "Operational Protocol — Closed-Loop Resource Management",
+      "hook": "The operational mandate: a kitchen-garden as regenerative hub where consumption becomes an invitation to heal.",
+      "bullets": [
+        "The soil-to-soul mandate: kitchen as pharmacy-laboratory",
+        "Sprouting and milling cycles for bio-availability",
+        "Microbe Special Forces brew Black Gold",
+        "Every meal functions as a biological intervention"
+      ],
+      "quote": "The pharmacy is not a distant concept; it is planted beneath our feet.",
+      "src": "general-protocols/Operational Protocol_ Closed-Loop Resource Management and Bio-available Nutrient Integration.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "protocolBio",
+      "track": "Protocols",
+      "title": "Technical Protocol — Bio-Integrity Standards",
+      "hook": "Codified standards under the Alchemist's Oath: earth and kitchen merged into one healing operation.",
+      "bullets": [
+        "The Alchemist's Oath links microscopic to macroscopic health",
+        "The Three-Day Rule preserves enzymatic vitality",
+        "Seed awakening cascades through the ecosystem",
+        "Botanical extraction concentrates phytochemicals"
+      ],
+      "quote": "By viewing the earth simultaneously as a pharmacy and a kitchen, every biological interaction serves healing and vitality.",
+      "src": "general-protocols/Technical Protocol_ Bio-Integrity Standards for the Holistic Kitchen and Garden Laboratory.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "protocolAgro",
+      "track": "Protocols",
+      "title": "The Alchemist's Protocol for Closed-Loop Agronomy",
+      "hook": "An operational framework for running the homestead as a sealed alchemical vessel — every output an input elsewhere.",
+      "bullets": [
+        "Closed-loop agronomy as working architecture",
+        "Waste streams mapped to nutrient destinations",
+        "Soil, kitchen and coop as one system",
+        "Standards for the circular homestead"
+      ],
+      "quote": "Nothing is a byproduct.",
+      "src": "general-protocols/Operational Framework_ The Alchemist’s Protocol for Closed-Loop Agronomy.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "hiddenPharmacy",
+      "track": "Protocols",
+      "title": "Nature's Hidden Pharmacy — a Beginner's Guide",
+      "hook": "Wild resources and home transmutation for the newly initiated — the gentle on-ramp to the deeper protocols.",
+      "bullets": [
+        "Beginner's map to wild resources",
+        "Home transmutation, safely and simply",
+        "First steps from store-bought to living food",
+        "The gateway scroll to the laboratory"
+      ],
+      "quote": "The Earth holds everything needed — once you learn to see it.",
+      "src": "general-protocols/Nature’s Hidden Pharmacy_ A Beginner’s Guide to Wild Resources and Home Transmutation.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "wrCompendium",
+      "track": "Wild Rooted",
+      "title": "Rooted in Vitality — the Wild Rooted Compendium",
+      "hook": "A manifesto for returning to the living spark within our food — the earth as laboratory, the steward as alchemist.",
+      "bullets": [
+        "The Alchemist's Oath: stewardship of a living laboratory",
+        "Ghost Flour vs Awake Flour — the three-day spectrum",
+        "Seed Potions amplify bioavailability",
+        "Bug Ward: eggshells defending the next generation"
+      ],
+      "quote": "To feel truly alive, we must return to the source and unlock the biological secrets of the earth.",
+      "src": "wild-rooted/Rooted in Vitality_ An Educational Compendium to the Wild Rooted Philosophy.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "wrUrban",
+      "track": "Wild Rooted",
+      "title": "Bio-Alchemical Urban Agriculture — the Wild Rooted Model",
+      "hook": "Cities transformed from consumption sites into healing ecosystems through bio-alchemical practice.",
+      "bullets": [
+        "The Three-Day Awakening Rule as artisan advantage",
+        "Tiered nutritional cascades: human → livestock → soil",
+        "Microbe Guilds running waste-to-asset transmutation",
+        "Wild treasures scaled into Super Elixirs and Alchemist's Dust"
+      ],
+      "quote": "The pharmacy is already planted beneath your feet.",
+      "src": "wild-rooted/Strategic Framework for Bio-Alchemical Urban Agriculture_ The Wild Rooted Model.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "wrKitchen",
+      "track": "Wild Rooted",
+      "title": "The Alchemist in the Kitchen — 5 Surprising Lessons",
+      "hook": "An investigative journey from urban exhaustion to ancestral vitality, one biological awakening at a time.",
+      "bullets": [
+        "The 72-hour window catches the living spark",
+        "Sprouted seeds cascade vitality from soil to human energy",
+        "Microbe Guilds transmute waste into Black Gold",
+        "Weeds hide a concentrated pharmacy"
+      ],
+      "quote": "When the flour is awake, the bread is best.",
+      "src": "wild-rooted/The Alchemist in the Kitchen_ 5 Surprising Lessons from the Wild Rooted Project.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "wrHearth",
+      "track": "Wild Rooted",
+      "title": "Insights from the Homestead Hearth",
+      "hook": "The whole philosophy in one place: kitchen laboratory and soil pharmacy as an unbroken circle of wellness.",
+      "bullets": [
+        "The Three-Day Awakening Rule",
+        "Sprouting maximizes vitamin bioavailability",
+        "Microbe Guilds perform underground transmutation",
+        "Eggshells and scraps complete the loop"
+      ],
+      "quote": "Modern life has stripped the 'magic' from our food, leaving our bodies hungry even when our bellies are full.",
+      "src": "wild-rooted/The Wild Rooted Project_ Insights from the Homestead Hearth.md",
+      "tier": "free",
+      "bundle": "The Alchemist's Shelf"
+    },
+    {
+      "key": "storyDA",
+      "track": "Lore",
+      "title": "The Dirt Alchemists — the Story",
+      "hook": "Arvid and Liora discover five alchemical secrets behind a rusted gate — an invitation to heal through dirt wisdom.",
+      "bullets": [
+        "Flour sleeps until awakened within 72 hours of stone milling",
+        "Seeds become potions when sprouted to pale tails",
+        "Microbe Guilds transmute waste under the earth",
+        "Crushed eggshells become Bug Ward protection"
+      ],
+      "quote": "When the flour is awake, the bread is best.",
+      "src": "strategy/The Dirt Alchemists Story.md",
+      "tier": "free",
+      "bundle": "The Wildroots Storybook Trilogy"
+    },
+    {
+      "key": "storyVEA",
+      "track": "Lore",
+      "title": "The Vital Earth Academy — the Story",
+      "hook": "The Ecology of Wellness unfolds as the Head Gardener teaches five lessons connecting soil to human vitality.",
+      "bullets": [
+        "Flour is dead until fresh-milled and used in three days",
+        "Seeds sleep until sprouting awakens them",
+        "Dirt is alive with Microbe Special Forces",
+        "Nothing is byproduct: eggshells become plant medicine"
+      ],
+      "quote": "You've forgotten that the Earth is a pharmacy and a kitchen all in one.",
+      "src": "strategy/The Vital Earth Academy Story.md",
+      "tier": "free",
+      "bundle": "The Wildroots Storybook Trilogy"
+    },
+    {
+      "key": "storyWR",
+      "track": "Lore",
+      "title": "The Wild Rooted Project — the Story",
+      "hook": "Auntie Flora guides young apprentices through five homestead secrets, from bacteria to egg yolk to human heart.",
+      "bullets": [
+        "Flour awakens for only three days",
+        "Sprouting shows in the pale tail of the seed",
+        "The Underground Laboratory brews Black Gold",
+        "Bug Ward eggshells protect the tomatoes"
+      ],
+      "quote": "To feel truly alive, we must unlock the secrets beneath our feet.",
+      "src": "strategy/The Wild Rooted Project Story.md",
+      "tier": "free",
+      "bundle": "The Wildroots Storybook Trilogy"
+    },
+    {
+      "key": "veaBriefing",
+      "track": "Lore",
+      "title": "The Vital Earth Academy — Briefing",
+      "hook": "The full curriculum map of the Ecology of Wellness: Good Food → Strong Bodies → Happy Hearts.",
+      "bullets": [
+        "Wild supergreens deliver concentrated nutrition",
+        "The Three-Day Freshness Rule preserves the living grain",
+        "Microbe Special Forces transform organic matter",
+        "Eggshell fortification closes the cycle"
+      ],
+      "quote": "The pharmacy is not a building in the city, but a living world planted beneath your feet.",
+      "src": "strategy/The Vital Earth Academy Briefing.md",
+      "tier": "free",
+      "bundle": "The Wildroots Storybook Trilogy"
+    }
+  ],
+  "facts": [
+    {
+      "fact": "Your flour dies 72 hours after milling, when the wheat germ's volatile oils degrade.",
+      "table": "Ecological Wellness Lessons"
+    },
+    {
+      "fact": "Microbe Special Forces — fungi, bacteria, tardigrades — transform waste into living Black Gold.",
+      "table": "Ecological Wellness Lessons"
+    },
+    {
+      "fact": "Eggshells crushed to powder become calcium Bug Bouncers protecting tomatoes from disease.",
+      "table": "Ecological Wellness Lessons"
+    },
+    {
+      "fact": "Topsoil is the dark, nutrient-dense layer where roots flourish; subsoil below is leaner.",
+      "table": "Micro-organisms & Soil Components"
+    },
+    {
+      "fact": "Bedrock anchors every layer above it — ancient stone, millions of years old.",
+      "table": "Micro-organisms & Soil Components"
+    },
+    {
+      "fact": "Decomposing leaves and twigs are the living foundation of Black Gold.",
+      "table": "Micro-organisms & Soil Components"
+    },
+    {
+      "fact": "Wheat carries B-vitamins for brain and energy, iron for blood, magnesium for bones.",
+      "table": "Botanical & Grain Profiles"
+    },
+    {
+      "fact": "Purslane delivers omega-3 fatty acids in wild, hardy, succulent form.",
+      "table": "Botanical & Grain Profiles"
+    },
+    {
+      "fact": "Spekboom's succulent leaves offer vitamins, hydration — and sequester carbon.",
+      "table": "Botanical & Grain Profiles"
+    },
+    {
+      "fact": "Oats bring playful energy, soft fiber, and soothing magic for the nervous system.",
+      "table": "Botanical & Grain Profiles"
+    },
+    {
+      "fact": "The Three-Day Awakening Rule: beyond 72 hours, flour's enzymes fade irreversibly.",
+      "table": "Secrets of the Dirt Alchemists"
+    },
+    {
+      "fact": "Sprouted grains brew super-nutrition for chickens — sunset-orange yolks for humans.",
+      "table": "Secrets of the Dirt Alchemists"
+    },
+    {
+      "fact": "Every element serves the next link: nothing discarded, everything recycled.",
+      "table": "Secrets of the Dirt Alchemists"
+    },
+    {
+      "fact": "Home-milled flour preserves the vital nutrients modern milling strips away.",
+      "table": "Homesteading Wisdom & Secrets"
+    },
+    {
+      "fact": "Wild greens — Spekboom, Purslane, Nettle — are secret treasures disguised as weeds.",
+      "table": "Homesteading Wisdom & Secrets"
+    },
+    {
+      "fact": "Sunset-orange yolks signal nutrient density from sprout-fed chickens at peak vitality.",
+      "table": "Homesteading Wisdom & Secrets"
+    }
+  ]
+}

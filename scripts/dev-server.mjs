@@ -15,6 +15,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, normalize, extname } from "node:path";
 import { brew } from "../lib/brew-core.mjs";
+import { ask } from "../lib/oracle-core.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -57,8 +58,18 @@ const MIME = {
   ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".css": "text/css",
   ".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
   ".svg": "image/svg+xml", ".pdf": "application/pdf", ".md": "text/markdown; charset=utf-8",
-  ".ico": "image/x-icon", ".json": "application/json",
+  ".ico": "image/x-icon", ".json": "application/json", ".txt": "text/plain; charset=utf-8",
 };
+
+/* read a JSON request body (capped) */
+function readJson(req) {
+  return new Promise((resolve, reject) => {
+    let raw = "";
+    req.on("data", (c) => { raw += c; if (raw.length > 8000) req.destroy(); });
+    req.on("end", () => { try { resolve(JSON.parse(raw || "{}")); } catch { reject(new Error("bad json")); } });
+    req.on("error", reject);
+  });
+}
 
 function send(res, status, body, type = "application/json") {
   res.writeHead(status, { "Content-Type": type });
@@ -68,22 +79,30 @@ function send(res, status, body, type = "application/json") {
 const server = createServer(async (req, res) => {
   const url = new URL(req.url, `http://localhost:${PORT}`);
 
-  /* ---------- the agent endpoint ---------- */
+  /* ---------- agent endpoints ---------- */
   if (url.pathname === "/api/brew" && req.method === "POST") {
     const ip = req.socket.remoteAddress || "local";
     if (rateLimited(ip)) return send(res, 429, { error: "The cauldron needs to cool. Try again in a few minutes." });
-    let raw = "";
-    req.on("data", (c) => { raw += c; if (raw.length > 5000) req.destroy(); });
-    req.on("end", async () => {
-      try {
-        const { ingredients } = JSON.parse(raw || "{}");
-        const verdict = await brew(ingredients, API_KEY);
-        send(res, 200, verdict);
-      } catch (err) {
-        if (err.detail) console.error("[brew] upstream:", err.detail);
-        send(res, err.status || 500, { error: err.message || "The cauldron went quiet." });
-      }
-    });
+    try {
+      const { ingredients } = await readJson(req);
+      send(res, 200, await brew(ingredients, API_KEY));
+    } catch (err) {
+      if (err.detail) console.error("[brew] upstream:", err.detail);
+      send(res, err.status || 500, { error: err.message || "The cauldron went quiet." });
+    }
+    return;
+  }
+
+  if (url.pathname === "/api/ask" && req.method === "POST") {
+    const ip = req.socket.remoteAddress || "local";
+    if (rateLimited(ip)) return send(res, 429, { error: "The Oracle needs to rest. Try again in a few minutes." });
+    try {
+      const { question } = await readJson(req);
+      send(res, 200, await ask(question, API_KEY));
+    } catch (err) {
+      if (err.detail) console.error("[ask] upstream:", err.detail);
+      send(res, err.status || 500, { error: err.message || "The Oracle went quiet." });
+    }
     return;
   }
 
@@ -104,7 +123,7 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`\n  🌱 Kitchen Alchemy Lab preview → http://localhost:${PORT}/`);
-  console.log(`  ⚗️  /api/brew model: gemini-3.5-flash`);
+  console.log(`\n  🌱 Wildroots agents preview → http://localhost:${PORT}/`);
+  console.log(`  ⚗️  /api/brew  (Kitchen Alchemy Lab) · 🔮 /api/ask (Soil Oracle) · gemini-3.5-flash`);
   console.log(`  🔑 Gemini key: ${API_KEY ? "loaded" : "MISSING — set GOOGLE_GENERATIVE_AI_API_KEY"}\n`);
 });
