@@ -1,0 +1,96 @@
+---
+import TerminalLayout from '../layouts/TerminalLayout.astro';
+import { MODULES } from '../lib/boot-core.mjs';
+---
+<TerminalLayout title="The Syllabus">
+  <section class="space-y-8">
+
+    <div class="bg-soil-800 border border-soil-700 p-6 rounded-none">
+      <h1 class="text-2xl text-terminal-amber font-bold mb-1">&gt; THE_SYLLABUS // VITAL_EARTH_OS</h1>
+      <p class="text-sm text-soil-100">Four modules that recompile a digitally-exhausted operating system. Don't know where to boot? Run the diagnostic — SageByte reads your runtime and routes you in.</p>
+    </div>
+
+    <!-- ============ BOOT SEQUENCE DIAGNOSTIC ============ -->
+    <div class="border border-terminal-amber/40 p-6 space-y-4" id="boot">
+      <h2 class="text-xs uppercase tracking-wider text-terminal-amber font-bold">// THE_BOOT_SEQUENCE</h2>
+      <p class="font-serif text-sm text-soil-100">Describe how you're running lately — the fatigue, the loops, the thing that's off. SageByte will match you to your Exile archetype and the module that recompiles it.</p>
+
+      <textarea id="bootInput" rows="3" maxlength="600"
+        class="w-full bg-soil-900 border border-soil-700 focus:border-terminal-amber outline-none text-soil-100 font-mono text-sm p-3 rounded-none placeholder:text-soil-700"
+        placeholder="e.g. I doomscroll till 2am, my brain feels fried, and no productivity hack ever sticks…"></textarea>
+
+      <button id="bootBtn"
+        class="text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors font-mono px-4 py-2 disabled:opacity-40">
+        &gt; run_diagnostic
+      </button>
+
+      <div id="bootResult" class="text-sm"></div>
+    </div>
+
+    <!-- ============ THE MODULES ============ -->
+    <div class="space-y-4">
+      <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// THE_FOUR_MODULES</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        {MODULES.map((m) => (
+          <div id={`module-${m.number}`} class="border border-soil-700 p-5 space-y-2 scroll-mt-24">
+            <div class="text-[10px] uppercase tracking-wider text-soil-700 font-bold">// 0{m.number} / {m.subtitle}</div>
+            <h3 class="text-terminal-amber font-bold text-lg">{m.title}</h3>
+            <p class="font-serif text-sm text-soil-100">{m.skill}</p>
+            <p class="text-xs text-soil-100/80"><span class="text-terminal-amber">lab:</span> {m.lab}</p>
+            <p class="text-xs italic text-terminal-amber/90 border-l-2 border-terminal-amber/40 pl-3 mt-2">"{m.keyPhrase}"</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+</TerminalLayout>
+
+<script>
+  const input = document.getElementById('bootInput') as HTMLTextAreaElement;
+  const btn = document.getElementById('bootBtn') as HTMLButtonElement;
+  const out = document.getElementById('bootResult') as HTMLDivElement;
+  const esc = (s: unknown) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] as string));
+
+  function render(v: any) {
+    if (v.crisis) {
+      out.innerHTML = `<div class="border border-terminal-amber p-4 mt-2 text-soil-100 font-serif leading-relaxed">
+        Some loops are too heavy for compost and code alone. If you're in real distress, reach a human you trust or a local helpline first — the soil will keep, and it'll still be here, slow and patient, when you're ready.</div>`;
+      return;
+    }
+    const n = v.moduleNumber;
+    out.innerHTML = `
+      <div class="border border-terminal-amber/60 bg-soil-900 p-4 mt-2 space-y-3 font-mono">
+        <div class="text-[10px] uppercase tracking-wider text-soil-700">// diagnostic_complete</div>
+        <div class="text-terminal-amber font-bold text-lg">${esc(v.glyph)} ${esc(v.archetype)}</div>
+        <p class="font-serif text-sm text-soil-100 leading-relaxed">${esc(v.diagnosis)}</p>
+        <p class="text-xs italic text-terminal-amber/90 border-l-2 border-terminal-amber/40 pl-3">"${esc(v.keyPhrase)}"</p>
+        <div class="text-xs text-soil-100/80"><span class="text-terminal-amber">prescription:</span> ${esc(v.prescription)}</div>
+        <a href="#module-${n}" class="inline-block text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors px-4 py-2 mt-1">&gt; boot Module 0${n}: ${esc(v.module?.title)}</a>
+      </div>`;
+    const card = document.getElementById('module-' + n);
+    if (card) {
+      card.classList.add('border-terminal-amber');
+      card.classList.remove('border-soil-700');
+    }
+  }
+
+  async function go() {
+    const text = input.value.trim();
+    if (!text) { input.focus(); return; }
+    btn.disabled = true;
+    out.innerHTML = `<div class="text-terminal-amber/80 font-mono text-xs mt-2 animate-pulse">&gt; reading runtime… compiling diagnosis…</div>`;
+    try {
+      const r = await fetch('/api/boot', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ input: text }) });
+      const data = await r.json();
+      if (!r.ok) throw new Error(data.error || 'SYS_NODE went quiet.');
+      render(data);
+    } catch (err: any) {
+      out.innerHTML = `<div class="text-red-400 font-mono text-xs mt-2">! ${esc(err.message || 'SYS_NODE went quiet.')}</div>`;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  btn.addEventListener('click', go);
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) go(); });
+</script>

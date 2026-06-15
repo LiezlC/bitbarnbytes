@@ -7,6 +7,13 @@
       "runtimeArgs": ["scripts/dev-server.mjs"],
       "port": 8787,
       "autoPort": true
+    },
+    {
+      "name": "saraloosa-os",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["saraloosa-os/node_modules/astro/bin/astro.mjs", "dev", "--root", "saraloosa-os"],
+      "port": 4321,
+      "autoPort": true
     }
   ]
 }
