@@ -12,6 +12,9 @@ import netlify from '@astrojs/netlify';
 // tripping over the repo-root netlify.toml `base`.
 const isBuild = process.argv.includes('build');
 
+// NOTE: the three agent endpoints need GOOGLE_GENERATIVE_AI_API_KEY in the
+// Netlify site env (scopes: functions + runtime). Set in Netlify, not here.
+
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
