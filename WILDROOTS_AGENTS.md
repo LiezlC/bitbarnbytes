@@ -1,11 +1,30 @@
 # Wildroots content-agents
 
-Two in-app agents live in `wildroots/dig-deeper/index.html`, both on **gemini-3.5-flash** with
-structured output, both behind same-origin endpoints (`/api/brew`, `/api/ask`). Each gives a real but
-**bounded** taste, then routes to a paid bundle. Run both with one local server (below).
+Three in-app agents, all on **gemini-3.5-flash** with structured output, each giving a real but
+**bounded** taste then routing to depth (a paid bundle or a curriculum module).
 
-1. **The Kitchen Alchemy Lab** (`/api/brew`) — the Brewing Bench, model-powered.
-2. **The Soil Oracle** (`/api/ask`) — a RAG "ask" console grounded only in the corpus + the moat layer.
+1. **The Kitchen Alchemy Lab** (`/api/brew`) — the Brewing Bench, model-powered. (in the Dig Deeper page)
+2. **The Soil Oracle** (`/api/ask`) — RAG "ask" console grounded only in the corpus + the moat layer. (Dig Deeper page)
+3. **The Boot Sequence** (`/api/boot`) — Exile burnout diagnostic on `/the_syllabus`. (Astro page)
+
+## Deployment (unified — current)
+
+All three ship from the **one** Astro/Netlify site (`saraloosa-os`, → saraloosa.org):
+- The three endpoints are Astro API routes in `saraloosa-os/src/pages/api/{brew,ask,boot}.ts`
+  (`prerender = false`), bundled into one Netlify SSR function by `@astrojs/netlify` (adapter applied
+  only at `astro build` — see `astro.config.mjs`).
+- The shared cores live in `saraloosa-os/src/lib/` (`brew-core.mjs`, `oracle-core.mjs` which `import`s
+  `corpus.json`, `boot-core.mjs`).
+- The Dig Deeper page + its assets are staged into `saraloosa-os/public/dig-deeper/` at build by
+  `saraloosa-os/scripts/stage-digdeeper.mjs` (the `prebuild`/`predev` hook), so they serve at
+  `/dig-deeper/`. That folder is gitignored — the PDFs live in the repo only once (under `wildroots/`).
+- **Required:** set `GOOGLE_GENERATIVE_AI_API_KEY` in the Netlify site env (one var powers all three).
+
+Local: `cd saraloosa-os && npm run dev` (predev stages Dig Deeper), then `/`, `/the_syllabus`,
+`/dig-deeper/`, and the three `/api/*` routes all work on one origin.
+
+The standalone path below (`wildroots/` + `scripts/dev-server.mjs` + root `netlify/functions/`) still
+works for previewing the Dig Deeper bundle on its own, but is no longer the deploy path.
 
 ---
 

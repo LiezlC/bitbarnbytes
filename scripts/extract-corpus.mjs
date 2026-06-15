@@ -65,9 +65,12 @@ const corpus = {
   facts,
 };
 
+const corpusJson = JSON.stringify(corpus, null, 2);
 mkdirSync(join(ROOT, "lib"), { recursive: true });
-writeFileSync(join(ROOT, "lib", "corpus.json"), JSON.stringify(corpus, null, 2));
-writeFileSync(join(ROOT, "wildroots", "dig-deeper", "corpus.json"), JSON.stringify(corpus, null, 2));
+writeFileSync(join(ROOT, "lib", "corpus.json"), corpusJson);
+writeFileSync(join(ROOT, "wildroots", "dig-deeper", "corpus.json"), corpusJson);
+// keep the Astro-bundled copy (imported by saraloosa-os/src/lib/oracle-core.mjs) in sync
+writeFileSync(join(ROOT, "saraloosa-os", "src", "lib", "corpus.json"), corpusJson);
 
 /* llms.txt — the human-and-agent-readable map, with the free/paid boundary explicit */
 const byTrack = {};

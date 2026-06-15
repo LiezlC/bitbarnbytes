@@ -2,6 +2,9 @@
 dist/
 # generated types
 .astro/
+# staged Dig Deeper bundle (regenerated from wildroots/ by scripts/stage-digdeeper.mjs)
+public/dig-deeper/
+public/llms.txt
 
 # dependencies
 node_modules/
