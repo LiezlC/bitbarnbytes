@@ -5,9 +5,14 @@ import { MODULES } from '../lib/boot-core.mjs';
 <TerminalLayout title="The Syllabus">
   <section class="space-y-8">
 
-    <div class="bg-soil-800 border border-soil-700 p-6 rounded-none">
-      <h1 class="text-2xl text-terminal-amber font-bold mb-1">&gt; THE_SYLLABUS // VITAL_EARTH_OS</h1>
-      <p class="text-sm text-soil-100">Four modules that recompile a digitally-exhausted operating system. Don't know where to boot? Run the diagnostic — SageByte reads your runtime and routes you in.</p>
+    <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
+      <div class="p-6 md:p-7 flex flex-col justify-center space-y-2 order-2 md:order-1">
+        <h1 class="text-2xl text-terminal-amber font-bold font-mono">&gt; THE_SYLLABUS // VITAL_EARTH_OS</h1>
+        <p class="font-serif text-sm text-soil-100/90 leading-relaxed">Four modules that recompile a digitally-exhausted operating system. Don't know where to boot? Run the diagnostic — SageByte reads your runtime and routes you in.</p>
+      </div>
+      <div class="relative min-h-[150px] bg-soil-900 order-1 md:order-2 border-b md:border-b-0 md:border-l border-soil-700">
+        <img src="/img/comic/comicstrip-level1.webp" alt="Wildroots comic strip — the garden heroes" class="absolute inset-0 w-full h-full object-cover opacity-85" loading="eager" />
+      </div>
     </div>
 
     <!-- ============ BOOT SEQUENCE DIAGNOSTIC ============ -->

@@ -17,9 +17,14 @@ const notes = await Promise.all(
 <TerminalLayout title="The Compost">
   <section class="space-y-8">
 
-    <div class="bg-soil-800 border border-soil-700 p-6 rounded-none">
-      <h1 class="text-2xl text-terminal-amber font-bold mb-1">&gt; THE_COMPOST_LORE</h1>
-      <p class="text-sm text-soil-100">Chronicles of the digitally shipwrecked — the Exiles who disconnected from the timeline to touch the living loam. We don't sell solutions here. We compost confusion.</p>
+    <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
+      <div class="p-6 md:p-7 flex flex-col justify-center space-y-2 order-2 md:order-1">
+        <h1 class="text-2xl text-terminal-amber font-bold font-mono">&gt; THE_COMPOST_LORE</h1>
+        <p class="font-serif text-sm text-soil-100/90 leading-relaxed">Chronicles of the digitally shipwrecked — the Exiles who disconnected from the timeline to touch the living loam. We don't sell solutions here. We compost confusion.</p>
+      </div>
+      <div class="relative min-h-[150px] bg-soil-900 order-1 md:order-2 border-b md:border-b-0 md:border-l border-soil-700">
+        <img src="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp" alt="Illustration from the Wildroots Sprouts storybook" class="absolute inset-0 w-full h-full object-cover opacity-85" loading="eager" />
+      </div>
     </div>
 
     <!-- ============ EXILE LOGS ============ -->

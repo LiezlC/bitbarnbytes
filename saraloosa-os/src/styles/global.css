@@ -15,6 +15,13 @@
   --color-terminal-amber: #ffb300;
   --color-terminal-white: #ffffff;
 
+  /* warm homestead accents (the "cosy cabin" half of compost-meets-code) */
+  --color-leaf: #6aa84f;
+  --color-leaf-deep: #4e7d3a;
+  --color-parchment: #f5e9c9;
+  --color-cream: #fdf6e3;
+  --color-ember: #ff9d45;
+
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   --font-serif: 'Merriweather', 'Playfair Display', Georgia, serif;
 }

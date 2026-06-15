@@ -1,31 +1,68 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+
+const cards = [
+  {
+    n: '01', label: 'THE_SYLLABUS', title: 'Boot the Vital Earth OS',
+    body: "Access the biological programming tracks. Tame the wild greens, mill the fresh grain executables, and map the peer-to-peer soil networks — then run the diagnostic to find where you belong.",
+    href: '/the_syllabus', cta: '> initialize_boot_sequence',
+    img: '/img/infog/the-secret-world-of-soil.webp', alt: 'The secret world of soil infographic',
+  },
+  {
+    n: '02', label: 'THE_COMPOST_LORE', title: 'Chronicles of the Exiles',
+    body: 'Read the tales of the digitally shipwrecked who disconnected from the timeline to touch the living loam — and met a gardener of glitches who composts confusion.',
+    href: '/the_compost', cta: '> read_exile_logs',
+    img: '/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p04.webp', alt: 'Illustration from the Wildroots storybook',
+  },
+  {
+    n: '03', label: 'WILDROOTS — DIG DEEPER', title: 'A library you read by digging',
+    body: 'Down through the garden, the root zone and the Dirt Alchemists’ underground lab. Brew your kitchen scraps into named elixirs, meet your Plant Pals, and ask the Soil Oracle anything.',
+    href: '/dig-deeper/', cta: '> descend_into_the_library',
+    img: '/img/infog/the-circle-of-vitality-infographic.webp', alt: 'The circle of vitality infographic',
+  },
+];
 ---
 <TerminalLayout title="Terminal">
-  <section class="space-y-6">
-    <div class="bg-soil-800 border border-soil-700 p-6 shadow-sm rounded-none font-mono">
-      <h1 class="text-2xl text-terminal-amber font-bold mb-2">&gt; BITSOIL SAGEBYTE OS</h1>
-      <p class="text-sm text-soil-100">Where compost meets code. We don't sell solutions. We compost confusion.</p>
-    </div>
+  <section class="space-y-8">
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="border border-soil-700 p-6 space-y-4">
-        <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// 01 / THE_SYLLABUS</h2>
-        <p class="font-serif text-sm text-soil-100">Access the biological programming tracks. Tame the wild greens, mill the fresh grain executables, and map the peer-to-peer soil networks.</p>
-        <a href="/the_syllabus" class="inline-block text-xs text-terminal-amber hover:underline font-mono">&gt; initialize_boot_sequence</a>
+    <!-- ============ HERO ============ -->
+    <div class="grid md:grid-cols-[1.05fr_0.95fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
+      <div class="p-7 md:p-9 flex flex-col justify-center space-y-4 order-2 md:order-1">
+        <div class="text-[10px] uppercase tracking-[0.2em] text-leaf font-mono">// on the barnyard edge of the algorithm</div>
+        <h1 class="text-3xl md:text-[2.6rem] leading-tight text-terminal-amber font-bold font-mono">&gt; BITSOIL SAGEBYTE OS</h1>
+        <p class="font-serif text-base text-soil-100/90 leading-relaxed">Where compost meets code. We don't sell solutions — we <em>compost confusion</em>. A living learning world of soil, food and the gardener of glitches, BitSoil SageByte.</p>
+        <div class="flex flex-wrap gap-2 pt-1">
+          <a href="/dig-deeper/" class="text-xs font-mono text-soil-900 bg-terminal-amber hover:bg-ember px-4 py-2 rounded transition-colors">&gt; enter_the_library</a>
+          <a href="/the_syllabus" class="text-xs font-mono text-terminal-amber border border-terminal-amber/50 hover:bg-terminal-amber hover:text-soil-900 px-4 py-2 rounded transition-colors">&gt; run_diagnostic</a>
+        </div>
       </div>
-
-      <div class="border border-soil-700 p-6 space-y-4">
-        <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// 02 / THE_COMPOST_LORE</h2>
-        <p class="font-serif text-sm text-soil-100">Read the chronicles of the digitally shipwrecked exiles who disconnected from the timeline to touch the living loam.</p>
-        <a href="/the_compost" class="inline-block text-xs text-terminal-amber hover:underline font-mono">&gt; read_exile_logs</a>
+      <div class="relative min-h-[200px] md:min-h-full bg-soil-900 order-1 md:order-2 border-b md:border-b-0 md:border-l border-soil-700">
+        <img src="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp" alt="A page from the Wildroots Sprouts storybook" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-soil-900/70 to-transparent"></div>
       </div>
     </div>
 
-    <div class="border border-terminal-amber/40 p-6 space-y-4">
-      <h2 class="text-xs uppercase tracking-wider text-terminal-amber font-bold">// 03 / WILDROOTS — DIG DEEPER</h2>
-      <p class="font-serif text-sm text-soil-100">A living library you read by digging: down through the garden, the root zone, and the Dirt Alchemists' underground laboratory. Brew your kitchen scraps into named elixirs, and ask the Soil Oracle anything — it answers from the open shelves.</p>
-      <a href="/dig-deeper/" class="inline-block text-xs text-terminal-amber hover:underline font-mono">&gt; descend_into_the_library</a>
+    <!-- ============ CARDS ============ -->
+    <div class="grid md:grid-cols-3 gap-5">
+      {cards.map((c) => (
+        <a href={c.href} class="group flex flex-col border border-soil-700 hover:border-leaf rounded-lg overflow-hidden bg-soil-800 transition-colors">
+          <div class="h-36 bg-soil-900 overflow-hidden">
+            <img src={c.img} alt={c.alt} class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition duration-300 group-hover:scale-[1.04]" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1 space-y-2">
+            <div class="text-[10px] uppercase tracking-[0.18em] text-soil-700 font-mono">// {c.n} / {c.label}</div>
+            <h2 class="text-terminal-amber font-bold font-mono text-lg leading-snug">{c.title}</h2>
+            <p class="font-serif text-sm text-soil-100/80 leading-relaxed flex-1">{c.body}</p>
+            <span class="text-xs font-mono text-leaf group-hover:text-terminal-amber transition-colors pt-1">{c.cta}</span>
+          </div>
+        </a>
+      ))}
     </div>
+
+    <!-- ============ SAFETY / WARMTH STRIP ============ -->
+    <p class="text-center font-serif text-xs text-soil-100/50 italic px-4">
+      “To feel truly alive, we must unlock the secrets beneath our feet.” — educational storytelling, grown from a very patient compost heap.
+    </p>
+
   </section>
 </TerminalLayout>
