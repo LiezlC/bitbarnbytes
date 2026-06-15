@@ -8,9 +8,7 @@
    content IS the agent.
    ===================================================================== */
 
-export const MODEL = "gemini-3.5-flash";
-const ENDPOINT = (model, key) =>
-  `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+import { callStructured } from "./llm.mjs";
 
 export const MAX_INPUT = 400; // chars — one kitchen's worth of scraps, not an essay
 
@@ -102,61 +100,19 @@ export const BUNDLE_LINKS = {
  * @returns {Promise<object>} the validated verdict (schema above)
  * @throws {Error} with .status for HTTP mapping
  */
-export async function brew(rawInput, apiKey, model = MODEL) {
+export async function brew(rawInput, apiKey) {
   const ingredients = String(rawInput ?? "").trim().slice(0, MAX_INPUT);
   if (!ingredients) {
     const e = new Error("Tell the cauldron what you have first.");
     e.status = 400;
     throw e;
   }
-  if (!apiKey) {
-    const e = new Error("The cauldron is unlit (no API key configured).");
-    e.status = 500;
-    throw e;
-  }
-
-  const body = {
-    contents: [{ parts: [{ text: `What I have right now: ${ingredients}\n\nBrew it.` }] }],
-    system_instruction: { parts: [{ text: SYSTEM }] },
-    generationConfig: {
-      responseMimeType: "application/json",
-      responseSchema: SCHEMA,
-      temperature: 1.0,
-      maxOutputTokens: 2048,
-      thinkingConfig: { thinkingLevel: "low" },
-    },
-  };
-
-  let res;
-  try {
-    res = await fetch(ENDPOINT(model, apiKey), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-  } catch (err) {
-    const e = new Error("The cauldron could not reach the underground (network error).");
-    e.status = 502;
-    throw e;
-  }
-
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    const e = new Error(`The cauldron sputtered (upstream ${res.status}).`);
-    e.status = 502;
-    e.detail = detail.slice(0, 500);
-    throw e;
-  }
-
-  const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
-  let verdict;
-  try {
-    verdict = JSON.parse(text);
-  } catch {
-    const e = new Error("The cauldron's vision was cloudy. Try again.");
-    e.status = 502;
-    throw e;
-  }
-  return verdict;
+  return callStructured({
+    system: SYSTEM,
+    user: `What I have right now: ${ingredients}\n\nBrew it.`,
+    schema: SCHEMA,
+    schemaName: "brew",
+    temperature: 1.0,
+    geminiKey: apiKey,
+  });
 }

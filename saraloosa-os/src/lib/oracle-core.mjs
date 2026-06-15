@@ -8,10 +8,8 @@
    `node scripts/extract-corpus.mjs` from the repo root.
    ===================================================================== */
 import CORPUS from "./corpus.json";
+import { callStructured } from "./llm.mjs";
 
-export const MODEL = "gemini-3.5-flash";
-const ENDPOINT = (model, key) =>
-  `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
 export const MAX_QUESTION = 500;
 
 function groundingText() {
@@ -75,42 +73,17 @@ const SCHEMA = {
   required: ["answer", "inCorpus", "citations", "routeTo"],
 };
 
-export async function ask(rawQuestion, apiKey, model = MODEL) {
+export async function ask(rawQuestion, apiKey) {
   const question = String(rawQuestion ?? "").trim().slice(0, MAX_QUESTION);
   if (!question) {
     const e = new Error("Ask the Oracle something first."); e.status = 400; throw e;
   }
-  if (!apiKey) {
-    const e = new Error("The Oracle is sleeping (no API key configured)."); e.status = 500; throw e;
-  }
-  const body = {
-    contents: [{ parts: [{ text: `Visitor's question: ${question}` }] }],
-    system_instruction: { parts: [{ text: SYSTEM() }] },
-    generationConfig: {
-      responseMimeType: "application/json",
-      responseSchema: SCHEMA,
-      temperature: 0.4,
-      maxOutputTokens: 2048,
-      thinkingConfig: { thinkingLevel: "low" },
-    },
-  };
-  let res;
-  try {
-    res = await fetch(ENDPOINT(model, apiKey), {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
-    });
-  } catch {
-    const e = new Error("The Oracle could not reach the underground (network error)."); e.status = 502; throw e;
-  }
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    const e = new Error(`The Oracle faltered (upstream ${res.status}).`); e.status = 502; e.detail = detail.slice(0, 500); throw e;
-  }
-  const data = await res.json();
-  const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
-  try {
-    return JSON.parse(text);
-  } catch {
-    const e = new Error("The Oracle's vision was cloudy. Try asking again."); e.status = 502; throw e;
-  }
+  return callStructured({
+    system: SYSTEM(),
+    user: `Visitor's question: ${question}`,
+    schema: SCHEMA,
+    schemaName: "oracle",
+    temperature: 0.4,
+    geminiKey: apiKey,
+  });
 }

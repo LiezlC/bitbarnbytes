@@ -1,11 +1,26 @@
 # Wildroots content-agents
 
-Three in-app agents, all on **gemini-3.5-flash** with structured output, each giving a real but
-**bounded** taste then routing to depth (a paid bundle or a curriculum module).
+Four in-app agents, all via `saraloosa-os/src/lib/llm.mjs` (**Gemini 3.5 Flash primary, HuggingFace
+Inference Providers fallback**) with structured output, each giving a real but **bounded** taste then
+routing to depth (a paid Gumroad bundle or a curriculum module).
 
-1. **The Kitchen Alchemy Lab** (`/api/brew`) — the Brewing Bench, model-powered. (in the Dig Deeper page)
+1. **The Kitchen Alchemy Lab** (`/api/brew`) — the Brewing Bench, model-powered. (Dig Deeper page)
 2. **The Soil Oracle** (`/api/ask`) — RAG "ask" console grounded only in the corpus + the moat layer. (Dig Deeper page)
 3. **The Boot Sequence** (`/api/boot`) — Exile burnout diagnostic on `/the_syllabus`. (Astro page)
+4. **The Plant Pal Identifier** (`/api/plantpal`) — describe a plant → matched Plant Pal + one fact + a firm
+   foraging-safety caution → routes to the Field Guide Set. (Dig Deeper page, garden surface). Safety-critical:
+   never confirms edibility; vague/risky inputs return low confidence + a STOP caution.
+
+## Provider fallback (`src/lib/llm.mjs`)
+`callStructured({system, user, schema})` tries Gemini first, then HuggingFace's OpenAI-compatible router
+(`router.huggingface.co/v1`, model `HF_MODEL` default `openai/gpt-oss-120b:cerebras`) if Gemini is missing,
+rate-limited, or errors. **To activate the fallback, set `HF_TOKEN`** (free HF account) in Netlify env + local;
+without it the fallback is a graceful no-op. All four cores call through this one helper.
+
+## Selling
+The Brewing Bench + Soil Oracle "go deeper" CTAs, the Plant Pal route, and the bedrock bundle buttons link to
+the live Gumroad products (`bitsoil.gumroad.com/l/<slug>`) via `productFor()` in the Dig Deeper page. Edit the
+`PRODUCT` slug map there if storefront slugs change.
 
 ## Deployment (unified — current)
 

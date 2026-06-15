@@ -549,6 +549,37 @@
   .orRoute small{display:block; font-size:12px; font-style:italic; opacity:.85; margin-top:3px;}
   .orThinking{color:var(--lab-glow); font-style:italic; text-align:center; padding:14px;}
   .orError{color:#f0a8b8; text-align:center; padding:12px;}
+
+  /* ============ PLANT PAL IDENTIFIER (garden surface) ============ */
+  #plantPal{margin-top:22px; border-top:2px dashed rgba(78,125,58,.4); padding-top:18px;}
+  #plantPal h3{color:#214d2c; font-size:20px; text-align:center;}
+  #plantPal .ppsub{font-size:13px; color:#3c5a33; text-align:center; line-height:1.5; margin:6px auto 14px; max-width:540px;}
+  #ppForm{display:flex; gap:8px; max-width:540px; margin:0 auto; flex-wrap:wrap;}
+  #ppInput{
+    flex:1; min-width:200px; font-family:inherit; font-size:15px;
+    background:rgba(255,255,255,.85); border:2px solid rgba(78,125,58,.5); color:#2b1d12;
+    border-radius:12px; padding:11px 15px; outline:none; transition:border-color .2s;
+  }
+  #ppInput:focus{border-color:var(--leaf);}
+  #ppBtn{
+    background:var(--leaf); border:2px solid #214d2c; color:#fff; font-size:15px;
+    padding:11px 20px; border-radius:12px; transition:transform .15s, opacity .2s;
+  }
+  #ppBtn:hover:not(:disabled){transform:translateY(-2px); background:var(--leaf-bright);}
+  #ppBtn:disabled{opacity:.5; cursor:wait;}
+  #ppResult{margin-top:16px; max-width:560px; margin-left:auto; margin-right:auto;}
+  .ppCard{background:rgba(255,255,255,.7); border:2px solid var(--leaf); border-radius:14px; padding:18px 20px; text-align:left; animation:popIn .4s ease;}
+  .ppCard.maybe{border-color:var(--amber); border-style:dashed;}
+  .ppCard .pp-name{font-size:19px; color:#214d2c; text-align:center; font-weight:bold;}
+  .ppCard .pp-conf{display:block; text-align:center; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:#6b5236; margin-top:2px;}
+  .ppCard .pp-persona{font-style:italic; color:#3c5a33; text-align:center; margin:8px 0 12px; line-height:1.5;}
+  .ppCard .pp-fact{background:rgba(143,206,110,.18); border-radius:10px; padding:9px 13px; font-size:13.5px; color:#2b1d12; margin-bottom:10px; line-height:1.45;}
+  .ppCard .pp-safety{background:rgba(232,163,61,.16); border:1px dashed var(--amber); border-radius:10px; padding:9px 13px; font-size:12.5px; color:#5c4630; margin-bottom:14px; line-height:1.5;}
+  .ppCard .pp-route{display:block; text-align:center; text-decoration:none; background:var(--amber); color:var(--ink); border:2px solid #214d2c; border-radius:12px; padding:10px 16px; font-size:14px;}
+  .ppCard .pp-route:hover{filter:brightness(1.08);}
+  .ppCard .pp-route small{display:block; font-size:11.5px; font-style:italic; opacity:.85; margin-top:2px;}
+  .ppThinking{color:#3c5a33; font-style:italic; text-align:center; padding:12px;}
+  .ppError{color:#a3402a; text-align:center; padding:10px; font-size:13.5px;}
 </style>
 </head>
 <body data-season="spring">
@@ -593,6 +624,16 @@
     <div id="basketRow"><span class="basket">🧺</span> harvest basket: <b id="basketCount">0</b>
       <div><button id="shareBtn">🍽️ Share the harvest</button></div>
       <div id="tableScene"></div>
+    </div>
+
+    <div id="plantPal">
+      <h3>🔎 Name that Plant Pal</h3>
+      <div class="ppsub">Found a leaf, a weed, a sprout? Describe it — SageByte introduces your Plant Pal and points you to the field guide. <b>Never eat a wild plant without an expert's say-so.</b></div>
+      <div id="ppForm">
+        <input id="ppInput" type="text" maxlength="400" autocomplete="off" placeholder="e.g. a stingy plant with jagged leaves by the fence…">
+        <button id="ppBtn">Meet the Pal 🌿</button>
+      </div>
+      <div id="ppResult"></div>
     </div>
   </div>
 
@@ -1514,6 +1555,43 @@ const comicsRow=document.getElementById("comicsRow");
       render(data);
     }catch(err){
       out.innerHTML=`<div class="orError">⚠️ ${esc(err.message||"The Oracle went quiet.")}</div>`;
+    }finally{ btn.disabled=false; }
+  }
+  btn.addEventListener("click",go);
+  input.addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+})();
+
+/* ---------- THE PLANT PAL IDENTIFIER (garden surface) ---------- */
+(function(){
+  const input=document.getElementById("ppInput");
+  const btn=document.getElementById("ppBtn");
+  const out=document.getElementById("ppResult");
+  if(!input||!btn||!out) return;
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  function render(v){
+    const pal=v.pal||{};
+    out.innerHTML=`<div class="ppCard${v.identified?"":" maybe"}">
+      <div class="pp-name">${esc(pal.glyph)} ${esc(pal.name)}</div>
+      <span class="pp-conf">${v.identified?"match":"best guess"} · confidence: ${esc(v.confidence)}</span>
+      <div class="pp-persona">${esc(pal.persona)}</div>
+      <div class="pp-fact">🌱 ${esc(v.oneFact)}</div>
+      <div class="pp-safety">⚠️ ${esc(v.safety)}</div>
+      <a class="pp-route" href="${productFor("field")}" target="_blank" rel="noopener">🛒 The Wildroots Field Guide Set<small>${esc(v.routeWhy||"")}</small></a>
+    </div>`;
+    stamp("pal1");
+  }
+  async function go(){
+    const plant=input.value.trim();
+    if(!plant){ input.focus(); return; }
+    btn.disabled=true;
+    out.innerHTML=`<div class="ppThinking">…SageByte kneels for a closer look…</div>`;
+    try{
+      const r=await fetch("/api/plantpal",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({plant})});
+      const data=await r.json();
+      if(!r.ok) throw new Error(data.error||"The garden went quiet.");
+      render(data);
+    }catch(err){
+      out.innerHTML=`<div class="ppError">⚠️ ${esc(err.message||"The garden went quiet.")}</div>`;
     }finally{ btn.disabled=false; }
   }
   btn.addEventListener("click",go);

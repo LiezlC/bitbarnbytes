@@ -7,11 +7,11 @@
    and routes into the syllabus. Content-as-agent: the failure-mode
    taxonomy becomes runnable. Used by src/pages/api/boot.ts.
    ===================================================================== */
-import { readFileSync, existsSync } from "node:fs";
+import { callStructured, resolveGeminiKey } from "./llm.mjs";
 
-export const MODEL = "gemini-3.5-flash";
-const ENDPOINT = (model, key) =>
-  `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`;
+/** Gemini key resolver — re-exported for the /api/{boot,brew,ask} routes. */
+export const resolveKey = resolveGeminiKey;
+
 export const MAX_INPUT = 600;
 
 /* the four modules of the Vital Earth OS curriculum (the "cures") */
@@ -87,58 +87,21 @@ const SCHEMA = {
   required: ["archetype", "glyph", "diagnosis", "moduleNumber", "keyPhrase", "prescription", "crisis"],
 };
 
-/** Resolve the Gemini key: env first, then the local gem-voice .env.local (dev convenience). */
-export function resolveKey() {
-  if (process.env.GOOGLE_GENERATIVE_AI_API_KEY) return process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  const f = "C:/Users/Liezl/Documents/Github/gemini-voice-agents/gem-voice/.env.local";
-  if (existsSync(f)) {
-    const line = readFileSync(f, "utf8").split(/\r?\n/).find((l) => l.startsWith("GOOGLE_GENERATIVE_AI_API_KEY="));
-    if (line) return line.slice("GOOGLE_GENERATIVE_AI_API_KEY=".length).trim();
-  }
-  return "";
-}
-
-export async function diagnose(rawInput, apiKey, model = MODEL) {
+export async function diagnose(rawInput, apiKey) {
   const text = String(rawInput ?? "").trim().slice(0, MAX_INPUT);
   if (!text) {
     const e = new Error("Describe how you're running first.");
     e.status = 400;
     throw e;
   }
-  if (!apiKey) {
-    const e = new Error("SYS_NODE offline (no API key configured).");
-    e.status = 500;
-    throw e;
-  }
-  const body = {
-    contents: [{ parts: [{ text: `Exile input: ${text}` }] }],
-    system_instruction: { parts: [{ text: SYSTEM }] },
-    generationConfig: {
-      responseMimeType: "application/json",
-      responseSchema: SCHEMA,
-      temperature: 0.7,
-      maxOutputTokens: 2048,
-      thinkingConfig: { thinkingLevel: "low" },
-    },
-  };
-  let res;
-  try {
-    res = await fetch(ENDPOINT(model, apiKey), {
-      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body),
-    });
-  } catch {
-    const e = new Error("Could not reach SYS_NODE (network error)."); e.status = 502; throw e;
-  }
-  if (!res.ok) {
-    const detail = await res.text().catch(() => "");
-    const e = new Error(`Diagnostic faulted (upstream ${res.status}).`); e.status = 502; e.detail = detail.slice(0, 500); throw e;
-  }
-  const data = await res.json();
-  const out = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("") || "";
-  let result;
-  try { result = JSON.parse(out); } catch {
-    const e = new Error("Diagnostic returned noise. Run it again."); e.status = 502; throw e;
-  }
+  const result = await callStructured({
+    system: SYSTEM,
+    user: `Exile input: ${text}`,
+    schema: SCHEMA,
+    schemaName: "boot",
+    temperature: 0.7,
+    geminiKey: apiKey,
+  });
   // attach the full module record so the UI doesn't have to look it up
   result.module = MODULES.find((m) => m.number === result.moduleNumber) || MODULES[0];
   return result;
