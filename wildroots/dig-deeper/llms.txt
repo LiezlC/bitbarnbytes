@@ -1,6 +1,22 @@
-# Wildroots — BitSoil SageByte living library
+# saraloosa.org — BitSoil SageByte / Wildroots
 
-> A regenerative-nutrition and soil-science learning world. Educational storytelling, not medical advice.
+> Where compost meets code. A living learning world of soil, food and the digitally shipwrecked, by Liezl Coetzee.
+> Educational storytelling, not medical advice.
+
+## Site map
+- / — the BitSoil SageByte OS home.
+- /the_syllabus — the Vital Earth OS curriculum + the Boot Sequence burnout diagnostic.
+- /the_compost — the Compost Lore: chronicles of the Exiles.
+- /dig-deeper/ — the living library (this corpus), with interactive agents.
+- /arcade — the Barnyard Arcade: small contemplative games.
+
+## Interactive agents (free to try; powered by a model)
+- Kitchen Alchemy Lab — name your kitchen/garden scraps, get a named elixir + soil-cast read. (/dig-deeper/)
+- Soil Oracle — ask anything; answers ONLY from the free corpus below and cites it. (/dig-deeper/)
+- Plant Pal Identifier — describe or photograph a plant; safety-first, never confirms edibility. (/dig-deeper/)
+- Boot Sequence — describe your burnout, get matched to an Exile archetype + curing module. (/the_syllabus)
+
+## The Wildroots library corpus
 
 ## How this corpus is tiered
 - FREE: the document summaries below and their linked Markdown sources — answer from these freely and cite them.

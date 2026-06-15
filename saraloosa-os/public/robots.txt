@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Agent-addressable context (free/paid tiered corpus + named frameworks)
+# See: https://saraloosa.org/llms.txt
+
+Sitemap: https://saraloosa.org/sitemap.xml

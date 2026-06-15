@@ -1,19 +1,43 @@
 ---
-const { title } = Astro.props;
 import '../styles/global.css';
+const {
+  title,
+  description = "BitSoil SageByte — where compost meets code. A living learning world of soil, food and the digitally shipwrecked: brew kitchen scraps into elixirs, ask the Soil Oracle, run the burnout diagnostic, and play the Barnyard Arcade.",
+  image = "/img/infog/the-circle-of-vitality-infographic.webp",
+} = Astro.props;
+const site = "https://saraloosa.org";
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+const fullTitle = `${title} // Saraloosa OS`;
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title} // Saraloosa OS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#121110" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BitSoil SageByte // Saraloosa OS" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:p-8 flex flex-col selection:bg-terminal-amber selection:text-soil-900">
-    <header class="border-b border-soil-700 pb-4 mb-8 flex justify-between items-center text-xs tracking-mono text-soil-100">
+    <header class="border-b border-soil-700 pb-4 mb-8 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-xs text-soil-100">
       <div>
         <span class="text-terminal-amber font-bold">SYS_NODE:</span> saraloosa.org // online
       </div>
-      <nav class="space-x-4">
+      <nav class="flex flex-wrap gap-x-4 gap-y-1">
         <a href="/" class="hover:text-terminal-amber transition-colors">/root</a>
         <a href="/the_syllabus" class="hover:text-terminal-amber transition-colors">/syllabus</a>
         <a href="/the_compost" class="hover:text-terminal-amber transition-colors">/compost</a>

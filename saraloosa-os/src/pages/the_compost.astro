@@ -14,7 +14,7 @@ const notes = await Promise.all(
   notesRaw.map(async (e) => ({ ...e.data, Body: (await render(e)).Content }))
 );
 ---
-<TerminalLayout title="The Compost">
+<TerminalLayout title="The Compost" description="The Compost Lore — chronicles of the digitally shipwrecked Exiles who left the timeline to touch the living loam, from the world of BitSoil SageByte." image="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp">
   <section class="space-y-8">
 
     <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">

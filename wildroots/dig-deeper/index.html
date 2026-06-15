@@ -423,6 +423,21 @@
     width:min(1100px,94vw); margin:36px auto 0;
     display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px;
   }
+  /* Complete Library — featured upsell banner */
+  #completeLibrary{
+    width:min(1100px,94vw); margin:30px auto 0; display:flex; gap:0; text-decoration:none;
+    background:linear-gradient(135deg,#3e2414,#5d3a24); border:3px solid var(--gold); border-radius:18px;
+    overflow:hidden; box-shadow:0 0 38px rgba(244,201,93,.22); transition:transform .25s, box-shadow .25s; align-items:stretch;
+  }
+  #completeLibrary:hover{transform:translateY(-4px); box-shadow:0 0 54px rgba(244,201,93,.4);}
+  #completeLibrary img{width:200px; min-height:100%; object-fit:cover; flex-shrink:0; border-right:2px solid var(--gold);}
+  #completeLibrary .cl-body{padding:20px 24px; color:var(--cream);}
+  #completeLibrary .cl-badge{display:inline-block; font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#1d1426; background:var(--gold); border-radius:10px; padding:3px 11px; font-weight:bold;}
+  #completeLibrary h3{font-size:23px; color:var(--gold); margin:10px 0 6px; letter-spacing:.5px;}
+  #completeLibrary p{font-size:13.5px; line-height:1.5; color:#e8d9b0; margin-bottom:14px;}
+  #completeLibrary .cl-cta{display:inline-block; background:var(--amber); color:var(--ink); border:2px solid #1d1426; border-radius:12px; padding:10px 18px; font-size:15px; font-weight:bold;}
+  #completeLibrary .cl-cta small{font-weight:normal; font-style:italic; opacity:.8;}
+  @media(max-width:640px){ #completeLibrary{flex-direction:column;} #completeLibrary img{width:100%; height:180px; border-right:none; border-bottom:2px solid var(--gold);} }
   .bundle{
     background:var(--parchment); border:3px solid var(--gold); border-radius:16px; padding:20px;
     display:flex; flex-direction:column; transition:transform .25s;
@@ -775,6 +790,16 @@
     <h2>⛏️ The Bedrock Trading Post</h2>
     <div class="sub">The polished treasures, ready to carry home. Free knowledge above; finished volumes below.</div>
   </div>
+
+  <a id="completeLibrary" href="https://bitsoil.gumroad.com" target="_blank" rel="noopener">
+    <img src="/img/cover/thumb-complete-library.webp" alt="The Complete Wildroots Library" loading="lazy">
+    <div class="cl-body">
+      <span class="cl-badge">★ BEST VALUE · everything in one haul</span>
+      <h3>The Complete Wildroots Library</h3>
+      <p>All sixteen volumes — every storybook, field guide, flagship grimoire and homestead original — bundled together at the deepest discount. The whole living library, carried home in one trip.</p>
+      <span class="cl-cta">🛒 Get the Complete Library — <b>$39</b> <small>(≈30% off the parts)</small></span>
+    </div>
+  </a>
 
   <div id="bundleGrid"></div>
 
@@ -1423,11 +1448,15 @@ const PRODUCT={
   trilogy:     STORE+"wildroots-storybook-trilogy",
   fieldguides: STORE+"wildroots-field-guides",
   shelf:       STORE+"alchemists-shelf",
-  originals:   STORE+"homestead-originals"
+  originals:   STORE+"homestead-originals",
+  // The Complete Library bundle isn't published yet — link to the storefront for now.
+  // Once created (suggested slug: complete-library), change this to STORE+"complete-library".
+  complete:    "https://bitsoil.gumroad.com"
 };
 /* map any bundle title (bedrock card OR agent verdict) to its product URL */
 function productFor(name){
   const n=(name||"").toLowerCase();
+  if(n.includes("complete")) return PRODUCT.complete;
   if(n.includes("storybook")||n.includes("trilogy")) return PRODUCT.trilogy;
   if(n.includes("field")) return PRODUCT.fieldguides;
   if(n.includes("alchemist")) return PRODUCT.shelf;
