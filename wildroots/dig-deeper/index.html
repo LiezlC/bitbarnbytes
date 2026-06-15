@@ -455,6 +455,54 @@
   #backToSurface:hover{background:var(--gold); color:var(--ink);}
 
   .seam{height:34px; background:repeating-linear-gradient(-45deg, rgba(0,0,0,.18) 0 14px, transparent 14px 28px);}
+
+  /* ============ KITCHEN ALCHEMY LAB (AI brew) ============ */
+  #aiBrew{margin-top:26px; border-top:1px dashed rgba(155,232,200,.35); padding-top:22px;}
+  .aiDivider{text-align:center; margin-bottom:14px;}
+  .aiDivider span{font-size:13px; letter-spacing:1.5px; color:var(--lab-glow); font-style:italic;}
+  #aiInput{
+    width:100%; max-width:520px; margin:0 auto; display:block; font-family:inherit; font-size:15px;
+    background:rgba(255,255,255,.07); border:2px solid #6e5a8e; color:#f3eefa; border-radius:12px;
+    padding:12px 16px; outline:none; transition:border-color .2s;
+  }
+  #aiInput:focus{border-color:var(--lab-glow);}
+  #aiInput::placeholder{color:#a995c4;}
+  #aiBrewBtn{
+    margin-top:13px; background:linear-gradient(135deg,var(--potion-blue),var(--lab-glow));
+    border:2px solid #1d1426; color:#1d1426; font-size:15.5px; padding:10px 26px; border-radius:12px;
+    transition:transform .15s, opacity .2s;
+  }
+  #aiBrewBtn:hover:not(:disabled){transform:translateY(-2px);}
+  #aiBrewBtn:disabled{opacity:.5; cursor:wait;}
+  #aiResult{margin-top:18px; max-width:600px; margin-left:auto; margin-right:auto;}
+  .aiCard{
+    background:rgba(255,255,255,.06); border:2px solid var(--gold); border-radius:16px;
+    padding:22px 24px; text-align:left; animation:popIn .4s ease;
+  }
+  .aiCard .elixir{font-size:22px; color:var(--gold); text-align:center; line-height:1.25;}
+  .aiCard .tagline{font-style:italic; color:#d8cce8; text-align:center; margin:6px 0 18px; font-size:14px;}
+  .aiCast{display:flex; flex-direction:column; gap:9px; margin-bottom:16px;}
+  .aiCast .member{
+    display:flex; gap:11px; align-items:flex-start; background:rgba(0,0,0,.18);
+    border-left:3px solid var(--lab-glow); border-radius:0 10px 10px 0; padding:9px 13px;
+    opacity:0; transform:translateX(-10px); transition:opacity .4s ease, transform .4s ease;
+  }
+  .aiCast .member.in{opacity:1; transform:none;}
+  .aiCast .member .em{font-size:24px; line-height:1.1;}
+  .aiCast .member .who{color:var(--lab-glow); font-size:13px; letter-spacing:.5px;}
+  .aiCast .member .read{color:#e8def5; font-size:13.5px; line-height:1.4;}
+  .aiNote{background:rgba(244,201,93,.1); border:1px dashed var(--gold); border-radius:10px; padding:10px 14px; color:#e8d6aa; font-size:13px; line-height:1.5; margin-bottom:12px;}
+  .aiVerdict{color:#fff; font-size:15.5px; line-height:1.45; text-align:center; margin-bottom:10px;}
+  .aiHardening{color:#b9a8c8; font-size:13.5px; text-align:center; margin-bottom:16px;}
+  .aiHardening b{color:var(--lab-glow);}
+  .aiRoute{
+    display:block; text-align:center; text-decoration:none; background:var(--amber); color:var(--ink);
+    border:2px solid var(--soil2); border-radius:12px; padding:11px 18px; font-size:14.5px; transition:filter .2s;
+  }
+  .aiRoute:hover{filter:brightness(1.08);}
+  .aiRoute small{display:block; font-size:12px; font-style:italic; opacity:.85; margin-top:3px; font-weight:normal;}
+  .aiError{color:#f0a8b8; font-size:14px; text-align:center; padding:12px;}
+  .aiThinking{color:var(--lab-glow); font-style:italic; text-align:center; padding:14px; font-size:14.5px;}
 </style>
 </head>
 <body data-season="spring">
@@ -591,6 +639,15 @@
     <div id="cauldron">🍯</div>
     <div><button id="brewBtn" disabled>Brew the potion</button></div>
     <div id="brewResult"></div>
+
+    <div id="aiBrew">
+      <div class="aiDivider"><span>✦ or tell the cauldron what you really have ✦</span></div>
+      <div class="sub" style="margin:0 0 12px;">Type whatever's in your kitchen or garden right now — wilting greens, stale bread, eggshells, half a bag of lentils. The cauldron names the elixir and reveals who in the soil made it.</div>
+      <input id="aiInput" type="text" maxlength="400" autocomplete="off"
+        placeholder="e.g. nettles, stale sourdough, eggshells, tired spinach…">
+      <div><button id="aiBrewBtn">⚗️ Brew with the Alchemist</button></div>
+      <div id="aiResult"></div>
+    </div>
   </div>
 
   <div id="protocolShelf">
@@ -1292,6 +1349,73 @@ const comicsRow=document.getElementById("comicsRow");
   fig.addEventListener("click",()=>openModal(`<h3 style="margin-bottom:12px;">${t}</h3><img class="lightbox" src="${P("comicstrips/"+f)}" alt="${t}">`));
   comicsRow.appendChild(fig);
 });
+
+/* ---------- KITCHEN ALCHEMY LAB (model-powered brew) ---------- */
+(function(){
+  const input=document.getElementById("aiInput");
+  const btn=document.getElementById("aiBrewBtn");
+  const out=document.getElementById("aiResult");
+  if(!input||!btn||!out) return;
+  const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  // mirrors lib/brew-core.mjs BUNDLE_LINKS — routes the verdict to the matching shelf
+  const BUNDLE_LINKS={
+    "The Wildroots Storybook Trilogy":"watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf",
+    "The Wildroots Field Guide Set":"watermark-covered/original_batch/field-guides/Wildroots_Sprouts_Field_Journal_Batch Compress - branded.pdf",
+    "The Alchemist's Shelf":"watermark-covered/new-branding/The_Dirt_Alchemists_Batch Compress - branded.pdf",
+    "The Homestead Originals":"watermark-covered/original_batch/Wildroots_Sprouts_Batch Compress - branded.pdf"
+  };
+  function sparksFrom(el){
+    const cr=el.getBoundingClientRect();
+    for(let i=0;i<14;i++){
+      const s=document.createElement("div"); s.className="brewSpark"; s.style.position="fixed"; s.style.zIndex=95;
+      s.textContent=["✨","💚","🫧"][i%3];
+      s.style.left=(cr.left+cr.width/2)+"px"; s.style.top=cr.top+"px";
+      s.style.setProperty("--dx",(Math.random()*160-80)+"px");
+      s.style.setProperty("--dy",(-60-Math.random()*120)+"px");
+      document.body.appendChild(s); setTimeout(()=>s.remove(),1200);
+    }
+  }
+  function render(v){
+    const link=BUNDLE_LINKS[v.routeTo&&v.routeTo.bundle]||BUNDLE_LINKS["The Homestead Originals"];
+    const cast=(v.cast||[]).map(m=>
+      `<div class="member"><span class="em">${esc(m.emoji)}</span><div><div class="who">${esc(m.agent)}</div><div class="read">${esc(m.read)}</div></div></div>`).join("");
+    out.innerHTML=`<div class="aiCard">
+      <div class="elixir">${esc(v.elixirEmoji)} ${esc(v.elixirName)}</div>
+      <div class="tagline">${esc(v.tagline)}</div>
+      <div class="aiCast">${cast}</div>
+      <div class="aiNote">⏳ ${esc(v.freshnessNote)}</div>
+      <div class="aiVerdict">${esc(v.verdict)}</div>
+      <div class="aiHardening">Next move: <b>${esc(v.hardening)}</b></div>
+      <a class="aiRoute" href="${P(link)}">📕 ${esc(v.routeTo&&v.routeTo.bundle||"The Wildroots Library")}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
+    </div>`;
+    // stagger the cast in
+    out.querySelectorAll(".aiCast .member").forEach((m,i)=>setTimeout(()=>m.classList.add("in"),180*i+120));
+    const cauldron=document.getElementById("cauldron");
+    if(cauldron) sparksFrom(cauldron);
+    stamp("brew"); stamp("elixir");
+  }
+  async function go(){
+    const ingredients=input.value.trim();
+    if(!ingredients){ input.focus(); return; }
+    btn.disabled=true;
+    out.innerHTML=`<div class="aiThinking">…the cauldron mutters, the Guilds confer…</div>`;
+    const cauldron=document.getElementById("cauldron");
+    if(cauldron) cauldron.classList.add("bubbling");
+    try{
+      const r=await fetch("/api/brew",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ingredients})});
+      const data=await r.json();
+      if(!r.ok) throw new Error(data.error||"The cauldron went quiet.");
+      render(data);
+    }catch(err){
+      out.innerHTML=`<div class="aiError">⚠️ ${esc(err.message||"The cauldron went quiet.")}</div>`;
+    }finally{
+      btn.disabled=false;
+      if(cauldron) cauldron.classList.remove("bubbling");
+    }
+  }
+  btn.addEventListener("click",go);
+  input.addEventListener("keydown",e=>{ if(e.key==="Enter") go(); });
+})();
 
 renderJournal();
 })();

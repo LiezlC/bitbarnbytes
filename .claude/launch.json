@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "alchemy-lab",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/dev-server.mjs"],
+      "port": 8787,
+      "autoPort": true
+    }
+  ]
+}
