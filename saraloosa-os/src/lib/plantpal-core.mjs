@@ -24,8 +24,14 @@ const PALS = [
 ];
 
 const SYSTEM = `You are BitSoil SageByte running the PLANT PAL IDENTIFIER for the Wildroots world. A visitor
-describes a plant they found (or names one). You warmly match it to the closest "Plant Pal" — giving plants
-faces and personalities so food/foraging becomes a friendly expedition for kids and families.
+describes a plant they found, names one, OR uploads a PHOTO. You warmly match it to the closest "Plant Pal"
+— giving plants faces and personalities so food/foraging becomes a friendly expedition for kids and families.
+
+WHEN GIVEN A PHOTO: identify from what's actually visible, but stay honest — a photo hides scale, smell,
+stem/root detail, habitat and the very features that separate an edible from its toxic lookalike. Treat photo
+IDs as tentative: cap confidence at "medium" at best, set identified=false if the image is blurry, partial,
+or could be several plants, and make the safety caution firmer. If the photo clearly isn't a plant, say so
+kindly in the persona and ask for a clearer plant photo.
 
 THE KNOWN PLANT PALS (match to one when the description fits; otherwise return a gentle "Unknown Sprout"):
 ${PALS.map((p) => `- ${p.name}: ${p.persona}. Fact: ${p.fact}`).join("\n")}
@@ -62,17 +68,22 @@ const SCHEMA = {
   required: ["identified", "pal", "oneFact", "safety", "confidence", "routeWhy"],
 };
 
-export async function identifyPlant(rawInput, apiKey) {
+export async function identifyPlant(rawInput, apiKey, images) {
   const text = String(rawInput ?? "").trim().slice(0, MAX_INPUT);
-  if (!text) {
-    const e = new Error("Describe the plant you found first."); e.status = 400; throw e;
+  const hasImages = Array.isArray(images) && images.length > 0;
+  if (!text && !hasImages) {
+    const e = new Error("Describe the plant or add a photo first."); e.status = 400; throw e;
   }
+  const user = hasImages
+    ? `Identify the plant in this photo.${text ? " The visitor adds: " + text : ""}`
+    : `The plant I found: ${text}`;
   return callStructured({
     system: SYSTEM,
-    user: `The plant I found: ${text}`,
+    user,
     schema: SCHEMA,
     schemaName: "plant_pal",
     temperature: 0.6,
     geminiKey: apiKey,
+    images,
   });
 }

@@ -31,9 +31,11 @@ export function resolveGeminiKey() {
   return "";
 }
 
-async function viaGemini({ system, user, schema, temperature, maxOutputTokens }, key) {
+async function viaGemini({ system, user, schema, temperature, maxOutputTokens, images }, key) {
+  const parts = [{ text: user }];
+  for (const im of images || []) parts.push({ inline_data: { mime_type: im.mimeType, data: im.dataBase64 } });
   const body = {
-    contents: [{ parts: [{ text: user }] }],
+    contents: [{ parts }],
     system_instruction: { parts: [{ text: system }] },
     generationConfig: {
       responseMimeType: "application/json",
@@ -100,14 +102,16 @@ export async function callStructured({
   temperature = 0.7,
   maxOutputTokens = 2048,
   geminiKey,
+  images,
 }) {
   const key = geminiKey || resolveGeminiKey();
   const hfToken = process.env.HF_TOKEN || "";
+  const hasImages = Array.isArray(images) && images.length > 0;
   const attempts = [];
 
   if (key) {
     try {
-      return await viaGemini({ system, user, schema, temperature, maxOutputTokens }, key);
+      return await viaGemini({ system, user, schema, temperature, maxOutputTokens, images }, key);
     } catch (err) {
       attempts.push(`gemini: ${err.message}${err.detail ? " — " + err.detail : ""}`);
     }
@@ -115,14 +119,15 @@ export async function callStructured({
     attempts.push("gemini: no key");
   }
 
-  if (hfToken) {
+  // the default HF fallback model is text-only — skip it for image inputs
+  if (hfToken && !hasImages) {
     try {
       return await viaHF({ system, user, schema, schemaName, temperature }, hfToken);
     } catch (err) {
       attempts.push(`hf: ${err.message}${err.detail ? " — " + err.detail : ""}`);
     }
   } else {
-    attempts.push("hf: no token");
+    attempts.push(hasImages ? "hf: skipped (image input, text-only model)" : "hf: no token");
   }
 
   const e = new Error("All model providers failed.");
