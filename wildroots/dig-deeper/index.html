@@ -1363,7 +1363,23 @@ SHELF.forEach(([ic,key])=>{
 });
 
 /* ---------- bedrock: bundles ---------- */
-const GUMROAD="https://gumroad.com"; // placeholder storefront — swap for real product links
+/* Gumroad storefront. EDIT the slugs below to match the published products
+   at https://bitsoil.gumroad.com (see wildroots/gumroad-listings.md). */
+const STORE="https://bitsoil.gumroad.com/l/";
+const PRODUCT={
+  trilogy:     STORE+"wildroots-storybook-trilogy",
+  fieldguides: STORE+"wildroots-field-guides",
+  shelf:       STORE+"alchemists-shelf",
+  originals:   STORE+"homestead-originals"
+};
+/* map any bundle title (bedrock card OR agent verdict) to its product URL */
+function productFor(name){
+  const n=(name||"").toLowerCase();
+  if(n.includes("storybook")||n.includes("trilogy")) return PRODUCT.trilogy;
+  if(n.includes("field")) return PRODUCT.fieldguides;
+  if(n.includes("alchemist")) return PRODUCT.shelf;
+  return PRODUCT.originals; // homestead / sensible default
+}
 const BUNDLES=[
   ["📚","The Storybook Trilogy","Three illustrated volumes: the Secret, the Underground Revolution, and the Harvest of Wisdom. The legacy of the Wildroots Sprouts, told fireside-style.",
     [["📕 Book I","watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf"],
@@ -1391,7 +1407,7 @@ BUNDLES.forEach(([ic,t,p,files,st])=>{
   const d=document.createElement("div"); d.className="bundle";
   d.innerHTML=`<div class="ic">${ic}</div><h4>${t}</h4><p>${p}</p>
     <div class="acts">${files.map(([nm,f])=>`<a href="${P(f)}" ${st?`data-stamp="${st}"`:""}>${nm}</a>`).join("")}
-    <a class="buy" href="${GUMROAD}" target="_blank" rel="noopener">🛒 Get the bundle</a></div>`;
+    <a class="buy" href="${productFor(t)}" target="_blank" rel="noopener">🛒 Get the bundle</a></div>`;
   bundleGrid.appendChild(d);
 });
 bundleGrid.addEventListener("click",e=>{
@@ -1414,13 +1430,6 @@ const comicsRow=document.getElementById("comicsRow");
   const out=document.getElementById("aiResult");
   if(!input||!btn||!out) return;
   const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  // mirrors lib/brew-core.mjs BUNDLE_LINKS — routes the verdict to the matching shelf
-  const BUNDLE_LINKS={
-    "The Wildroots Storybook Trilogy":"watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf",
-    "The Wildroots Field Guide Set":"watermark-covered/original_batch/field-guides/Wildroots_Sprouts_Field_Journal_Batch Compress - branded.pdf",
-    "The Alchemist's Shelf":"watermark-covered/new-branding/The_Dirt_Alchemists_Batch Compress - branded.pdf",
-    "The Homestead Originals":"watermark-covered/original_batch/Wildroots_Sprouts_Batch Compress - branded.pdf"
-  };
   function sparksFrom(el){
     const cr=el.getBoundingClientRect();
     for(let i=0;i<14;i++){
@@ -1433,7 +1442,7 @@ const comicsRow=document.getElementById("comicsRow");
     }
   }
   function render(v){
-    const link=BUNDLE_LINKS[v.routeTo&&v.routeTo.bundle]||BUNDLE_LINKS["The Homestead Originals"];
+    const link=productFor(v.routeTo&&v.routeTo.bundle);
     const cast=(v.cast||[]).map(m=>
       `<div class="member"><span class="em">${esc(m.emoji)}</span><div><div class="who">${esc(m.agent)}</div><div class="read">${esc(m.read)}</div></div></div>`).join("");
     out.innerHTML=`<div class="aiCard">
@@ -1443,7 +1452,7 @@ const comicsRow=document.getElementById("comicsRow");
       <div class="aiNote">⏳ ${esc(v.freshnessNote)}</div>
       <div class="aiVerdict">${esc(v.verdict)}</div>
       <div class="aiHardening">Next move: <b>${esc(v.hardening)}</b></div>
-      <a class="aiRoute" href="${P(link)}">📕 ${esc(v.routeTo&&v.routeTo.bundle||"The Wildroots Library")}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
+      <a class="aiRoute" href="${link}" target="_blank" rel="noopener">🛒 ${esc(v.routeTo&&v.routeTo.bundle||"The Wildroots Library")}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
     </div>`;
     // stagger the cast in
     out.querySelectorAll(".aiCast .member").forEach((m,i)=>setTimeout(()=>m.classList.add("in"),180*i+120));
@@ -1481,21 +1490,15 @@ const comicsRow=document.getElementById("comicsRow");
   const out=document.getElementById("oracleResult");
   if(!input||!btn||!out) return;
   const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const BUNDLE_LINKS={
-    "The Wildroots Storybook Trilogy":"watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf",
-    "The Wildroots Field Guide Set":"watermark-covered/original_batch/field-guides/Wildroots_Sprouts_Field_Journal_Batch Compress - branded.pdf",
-    "The Alchemist's Shelf":"watermark-covered/new-branding/The_Dirt_Alchemists_Batch Compress - branded.pdf",
-    "The Homestead Originals":"watermark-covered/original_batch/Wildroots_Sprouts_Batch Compress - branded.pdf"
-  };
   function render(v){
     const bundle=(v.routeTo&&v.routeTo.bundle)||"The Homestead Originals";
-    const link=BUNDLE_LINKS[bundle]||BUNDLE_LINKS["The Homestead Originals"];
+    const link=productFor(bundle);
     const cites=(v.citations||[]).map(c=>
       `<a href="${P(c.src)}">📄 ${esc(c.title)}</a>`).join("");
     out.innerHTML=`<div class="orCard${v.inCorpus?"":" miss"}">
       <div class="orAnswer">${esc(v.answer)}</div>
       ${cites?`<div class="orCites"><span class="lbl">From the free shelves</span>${cites}</div>`:""}
-      <a class="orRoute" href="${P(link)}">📕 Go deeper: ${esc(bundle)}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
+      <a class="orRoute" href="${link}" target="_blank" rel="noopener">🛒 Go deeper: ${esc(bundle)}<small>${esc(v.routeTo&&v.routeTo.why||"")}</small></a>
     </div>`;
     stamp("fact");
   }
