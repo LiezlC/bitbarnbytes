@@ -4,6 +4,8 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 // @ts-expect-error — plain .mjs core, no types
 import { identifyPlant } from "../../lib/plantpal-core.mjs";
+// @ts-ignore — plain .mjs helper, no types declaration
+import { traceGeneration } from "../../lib/langfuse.mjs";
 
 const json = (status: number, obj: unknown) =>
   new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json" } });
@@ -23,7 +25,13 @@ export const POST: APIRoute = async ({ request }) => {
   }
   try {
     const key = import.meta.env.GOOGLE_GENERATIVE_AI_API_KEY; // llm.mjs also falls back to env/HF
-    return json(200, await identifyPlant(plant, key, images));
+    const lf = await traceGeneration({
+      agent: "plantpal",
+      input: { plant, hasImage: images.length > 0 },
+    });
+    const result = await identifyPlant(plant, key, images);
+    await lf.end(result);
+    return json(200, result);
   } catch (err: any) {
     if (err?.detail) console.error("[plantpal] providers:", err.detail);
     return json(err?.status || 500, { error: err?.message || "The garden went quiet." });

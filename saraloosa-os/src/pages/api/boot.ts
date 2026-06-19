@@ -4,6 +4,8 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 // @ts-expect-error — plain .mjs core, no types
 import { diagnose, resolveKey } from "../../lib/boot-core.mjs";
+// @ts-ignore — plain .mjs helper, no types declaration
+import { traceGeneration } from "../../lib/langfuse.mjs";
 
 const json = (status: number, obj: unknown) =>
   new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json" } });
@@ -17,7 +19,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
   try {
     const key = import.meta.env.GOOGLE_GENERATIVE_AI_API_KEY || resolveKey();
-    return json(200, await diagnose(input, key));
+    const lf = await traceGeneration({ agent: "boot", input: { input } });
+    const result = await diagnose(input, key);
+    await lf.end(result);
+    return json(200, result);
   } catch (err: any) {
     if (err?.detail) console.error("[boot] upstream:", err.detail);
     return json(err?.status || 500, { error: err?.message || "SYS_NODE went quiet." });

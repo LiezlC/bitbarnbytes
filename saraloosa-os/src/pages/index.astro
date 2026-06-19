@@ -1,5 +1,7 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+// @ts-ignore — plain .mjs helper, no types declaration
+import { cld } from '../lib/cloudinary.mjs';
 
 const cards = [
   {
@@ -43,7 +45,7 @@ const cards = [
         </div>
       </div>
       <div class="relative min-h-[200px] md:min-h-full bg-soil-900 order-1 md:order-2 border-b md:border-b-0 md:border-l border-soil-700">
-        <img src="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp" alt="A page from the Wildroots Sprouts storybook" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <img src={cld('/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp', { width: 900 })} alt="A page from the Wildroots Sprouts storybook" class="absolute inset-0 w-full h-full object-cover" loading="eager" />
         <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-soil-900/70 to-transparent"></div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import type { APIRoute } from "astro";
 import { brew } from "../../lib/brew-core.mjs";
 // @ts-expect-error — plain .mjs core, no types
 import { resolveKey } from "../../lib/boot-core.mjs";
+// @ts-ignore — plain .mjs helper, no types declaration
+import { traceGeneration } from "../../lib/langfuse.mjs";
 
 const json = (status: number, obj: unknown) =>
   new Response(JSON.stringify(obj), { status, headers: { "Content-Type": "application/json" } });
@@ -19,7 +21,10 @@ export const POST: APIRoute = async ({ request }) => {
   }
   try {
     const key = import.meta.env.GOOGLE_GENERATIVE_AI_API_KEY || resolveKey();
-    return json(200, await brew(ingredients, key));
+    const lf = await traceGeneration({ agent: "brew", input: { ingredients } });
+    const result = await brew(ingredients, key);
+    await lf.end(result);
+    return json(200, result);
   } catch (err: any) {
     if (err?.detail) console.error("[brew] upstream:", err.detail);
     return json(err?.status || 500, { error: err?.message || "The cauldron went quiet." });
