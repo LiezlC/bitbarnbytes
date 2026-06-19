@@ -4,3 +4,8 @@ wildroots/_media/
 
 # Local helper dependencies
 .tools/
+
+# Ignore any "_"-prefixed folder at any depth (e.g. _internal, _deploy, _previews).
+# Mirrors the convention in sociable.systems. NB: wildroots/_deploy/ is pre-deploy
+# STAGING (Netlify serves saraloosa-os/dist, not _deploy), so keeping it out of git is correct.
+_*/

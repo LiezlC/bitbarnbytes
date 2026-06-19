@@ -1,8 +1,34 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { MODULES } from '../lib/boot-core.mjs';
+
+/** JSON-LD: one Course per Vital Earth OS module */
+const courseListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Vital Earth OS — The Four Modules",
+  "description": "Four curriculum modules that recompile a digitally-exhausted mind through soil, food and living systems.",
+  "url": "https://saraloosa.org/the_syllabus",
+  "itemListElement": MODULES.map((m: { number: number; title: string; skill: string; lab: string; subtitle: string }) => ({
+    "@type": "ListItem",
+    "position": m.number,
+    "item": {
+      "@type": "Course",
+      "name": m.title,
+      "description": m.skill,
+      "url": `https://saraloosa.org/the_syllabus#module-${m.number}`,
+      "provider": {
+        "@type": "EducationalOrganization",
+        "name": "Saraloosa / BitSoil SageByte",
+        "url": "https://saraloosa.org",
+      },
+    },
+  })),
+};
 ---
 <TerminalLayout title="The Syllabus" description="The Vital Earth OS syllabus — four modules that recompile a digitally-exhausted mind. Run the Boot Sequence diagnostic to find your Exile archetype and where to begin." image="/img/comic/comicstrip-level1.webp">
+  <JsonLd schema={courseListSchema} />
   <section class="space-y-8">
 
     <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
@@ -20,16 +46,19 @@ import { MODULES } from '../lib/boot-core.mjs';
       <h2 class="text-xs uppercase tracking-wider text-terminal-amber font-bold">// THE_BOOT_SEQUENCE</h2>
       <p class="font-serif text-sm text-soil-100">Describe how you're running lately — the fatigue, the loops, the thing that's off. SageByte will match you to your Exile archetype and the module that recompiles it.</p>
 
-      <textarea id="bootInput" rows="3" maxlength="600"
-        class="w-full bg-soil-900 border border-soil-700 focus:border-terminal-amber outline-none text-soil-100 font-mono text-sm p-3 rounded-none placeholder:text-soil-700"
+      <label for="bootInput" class="sr-only">Describe how you are running lately — fatigue, loops, what is off</label>
+      <textarea id="bootInput" name="bootInput" rows="3" maxlength="600"
+        aria-describedby="bootHint"
+        class="w-full bg-soil-900 border border-soil-700 focus:border-terminal-amber outline-none text-soil-100 font-mono text-sm p-3 rounded-none placeholder:text-soil-700 focus-visible:outline-none"
         placeholder="e.g. I doomscroll till 2am, my brain feels fried, and no productivity hack ever sticks…"></textarea>
+      <p id="bootHint" class="text-[10px] text-soil-700 font-mono">Max 600 characters. Press Ctrl+Enter or Cmd+Enter to run.</p>
 
-      <button id="bootBtn"
-        class="text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors font-mono px-4 py-2 disabled:opacity-40">
+      <button id="bootBtn" type="button" aria-controls="bootResult"
+        class="text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors font-mono px-4 py-2 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">
         &gt; run_diagnostic
       </button>
 
-      <div id="bootResult" class="text-sm"></div>
+      <div id="bootResult" role="status" aria-live="polite" aria-atomic="true" class="text-sm"></div>
     </div>
 
     <!-- ============ THE MODULES ============ -->

@@ -2,6 +2,20 @@
 import TerminalLayout from '../layouts/TerminalLayout.astro';
 // @ts-ignore — plain .mjs helper, no types declaration
 import { cld } from '../lib/cloudinary.mjs';
+import JsonLd from '../components/JsonLd.astro';
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Saraloosa / BitSoil SageByte OS",
+  "url": "https://saraloosa.org",
+  "description": "A living learning world of soil, food and the digitally shipwrecked — brew kitchen scraps into elixirs, ask the Soil Oracle, run the burnout boot sequence, and play the Barnyard Arcade.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://saraloosa.org/the_syllabus#boot",
+    "query-input": "required name=search_term_string",
+  },
+};
 
 const cards = [
   {
@@ -31,6 +45,7 @@ const cards = [
 ];
 ---
 <TerminalLayout title="Terminal" description="BitSoil SageByte / Wildroots — a living learning world of soil, food and the digitally shipwrecked. Brew kitchen scraps into named elixirs, ask the Soil Oracle, run the burnout boot sequence, and play the Barnyard Arcade.">
+  <JsonLd schema={websiteSchema} />
   <section class="space-y-8">
 
     <!-- ============ HERO ============ -->
@@ -53,15 +68,16 @@ const cards = [
     <!-- ============ CARDS ============ -->
     <div class="grid md:grid-cols-3 gap-5">
       {cards.map((c) => (
-        <a href={c.href} class="group flex flex-col border border-soil-700 hover:border-leaf rounded-lg overflow-hidden bg-soil-800 transition-colors">
+        <a href={c.href} aria-label={`${c.title} — ${c.label}`}
+           class="group flex flex-col border border-soil-700 hover:border-leaf rounded-lg overflow-hidden bg-soil-800 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">
           <div class="h-36 bg-soil-900 overflow-hidden">
             <img src={c.img} alt={c.alt} class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition duration-300 group-hover:scale-[1.04]" loading="lazy" />
           </div>
           <div class="p-5 flex flex-col flex-1 space-y-2">
-            <div class="text-[10px] uppercase tracking-[0.18em] text-soil-700 font-mono">// {c.n} / {c.label}</div>
-            <h2 class="text-terminal-amber font-bold font-mono text-lg leading-snug">{c.title}</h2>
+            <div class="text-[10px] uppercase tracking-[0.18em] text-soil-700 font-mono" aria-hidden="true">// {c.n} / {c.label}</div>
+            <h2 class="text-terminal-amber font-bold font-mono text-lg leading-snug" aria-hidden="true">{c.title}</h2>
             <p class="font-serif text-sm text-soil-100/80 leading-relaxed flex-1">{c.body}</p>
-            <span class="text-xs font-mono text-leaf group-hover:text-terminal-amber transition-colors pt-1">{c.cta}</span>
+            <span class="text-xs font-mono text-leaf group-hover:text-terminal-amber transition-colors pt-1" aria-hidden="true">{c.cta}</span>
           </div>
         </a>
       ))}

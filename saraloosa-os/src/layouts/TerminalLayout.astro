@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import JsonLd from '../components/JsonLd.astro';
+
 const {
   title,
   description = "BitSoil SageByte — where compost meets code. A living learning world of soil, food and the digitally shipwrecked: brew kitchen scraps into elixirs, ask the Soil Oracle, run the burnout diagnostic, and play the Barnyard Arcade.",
@@ -9,6 +11,18 @@ const site = "https://saraloosa.org";
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImage = new URL(image, site).href;
 const fullTitle = `${title} // Saraloosa OS`;
+
+/** Site-wide Organisation schema — injected on every page. */
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Saraloosa / BitSoil SageByte",
+  "alternateName": "BitSoil SageByte",
+  "url": site,
+  "logo": `${site}/favicon.svg`,
+  "description": "A living learning world of soil, food and the digitally shipwrecked — educational storytelling where compost meets code.",
+  "sameAs": ["https://saraloosa.org"],
+};
 ---
 <html lang="en">
   <head>
@@ -19,6 +33,7 @@ const fullTitle = `${title} // Saraloosa OS`;
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#121110" />
+    <meta name="robots" content="index, follow" />
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BitSoil SageByte // Saraloosa OS" />
@@ -31,24 +46,31 @@ const fullTitle = `${title} // Saraloosa OS`;
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <!-- Structured data -->
+    <JsonLd schema={orgSchema} />
   </head>
   <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:p-8 flex flex-col selection:bg-terminal-amber selection:text-soil-900">
+    <!-- Skip-to-content for keyboard/AT users -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-terminal-amber focus:text-soil-900 focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:rounded focus:outline-none">
+      Skip to main content
+    </a>
+
     <header class="border-b border-soil-700 pb-4 mb-8 flex flex-col gap-3 sm:flex-row sm:justify-between sm:items-center text-xs text-soil-100">
       <div>
         <span class="text-terminal-amber font-bold">SYS_NODE:</span> saraloosa.org // online
       </div>
-      <nav class="flex flex-wrap gap-x-4 gap-y-1">
-        <a href="/" class="hover:text-terminal-amber transition-colors">/root</a>
-        <a href="/the_syllabus" class="hover:text-terminal-amber transition-colors">/syllabus</a>
-        <a href="/the_compost" class="hover:text-terminal-amber transition-colors">/compost</a>
-        <a href="/arcade" class="hover:text-terminal-amber transition-colors">/arcade</a>
+      <nav aria-label="Site navigation" class="flex flex-wrap gap-x-4 gap-y-1">
+        <a href="/" class="hover:text-terminal-amber transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">/root</a>
+        <a href="/the_syllabus" class="hover:text-terminal-amber transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">/syllabus</a>
+        <a href="/the_compost" class="hover:text-terminal-amber transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">/compost</a>
+        <a href="/arcade" class="hover:text-terminal-amber transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">/arcade</a>
       </nav>
     </header>
-    
-    <main class="flex-grow max-w-4xl mx-auto w-full">
+
+    <main id="main-content" class="flex-grow max-w-4xl mx-auto w-full">
       <slot />
     </main>
-    
+
     <footer class="border-t border-soil-700 mt-12 pt-4 text-center text-[10px] uppercase text-soil-700 tracking-wider">
       SYS_VERSION: 1.0.0 // STATUS: COMPOSTING_CONFUSION // © 2026 LIEZL COETZEE
     </footer>
