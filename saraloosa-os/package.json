@@ -12,11 +12,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "index:build": "node scripts/build-pinecone-index.mjs"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
     "@astrojs/tailwind": "^6.0.2",
+    "@pinecone-database/pinecone": "^5.1.1",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",

@@ -1,0 +1,40 @@
+# CI workflow for saraloosa-os (Astro 6 + Tailwind v4)
+# Runs on pull_request only — deploy is handled by Netlify on merge.
+# Does NOT trigger on push to main (Netlify already watches that branch).
+
+name: saraloosa-os CI
+
+on:
+  pull_request:
+    branches: ["main", "master"]
+    paths:
+      - "saraloosa-os/**"
+      - ".github/workflows/ci.yml"
+
+jobs:
+  build:
+    name: Install & Astro Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.12.0"
+          cache: "npm"
+          cache-dependency-path: saraloosa-os/package-lock.json
+
+      - name: Install dependencies
+        working-directory: saraloosa-os
+        run: npm ci
+
+      - name: Build Astro site
+        working-directory: saraloosa-os
+        run: npm run build
+        env:
+          # Provide a dummy key so build-time env checks don't hard-fail.
+          # The real key is set in Netlify site environment (functions scope).
+          GOOGLE_GENERATIVE_AI_API_KEY: ${{ secrets.GOOGLE_GENERATIVE_AI_API_KEY || 'ci-placeholder' }}

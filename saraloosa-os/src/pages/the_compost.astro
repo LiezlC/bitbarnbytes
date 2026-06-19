@@ -1,5 +1,6 @@
 ---
 import TerminalLayout from '../layouts/TerminalLayout.astro';
+import JsonLd from '../components/JsonLd.astro';
 import { getCollection, render } from 'astro:content';
 
 const loreRaw = (await getCollection('lore'))
@@ -13,8 +14,30 @@ const notesRaw = (await getCollection('field-notes')).sort((a, b) => b.data.log 
 const notes = await Promise.all(
   notesRaw.map(async (e) => ({ ...e.data, Body: (await render(e)).Content }))
 );
+
+/** JSON-LD: Article schema for each published lore chronicle */
+const loreArticleSchemas = lore.map((entry) => ({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": entry.title,
+  "datePublished": entry.date,
+  "author": {
+    "@type": "Person",
+    "name": "Liezl Coetzee",
+    "url": "https://saraloosa.org",
+  },
+  "publisher": {
+    "@type": "EducationalOrganization",
+    "name": "Saraloosa / BitSoil SageByte",
+    "url": "https://saraloosa.org",
+    "logo": { "@type": "ImageObject", "url": "https://saraloosa.org/favicon.svg" },
+  },
+  "about": { "@type": "Thing", "name": `Exile: ${entry.exile}` },
+  "isPartOf": { "@type": "WebPage", "url": "https://saraloosa.org/the_compost" },
+}));
 ---
 <TerminalLayout title="The Compost" description="The Compost Lore — chronicles of the digitally shipwrecked Exiles who left the timeline to touch the living loam, from the world of BitSoil SageByte." image="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp">
+  {loreArticleSchemas.map((s) => <JsonLd schema={s} />)}
   <section class="space-y-8">
 
     <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
@@ -39,7 +62,7 @@ const notes = await Promise.all(
           <article class="border border-soil-700 p-6 space-y-3">
             <div class="flex items-center justify-between gap-4 flex-wrap">
               <span class="text-[10px] uppercase tracking-wider text-terminal-amber font-bold border border-terminal-amber/40 px-2 py-1">exile: {entry.exile}</span>
-              <span class="text-[10px] text-soil-700 font-mono">{entry.date}</span>
+              <time datetime={entry.date} class="text-[10px] text-soil-700 font-mono">{entry.date}</time>
             </div>
             <h3 class="text-terminal-amber font-bold text-lg">{entry.title}</h3>
             <div class="logbody font-serif text-sm text-soil-100"><Body /></div>
@@ -55,8 +78,8 @@ const notes = await Promise.all(
         {notes.map((note) => {
           const Body = note.Body;
           return (
-            <div class="p-5 space-y-2">
-              <div class="text-[10px] text-soil-700 font-mono uppercase tracking-wider">log_{String(note.log).padStart(3, '0')} · {note.date}</div>
+            <div class="p-5 space-y-2" aria-label={`Field note log ${String(note.log).padStart(3, '0')} from ${note.date}`}>
+              <div class="text-[10px] text-soil-700 font-mono uppercase tracking-wider">log_{String(note.log).padStart(3, '0')} · <time datetime={note.date}>{note.date}</time></div>
               <div class="logbody font-mono text-xs text-soil-100"><Body /></div>
             </div>
           );

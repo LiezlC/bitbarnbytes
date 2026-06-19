@@ -1,0 +1,16 @@
+---
+/**
+ * JsonLd.astro — reusable structured-data injector.
+ * Pass any valid schema.org object (or array of objects) via the `schema` prop.
+ * The component serialises it to a <script type="application/ld+json"> tag.
+ *
+ * Usage:
+ *   import JsonLd from '../components/JsonLd.astro';
+ *   <JsonLd schema={{ "@context": "https://schema.org", "@type": "WebPage", ... }} />
+ */
+interface Props {
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+const { schema } = Astro.props;
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
