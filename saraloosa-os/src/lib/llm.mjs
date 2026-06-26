@@ -20,13 +20,24 @@ const GEMINI_URL = (key) =>
 const HF_URL = "https://router.huggingface.co/v1/chat/completions";
 const HF_MODEL_DEFAULT = "openai/gpt-oss-120b:cerebras";
 
-/** Gemini key from env, else the local gem-voice .env.local (dev convenience). */
+/**
+ * Gemini key resolver — the single source of truth for every agent route.
+ * Production (Netlify) and CI resolve the key from the GOOGLE_GENERATIVE_AI_API_KEY
+ * env var only. As a *local dev* convenience, when that var is unset we may read the
+ * key from a sibling gem-voice project's .env.local. That path is overridable via
+ * GEMINI_KEY_FILE and is NEVER consulted in production (guarded on NODE_ENV), so the
+ * fallback can't leak a host path into prod traces or break on other machines.
+ */
 export function resolveGeminiKey() {
   if (process.env.GOOGLE_GENERATIVE_AI_API_KEY) return process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  const f = "C:/Users/Liezl/Documents/Github/gemini-voice-agents/gem-voice/.env.local";
-  if (existsSync(f)) {
-    const line = readFileSync(f, "utf8").split(/\r?\n/).find((l) => l.startsWith("GOOGLE_GENERATIVE_AI_API_KEY="));
-    if (line) return line.slice("GOOGLE_GENERATIVE_AI_API_KEY=".length).trim();
+  if (process.env.NODE_ENV !== "production") {
+    const f =
+      process.env.GEMINI_KEY_FILE ||
+      "C:/Users/Liezl/Documents/Github/gemini-voice-agents/gem-voice/.env.local";
+    if (existsSync(f)) {
+      const line = readFileSync(f, "utf8").split(/\r?\n/).find((l) => l.startsWith("GOOGLE_GENERATIVE_AI_API_KEY="));
+      if (line) return line.slice("GOOGLE_GENERATIVE_AI_API_KEY=".length).trim();
+    }
   }
   return "";
 }
