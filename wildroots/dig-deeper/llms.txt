@@ -9,12 +9,14 @@
 - /the_compost — the Compost Lore: chronicles of the Exiles.
 - /dig-deeper/ — the living library (this corpus), with interactive agents.
 - /arcade — the Barnyard Arcade: small contemplative games.
+- /wild-pharmacy/ — Hexi's Wild Pharmacy: a compost-punk labyrinth RPG of thirteen real healing plants (identify, harvest, extract, concoct against a 13-hour clock).
 
 ## Interactive agents (free to try; powered by a model)
 - Kitchen Alchemy Lab — name your kitchen/garden scraps, get a named elixir + soil-cast read. (/dig-deeper/)
 - Soil Oracle — ask anything; answers ONLY from the free corpus below and cites it. (/dig-deeper/)
 - Plant Pal Identifier — describe or photograph a plant; safety-first, never confirms edibility. (/dig-deeper/)
 - Boot Sequence — describe your burnout, get matched to an Exile archetype + curing module. (/the_syllabus)
+- Wild Pharmacy Soil Oracle — ask about a symptom, a feeling or a plant; answers ONLY from the thirteen-plant garden, conservation-positive, never medical. (/wild-pharmacy/)
 
 ## The Wildroots library corpus
 

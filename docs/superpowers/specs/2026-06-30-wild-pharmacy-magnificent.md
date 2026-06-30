@@ -28,7 +28,7 @@
 
 ## Tier D — Distribution
 - [x] D1 SEO/OG/Twitter meta + JSON-LD (VideoGame schema) + canonical in index.html head (serves as /wild-pharmacy/ meta)
-- [ ] D2 sitemap + llms.txt entry for /wild-pharmacy/
+- [x] D2 sitemap.xml entry + llms.txt entries (site map + Soil Oracle agent) for /wild-pharmacy/
 - [x] D3 PWA: manifest.webmanifest + sw.js service worker (same-origin shell cache; Cloudinary + /api/ pass through) → installable, offline shell. SW registered + controlling (verified).
 
 ## Tier E — Depth
