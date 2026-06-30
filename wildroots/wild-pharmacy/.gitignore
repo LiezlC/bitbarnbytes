@@ -1,0 +1,8 @@
+# Heavy media kept out of git.
+# Clips + the narration audio are hosted on Cloudinary (folder: wild-pharmacy/*)
+# and streamed by index.html. The source overview videos are local-only.
+# Transcripts (*.txt/*.srt) and the .webp poster plates ARE committed.
+
+video/
+slides/*.mp4
+audio/*.mp3

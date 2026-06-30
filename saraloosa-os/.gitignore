@@ -5,6 +5,8 @@ dist/
 # staged Dig Deeper bundle (regenerated from wildroots/ by scripts/stage-digdeeper.mjs)
 public/dig-deeper/
 public/llms.txt
+# staged Wild Pharmacy bundle (regenerated from wildroots/wild-pharmacy/ by scripts/stage-wildpharmacy.mjs)
+public/wild-pharmacy/
 
 # dependencies
 node_modules/

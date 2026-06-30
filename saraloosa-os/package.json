@@ -7,13 +7,15 @@
   },
   "scripts": {
     "stage-digdeeper": "node scripts/stage-digdeeper.mjs",
-    "predev": "node scripts/stage-digdeeper.mjs",
-    "prebuild": "node scripts/stage-digdeeper.mjs",
+    "stage-wildpharmacy": "node scripts/stage-wildpharmacy.mjs",
+    "predev": "node scripts/stage-digdeeper.mjs && node scripts/stage-wildpharmacy.mjs",
+    "prebuild": "node scripts/stage-digdeeper.mjs && node scripts/stage-wildpharmacy.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "index:build": "node scripts/build-pinecone-index.mjs"
+    "index:build": "node scripts/build-pinecone-index.mjs",
+    "index:wildpharmacy": "node scripts/build-wildpharmacy-pinecone.mjs"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
