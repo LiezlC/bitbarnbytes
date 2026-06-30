@@ -1449,9 +1449,7 @@ const PRODUCT={
   fieldguides: STORE+"wildroots-field-guides",
   shelf:       STORE+"alchemists-shelf",
   originals:   STORE+"homestead-originals",
-  // The Complete Library bundle isn't published yet — link to the storefront for now.
-  // Once created (suggested slug: complete-library), change this to STORE+"complete-library".
-  complete:    "https://bitsoil.gumroad.com"
+  complete:    STORE+"complete-library"
 };
 /* map any bundle title (bedrock card OR agent verdict) to its product URL */
 function productFor(name){
@@ -1462,6 +1460,8 @@ function productFor(name){
   if(n.includes("alchemist")) return PRODUCT.shelf;
   return PRODUCT.originals; // homestead / sensible default
 }
+/* keep the Complete Library hero upsell (#completeLibrary) in sync with the product map */
+(function(){ var cl=document.getElementById("completeLibrary"); if(cl) cl.href=PRODUCT.complete; })();
 const BUNDLES=[
   ["📚","The Storybook Trilogy","Three illustrated volumes: the Secret, the Underground Revolution, and the Harvest of Wisdom. The legacy of the Wildroots Sprouts, told fireside-style.",
     [["📕 Book I","watermark-covered/storybooks/1. The Secret of the Wildroots Sprouts - branded.pdf"],
