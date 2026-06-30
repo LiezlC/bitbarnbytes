@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Wild Pharmacy">
+  <rect width="64" height="64" rx="13" fill="#120c08"/>
+  <!-- cauldron -->
+  <path d="M16 36 a16 13 0 0 0 32 0 z" fill="#1b1410" stroke="#f4c95d" stroke-width="2"/>
+  <ellipse cx="32" cy="36" rx="16" ry="5" fill="#3a2c20" stroke="#f4c95d" stroke-width="2"/>
+  <!-- brew glow -->
+  <ellipse cx="32" cy="36" rx="11" ry="3" fill="#6ee84e" opacity="0.55"/>
+  <!-- sprout rising from the brew -->
+  <path d="M32 35 q0 -10 0 -16" stroke="#6ee84e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+  <path d="M32 24 q-7 -1 -9 -8 q7 0 9 6" fill="#5fe3d0"/>
+  <path d="M32 20 q7 -1 9 -7 q-7 0 -9 5" fill="#6ee84e"/>
+  <!-- two legs -->
+  <path d="M22 48 l-2 5 M42 48 l2 5" stroke="#f4c95d" stroke-width="2" stroke-linecap="round"/>
+  <!-- neon spark (the glitch) -->
+  <circle cx="46" cy="16" r="2.2" fill="#ff6fb0"/>
+</svg>

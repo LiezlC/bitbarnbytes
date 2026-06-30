@@ -5,6 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Hexi's Wild Pharmacy — the Labyrinth</title>
 <meta name="description" content="A compost-punk labyrinth RPG: solve thirteen real plant-stations against the thirteen-hour clock, ward off the minotaur, and reach the cauldron at the heart." />
+<link rel="canonical" href="https://saraloosa.org/wild-pharmacy/" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="apple-touch-icon" href="assets/icon-180.png" />
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#120c08" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Saraloosa OS" />
+<meta property="og:title" content="Hexi's Wild Pharmacy — the Labyrinth" />
+<meta property="og:description" content="A compost-punk labyrinth RPG of thirteen real healing plants. Solve each station against the thirteen-hour clock, ward off the minotaur, and reach the cauldron at the heart." />
+<meta property="og:url" content="https://saraloosa.org/wild-pharmacy/" />
+<meta property="og:image" content="https://saraloosa.org/wild-pharmacy/assets/og.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Hexi's Wild Pharmacy — the Labyrinth" />
+<meta name="twitter:description" content="A compost-punk labyrinth of thirteen real healing plants. Identify, harvest, extract, concoct — before the thirteenth hour." />
+<meta name="twitter:image" content="https://saraloosa.org/wild-pharmacy/assets/og.jpg" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoGame","name":"Hexi's Wild Pharmacy — the Labyrinth","url":"https://saraloosa.org/wild-pharmacy/","image":"https://saraloosa.org/wild-pharmacy/assets/og.jpg","description":"A compost-punk labyrinth RPG of thirteen real healing plants. Solve each station against the thirteen-hour clock, ward off the minotaur, and reach the cauldron at the heart. Educational, conservation-positive, never medical advice.","genre":["Educational","Puzzle","Role-playing"],"gamePlatform":"Web browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"keywords":"medicinal plants, herbalism, fynbos, labyrinth, compost-punk, South African plants, educational game","author":{"@type":"Person","name":"Liezl Coetzee"},"publisher":{"@type":"Organization","name":"Saraloosa OS","url":"https://saraloosa.org"}}
+</script>
 <style>
   :root{
     --ink:#120c08; --ink2:#1b1410; --edge:#3a2c20;
@@ -639,6 +660,9 @@
   })();
   updateClock();
 })();
+</script>
+<script>
+  if("serviceWorker" in navigator){ window.addEventListener("load",function(){ navigator.serviceWorker.register("sw.js").catch(function(){}); }); }
 </script>
 </body>
 </html>

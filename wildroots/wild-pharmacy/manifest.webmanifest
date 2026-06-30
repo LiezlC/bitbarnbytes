@@ -1,0 +1,16 @@
+{
+  "name": "Hexi's Wild Pharmacy — the Labyrinth",
+  "short_name": "Wild Pharmacy",
+  "description": "A compost-punk labyrinth RPG of thirteen real healing plants. Solve each station against the thirteen-hour clock and reach the cauldron at the heart.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#120c08",
+  "theme_color": "#120c08",
+  "categories": ["games", "education"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

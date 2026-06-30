@@ -22,14 +22,14 @@
 - [x] B4 Langfuse tracing reused (traceGeneration agent:"herb-oracle"). Deploy needs PINECONE_API_KEY + GOOGLE_GENERATIVE_AI_API_KEY (+ optional HF_TOKEN) in Netlify env — all already in .env.example.
 
 ## Tier C — Visual
-- [ ] C1 Mine frames_anime into tokens/icons (goat familiar, botanicals, bottles) — needs Liezl pointing; Learning Loop already extracted
+- [~] C1 Mine frames_anime into tokens/icons — Learning Loop extracted (assets/learning-loop.png); goat/botanicals/bottles still need Liezl pointing at a contact sheet
 - [ ] C2 Dark nim (Seedream) scenes for gate / cauldron / map backdrop (handover polish; needs credits)
-- [ ] C3 Favicon + app icons; Cloudinary-generated OG share image
+- [x] C3 Favicon (assets/favicon.svg) + app icons (icon-192/512/180 from the cauldron plate) + composed OG share image (assets/og.jpg, 1200x630 over slide_06)
 
 ## Tier D — Distribution
-- [ ] D1 SEO/OG/Twitter meta on standalone + Astro card; JSON-LD
+- [x] D1 SEO/OG/Twitter meta + JSON-LD (VideoGame schema) + canonical in index.html head (serves as /wild-pharmacy/ meta)
 - [ ] D2 sitemap + llms.txt entry for /wild-pharmacy/
-- [ ] D3 PWA: web manifest + service worker → installable, offline (local-clip fallback)
+- [x] D3 PWA: manifest.webmanifest + sw.js service worker (same-origin shell cache; Cloudinary + /api/ pass through) → installable, offline shell. SW registered + controlling (verified).
 
 ## Tier E — Depth
 - [ ] E1 Expansion herbs from Apothecary_Index.xlsx beyond 13
