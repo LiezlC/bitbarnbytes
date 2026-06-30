@@ -1,0 +1,6165 @@
+[
+ {
+  "key": "sceletium-kanna",
+  "common": "Sceletium (Kanna)",
+  "latin": "Mesembryanthemum tortuosum (syn. Sceletium tortuosum)",
+  "family": "Aizoaceae",
+  "origin": "South Africa (Karoo / arid)",
+  "conservationStatus": "",
+  "effectPath": [
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "low-mood",
+   "stress",
+   "tension"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "ferment",
+   "dried",
+   "tincture"
+  ],
+  "growsIn": [
+   "arid",
+   "drought-hardy",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions",
+   "avoid-in-pregnancy",
+   "sedating"
+  ],
+  "cautionsNote": "Do NOT combine with SSRIs / other antidepressants (serotonergic). Avoid in pregnancy. Intoxicating doses cause euphoria then sedation.",
+  "constituents": [
+   "mesembrine",
+   "mesembrenone"
+  ],
+  "alsoKnown": [
+   "Kanna",
+   "kougoed"
+  ],
+  "references": "sceletium.com/sceletium-uses.asp; sceletium.org"
+ },
+ {
+  "key": "rhodiola",
+  "common": "Rhodiola",
+  "latin": "Rhodiola rosea",
+  "family": "Crassulaceae",
+  "origin": "Arctic / cold-alpine (Scandinavia, Russia)",
+  "conservationStatus": "",
+  "effectPath": [
+   "adaptogen",
+   "energy",
+   "focus",
+   "cognitive"
+  ],
+  "ailments": [
+   "fatigue",
+   "stress"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "tincture",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Can be over-stimulating; avoid late in day & in bipolar/mania; caution in pregnancy.",
+  "constituents": [
+   "rosavins",
+   "salidroside"
+  ],
+  "alsoKnown": [
+   "golden root",
+   "roseroot"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "eucalyptus",
+  "common": "Eucalyptus",
+  "latin": "Eucalyptus globulus",
+  "family": "Myrtaceae",
+  "origin": "Australia",
+  "conservationStatus": "",
+  "effectPath": [
+   "respiratory",
+   "circulatory",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "congestion",
+   "cough",
+   "joint-pain"
+  ],
+  "partsUsed": [
+   "leaf",
+   "oil"
+  ],
+  "preparations": [
+   "distilled",
+   "infused-oil",
+   "dried",
+   "infusion"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "subtropical",
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "aromatic"
+  ],
+  "cautions": [
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "Essential oil is TOXIC if swallowed; never give oil to young children; external/steam use.",
+  "constituents": [
+   "1,8-cineole (eucalyptol)"
+  ],
+  "alsoKnown": [
+   "blue gum"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "sage",
+  "common": "Sage",
+  "latin": "Salvia officinalis",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "conservationStatus": "",
+  "effectPath": [
+   "cognitive",
+   "digestive",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "sore-throat",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "thujone",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Avoid high/medicinal doses in pregnancy & breastfeeding (thujone). Caution with epilepsy; medicinal doses are short-term only.",
+  "constituents": [
+   "thujone",
+   "rosmarinic acid",
+   "cineole"
+  ],
+  "alsoKnown": [
+   "garden sage",
+   "common sage"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "guarana",
+  "common": "Guarana",
+  "latin": "Paullinia cupana",
+  "family": "Sapindaceae",
+  "origin": "tropical Americas (Amazon)",
+  "conservationStatus": "",
+  "effectPath": [
+   "energy",
+   "focus",
+   "cognitive"
+  ],
+  "ailments": [
+   "fatigue"
+  ],
+  "partsUsed": [
+   "seed"
+  ],
+  "preparations": [
+   "powder",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "tropical"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "hypertension-caution",
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "High caffeine — avoid with heart conditions, anxiety, pregnancy, other stimulants.",
+  "constituents": [
+   "caffeine (guaranine)",
+   "theobromine"
+  ],
+  "alsoKnown": [
+   "kola-free guarana"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "ginkgo",
+  "common": "Ginkgo",
+  "latin": "Ginkgo biloba",
+  "family": "Ginkgoaceae",
+  "origin": "China",
+  "conservationStatus": "IUCN Endangered in the wild (effectively extinct in true wild populations); abundant in cultivation — use only cultivated/commercial leaf.",
+  "effectPath": [
+   "cognitive",
+   "circulatory",
+   "focus",
+   "respiratory"
+  ],
+  "ailments": [
+   "poor-memory",
+   "vertigo",
+   "cough"
+  ],
+  "partsUsed": [
+   "leaf",
+   "seed"
+  ],
+  "preparations": [
+   "tincture",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "ornamental"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "toxic-in-overdose",
+   "endangered-conservation"
+  ],
+  "cautionsNote": "Blood-thinning — stop before surgery; avoid with anticoagulants. Raw seed toxic. Wild populations are IUCN Endangered — source only cultivated leaf.",
+  "constituents": [
+   "flavone glycosides",
+   "ginkgolides (terpene lactones)"
+  ],
+  "alsoKnown": [
+   "maidenhair tree"
+  ],
+  "references": "Wikipedia ginkgo#Medicinal_uses; umm.edu ginkgo-000247"
+ },
+ {
+  "key": "gotu-kola",
+  "common": "Gotu kola",
+  "latin": "Centella asiatica",
+  "family": "Apiaceae",
+  "origin": "South Asia (India, wetlands of Asia)",
+  "conservationStatus": "",
+  "effectPath": [
+   "cognitive",
+   "skin",
+   "calm",
+   "adaptogen",
+   "circulatory",
+   "nervine"
+  ],
+  "ailments": [
+   "wounds",
+   "eczema",
+   "anxiety",
+   "scars"
+  ],
+  "partsUsed": [
+   "leaf",
+   "whole",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "poultice"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "damp",
+   "shade",
+   "container",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "sedating"
+  ],
+  "cautionsNote": "Avoid in pregnancy & liver disease. May cause drowsiness; large doses can irritate.",
+  "constituents": [
+   "asiaticoside",
+   "madecassoside"
+  ],
+  "alsoKnown": [
+   "Indian Pennywort",
+   "Mandookaparni",
+   "Brahmi"
+  ],
+  "references": "Wikipedia; ageless.co.za/herb-centella.htm; anyvitamins.com"
+ },
+ {
+  "key": "panax-ginseng",
+  "common": "Panax ginseng",
+  "latin": "Panax ginseng",
+  "family": "Araliaceae",
+  "origin": "East Asia (Korea, northeastern China)",
+  "effectPath": [
+   "adaptogen",
+   "energy",
+   "immunity",
+   "cognitive",
+   "respiratory"
+  ],
+  "ailments": [
+   "fatigue",
+   "anxiety",
+   "cold-flu",
+   "low-energy"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "shade"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Can overstimulate and disturb sleep; caution with diabetes meds, blood-pressure meds and other stimulants; avoid in pregnancy.",
+  "constituents": [
+   "ginsenosides"
+  ],
+  "conservationStatus": "",
+  "references": "nutrasanus.com/panax-ginseng"
+ },
+ {
+  "key": "siberian-ginseng",
+  "common": "Siberian ginseng",
+  "latin": "Eleutherococcus senticosus",
+  "family": "Araliaceae",
+  "origin": "Northeastern Asia (Siberia, northern China, Korea, Japan)",
+  "effectPath": [
+   "adaptogen",
+   "energy"
+  ],
+  "ailments": [
+   "fatigue",
+   "stress"
+  ],
+  "partsUsed": [
+   "root",
+   "bark"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Caution in uncontrolled high blood pressure; can disturb sleep.",
+  "constituents": [
+   "eleutherosides"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "eyebright",
+  "common": "Eyebright",
+  "latin": "Euphrasia officinalis",
+  "family": "Orobanchaceae",
+  "origin": "Europe",
+  "effectPath": [
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "eye-irritation",
+   "sinus-congestion"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "poultice",
+   "tincture"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Internal use is little-evidenced; avoid in pregnancy; tinctures are not for direct application to the eye.",
+  "constituents": [
+   "iridoid glycosides (aucubin)",
+   "tannins"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "peppermint",
+  "common": "Peppermint",
+  "latin": "Mentha × piperita",
+  "family": "Lamiaceae",
+  "origin": "Europe (hybrid of watermint and spearmint)",
+  "effectPath": [
+   "digestive",
+   "respiratory"
+  ],
+  "ailments": [
+   "indigestion",
+   "nausea",
+   "congestion"
+  ],
+  "partsUsed": [
+   "leaf",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "distilled",
+   "infused-oil",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [],
+  "cautionsNote": "Avoid strong essential oil in reflux/hiatus hernia and for infants; oil should not be taken internally undiluted.",
+  "constituents": [
+   "menthol",
+   "menthone"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "rosemary",
+  "common": "Rosemary",
+  "latin": "Salvia rosmarinus (Rosmarinus officinalis)",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "circulatory",
+   "cognitive",
+   "digestive",
+   "nervine",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "low-mood",
+   "headache",
+   "fatigue",
+   "indigestion",
+   "cramps",
+   "poor-circulation"
+  ],
+  "partsUsed": [
+   "leaf",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "infused-oil",
+   "distilled",
+   "dried"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "fynbos",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "cosmetic",
+   "aromatic"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally safe in culinary and therapeutic doses; caution if prone to epileptic seizures or allergy; large amounts can irritate the gut.",
+  "constituents": [
+   "carnosic acid",
+   "1,8-cineole",
+   "rosmarinic acid"
+  ],
+  "conservationStatus": "",
+  "references": "gardenguides.com; ageless.co.za/rosemary4.htm"
+ },
+ {
+  "key": "oats",
+  "common": "Oats (oatstraw / milky tops)",
+  "latin": "Avena sativa",
+  "family": "Poaceae",
+  "origin": "Mediterranean / Near East (long cultivated)",
+  "effectPath": [
+   "nervine",
+   "calm",
+   "energy"
+  ],
+  "ailments": [
+   "nervous-exhaustion",
+   "stress",
+   "low-energy"
+  ],
+  "partsUsed": [
+   "aerial",
+   "seed"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally very safe; avoid if gluten-sensitive (risk of cross-contamination).",
+  "constituents": [
+   "avenanthramides",
+   "b-vitamins",
+   "minerals"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "schisandra",
+  "common": "Schisandra",
+  "latin": "Schisandra chinensis",
+  "family": "Schisandraceae",
+  "origin": "Northeastern China and the Russian Far East",
+  "effectPath": [
+   "adaptogen",
+   "energy",
+   "liver-detox",
+   "cognitive"
+  ],
+  "ailments": [
+   "fatigue",
+   "stress"
+  ],
+  "partsUsed": [
+   "fruit"
+  ],
+  "preparations": [
+   "tincture",
+   "decoction",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Avoid in pregnancy, epilepsy, peptic ulcer and conditions with high stomach acid.",
+  "constituents": [
+   "lignans (schisandrins)"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "cola-nut",
+  "common": "Cola nut",
+  "latin": "Cola nitida",
+  "family": "Malvaceae",
+  "origin": "West Africa (tropical)",
+  "effectPath": [
+   "energy",
+   "focus",
+   "circulatory"
+  ],
+  "ailments": [
+   "fatigue",
+   "low-energy"
+  ],
+  "partsUsed": [
+   "seed",
+   "nut"
+  ],
+  "preparations": [
+   "dried",
+   "powder",
+   "tincture"
+  ],
+  "growsIn": [
+   "tropical",
+   "forest"
+  ],
+  "otherUses": [
+   "culinary",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "hypertension-caution",
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "High caffeine — avoid with heart conditions, anxiety, pregnancy, and other stimulants.",
+  "constituents": [
+   "caffeine",
+   "theobromine",
+   "kolanin"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "ashwagandha",
+  "common": "Ashwagandha",
+  "latin": "Withania somnifera",
+  "family": "Solanaceae",
+  "origin": "South Asia",
+  "effectPath": [
+   "adaptogen",
+   "calm",
+   "energy",
+   "nervine"
+  ],
+  "ailments": [
+   "stress",
+   "fatigue"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "powder",
+   "decoction",
+   "capsule",
+   "tincture"
+  ],
+  "growsIn": [
+   "arid",
+   "subtropical",
+   "drought-hardy",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "autoimmune-caution",
+   "sedating"
+  ],
+  "cautionsNote": "Avoid in pregnancy; caution with thyroid medication, sedatives, and autoimmune disease.",
+  "constituents": [
+   "withanolides"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "bacopa",
+  "common": "Bacopa",
+  "latin": "Bacopa monnieri",
+  "family": "Plantaginaceae",
+  "origin": "South Asia (wetlands)",
+  "effectPath": [
+   "cognitive",
+   "focus",
+   "calm"
+  ],
+  "ailments": [
+   "poor-memory",
+   "poor-concentration"
+  ],
+  "partsUsed": [
+   "whole",
+   "aerial"
+  ],
+  "preparations": [
+   "powder",
+   "infusion",
+   "capsule",
+   "tincture"
+  ],
+  "growsIn": [
+   "wetland",
+   "tropical",
+   "subtropical",
+   "damp",
+   "container"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions",
+   "sedating"
+  ],
+  "cautionsNote": "Can cause GI upset or drowsiness; caution with thyroid medication and sedatives.",
+  "constituents": [
+   "bacosides"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "valerian",
+  "common": "Valerian",
+  "latin": "Valeriana officinalis",
+  "family": "Caprifoliaceae",
+  "origin": "Europe and temperate Asia",
+  "effectPath": [
+   "sleep",
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "insomnia",
+   "anxiety",
+   "tension"
+  ],
+  "partsUsed": [
+   "root",
+   "rhizome"
+  ],
+  "preparations": [
+   "tincture",
+   "decoction",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "sedating",
+   "drug-interactions",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Causes drowsiness — do not drive; avoid with sedatives or alcohol; not in pregnancy.",
+  "constituents": [
+   "valerenic acid",
+   "valepotriates"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "passion-flower",
+  "common": "Passion flower",
+  "latin": "Passiflora incarnata",
+  "family": "Passifloraceae",
+  "origin": "southeastern North America",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "tension"
+  ],
+  "partsUsed": [
+   "aerial",
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "subtropical",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "ornamental"
+  ],
+  "cautions": [
+   "sedating",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Sedating — caution with driving and alcohol; avoid in pregnancy.",
+  "constituents": [
+   "flavonoids",
+   "chrysin",
+   "alkaloids"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "lavender",
+  "common": "Lavender",
+  "latin": "Lavandula angustifolia",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "tension"
+  ],
+  "partsUsed": [
+   "flower",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "distilled",
+   "infused-oil",
+   "dried",
+   "tincture"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "aromatic",
+   "cosmetic",
+   "culinary",
+   "ornamental",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "sedating"
+  ],
+  "cautionsNote": "Generally safe; the oil can be sedating; rare hormonal effect reported in pre-pubertal boys.",
+  "constituents": [
+   "linalool",
+   "linalyl acetate"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "dandelion",
+  "common": "Dandelion",
+  "latin": "Taraxacum officinale",
+  "family": "Asteraceae",
+  "origin": "Eurasia (temperate)",
+  "effectPath": [
+   "digestive",
+   "liver-detox",
+   "urinary"
+  ],
+  "ailments": [
+   "indigestion",
+   "sluggish-digestion"
+  ],
+  "partsUsed": [
+   "root",
+   "leaf"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "allergen"
+  ],
+  "cautionsNote": "Avoid with bile-duct obstruction or gallstones; Asteraceae allergy caution; mild diuretic.",
+  "constituents": [
+   "taraxacin",
+   "inulin",
+   "vitamins"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "german-chamomile",
+  "common": "German chamomile",
+  "latin": "Matricaria chamomilla",
+  "family": "Asteraceae",
+  "origin": "Europe and West Asia",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "digestive",
+   "anti-inflammatory",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "indigestion",
+   "inflammation",
+   "cramps"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "infused-oil"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "aromatic",
+   "cosmetic"
+  ],
+  "cautions": [
+   "allergen",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Asteraceae/ragweed allergy; mild blood-thinning (caution with anticoagulants); usually very safe as tea.",
+  "constituents": [
+   "apigenin",
+   "bisabolol",
+   "chamazulene"
+  ],
+  "alsoKnown": "wild chamomile, scented mayweed",
+  "conservationStatus": "least-concern",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "jasmine",
+  "common": "Jasmine",
+  "latin": "Jasminum sambac",
+  "family": "Oleaceae",
+  "origin": "South and Southeast Asia",
+  "effectPath": [
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "low-mood"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "distilled"
+  ],
+  "growsIn": [
+   "subtropical",
+   "tropical",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "aromatic",
+   "cosmetic",
+   "ritual-spiritual",
+   "ornamental"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Generally safe as aroma/tea; essential oil not for internal use; pregnancy caution (oil).",
+  "constituents": [
+   "benzyl acetate",
+   "linalool",
+   "indole"
+  ],
+  "alsoKnown": "Arabian jasmine",
+  "conservationStatus": "least-concern",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "hops",
+  "common": "Hops",
+  "latin": "Humulus lupulus",
+  "family": "Cannabaceae",
+  "origin": "Europe, West Asia and North America (temperate)",
+  "effectPath": [
+   "sleep",
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "insomnia",
+   "anxiety",
+   "restlessness"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "ferment"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "aromatic"
+  ],
+  "cautions": [
+   "sedating",
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Strongly sedating; can lower mood in some; estrogenic; caution with driving/alcohol and sedatives.",
+  "constituents": [
+   "humulone",
+   "lupulone",
+   "myrcene"
+  ],
+  "alsoKnown": "common hop",
+  "conservationStatus": "least-concern",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "mullein",
+  "common": "Mullein",
+  "latin": "Verbascum thapsus",
+  "family": "Scrophulariaceae",
+  "origin": "Europe, North Africa and Asia",
+  "effectPath": [
+   "respiratory",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "congestion"
+  ],
+  "partsUsed": [
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "smoke",
+   "infused-oil",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "smoke"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Strain the fine hairs (throat irritant); generally gentle and safe.",
+  "constituents": [
+   "saponins",
+   "mucilage",
+   "flavonoids"
+  ],
+  "alsoKnown": "Aaron's rod, flannel leaf",
+  "conservationStatus": "least-concern",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "echinacea",
+  "common": "Echinacea",
+  "latin": "Echinacea purpurea",
+  "family": "Asteraceae",
+  "origin": "North America",
+  "effectPath": [
+   "immunity",
+   "anti-inflammatory",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "cold-flu",
+   "wounds",
+   "inflammation",
+   "sore-throat"
+  ],
+  "partsUsed": [
+   "root",
+   "aerial"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ornamental"
+  ],
+  "cautions": [
+   "autoimmune-caution",
+   "allergen",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Caution in autoimmune disease and ragweed (Asteraceae) allergy. Best short-term/acute, not continuous.",
+  "constituents": [
+   "alkylamides",
+   "polysaccharides",
+   "cichoric acid"
+  ],
+  "alsoKnown": "Purple coneflower",
+  "conservationStatus": "least-concern",
+  "references": "Wikipedia; umm.edu echinacea-000239"
+ },
+ {
+  "key": "elderberry",
+  "common": "Elderberry",
+  "latin": "Sambucus nigra",
+  "family": "Adoxaceae",
+  "origin": "Europe, North Africa and West Asia (temperate)",
+  "effectPath": [
+   "immunity",
+   "respiratory",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "cold-flu",
+   "fever",
+   "congestion",
+   "cough"
+  ],
+  "partsUsed": [
+   "fruit",
+   "flower"
+  ],
+  "preparations": [
+   "syrup",
+   "infusion",
+   "tincture",
+   "ferment"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "dye"
+  ],
+  "cautions": [
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "Cook the berries — raw berries, leaves and bark are toxic (cyanogenic glycosides).",
+  "constituents": [
+   "anthocyanins",
+   "flavonoids"
+  ],
+  "alsoKnown": "black elder, ellanwood",
+  "conservationStatus": "least-concern",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "kankerbossie-cancer-bush",
+  "common": "Kankerbossie (Cancer bush)",
+  "latin": "Sutherlandia frutescens (Lessertia frutescens)",
+  "family": "Fabaceae",
+  "origin": "South Africa",
+  "effectPath": [
+   "adaptogen",
+   "immunity",
+   "calm",
+   "anti-inflammatory",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "low-mood",
+   "cold-flu",
+   "inflammation",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "aerial",
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "arid",
+   "drought-hardy",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "autoimmune-caution",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Avoid in pregnancy and breastfeeding; caution with immunosuppressants and in active autoimmune disease.",
+  "constituents": [
+   "l-canavanine",
+   "pinitol",
+   "gaba",
+   "su1 saponins"
+  ],
+  "alsoKnown": "Cancer bush; insiswa ('that which takes away the dark')",
+  "conservationStatus": "least-concern",
+  "references": "sutherlandia.org; sutherlandia.com"
+ },
+ {
+  "key": "lemon-verbena",
+  "common": "Lemon verbena",
+  "latin": "Aloysia citriodora (Lippia citriodora)",
+  "family": "Verbenaceae",
+  "origin": "South America (Argentina, Chile)",
+  "effectPath": [
+   "digestive",
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "indigestion",
+   "anxiety"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "subtropical",
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Generally safe; large amounts may irritate; pregnancy caution.",
+  "constituents": [
+   "citral",
+   "verbascoside"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "lemon-balm",
+  "common": "Lemon balm",
+  "latin": "Melissa officinalis",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean / southern Europe",
+  "effectPath": [
+   "calm",
+   "nervine",
+   "digestive",
+   "focus"
+  ],
+  "ailments": [
+   "anxiety",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "sedating"
+  ],
+  "cautionsNote": "Generally safe; caution with thyroid meds & sedatives in large doses.",
+  "constituents": [
+   "rosmarinic acid",
+   "citronellal"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "pepperbark",
+  "common": "Pepperbark",
+  "latin": "Warburgia salutaris",
+  "family": "Canellaceae",
+  "origin": "South Africa (and southern Africa)",
+  "effectPath": [
+   "respiratory",
+   "antimicrobial",
+   "digestive"
+  ],
+  "ailments": [
+   "cough",
+   "cold-flu",
+   "congestion",
+   "sinusitis"
+  ],
+  "partsUsed": [
+   "bark",
+   "leaf"
+  ],
+  "preparations": [
+   "decoction",
+   "smoke",
+   "powder",
+   "dried"
+  ],
+  "growsIn": [
+   "subtropical",
+   "forest"
+  ],
+  "otherUses": [
+   "smoke",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "endangered-conservation",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "ENDANGERED — use cultivated leaf only, never wild bark. Avoid in pregnancy.",
+  "constituents": [
+   "warburganal",
+   "drimane sesquiterpenes"
+  ],
+  "conservationStatus": "endangered",
+  "references": "sahealthinfo.org warburgia; plantzafrica.com/plantwxyz/warburg.htm"
+ },
+ {
+  "key": "ginger",
+  "common": "Ginger",
+  "latin": "Zingiber officinale",
+  "family": "Zingiberaceae",
+  "origin": "South Asia / Southeast Asia",
+  "effectPath": [
+   "digestive",
+   "circulatory"
+  ],
+  "ailments": [
+   "nausea",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "rhizome"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "tincture",
+   "fresh-juice",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "subtropical",
+   "tropical",
+   "container",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Generally safe; large doses thin blood / caution with anticoagulants & gallstones.",
+  "constituents": [
+   "gingerols",
+   "shogaols"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "wormwood",
+  "common": "Wormwood / Wilde-als",
+  "latin": "Artemisia absinthium (SA Wilde-als = A. afra)",
+  "family": "Asteraceae",
+  "origin": "Europe / North Africa (SA Wilde-als A. afra native to South Africa)",
+  "effectPath": [
+   "digestive",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "indigestion",
+   "cold-flu",
+   "fever",
+   "cough"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "insect-repellent",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "thujone",
+   "avoid-in-pregnancy",
+   "not-for-long-term",
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "Contains thujone — short-term only; AVOID in pregnancy & epilepsy. Not for long use.",
+  "constituents": [
+   "thujone",
+   "absinthin",
+   "artemisinin (related spp.)"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "lungwort",
+  "common": "Lungwort",
+  "latin": "Pulmonaria officinalis",
+  "family": "Boraginaceae",
+  "origin": "Europe",
+  "effectPath": [
+   "respiratory"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "congestion"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "shade",
+   "forest",
+   "damp"
+  ],
+  "otherUses": [
+   "ornamental"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Pyrrolizidine-alkaloid family — use short-term; avoid in pregnancy/liver disease.",
+  "constituents": [
+   "allantoin",
+   "mucilage",
+   "silica"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "lemongrass",
+  "common": "Lemongrass",
+  "latin": "Cymbopogon citratus",
+  "family": "Poaceae",
+  "origin": "South / Southeast Asia (tropical)",
+  "effectPath": [
+   "digestive",
+   "circulatory"
+  ],
+  "ailments": [
+   "indigestion",
+   "fever"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "distilled"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Generally safe as tea; oil not internal; pregnancy caution (high doses).",
+  "constituents": [
+   "citral",
+   "geraniol"
+  ],
+  "conservationStatus": "",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "slippery-elm",
+  "common": "Slippery elm",
+  "latin": "Ulmus rubra",
+  "family": "Ulmaceae",
+  "origin": "North America (eastern woodlands)",
+  "conservationStatus": "at-risk",
+  "effectPath": [
+   "respiratory",
+   "digestive"
+  ],
+  "ailments": [
+   "sore-throat",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "bark"
+  ],
+  "preparations": [
+   "powder",
+   "infusion",
+   "syrup",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions",
+   "endangered-conservation"
+  ],
+  "cautionsNote": "Take mucilage preparations separately from other medicines, as the mucilage can slow their absorption. Slow-growing and on United Plant Savers' At-Risk list, so source bark sustainably.",
+  "constituents": [
+   "mucilage"
+  ],
+  "alsoKnown": [
+   "red elm",
+   "moose elm",
+   "sweet elm"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "goldenseal",
+  "common": "Goldenseal",
+  "latin": "Hydrastis canadensis",
+  "family": "Ranunculaceae",
+  "origin": "North America (eastern woodlands)",
+  "conservationStatus": "at-risk",
+  "effectPath": [
+   "antimicrobial",
+   "skin"
+  ],
+  "ailments": [
+   "wounds",
+   "sore-throat"
+  ],
+  "partsUsed": [
+   "root",
+   "rhizome"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "poultice",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "shade"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "endangered-conservation"
+  ],
+  "cautionsNote": "Avoid in pregnancy and for newborns; berberine carries a drug-interaction caution. An at-risk woodland species (CITES-listed), so source ethically from cultivated stock.",
+  "constituents": [
+   "berberine",
+   "hydrastine"
+  ],
+  "alsoKnown": [
+   "orange root",
+   "yellow root"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "elecampane",
+  "common": "Elecampane",
+  "latin": "Inula helenium",
+  "family": "Asteraceae",
+  "origin": "Europe / temperate Asia",
+  "effectPath": [
+   "respiratory",
+   "digestive"
+  ],
+  "ailments": [
+   "cough",
+   "congestion",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "allergen"
+  ],
+  "cautionsNote": "Avoid in pregnancy; can trigger Asteraceae-family allergy or GI upset in large doses.",
+  "constituents": [
+   "inulin",
+   "alantolactone"
+  ],
+  "alsoKnown": [
+   "scabwort",
+   "horseheal"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "fennel",
+  "common": "Fennel",
+  "latin": "Foeniculum vulgare",
+  "family": "Apiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "digestive",
+   "respiratory",
+   "hormonal"
+  ],
+  "ailments": [
+   "indigestion",
+   "cramps",
+   "congestion"
+  ],
+  "partsUsed": [
+   "seed",
+   "bulb"
+  ],
+  "preparations": [
+   "infusion",
+   "distilled",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Generally safe in food amounts; avoid medicinal-strength oil in pregnancy and for infants.",
+  "constituents": [
+   "anethole",
+   "fenchone"
+  ],
+  "alsoKnown": [
+   "sweet fennel",
+   "common fennel"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "fenugreek",
+  "common": "Fenugreek",
+  "latin": "Trigonella foenum-graecum",
+  "family": "Fabaceae",
+  "origin": "Mediterranean / South Asia",
+  "effectPath": [
+   "digestive",
+   "hormonal",
+   "respiratory"
+  ],
+  "ailments": [
+   "indigestion",
+   "sore-throat",
+   "fever",
+   "cough"
+  ],
+  "partsUsed": [
+   "seed"
+  ],
+  "preparations": [
+   "infusion",
+   "powder",
+   "poultice",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "arid",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Stimulates the uterus, so avoid in pregnancy (acceptable near term or for lactation under guidance). Lowers blood sugar, so use caution alongside diabetes medication.",
+  "constituents": [
+   "trigonelline",
+   "4-hydroxyisoleucine",
+   "saponins"
+  ],
+  "alsoKnown": [
+   "methi"
+  ],
+  "references": "ageless.co.za/herb-fenugreek.htm; medicinenet.com"
+ },
+ {
+  "key": "pokeweed",
+  "common": "Pokeweed",
+  "latin": "Phytolacca decandra (P. americana)",
+  "family": "Phytolaccaceae",
+  "origin": "North America (eastern)",
+  "effectPath": [
+   "immunity"
+  ],
+  "ailments": [
+   "lymphatic-swelling",
+   "rheumatism"
+  ],
+  "partsUsed": [
+   "root",
+   "fruit"
+  ],
+  "preparations": [
+   "tincture",
+   "poultice"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "damp"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "toxic-in-overdose",
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "TOXIC — not a home remedy or food plant. Handle and identify only; do not ingest. The folk 'poke salet' requires repeated boiling and is still risky.",
+  "constituents": [
+   "phytolaccatoxin",
+   "lectins (pokeweed mitogen)"
+  ],
+  "alsoKnown": [
+   "pokeroot",
+   "poke salet"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "oregano",
+  "common": "Oregano",
+  "latin": "Origanum vulgare",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "digestive",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "infused-oil",
+   "distilled",
+   "dried"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Avoid medicinal-strength oil in pregnancy; the oil is very concentrated and must be diluted. Culinary food amounts are safe.",
+  "constituents": [
+   "carvacrol",
+   "thymol"
+  ],
+  "alsoKnown": [
+   "wild marjoram",
+   "mountain joy"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "thyme",
+  "common": "Thyme",
+  "latin": "Thymus vulgaris",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "respiratory",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "congestion",
+   "cold-flu"
+  ],
+  "partsUsed": [
+   "leaf",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "syrup",
+   "distilled",
+   "infused-oil"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Food amounts safe; avoid medicinal-strength oil in pregnancy; essential oil must be diluted only.",
+  "constituents": [
+   "thymol",
+   "carvacrol"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "pelargonium",
+  "common": "Pelargonium (Umckaloabo)",
+  "latin": "Pelargonium sidoides",
+  "family": "Geraniaceae",
+  "origin": "South Africa",
+  "conservationStatus": "",
+  "effectPath": [
+   "respiratory",
+   "antimicrobial",
+   "immunity"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "fever",
+   "cold-flu"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "tincture",
+   "decoction"
+  ],
+  "growsIn": [
+   "sun",
+   "drought-hardy",
+   "easy-garden",
+   "temperate"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Rare liver reactions reported; avoid with anticoagulants and in pregnancy.",
+  "constituents": [
+   "coumarins",
+   "gallic-acid derivatives"
+  ],
+  "references": "herbalafrica.co.za/HerbsPelargonium.htm"
+ },
+ {
+  "key": "lions-mane",
+  "common": "Lion's Mane",
+  "latin": "Hericium erinaceus",
+  "family": "Hericiaceae",
+  "origin": "Temperate East Asia and North America",
+  "effectPath": [
+   "cognitive",
+   "nervine",
+   "immunity"
+  ],
+  "ailments": [
+   "poor-memory",
+   "nerve-support"
+  ],
+  "partsUsed": [
+   "whole"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "capsule"
+  ],
+  "growsIn": [
+   "forest",
+   "temperate",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally well tolerated; rare skin or breathing allergy; mushroom-allergy caution.",
+  "constituents": [
+   "hericenones",
+   "erinacines",
+   "beta-glucans"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "cordyceps",
+  "common": "Cordyceps",
+  "latin": "Cordyceps militaris",
+  "family": "Cordycipitaceae",
+  "origin": "East Asia (Tibetan Plateau / Himalayan highlands in traditional use)",
+  "effectPath": [
+   "energy",
+   "adaptogen",
+   "immunity"
+  ],
+  "ailments": [
+   "fatigue",
+   "low-stamina"
+  ],
+  "partsUsed": [
+   "whole"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "container"
+  ],
+  "otherUses": [
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "autoimmune-caution"
+  ],
+  "cautionsNote": "Caution with anticoagulants, immunosuppressants and in autoimmune disease.",
+  "constituents": [
+   "cordycepin",
+   "beta-glucans"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "reishi",
+  "common": "Reishi",
+  "latin": "Ganoderma lucidum",
+  "family": "Ganodermataceae",
+  "origin": "East Asia",
+  "effectPath": [
+   "adaptogen",
+   "calm",
+   "immunity"
+  ],
+  "ailments": [
+   "stress",
+   "insomnia"
+  ],
+  "partsUsed": [
+   "whole"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "tincture"
+  ],
+  "growsIn": [
+   "forest",
+   "subtropical",
+   "container"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Mild blood-thinning — surgery and anticoagulant caution; can lower blood pressure.",
+  "constituents": [
+   "ganoderic acids (triterpenes)",
+   "beta-glucans"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "chaga",
+  "common": "Chaga",
+  "latin": "Inonotus obliquus",
+  "family": "Hymenochaetaceae",
+  "origin": "Northern boreal forests (Russia, Scandinavia, northern Asia and North America)",
+  "conservationStatus": "",
+  "effectPath": [
+   "immunity",
+   "adaptogen"
+  ],
+  "ailments": [
+   "low-immunity",
+   "fatigue"
+  ],
+  "partsUsed": [
+   "whole"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "tincture"
+  ],
+  "growsIn": [
+   "forest",
+   "temperate"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Oxalates — caution with kidney stones or kidney disease; blood-thinning and diabetes-medication caution.",
+  "constituents": [
+   "betulinic acid",
+   "melanin",
+   "beta-glucans"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "buchu",
+  "common": "Buchu",
+  "latin": "Agathosma betulina (Barosma betulina)",
+  "family": "Rutaceae",
+  "origin": "South Africa (fynbos)",
+  "effectPath": [
+   "urinary",
+   "digestive",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "urinary-infection",
+   "indigestion",
+   "bloating"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "distilled"
+  ],
+  "growsIn": [
+   "fynbos",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Avoid in pregnancy and in kidney inflammation; can irritate in large doses.",
+  "constituents": [
+   "diosphenol",
+   "pulegone",
+   "flavonoids"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "rooibos",
+  "common": "Rooibos",
+  "latin": "Aspalathus linearis",
+  "family": "Fabaceae",
+  "origin": "South Africa (fynbos, Cederberg)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "calm"
+  ],
+  "ailments": [
+   "tension",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "fynbos",
+   "arid",
+   "sun",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Very safe and caffeine-free; rare interaction with some liver-metabolised medications.",
+  "constituents": [
+   "aspalathin",
+   "nothofagin"
+  ],
+  "alsoKnown": [
+   "red bush",
+   "rooibos tea"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "honeybush",
+  "common": "Honeybush",
+  "latin": "Cyclopia intermedia",
+  "family": "Fabaceae",
+  "origin": "South Africa (Cape fynbos)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "calm",
+   "respiratory"
+  ],
+  "ailments": [
+   "respiratory-comfort"
+  ],
+  "partsUsed": [
+   "leaf",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "fynbos",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "hormonal-caution"
+  ],
+  "cautionsNote": "Very safe and caffeine-free; contains a mild phyto-estrogen, so use with caution in hormone-sensitive conditions.",
+  "constituents": [
+   "mangiferin",
+   "flavonoids"
+  ],
+  "alsoKnown": [
+   "heuningbos"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "bulbine",
+  "common": "Bulbine (burn jelly)",
+  "latin": "Bulbine frutescens",
+  "family": "Asphodelaceae",
+  "origin": "South Africa",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "skin"
+  ],
+  "ailments": [
+   "wounds",
+   "burns",
+   "skin-irritation"
+  ],
+  "partsUsed": [
+   "leaf",
+   "gel"
+  ],
+  "preparations": [
+   "fresh-juice",
+   "poultice",
+   "salve"
+  ],
+  "growsIn": [
+   "sun",
+   "drought-hardy",
+   "arid",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ornamental"
+  ],
+  "cautions": [
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "For external, fresh-gel use; do not eat the raw leaf in quantity (anthraquinones can be laxative/irritant).",
+  "constituents": [
+   "glycosides",
+   "anthraquinones"
+  ],
+  "alsoKnown": [
+   "jelly leaf",
+   "burn jelly plant",
+   "snake flower"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "wild-dagga",
+  "common": "Wild dagga / Lion's tail",
+  "latin": "Leonotis leonurus",
+  "family": "Lamiaceae",
+  "origin": "Southern Africa",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "tension"
+  ],
+  "partsUsed": [
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "smoke",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ritual-spiritual",
+   "ornamental",
+   "smoke"
+  ],
+  "cautions": [
+   "sedating",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Sedating in quantity; avoid in pregnancy; not the same as cannabis but use sensibly.",
+  "constituents": [
+   "leonurine",
+   "marrubiin",
+   "labdane diterpenes"
+  ],
+  "alsoKnown": [
+   "lion's ear",
+   "minaret flower"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "wild-olive",
+  "common": "Wild olive / Olive",
+  "latin": "Olea europaea subsp. cuspidata (syn. O. africana)",
+  "family": "Oleaceae",
+  "origin": "East & Southern Africa",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "cardiovascular",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "high-blood-pressure",
+   "high-blood-sugar"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "dried"
+  ],
+  "growsIn": [
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Leaf is generally safe but can lower blood pressure and blood sugar; use caution alongside antihypertensive and diabetes medications.",
+  "constituents": [
+   "oleuropein"
+  ],
+  "alsoKnown": [
+   "East African olive",
+   "olienhout"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "african-wild-ginger",
+  "common": "African wild ginger",
+  "latin": "Siphonochilus aethiopicus",
+  "family": "Zingiberaceae",
+  "origin": "Southern Africa",
+  "conservationStatus": "critically-endangered",
+  "effectPath": [
+   "respiratory",
+   "digestive"
+  ],
+  "ailments": [
+   "cold-flu",
+   "cough",
+   "congestion"
+  ],
+  "partsUsed": [
+   "rhizome"
+  ],
+  "preparations": [
+   "decoction",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "subtropical",
+   "shade",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "endangered-conservation",
+   "drug-interactions"
+  ],
+  "cautionsNote": "CRITICALLY ENDANGERED in the wild (effectively extinct in South Africa) — grow to conserve, never wild-harvest. Generally safe, but large doses may thin the blood; caution with anticoagulants and gallstones.",
+  "constituents": [
+   "sesquiterpenoids"
+  ],
+  "alsoKnown": [
+   "wilde gemmer",
+   "isiphephetho"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "christmas-berry",
+  "common": "Christmas berry / Bitterbos",
+  "latin": "Chironia baccifera",
+  "family": "Gentianaceae",
+  "origin": "South Africa (fynbos)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "skin"
+  ],
+  "ailments": [
+   "indigestion",
+   "skin-complaints"
+  ],
+  "partsUsed": [
+   "aerial",
+   "whole"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "dried"
+  ],
+  "growsIn": [
+   "fynbos",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Traditional bitter tonic with little safety data — use moderately; pregnancy caution.",
+  "constituents": [
+   "bitter glycosides"
+  ],
+  "alsoKnown": [
+   "African gentian",
+   "bitterbos",
+   "aambeibossie"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "yarrow",
+  "common": "Yarrow",
+  "latin": "Achillea millefolium",
+  "family": "Asteraceae",
+  "origin": "Europe / temperate Northern Hemisphere",
+  "effectPath": [
+   "digestive",
+   "circulatory",
+   "skin",
+   "nervine"
+  ],
+  "ailments": [
+   "wounds",
+   "indigestion",
+   "cold-flu",
+   "fever"
+  ],
+  "partsUsed": [
+   "aerial",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "poultice",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "companion-plant",
+   "aromatic"
+  ],
+  "cautions": [
+   "allergen",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Asteraceae allergy; avoid medicinal doses in pregnancy (uterine stimulant).",
+  "constituents": [
+   "achilleine",
+   "azulene",
+   "flavonoids"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "garlic",
+  "common": "Garlic",
+  "latin": "Allium sativum",
+  "family": "Amaryllidaceae",
+  "origin": "Central Asia",
+  "effectPath": [
+   "cardiovascular",
+   "immunity",
+   "antimicrobial",
+   "circulatory"
+  ],
+  "ailments": [
+   "cold-flu",
+   "infection",
+   "high-blood-pressure",
+   "high-cholesterol"
+  ],
+  "partsUsed": [
+   "bulb"
+  ],
+  "preparations": [
+   "fresh-juice",
+   "tincture",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "companion-plant",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Blood-thinning - stop before surgery; caution with anticoagulants; can irritate gut.",
+  "constituents": [
+   "allicin",
+   "sulphur compounds"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "marshmallow",
+  "common": "Marshmallow",
+  "latin": "Althaea officinalis",
+  "family": "Malvaceae",
+  "origin": "Europe / Western Asia",
+  "effectPath": [
+   "respiratory",
+   "digestive",
+   "skin",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "indigestion",
+   "inflammation"
+  ],
+  "partsUsed": [
+   "root",
+   "leaf"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "syrup",
+   "poultice",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "wetland",
+   "damp",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Very gentle; take apart from medicines (mucilage slows absorption).",
+  "constituents": [
+   "mucilage",
+   "flavonoids"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "calendula",
+  "common": "Calendula / Pot marigold",
+  "latin": "Calendula officinalis",
+  "family": "Asteraceae",
+  "origin": "Mediterranean / Southern Europe",
+  "effectPath": [
+   "skin",
+   "anti-inflammatory",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "wounds",
+   "inflammation",
+   "eczema",
+   "burns"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infused-oil",
+   "salve",
+   "tincture",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "easy-garden",
+   "sun",
+   "container"
+  ],
+  "otherUses": [
+   "cosmetic",
+   "dye",
+   "ornamental",
+   "culinary"
+  ],
+  "cautions": [
+   "allergen",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Asteraceae allergy; avoid internal use in pregnancy; topical very safe.",
+  "constituents": [
+   "triterpenoids",
+   "flavonoids",
+   "carotenoids"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "milk-thistle",
+  "common": "Milk thistle",
+  "latin": "Silybum marianum (Carduus m.)",
+  "family": "Asteraceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "liver-detox",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "indigestion",
+   "liver-support"
+  ],
+  "partsUsed": [
+   "seed"
+  ],
+  "preparations": [
+   "tincture",
+   "capsule",
+   "powder",
+   "decoction",
+   "dried"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "easy-garden",
+   "sun",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Very safe; ragweed/Asteraceae allergy; mild laxative in some.",
+  "constituents": [
+   "silymarin",
+   "silibinin"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "cayenne",
+  "common": "Cayenne / Chilli",
+  "latin": "Capsicum frutescens",
+  "family": "Solanaceae",
+  "origin": "tropical Americas",
+  "effectPath": [
+   "circulatory",
+   "digestive",
+   "pain"
+  ],
+  "ailments": [
+   "poor-circulation",
+   "indigestion",
+   "pain"
+  ],
+  "partsUsed": [
+   "fruit"
+  ],
+  "preparations": [
+   "tincture",
+   "infused-oil",
+   "powder",
+   "salve",
+   "dried"
+  ],
+  "growsIn": [
+   "subtropical",
+   "temperate",
+   "easy-garden",
+   "sun",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Irritant - wash hands, avoid eyes; caution with ulcers & blood-thinners.",
+  "constituents": [
+   "capsaicin"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "feverfew",
+  "common": "Feverfew",
+  "latin": "Tanacetum parthenium",
+  "family": "Asteraceae",
+  "origin": "Southeastern Europe (Balkans)",
+  "effectPath": [
+   "pain",
+   "anti-inflammatory",
+   "nervine"
+  ],
+  "ailments": [
+   "headache",
+   "migraine",
+   "inflammation"
+  ],
+  "partsUsed": [
+   "aerial",
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "ornamental",
+   "insect-repellent",
+   "companion-plant"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "allergen",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Avoid in pregnancy; can cause mouth ulcers; do not stop abruptly (rebound).",
+  "constituents": [
+   "parthenolide"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": "common"
+ },
+ {
+  "key": "hawthorn",
+  "common": "Hawthorn",
+  "latin": "Crataegus monogyna / oxyacantha",
+  "family": "Rosaceae",
+  "origin": "Europe (temperate Eurasia)",
+  "effectPath": [
+   "cardiovascular",
+   "circulatory",
+   "calm"
+  ],
+  "ailments": [
+   "palpitations",
+   "anxiety"
+  ],
+  "partsUsed": [
+   "flower",
+   "leaf",
+   "fruit"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "ornamental"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Affects heart and blood pressure — caution / supervise with cardiac and BP medication.",
+  "constituents": [
+   "oligomeric procyanidins",
+   "flavonoids"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "globe-artichoke",
+  "common": "Globe artichoke",
+  "latin": "Cynara scolymus",
+  "family": "Asteraceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "liver-detox",
+   "digestive"
+  ],
+  "ailments": [
+   "indigestion",
+   "bloating"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Avoid with bile-duct obstruction/gallstones; Asteraceae (ragweed) allergy caution.",
+  "constituents": [
+   "cynarin",
+   "luteolin"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "licorice",
+  "common": "Licorice",
+  "latin": "Glycyrrhiza glabra",
+  "family": "Fabaceae",
+  "origin": "Mediterranean to South Asia",
+  "effectPath": [
+   "respiratory",
+   "digestive",
+   "adaptogen"
+  ],
+  "ailments": [
+   "cough",
+   "sore-throat",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "hypertension-caution",
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Raises blood pressure and lowers potassium — avoid in hypertension and pregnancy, and avoid long-term use.",
+  "constituents": [
+   "glycyrrhizin",
+   "flavonoids"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "st-johns-wort",
+  "common": "St John's Wort",
+  "latin": "Hypericum perforatum",
+  "family": "Hypericaceae",
+  "origin": "Europe (temperate Eurasia)",
+  "effectPath": [
+   "calm",
+   "nervine"
+  ],
+  "ailments": [
+   "low-mood",
+   "anxiety"
+  ],
+  "partsUsed": [
+   "flower",
+   "aerial"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "infused-oil",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "drug-interactions",
+   "phototoxic"
+  ],
+  "cautionsNote": "MANY drug interactions (the contraceptive pill, antidepressants and others) plus photosensitivity — check first.",
+  "constituents": [
+   "hypericin",
+   "hyperforin"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "hyssop",
+  "common": "Hyssop",
+  "latin": "Hyssopus officinalis",
+  "family": "Lamiaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "respiratory",
+   "digestive"
+  ],
+  "ailments": [
+   "cough",
+   "congestion",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "aerial",
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "distilled"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Avoid medicinal / essential-oil doses in pregnancy and epilepsy (pinocamphone).",
+  "constituents": [
+   "marrubiin",
+   "volatile oils"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "motherwort",
+  "common": "Motherwort",
+  "latin": "Leonurus cardiaca",
+  "family": "Lamiaceae",
+  "origin": "Europe to Central Asia",
+  "effectPath": [
+   "cardiovascular",
+   "calm",
+   "nervine",
+   "hormonal"
+  ],
+  "ailments": [
+   "palpitations",
+   "anxiety",
+   "cramps"
+  ],
+  "partsUsed": [
+   "aerial",
+   "leaf",
+   "flower"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Uterine stimulant — avoid in pregnancy; caution with heart and thyroid medication and with sedatives.",
+  "constituents": [
+   "leonurine",
+   "stachydrine"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "alfalfa",
+  "common": "Alfalfa / Lucerne",
+  "latin": "Medicago sativa",
+  "family": "Fabaceae",
+  "origin": "Central and South-West Asia",
+  "effectPath": [
+   "energy"
+  ],
+  "ailments": [
+   "fatigue",
+   "convalescence"
+  ],
+  "partsUsed": [
+   "aerial",
+   "whole",
+   "leaf",
+   "seed"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "powder",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "nutritive",
+   "companion-plant"
+  ],
+  "cautions": [
+   "autoimmune-caution",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Avoid in lupus / autoimmune disease (canavanine) and with anticoagulants (vitamin K content).",
+  "constituents": [
+   "vitamins",
+   "minerals",
+   "saponins",
+   "isoflavones"
+  ],
+  "conservationStatus": "common",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "plantain-ribwort",
+  "common": "Plantain (ribwort)",
+  "latin": "Plantago lanceolata / major",
+  "family": "Plantaginaceae",
+  "origin": "Europe and temperate Asia (now cosmopolitan)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "respiratory",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "wounds",
+   "inflammation",
+   "cough",
+   "sore-throat",
+   "insect-bites"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "poultice",
+   "infusion",
+   "infused-oil",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [],
+  "cautionsNote": "Very safe and gentle; generally no significant cautions.",
+  "constituents": [
+   "aucubin",
+   "mucilage",
+   "allantoin"
+  ],
+  "alsoKnown": [
+   "greater plantain",
+   "waybread",
+   "ribwort"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "raspberry-leaf",
+  "common": "Raspberry leaf",
+  "latin": "Rubus idaeus",
+  "family": "Rosaceae",
+  "origin": "Europe and northern Asia",
+  "conservationStatus": "common",
+  "effectPath": [
+   "hormonal"
+  ],
+  "ailments": [
+   "cramps"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "A tonic for late pregnancy and labour (not early pregnancy) — use under qualified guidance.",
+  "constituents": [
+   "fragarine",
+   "tannins"
+  ],
+  "alsoKnown": [
+   "red raspberry leaf"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "red-clover",
+  "common": "Red clover",
+  "latin": "Trifolium pratense",
+  "family": "Fabaceae",
+  "origin": "Europe, western Asia and northwest Africa",
+  "conservationStatus": "common",
+  "effectPath": [
+   "hormonal",
+   "skin"
+  ],
+  "ailments": [
+   "menopause",
+   "eczema"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "companion-plant",
+   "nutritive"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Phyto-estrogen — caution in hormone-sensitive conditions, pregnancy, and with anticoagulants.",
+  "constituents": [
+   "isoflavones",
+   "formononetin"
+  ],
+  "alsoKnown": [
+   "purple clover",
+   "trefoil"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "stinging-nettle",
+  "common": "Stinging nettle",
+  "latin": "Urtica dioica / urens",
+  "family": "Urticaceae",
+  "origin": "Europe, Asia and North Africa (widespread temperate)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "joint-pain",
+   "inflammation",
+   "hay-fever",
+   "anaemia"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "tincture",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "damp",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive",
+   "fibre",
+   "companion-plant"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "allergen"
+  ],
+  "cautionsNote": "Cook or dry the fresh leaf to disarm the sting; can interact with blood-sugar and blood-pressure medication; very nutritious.",
+  "constituents": [
+   "flavonoids",
+   "minerals",
+   "histamine"
+  ],
+  "alsoKnown": [
+   "common nettle",
+   "nettle leaf"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "burdock",
+  "common": "Burdock",
+  "latin": "Arctium lappa",
+  "family": "Asteraceae",
+  "origin": "Europe and Asia (widely naturalised)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "digestive",
+   "skin",
+   "liver-detox"
+  ],
+  "ailments": [
+   "indigestion",
+   "eczema",
+   "acne"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Asteraceae allergy; can lower blood sugar; identify carefully (belladonna-look-alike roots).",
+  "constituents": [
+   "inulin",
+   "polyacetylenes"
+  ],
+  "alsoKnown": [
+   "gobo",
+   "beggar's buttons",
+   "bardana"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "chickweed",
+  "common": "Chickweed",
+  "latin": "Stellaria media",
+  "family": "Caryophyllaceae",
+  "origin": "Europe (now cosmopolitan)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "eczema",
+   "itching",
+   "inflammation",
+   "wounds"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "poultice",
+   "infused-oil",
+   "salve",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "damp",
+   "shade"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Generally safe in moderation; very large amounts are mildly laxative.",
+  "constituents": [
+   "saponins",
+   "vitamins"
+  ],
+  "alsoKnown": [
+   "mouse-ear",
+   "winterweed",
+   "starweed"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "goldenrod",
+  "common": "Goldenrod",
+  "latin": "Solidago virgaurea",
+  "family": "Asteraceae",
+  "origin": "Europe, North Africa and northern Asia",
+  "conservationStatus": "common",
+  "effectPath": [
+   "urinary",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "urinary-tract-infection",
+   "inflammation",
+   "wounds"
+  ],
+  "partsUsed": [
+   "aerial",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "dye",
+   "ornamental",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Asteraceae/ragweed allergy; ensure good fluid intake (diuretic).",
+  "constituents": [
+   "saponins",
+   "flavonoids"
+  ],
+  "alsoKnown": [
+   "woundwort",
+   "European goldenrod"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "horsetail",
+  "common": "Horsetail",
+  "latin": "Equisetum arvense",
+  "family": "Equisetaceae",
+  "origin": "Temperate Northern Hemisphere (circumpolar)",
+  "effectPath": [
+   "urinary"
+  ],
+  "ailments": [
+   "fluid-retention",
+   "brittle-nails"
+  ],
+  "partsUsed": [
+   "stem",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "wetland",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "nutritive"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Use short-term only; contains thiaminase; avoid in pregnancy and alongside diuretics; identify correctly to avoid toxic Equisetum look-alikes.",
+  "constituents": [
+   "silica",
+   "flavonoids"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "skullcap",
+  "common": "Skullcap",
+  "latin": "Scutellaria lateriflora",
+  "family": "Lamiaceae",
+  "origin": "North America",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "forest"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "sedating",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Sedating; ensure true Scutellaria as adulteration is a known risk; caution in pregnancy.",
+  "constituents": [
+   "baicalin",
+   "scutellarin"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "vervain",
+  "common": "Vervain",
+  "latin": "Verbena officinalis",
+  "family": "Verbenaceae",
+  "origin": "Europe",
+  "effectPath": [
+   "calm",
+   "nervine",
+   "digestive"
+  ],
+  "ailments": [
+   "anxiety",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "sedating"
+  ],
+  "cautionsNote": "Uterine stimulant — avoid in pregnancy; sedating in larger doses.",
+  "constituents": [
+   "verbenalin",
+   "verbascoside"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "lime-linden-flower",
+  "common": "Lime / Linden flower",
+  "latin": "Tilia x europaea",
+  "family": "Malvaceae",
+  "origin": "Europe (temperate)",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "respiratory",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "cold-flu",
+   "congestion"
+  ],
+  "partsUsed": [
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "tincture"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest"
+  ],
+  "otherUses": [
+   "ornamental",
+   "aromatic"
+  ],
+  "cautions": [
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Generally safe; old or dusty flowers can irritate; folk tradition advises caution for heart patients.",
+  "constituents": [
+   "flavonoids",
+   "mucilage"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "tea",
+  "common": "Tea",
+  "latin": "Camellia sinensis",
+  "family": "Theaceae",
+  "origin": "East Asia (China)",
+  "effectPath": [
+   "focus",
+   "cognitive",
+   "energy",
+   "calm"
+  ],
+  "ailments": [
+   "fatigue",
+   "low-focus"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "subtropical",
+   "temperate",
+   "container"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Contains caffeine and tannins — limit in pregnancy and anaemia; tannins can reduce iron absorption.",
+  "constituents": [
+   "l-theanine",
+   "catechins",
+   "caffeine"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "guava",
+  "common": "Guava",
+  "latin": "Psidium guajava",
+  "family": "Myrtaceae",
+  "origin": "tropical Americas",
+  "effectPath": [
+   "digestive"
+  ],
+  "ailments": [
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "dried"
+  ],
+  "growsIn": [
+   "subtropical",
+   "tropical",
+   "sun",
+   "container"
+  ],
+  "otherUses": [
+   "culinary"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Leaf generally safe; can lower blood sugar — caution with diabetes medication.",
+  "constituents": [
+   "quercetin",
+   "tannins"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "angelica-dong-quai",
+  "common": "Angelica (Dong quai)",
+  "latin": "Angelica sinensis",
+  "family": "Apiaceae",
+  "origin": "China",
+  "effectPath": [
+   "hormonal",
+   "circulatory"
+  ],
+  "ailments": [
+   "cramps"
+  ],
+  "partsUsed": [
+   "root"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "shade"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "phototoxic"
+  ],
+  "cautionsNote": "Photosensitising; avoid in pregnancy and with anticoagulants.",
+  "constituents": [
+   "ferulic acid",
+   "ligustilide"
+  ],
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+ },
+ {
+  "key": "king-of-bitters",
+  "common": "King of bitters",
+  "latin": "Andrographis paniculata",
+  "family": "Acanthaceae",
+  "origin": "South Asia / Southeast Asia",
+  "effectPath": [
+   "immunity",
+   "digestive"
+  ],
+  "ailments": [
+   "cold-flu",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "aerial"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried",
+   "capsule",
+   "powder"
+  ],
+  "growsIn": [
+   "subtropical",
+   "tropical",
+   "sun",
+   "container"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "autoimmune-caution",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Avoid in pregnancy and autoimmune disease; extremely bitter; may lower blood sugar (caution with diabetes medication).",
+  "constituents": [
+   "andrographolides"
+  ],
+  "alsoKnown": "kalmegh, green chiretta",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": ""
+ },
+ {
+  "key": "cats-claw",
+  "common": "Cat's claw",
+  "latin": "Uncaria tomentosa",
+  "family": "Rubiaceae",
+  "origin": "tropical Americas (Peruvian/Amazonian rainforest)",
+  "effectPath": [
+   "immunity",
+   "anti-inflammatory",
+   "pain"
+  ],
+  "ailments": [
+   "inflammation",
+   "joint-pain"
+  ],
+  "partsUsed": [
+   "bark",
+   "root"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "tropical",
+   "forest"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "autoimmune-caution",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Avoid in pregnancy, autoimmune disease, and with immunosuppressants or anticoagulants.",
+  "constituents": [
+   "oxindole alkaloids"
+  ],
+  "alsoKnown": "una de gato, vilcacora",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": ""
+ },
+ {
+  "key": "white-willow",
+  "common": "White willow",
+  "latin": "Salix alba",
+  "family": "Salicaceae",
+  "origin": "Europe / western Asia (temperate)",
+  "effectPath": [
+   "pain",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "headache",
+   "fever",
+   "inflammation",
+   "pain"
+  ],
+  "partsUsed": [
+   "bark"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "dried",
+   "powder",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "wetland",
+   "damp",
+   "sun"
+  ],
+  "otherUses": [],
+  "cautions": [
+   "allergen",
+   "drug-interactions",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Contains salicylates (aspirin-like). Avoid with aspirin allergy, peptic ulcers, and in children (Reye's syndrome risk); caution with blood-thinning medication.",
+  "constituents": [
+   "salicin"
+  ],
+  "alsoKnown": "willow bark, European willow",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": ""
+ },
+ {
+  "key": "bilberry",
+  "common": "Bilberry",
+  "latin": "Vaccinium myrtillus",
+  "family": "Ericaceae",
+  "origin": "Northern & Eastern Europe (cool acid heath)",
+  "effectPath": [
+   "circulatory"
+  ],
+  "ailments": [
+   "eye-strain"
+  ],
+  "partsUsed": [
+   "fruit",
+   "leaf"
+  ],
+  "preparations": [
+   "tincture",
+   "infusion",
+   "dried",
+   "syrup"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Fruit is very safe; use the leaf only short-term. May lower blood sugar (caution with diabetes medication).",
+  "constituents": [
+   "anthocyanins"
+  ],
+  "alsoKnown": "European blueberry, whortleberry",
+  "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za",
+  "conservationStatus": ""
+ },
+ {
+  "key": "aloe-vera",
+  "common": "Aloe Vera",
+  "latin": "Aloe vera (syn. Aloe barbadensis)",
+  "family": "Asphodelaceae",
+  "origin": "Arabian Peninsula / North Africa (widely cultivated)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "skin",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "burns",
+   "wounds",
+   "sunburn",
+   "eczema",
+   "constipation",
+   "minor-skin-irritation"
+  ],
+  "partsUsed": [
+   "gel",
+   "leaf"
+  ],
+  "preparations": [
+   "fresh-juice",
+   "salve",
+   "infused-oil",
+   "powder"
+  ],
+  "growsIn": [
+   "arid",
+   "subtropical",
+   "drought-hardy",
+   "sun",
+   "container",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "cosmetic",
+   "ornamental"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "toxic-in-overdose",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Inner clear gel is used topically and (sparingly) internally. The yellow latex (aloin) just under the rind is a potent stimulant laxative: avoid internal latex in pregnancy and breastfeeding (anthraquinones can pass into breast milk and cause infant diarrhoea), it can cause cramping and electrolyte loss, and may interact with diuretics and cardiac glycosides. Topical gel is not the same as the internal latex.",
+  "constituents": [
+   "polysaccharides (acemannan)",
+   "anthraquinones (aloin/barbaloin)",
+   "glycoproteins",
+   "vitamins",
+   "enzymes"
+  ],
+  "references": "Traditional and educational herbal/ethnobotanical sources (e.g. WHO monographs, German Commission E, NIH LactMed); educational folklore only, not medical advice."
+ },
+ {
+  "key": "turmeric",
+  "common": "Turmeric",
+  "latin": "Curcuma longa",
+  "family": "Zingiberaceae",
+  "origin": "South Asia (Indian subcontinent)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "anti-inflammatory",
+   "digestive",
+   "liver-detox",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "inflammation",
+   "indigestion",
+   "joint-stiffness",
+   "wounds"
+  ],
+  "partsUsed": [
+   "rhizome",
+   "root"
+  ],
+  "preparations": [
+   "powder",
+   "decoction",
+   "infused-oil",
+   "poultice",
+   "capsule",
+   "dried",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "damp",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "dye",
+   "ritual-spiritual",
+   "cosmetic"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Culinary amounts are widely regarded as safe. Concentrated curcumin extracts may interact with anticoagulant/antiplatelet drugs (bleeding risk) and may stimulate gallbladder contraction (caution with gallstones/bile-duct obstruction). High medicinal doses traditionally avoided in pregnancy; culinary use in food is customary.",
+  "constituents": [
+   "curcuminoids (curcumin)",
+   "turmerone (essential oil)",
+   "polysaccharides"
+  ],
+  "references": "Educational herbal/Ayurvedic sources and WHO/Commission E monographs; folklore only, not medical advice."
+ },
+ {
+  "key": "coconut",
+  "common": "Coconut",
+  "latin": "Cocos nucifera",
+  "family": "Arecaceae",
+  "origin": "Indo-Pacific tropics",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "skin",
+   "nutritive",
+   "digestive"
+  ],
+  "ailments": [
+   "dry-skin",
+   "minor-skin-irritation",
+   "dehydration"
+  ],
+  "partsUsed": [
+   "nut",
+   "oil",
+   "fruit"
+  ],
+  "preparations": [
+   "infused-oil",
+   "salve",
+   "fresh-juice",
+   "powder"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "sun",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "cosmetic",
+   "fibre",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally well tolerated. Coconut is classified as a tree nut for allergen-labeling purposes in some regions, so allergy is possible though uncommon. Oil is high in saturated fat; moderation advised for those managing blood lipids. No strong drug interactions in normal dietary use.",
+  "constituents": [
+   "medium-chain fatty acids (lauric acid)",
+   "saturated fats",
+   "electrolytes (potassium)",
+   "dietary fibre"
+  ],
+  "references": "Educational ethnobotanical and nutritional sources; folklore only, not medical advice."
+ },
+ {
+  "key": "basil",
+  "common": "Basil (Sweet)",
+  "latin": "Ocimum basilicum",
+  "family": "Lamiaceae",
+  "origin": "Tropical Asia / Africa (Mediterranean culinary tradition)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "calm",
+   "antimicrobial",
+   "nervine"
+  ],
+  "ailments": [
+   "indigestion",
+   "nausea",
+   "bloating",
+   "stress",
+   "insect-bites"
+  ],
+  "partsUsed": [
+   "leaf",
+   "aerial",
+   "flower"
+  ],
+  "preparations": [
+   "infusion",
+   "infused-oil",
+   "fresh-juice",
+   "dried",
+   "distilled"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "subtropical",
+   "temperate",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "companion-plant",
+   "insect-repellent",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding"
+  ],
+  "cautionsNote": "Culinary amounts are considered safe. Concentrated basil essential oil contains estragole (methylchavicol) and is traditionally avoided in medicinal/concentrated form during pregnancy and breastfeeding; the essential oil is not for undiluted internal use. Distinct from holy basil/tulsi (Ocimum tenuiflorum).",
+  "constituents": [
+   "volatile oils (linalool, estragole/methylchavicol, eugenol)",
+   "flavonoids",
+   "rosmarinic acid"
+  ],
+  "references": "Educational culinary-herbal and Mediterranean folk sources; folklore only, not medical advice."
+ },
+ {
+  "key": "amaranth",
+  "common": "Amaranth",
+  "latin": "Amaranthus spp. (e.g. Amaranthus hypochondriacus, A. cruentus)",
+  "family": "Amaranthaceae",
+  "origin": "Tropical Americas (Mesoamerica)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "nutritive",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "diarrhoea",
+   "sore-throat",
+   "mouth-ulcers",
+   "inflammation"
+  ],
+  "partsUsed": [
+   "leaf",
+   "seed",
+   "aerial",
+   "whole"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "powder",
+   "poultice"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "temperate",
+   "sun",
+   "drought-hardy",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "dye",
+   "ornamental",
+   "ritual-spiritual",
+   "nutritive"
+  ],
+  "cautions": [],
+  "cautionsNote": "Leaves and seeds are foods. Leaves (like spinach/chard) contain oxalates and can accumulate nitrates if heavily fertilized, so very large quantities of raw leaf are best avoided by those prone to kidney stones. Seeds should be cooked. No notable drug interactions in food use.",
+  "constituents": [
+   "complete protein (lysine)",
+   "tannins",
+   "oxalates",
+   "minerals (iron, calcium)",
+   "betalain/anthocyanin pigments"
+  ],
+  "references": "Educational ethnobotanical and folk-medicine sources of the Americas and Africa; folklore only, not medical advice."
+ },
+ {
+  "key": "asparagus",
+  "common": "Asparagus",
+  "latin": "Asparagus officinalis",
+  "family": "Asparagaceae",
+  "origin": "Europe / Western Asia (Mediterranean)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "urinary",
+   "digestive",
+   "nutritive"
+  ],
+  "ailments": [
+   "fluid-retention",
+   "urinary-discomfort",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "stem",
+   "root",
+   "whole"
+  ],
+  "preparations": [
+   "decoction",
+   "fresh-juice",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "A common vegetable. Traditionally regarded as a gentle diuretic, so caution is advised in the rare case of medically restricted fluids; ample water should accompany diuretic use. Contact allergy/rash is possible in sensitive individuals. Note: garden asparagus is distinct from Asparagus racemosus (Shatavari).",
+  "constituents": [
+   "asparagine",
+   "saponins",
+   "inulin (prebiotic fibre)",
+   "flavonoids (rutin)",
+   "folate",
+   "vitamins"
+  ],
+  "references": "Educational European herbal and dietary sources (e.g. Commission E for the herb as a diuretic); folklore only, not medical advice."
+ },
+ {
+  "key": "pine",
+  "common": "Pine",
+  "latin": "Pinus spp. (e.g. Pinus sylvestris)",
+  "family": "Pinaceae",
+  "origin": "Northern Hemisphere (temperate and boreal forests)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "respiratory",
+   "antimicrobial",
+   "circulatory",
+   "immunity"
+  ],
+  "ailments": [
+   "cough",
+   "congestion",
+   "cold-flu",
+   "sore-throat",
+   "muscle-ache"
+  ],
+  "partsUsed": [
+   "needle",
+   "resin",
+   "bark"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "infused-oil",
+   "distilled",
+   "salve",
+   "syrup"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "arid",
+   "drought-hardy",
+   "sun"
+  ],
+  "otherUses": [
+   "aromatic",
+   "ritual-spiritual",
+   "ornamental"
+  ],
+  "cautions": [
+   "allergen",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Needle infusion is a traditional vitamin-C-rich respiratory tea. Correct identification is essential: yew (Taxus) and some other conifers are toxic and not true pines, and several sources advise pregnant women avoid pine-needle preparations. Pine essential oil/turpentine is for external/diffused use only, can irritate skin and airways, and must not be ingested.",
+  "constituents": [
+   "volatile oils (alpha-pinene, limonene)",
+   "vitamin c",
+   "resin acids",
+   "tannins",
+   "shikimic acid (some species)"
+  ],
+  "references": "Educational Northern-Hemisphere folk and wildcraft sources; folklore only, not medical advice. Identification critical (avoid toxic look-alikes such as yew)."
+ },
+ {
+  "key": "nasturtium",
+  "common": "Nasturtium",
+  "latin": "Tropaeolum majus",
+  "family": "Tropaeolaceae",
+  "origin": "tropical Americas (Andes, South America)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "immunity",
+   "respiratory",
+   "antimicrobial",
+   "urinary"
+  ],
+  "ailments": [
+   "cold-flu",
+   "congestion",
+   "cough",
+   "sore-throat",
+   "wounds"
+  ],
+  "partsUsed": [
+   "leaf",
+   "flower",
+   "seed"
+  ],
+  "preparations": [
+   "fresh-juice",
+   "infusion",
+   "tincture",
+   "poultice"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "companion-plant",
+   "ornamental",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Pungent mustard-oil glycosides may irritate the stomach in large amounts or aggravate existing gastric/kidney irritation; generally regarded as a safe edible. Educational folklore, not medical advice.",
+  "constituents": [
+   "glucosinolates (glucotropaeolin)",
+   "benzyl isothiocyanate",
+   "vitamin c",
+   "flavonoids",
+   "carotenoids"
+  ],
+  "references": "Traditional European herbal use; modern educational herbals on Tropaeolum majus as a natural antibiotic-type herb. Educational only."
+ },
+ {
+  "key": "cinnamon",
+  "common": "Cinnamon",
+  "latin": "Cinnamomum verum",
+  "family": "Lauraceae",
+  "origin": "Sri Lanka / South Asia",
+  "conservationStatus": "common",
+  "effectPath": [
+   "digestive",
+   "circulatory",
+   "antimicrobial",
+   "anti-inflammatory",
+   "cardiovascular"
+  ],
+  "ailments": [
+   "indigestion",
+   "nausea",
+   "cramps",
+   "cold-flu",
+   "bloating"
+  ],
+  "partsUsed": [
+   "bark",
+   "oil"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "tincture",
+   "powder",
+   "distilled"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "forest"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "allergen",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Cassia cinnamon (C. cassia) is high in coumarin, which can stress the liver in large/long-term doses and may interact with anticoagulants; Ceylon cinnamon (C. verum) is much lower in coumarin. Concentrated cinnamon oil is a mucous-membrane irritant. May affect blood sugar (interaction with diabetes medication). Therapeutic doses traditionally cautioned in pregnancy. Educational folklore, not medical advice.",
+  "constituents": [
+   "cinnamaldehyde",
+   "eugenol",
+   "coumarin",
+   "proanthocyanidins",
+   "essential oil"
+  ],
+  "references": "Long-standing culinary and traditional use across South/East Asia and Europe; educational food-science references on coumarin content. Educational only."
+ },
+ {
+  "key": "clove",
+  "common": "Clove",
+  "latin": "Syzygium aromaticum",
+  "family": "Myrtaceae",
+  "origin": "Indonesia (Maluku Islands)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "antimicrobial",
+   "pain",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "toothache",
+   "sore-throat",
+   "indigestion",
+   "nausea",
+   "bloating",
+   "cold-flu"
+  ],
+  "partsUsed": [
+   "flower",
+   "oil"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "tincture",
+   "infused-oil",
+   "powder",
+   "distilled"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "forest"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "ritual-spiritual",
+   "insect-repellent"
+  ],
+  "cautions": [
+   "allergen",
+   "toxic-in-overdose",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Concentrated clove (eugenol) oil is potent: undiluted it can irritate or burn skin and oral mucosa, and ingestion of the oil can be toxic, especially to children and the liver. Eugenol may slow blood clotting (interaction with anticoagulants). Culinary amounts of the whole spice are considered safe. Educational folklore, not medical advice.",
+  "constituents": [
+   "eugenol",
+   "eugenyl acetate",
+   "beta-caryophyllene",
+   "tannins",
+   "essential oil"
+  ],
+  "references": "Traditional dental and digestive folk use; widely documented eugenol pharmacology in educational sources. Educational only."
+ },
+ {
+  "key": "moringa",
+  "common": "Moringa",
+  "latin": "Moringa oleifera",
+  "family": "Moringaceae",
+  "origin": "South Asia (sub-Himalayan India)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "immunity",
+   "anti-inflammatory",
+   "energy",
+   "digestive"
+  ],
+  "ailments": [
+   "malnutrition",
+   "fatigue",
+   "inflammation"
+  ],
+  "partsUsed": [
+   "leaf",
+   "seed",
+   "root",
+   "oil"
+  ],
+  "preparations": [
+   "powder",
+   "infusion",
+   "capsule",
+   "fresh-juice",
+   "dried"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "arid",
+   "drought-hardy",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive",
+   "cosmetic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Leaf is widely used as a nutritious food; however the root, root bark and their extracts contain alkaloids (e.g. spirochin) and are traditionally avoided, especially in pregnancy, as they have been associated with uterine activity and can be toxic. Educational folklore, not medical advice.",
+  "constituents": [
+   "glucosinolates (glucomoringin)",
+   "isothiocyanates",
+   "quercetin",
+   "chlorogenic acid",
+   "beta-carotene",
+   "vitamin c"
+  ],
+  "references": "Traditional South Asian food and Ayurvedic use; educational nutrition literature on Moringa oleifera leaf. Educational only."
+ },
+ {
+  "key": "tulsi",
+  "common": "Tulsi (Holy basil)",
+  "latin": "Ocimum tenuiflorum",
+  "family": "Lamiaceae",
+  "origin": "South Asia (Indian subcontinent)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "adaptogen",
+   "calm",
+   "immunity",
+   "respiratory",
+   "digestive",
+   "nervine"
+  ],
+  "ailments": [
+   "anxiety",
+   "low-mood",
+   "cold-flu",
+   "cough",
+   "congestion",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "leaf",
+   "aerial",
+   "seed"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried",
+   "fresh-juice",
+   "powder"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "ritual-spiritual",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "A revered Ayurvedic herb generally well tolerated as a tea. Some traditional and educational sources advise caution in pregnancy and when trying to conceive (possible anti-fertility effects in animal studies, attributed to ursolic acid), and it may add to the effect of blood-thinning or blood-sugar-lowering medication. Educational folklore, not medical advice.",
+  "constituents": [
+   "eugenol",
+   "ursolic acid",
+   "rosmarinic acid",
+   "carvacrol",
+   "beta-caryophyllene",
+   "essential oil"
+  ],
+  "references": "Ayurvedic tradition (revered as a sacred plant); educational adaptogen and herbal references on Ocimum tenuiflorum / O. sanctum. Educational only."
+ },
+ {
+  "key": "comfrey",
+  "common": "Comfrey",
+  "latin": "Symphytum officinale",
+  "family": "Boraginaceae",
+  "origin": "Europe / temperate Asia",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "pain",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "wounds",
+   "bruises",
+   "sprains",
+   "inflammation"
+  ],
+  "partsUsed": [
+   "leaf",
+   "root"
+  ],
+  "preparations": [
+   "poultice",
+   "salve",
+   "infused-oil",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "damp",
+   "wetland",
+   "easy-garden",
+   "sun"
+  ],
+  "otherUses": [
+   "companion-plant",
+   "nutritive"
+  ],
+  "cautions": [
+   "toxic-in-overdose",
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Comfrey contains hepatotoxic pyrrolizidine alkaloids and is NOT recommended for internal use; it can cause serious liver damage. Modern educational guidance restricts it to external use on unbroken skin, in limited amounts and for short periods only, and avoids it in pregnancy/breastfeeding and on open wounds. Traditional name 'knitbone' refers to topical use over closed injuries. Educational folklore, not medical advice.",
+  "constituents": [
+   "allantoin",
+   "pyrrolizidine alkaloids",
+   "rosmarinic acid",
+   "mucilage",
+   "tannins"
+  ],
+  "references": "Traditional European wound/bone folk medicine ('knitbone'); educational toxicology on pyrrolizidine alkaloids. Educational only."
+ },
+ {
+  "key": "witch-hazel",
+  "common": "Witch hazel",
+  "latin": "Hamamelis virginiana",
+  "family": "Hamamelidaceae",
+  "origin": "Eastern North America",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "anti-inflammatory",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "wounds",
+   "bruises",
+   "inflammation",
+   "hemorrhoids",
+   "insect-bites"
+  ],
+  "partsUsed": [
+   "bark",
+   "leaf"
+  ],
+  "preparations": [
+   "distilled",
+   "decoction",
+   "infusion",
+   "tincture",
+   "salve"
+  ],
+  "growsIn": [
+   "temperate",
+   "forest",
+   "damp",
+   "shade"
+  ],
+  "otherUses": [
+   "cosmetic",
+   "ornamental"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Mainly used externally as an astringent; widely regarded as safe topically. The tannins can be irritating to some skin and, if taken internally in quantity, may upset the stomach; commercial distillates contain little tannin. Educational folklore, not medical advice.",
+  "constituents": [
+   "tannins (hamamelitannin)",
+   "gallic acid",
+   "flavonoids",
+   "volatile oil",
+   "catechins"
+  ],
+  "references": "Indigenous North American and later Eclectic-physician topical use; educational dermatological-herbal references. Educational only."
+ },
+ {
+  "key": "meadowsweet",
+  "common": "Meadowsweet",
+  "latin": "Filipendula ulmaria",
+  "family": "Rosaceae",
+  "origin": "Europe and Western Asia (temperate)",
+  "effectPath": [
+   "anti-inflammatory",
+   "digestive",
+   "pain"
+  ],
+  "ailments": [
+   "indigestion",
+   "heartburn",
+   "fever",
+   "headache",
+   "inflammation",
+   "diarrhoea",
+   "cold-flu"
+  ],
+  "partsUsed": [
+   "flower",
+   "aerial",
+   "leaf"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "wetland",
+   "damp",
+   "sun"
+  ],
+  "otherUses": [
+   "aromatic",
+   "ritual-spiritual",
+   "dye",
+   "ornamental"
+  ],
+  "cautions": [
+   "allergen",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Contains salicylates (salicylaldehyde, methyl salicylate); avoid in people with aspirin/salicylate sensitivity and use caution alongside anticoagulant or antiplatelet medication. Traditionally avoided in those who should not take aspirin (e.g. children with viral fevers).",
+  "constituents": [
+   "salicylates",
+   "tannins",
+   "flavonoids (quercetin, rutin)",
+   "essential oil (salicylaldehyde, methyl salicylate)",
+   "phenolic glycosides"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Traditional European herbalism; ESCOP/EMA herbal monographs on Filipendulae ulmariae flos/herba (educational, not medical advice)."
+ },
+ {
+  "key": "cardamom",
+  "common": "Cardamom",
+  "latin": "Elettaria cardamomum",
+  "family": "Zingiberaceae",
+  "origin": "South Asia (Western Ghats of India / Sri Lanka, tropical)",
+  "effectPath": [
+   "digestive",
+   "respiratory",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "indigestion",
+   "nausea",
+   "bloating",
+   "bad-breath",
+   "cough",
+   "congestion"
+  ],
+  "partsUsed": [
+   "seed",
+   "fruit"
+  ],
+  "preparations": [
+   "infusion",
+   "decoction",
+   "powder",
+   "distilled"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "shade",
+   "forest",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally regarded as safe as a culinary spice. Concentrated essential oil should not be ingested undiluted; gallstone sufferers traditionally use medicinal amounts with caution. Possible allergy in sensitive individuals.",
+  "constituents": [
+   "essential oil (1,8-cineole, alpha-terpinyl acetate, limonene, linalool)",
+   "starch",
+   "fixed oil",
+   "manganese"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Ayurvedic and Unani traditional use; culinary ethnobotany (educational, not medical advice)."
+ },
+ {
+  "key": "cannabis",
+  "common": "Cannabis",
+  "latin": "Cannabis sativa",
+  "family": "Cannabaceae",
+  "origin": "Central/East Asia (temperate to subtropical); now cultivated worldwide",
+  "effectPath": [
+   "calm",
+   "pain",
+   "sleep",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "chronic-pain",
+   "insomnia",
+   "anxiety",
+   "nausea",
+   "low-appetite",
+   "muscle-spasm"
+  ],
+  "partsUsed": [
+   "flower",
+   "leaf",
+   "resin",
+   "seed",
+   "aerial"
+  ],
+  "preparations": [
+   "smoke",
+   "tincture",
+   "infused-oil",
+   "dried",
+   "capsule"
+  ],
+  "growsIn": [
+   "temperate",
+   "subtropical",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "fibre",
+   "nutritive",
+   "ritual-spiritual",
+   "culinary"
+  ],
+  "cautions": [
+   "controlled-regulated",
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "drug-interactions",
+   "sedating",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Legal status is restricted/regulated in many jurisdictions - check local law. Psychoactive (THC) can impair driving and cognition, may trigger anxiety or precipitate psychosis in vulnerable people, and is not advised in pregnancy or breastfeeding. Interacts with sedatives and other medications. Hemp seed and seed oil are non-psychoactive foods.",
+  "constituents": [
+   "cannabinoids (thc, cbd, cbg)",
+   "terpenes (myrcene, limonene, beta-caryophyllene)",
+   "flavonoids",
+   "seed: essential fatty acids (omega-3/6), protein"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Ethnobotany and modern pharmacology of Cannabis; genetic studies point to an East/Central Asian origin; regulatory status varies by country (educational, not medical or legal advice)."
+ },
+ {
+  "key": "bamboo",
+  "common": "Bamboo",
+  "latin": "Bambusa vulgaris (and related genera, subfamily Bambusoideae)",
+  "family": "Poaceae",
+  "origin": "Tropical and subtropical Asia (also Africa and the Americas)",
+  "effectPath": [
+   "anti-inflammatory",
+   "skin"
+  ],
+  "ailments": [
+   "inflammation",
+   "joint-pain",
+   "wounds"
+  ],
+  "partsUsed": [
+   "leaf",
+   "stem",
+   "rhizome",
+   "aerial"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "infusion"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "temperate",
+   "sun",
+   "easy-garden",
+   "damp"
+  ],
+  "otherUses": [
+   "fibre",
+   "culinary",
+   "ornamental",
+   "companion-plant"
+  ],
+  "cautions": [
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "Fresh raw shoots of many species contain cyanogenic (taxiphyllin) compounds and must be boiled before eating; the silica-rich 'tabasheer' and leaf preparations are traditional, not a substitute for medical care. Identify species carefully.",
+  "constituents": [
+   "silica (silicic acid)",
+   "flavonoids",
+   "phenolic acids",
+   "cyanogenic glycosides (in raw shoots)",
+   "amino acids",
+   "fibre"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Traditional Asian use (esp. Chinese 'zhu ru' / tabasheer) and ethnobotany (educational, not medical advice)."
+ },
+ {
+  "key": "neem",
+  "common": "Neem",
+  "latin": "Azadirachta indica",
+  "family": "Meliaceae",
+  "origin": "South Asia (Indian subcontinent, tropical/subtropical)",
+  "effectPath": [
+   "skin",
+   "antimicrobial",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "eczema",
+   "acne",
+   "wounds",
+   "dandruff",
+   "fungal-infection",
+   "head-lice"
+  ],
+  "partsUsed": [
+   "leaf",
+   "seed",
+   "oil",
+   "bark",
+   "fruit"
+  ],
+  "preparations": [
+   "infused-oil",
+   "infusion",
+   "powder",
+   "poultice",
+   "decoction",
+   "salve"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "arid",
+   "drought-hardy",
+   "sun"
+  ],
+  "otherUses": [
+   "insect-repellent",
+   "cosmetic",
+   "companion-plant",
+   "ritual-spiritual"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "toxic-in-overdose",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Primarily used topically/externally. Neem oil and concentrated extracts taken internally can be toxic - neem oil ingestion has caused serious poisoning (Reye-like syndrome) especially in infants and children, who should not be given it. Avoid internal use in pregnancy (traditionally regarded as abortifacient) and breastfeeding; may affect blood sugar and interact with medications.",
+  "constituents": [
+   "azadirachtin",
+   "nimbin",
+   "nimbidin",
+   "limonoids",
+   "fatty acids (in seed oil)",
+   "quercetin"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Ayurvedic and folk use across South Asia; toxicology literature on neem oil (educational, not medical advice)."
+ },
+ {
+  "key": "argan",
+  "common": "Argan",
+  "latin": "Argania spinosa",
+  "family": "Sapotaceae",
+  "origin": "Southwestern Morocco (semi-arid / Mediterranean-arid)",
+  "effectPath": [
+   "skin",
+   "cardiovascular"
+  ],
+  "ailments": [
+   "dry-skin",
+   "eczema",
+   "brittle-hair",
+   "wrinkles"
+  ],
+  "partsUsed": [
+   "nut",
+   "seed",
+   "oil",
+   "fruit"
+  ],
+  "preparations": [
+   "infused-oil",
+   "salve"
+  ],
+  "growsIn": [
+   "arid",
+   "mediterranean",
+   "drought-hardy",
+   "sun"
+  ],
+  "otherUses": [
+   "cosmetic",
+   "culinary",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen",
+   "endangered-conservation"
+  ],
+  "cautionsNote": "Generally very safe as a food and cosmetic oil; rare nut/seed-oil allergy is possible, and the cosmetic and culinary (roasted) oils are distinct grades. Conservation note: the argan tree is assessed as Vulnerable on the IUCN Red List - choose oil from sustainable, fair-trade sources that support the Moroccan arganeraie.",
+  "constituents": [
+   "oleic and linoleic fatty acids",
+   "tocopherols (vitamin e)",
+   "squalene",
+   "sterols (schottenol, spinasterol)",
+   "polyphenols"
+  ],
+  "conservationStatus": "vulnerable",
+  "references": "Moroccan (Amazigh/Berber) traditional use and cosmetic science; IUCN Red List assessment of Argania spinosa / Sideroxylon spinosum, Vulnerable (educational, not medical advice)."
+ },
+ {
+  "key": "black-seed",
+  "common": "Black seed",
+  "latin": "Nigella sativa",
+  "family": "Ranunculaceae",
+  "origin": "Western Asia, Middle East and Southern Europe (Mediterranean to South Asia)",
+  "effectPath": [
+   "immunity",
+   "respiratory",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "congestion",
+   "cough",
+   "indigestion",
+   "inflammation",
+   "allergies",
+   "headache"
+  ],
+  "partsUsed": [
+   "seed",
+   "oil"
+  ],
+  "preparations": [
+   "powder",
+   "infused-oil",
+   "capsule",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "subtropical",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "toxic-in-overdose",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Culinary seed amounts are well established; concentrated oil/extract in large doses may lower blood pressure and blood sugar and could interact with anticoagulants, antihypertensives and diabetes medication. Large medicinal doses are traditionally avoided in pregnancy. Undiluted essential oil should not be ingested.",
+  "constituents": [
+   "thymoquinone",
+   "essential oil",
+   "fixed oil (unsaturated fatty acids)",
+   "nigellone",
+   "saponins",
+   "alkaloids (nigellicine, nigellidine)"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Unani, Ayurvedic and Middle Eastern traditional use; modern phytochemistry of thymoquinone (educational, not medical advice)."
+ },
+ {
+  "key": "evening-primrose",
+  "common": "Evening primrose",
+  "latin": "Oenothera biennis",
+  "family": "Onagraceae",
+  "origin": "North America",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "hormonal",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "eczema",
+   "inflammation",
+   "pms",
+   "menopause",
+   "joint-pain"
+  ],
+  "partsUsed": [
+   "seed",
+   "oil",
+   "root",
+   "leaf"
+  ],
+  "preparations": [
+   "capsule",
+   "infusion",
+   "poultice"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "cosmetic",
+   "ornamental"
+  ],
+  "cautions": [
+   "drug-interactions",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Seed oil (a source of gamma-linolenic acid, GLA) may interact with anticoagulant and antiplatelet medications and may lower the seizure threshold; caution with anticonvulsants. Traditionally avoided in pregnancy as a precaution. Educational folklore, not medical advice.",
+  "constituents": [
+   "gamma-linolenic acid",
+   "linoleic acid",
+   "phytosterols",
+   "flavonoids"
+  ],
+  "conservationStatus_verified": "Common; widespread weedy biennial, no conservation concern.",
+  "references": "Educational/traditional herbal sources (e.g. monographs on Oenothera biennis seed oil and GLA). Folklore, not medical advice. Origin and constituents verified against botanical monographs."
+ },
+ {
+  "key": "blue-lotus",
+  "common": "Blue lotus",
+  "latin": "Nymphaea caerulea",
+  "family": "Nymphaeaceae",
+  "origin": "North and East Africa (Nile region)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "calm",
+   "nervine",
+   "sleep"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "low-mood"
+  ],
+  "partsUsed": [
+   "flower",
+   "rhizome"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "smoke",
+   "dried"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "wetland",
+   "damp",
+   "sun"
+  ],
+  "otherUses": [
+   "ritual-spiritual",
+   "ornamental",
+   "aromatic"
+  ],
+  "cautions": [
+   "sedating",
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Traditionally regarded as mildly sedating and mood-altering; the alkaloids nuciferine and apomorphine are the usual attribution, though analyses show these can be low or absent in many commercial products. May add to the effects of sedatives/alcohol; avoid before driving. Not for use in pregnancy. Educational folklore, not medical advice.",
+  "constituents": [
+   "nuciferine",
+   "apomorphine",
+   "flavonoids"
+  ],
+  "references": "Ethnobotanical/educational sources on ancient Egyptian use of Nymphaea caerulea. Native to the Nile region of North/East Africa, NOT South Africa. Alkaloid content verified against published GC-MS analyses. Folklore, not medical advice."
+ },
+ {
+  "key": "baobab",
+  "common": "Baobab",
+  "latin": "Adansonia digitata",
+  "family": "Malvaceae",
+  "origin": "Sub-Saharan Africa (savanna)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "immunity",
+   "digestive",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "diarrhoea",
+   "fever",
+   "constipation",
+   "low-energy"
+  ],
+  "partsUsed": [
+   "fruit",
+   "leaf",
+   "seed",
+   "bark"
+  ],
+  "preparations": [
+   "powder",
+   "infusion",
+   "decoction",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "arid",
+   "tropical",
+   "subtropical",
+   "drought-hardy",
+   "sun"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive",
+   "fibre",
+   "cosmetic"
+  ],
+  "cautions": [],
+  "cautionsNote": "Generally well tolerated as a food with a long history of dietary use. Fruit pulp is high in fibre and vitamin C; very large amounts may cause digestive upset. Educational folklore, not medical advice.",
+  "constituents": [
+   "vitamin c",
+   "soluble fibre",
+   "potassium",
+   "calcium",
+   "antioxidant polyphenols"
+  ],
+  "references": "African ethnobotanical and food/educational sources on Adansonia digitata. Native across mainland sub-Saharan Africa (iconic savanna tree); present in southern Africa but NOT exclusively South African. IUCN: Least Concern. Folklore, not medical advice."
+ },
+ {
+  "key": "coffee",
+  "common": "Coffee",
+  "latin": "Coffea arabica",
+  "family": "Rubiaceae",
+  "origin": "East Africa (Ethiopian highlands)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "energy",
+   "focus",
+   "cognitive"
+  ],
+  "ailments": [
+   "fatigue",
+   "drowsiness",
+   "headache"
+  ],
+  "partsUsed": [
+   "seed",
+   "fruit"
+  ],
+  "preparations": [
+   "decoction",
+   "infusion",
+   "powder"
+  ],
+  "growsIn": [
+   "tropical",
+   "subtropical",
+   "forest",
+   "shade"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "cosmetic"
+  ],
+  "cautions": [
+   "hypertension-caution",
+   "drug-interactions",
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Caffeine is a stimulant: can cause insomnia, anxiety, palpitations and raised blood pressure, and may interact with various medications. Pregnant and breastfeeding people are advised to limit intake. Educational folklore, not medical advice.",
+  "constituents": [
+   "caffeine",
+   "chlorogenic acids",
+   "trigonelline",
+   "diterpenes"
+  ],
+  "references": "Botanical/educational sources on Coffea arabica and caffeine. Coffea arabica originates in the Ethiopian highlands (East Africa). Folklore, not medical advice."
+ },
+ {
+  "key": "cacao",
+  "common": "Cacao",
+  "latin": "Theobroma cacao",
+  "family": "Malvaceae",
+  "origin": "Tropical Americas (Amazon basin / Mesoamerica)",
+  "conservationStatus": "common",
+  "effectPath": [
+   "energy",
+   "cardiovascular",
+   "cognitive"
+  ],
+  "ailments": [
+   "low-mood",
+   "fatigue"
+  ],
+  "partsUsed": [
+   "seed",
+   "fruit"
+  ],
+  "preparations": [
+   "decoction",
+   "powder",
+   "ferment",
+   "infused-oil"
+  ],
+  "growsIn": [
+   "tropical",
+   "forest",
+   "shade",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "ritual-spiritual",
+   "cosmetic",
+   "nutritive"
+  ],
+  "cautions": [
+   "drug-interactions"
+  ],
+  "cautionsNote": "Contains theobromine and some caffeine (mild stimulants) plus tyramine-related compounds; rich in oxalates. Large amounts may cause restlessness or, with high oxalate intake, contribute to kidney-stone risk in susceptible people; may interact with MAOI medications. Theobromine is toxic to dogs and other pets. Educational folklore, not medical advice.",
+  "constituents": [
+   "theobromine",
+   "caffeine",
+   "flavanols",
+   "magnesium",
+   "phenylethylamine"
+  ],
+  "references": "Botanical/ethnobotanical sources on Theobroma cacao and Mesoamerican use. Native to the tropical Americas (Amazon basin), domesticated in Mesoamerica. NOTE: cacao is a mild stimulant, not a sedative; 'sedating' caution removed as inaccurate. Folklore, not medical advice."
+ },
+ {
+  "key": "borage",
+  "common": "Borage",
+  "latin": "Borago officinalis",
+  "family": "Boraginaceae",
+  "origin": "Mediterranean",
+  "conservationStatus": "common",
+  "effectPath": [
+   "skin",
+   "anti-inflammatory",
+   "hormonal"
+  ],
+  "ailments": [
+   "eczema",
+   "inflammation",
+   "low-mood",
+   "cough"
+  ],
+  "partsUsed": [
+   "flower",
+   "leaf",
+   "seed",
+   "oil",
+   "aerial"
+  ],
+  "preparations": [
+   "capsule",
+   "infusion",
+   "poultice",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "companion-plant",
+   "ornamental",
+   "cosmetic"
+  ],
+  "cautions": [
+   "not-for-long-term",
+   "avoid-in-pregnancy",
+   "drug-interactions",
+   "toxic-in-overdose"
+  ],
+  "cautionsNote": "Leaves and flowers contain small amounts of pyrrolizidine alkaloids that can be harmful to the liver, so the herb is not recommended for prolonged internal use, in pregnancy, or while breastfeeding. Seed oil (a GLA source) may interact with anticoagulant/antiplatelet drugs and lower the seizure threshold. Educational folklore, not medical advice.",
+  "constituents": [
+   "gamma-linolenic acid",
+   "pyrrolizidine alkaloids",
+   "mucilage",
+   "potassium"
+  ],
+  "references": "Traditional/educational herbal sources on Borago officinalis. Native to the Mediterranean region; widely naturalised in temperate gardens. Pyrrolizidine-alkaloid hepatotoxicity verified against herbal pharmacovigilance literature. Folklore, not medical advice."
+ },
+ {
+  "key": "opium-poppy",
+  "common": "Opium poppy",
+  "latin": "Papaver somniferum",
+  "family": "Papaveraceae",
+  "origin": "Mediterranean / Western Asia",
+  "conservationStatus": "common",
+  "effectPath": [
+   "pain",
+   "sleep",
+   "calm"
+  ],
+  "ailments": [
+   "pain",
+   "insomnia",
+   "cough"
+  ],
+  "partsUsed": [
+   "seed",
+   "resin",
+   "whole"
+  ],
+  "preparations": [
+   "tincture",
+   "decoction",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "ornamental"
+  ],
+  "cautions": [
+   "controlled-regulated",
+   "toxic-in-overdose",
+   "sedating",
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "drug-interactions",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "The latex contains morphine, codeine and related opiate alkaloids: highly sedating, addictive and potentially fatal in overdose (respiratory depression). Cultivation and use of the latex/opium are legally controlled in most countries. The culinary seeds contain only trace alkaloids but can still affect drug tests. This is strictly educational folklore and history, NOT medical advice or a how-to.",
+  "constituents": [
+   "morphine",
+   "codeine",
+   "thebaine",
+   "papaverine",
+   "noscapine"
+  ],
+  "references": "Botanical/historical and pharmacognosy educational sources on Papaver somniferum. Native to the eastern Mediterranean and Western Asia; cultivated since antiquity. Presented as history, not guidance. Educational/historical only, not medical advice."
+ },
+ {
+  "key": "roman-chamomile",
+  "common": "Roman Chamomile",
+  "latin": "Chamaemelum nobile",
+  "family": "Asteraceae",
+  "origin": "Western Europe (Mediterranean to Atlantic)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "calm",
+   "sleep",
+   "digestive",
+   "nervine",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "anxiety",
+   "insomnia",
+   "indigestion",
+   "cramps",
+   "nausea",
+   "inflammation",
+   "teething",
+   "colic"
+  ],
+  "partsUsed": [
+   "flower",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "infused-oil",
+   "distilled",
+   "dried",
+   "salve"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "aromatic",
+   "cosmetic",
+   "companion-plant",
+   "ornamental",
+   "culinary"
+  ],
+  "cautions": [
+   "allergen",
+   "avoid-in-pregnancy"
+  ],
+  "cautionsNote": "Asteraceae-family allergen (cross-reactivity with ragweed/daisies); concentrated preparations and essential oil traditionally avoided in pregnancy. Educational folklore, not medical advice.",
+  "constituents": [
+   "volatile oil (angelic and tiglic acid esters)",
+   "chamazulene",
+   "flavonoids (apigenin)",
+   "sesquiterpene lactones (nobilin)",
+   "coumarins"
+  ],
+  "references": "Educational herbal/botanical references (e.g. Grieve's A Modern Herbal; ESCOP/EMA Matricaria & Chamaemelum monographs). Folklore only."
+ },
+ {
+  "key": "celery",
+  "common": "Celery",
+  "latin": "Apium graveolens",
+  "family": "Apiaceae",
+  "origin": "Mediterranean and Western Asia (wetland margins)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "urinary",
+   "anti-inflammatory",
+   "circulatory"
+  ],
+  "ailments": [
+   "indigestion",
+   "fluid-retention",
+   "joint-pain",
+   "inflammation",
+   "gout"
+  ],
+  "partsUsed": [
+   "seed",
+   "stem",
+   "leaf",
+   "root"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "fresh-juice",
+   "powder",
+   "dried"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "wetland",
+   "damp",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive",
+   "aromatic"
+  ],
+  "cautions": [
+   "allergen",
+   "phototoxic",
+   "avoid-in-pregnancy",
+   "drug-interactions"
+  ],
+  "cautionsNote": "Seeds/concentrated extracts traditionally avoided in pregnancy (uterine stimulant in folklore). Contains furocoumarins (psoralens) that can cause phototoxic skin reactions; recognised food allergen; theoretical interaction with diuretics/anticoagulants. Educational folklore, not medical advice.",
+  "constituents": [
+   "volatile oil (limonene, selinene)",
+   "phthalides (3-n-butylphthalide, sedanolide)",
+   "furocoumarins (psoralen, bergapten)",
+   "flavonoids (apigenin, luteolin)",
+   "coumarins"
+  ],
+  "references": "Educational botanical/herbal references (e.g. Grieve's A Modern Herbal; standard materia medica). Folklore only."
+ },
+ {
+  "key": "rhubarb",
+  "common": "Rhubarb",
+  "latin": "Rheum rhabarbarum",
+  "family": "Polygonaceae",
+  "origin": "Central Asia / Siberia (Rheum genus); medicinal Chinese rhubarb (Rheum palmatum) from western China",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "liver-detox"
+  ],
+  "ailments": [
+   "constipation",
+   "indigestion"
+  ],
+  "partsUsed": [
+   "root",
+   "rhizome",
+   "stem"
+  ],
+  "preparations": [
+   "decoction",
+   "tincture",
+   "powder",
+   "dried",
+   "syrup"
+  ],
+  "growsIn": [
+   "temperate",
+   "sun",
+   "easy-garden",
+   "damp"
+  ],
+  "otherUses": [
+   "culinary",
+   "dye"
+  ],
+  "cautions": [
+   "toxic-in-overdose",
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "not-for-long-term",
+   "drug-interactions"
+  ],
+  "cautionsNote": "LEAVES ARE TOXIC and must never be eaten (high oxalic acid / anthraquinones); only the petiole (stalk) is a food. Root is a stimulant laxative (anthraquinones) — not for prolonged use, in pregnancy/breastfeeding, or with bowel obstruction; can interact with certain medications. Educational folklore, not medical advice.",
+  "constituents": [
+   "anthraquinone glycosides (emodin, rhein, chrysophanol, aloe-emodin)",
+   "tannins",
+   "oxalic acid / oxalates (leaves)",
+   "stilbenes"
+  ],
+  "references": "Educational botanical/herbal references (e.g. Grieve's A Modern Herbal; traditional Chinese materia medica for Da Huang). Folklore only."
+ },
+ {
+  "key": "tobacco",
+  "common": "Tobacco",
+  "latin": "Nicotiana tabacum",
+  "family": "Solanaceae",
+  "origin": "Tropical Americas (Andean South America / Central America)",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "energy",
+   "calm"
+  ],
+  "ailments": [
+   "insect-bites"
+  ],
+  "partsUsed": [
+   "leaf"
+  ],
+  "preparations": [
+   "dried",
+   "smoke",
+   "poultice"
+  ],
+  "growsIn": [
+   "subtropical",
+   "tropical",
+   "temperate",
+   "sun",
+   "easy-garden"
+  ],
+  "otherUses": [
+   "ritual-spiritual",
+   "insect-repellent",
+   "smoke",
+   "ornamental"
+  ],
+  "cautions": [
+   "toxic-in-overdose",
+   "controlled-regulated",
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "drug-interactions",
+   "hypertension-caution",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "HIGHLY TOXIC and addictive — nicotine is a potent poison; not for internal/medicinal use. Listed here for its ethnobotanical and ritual-spiritual role among Indigenous American peoples (sacred plant, ceremonial smoke/offering) and historical use as a botanical insecticide. Smoking causes serious harm. Educational/ethnobotanical context only, NEVER medical advice.",
+  "constituents": [
+   "nicotine",
+   "nornicotine",
+   "anabasine",
+   "pyridine alkaloids",
+   "harman alkaloids"
+  ],
+  "references": "Ethnobotanical literature on Indigenous American sacred-plant use; standard toxicology. Educational context only, not a remedy."
+ },
+ {
+  "key": "dill",
+  "common": "Dill",
+  "latin": "Anethum graveolens",
+  "family": "Apiaceae",
+  "origin": "Mediterranean to Western/Southern Asia",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "calm"
+  ],
+  "ailments": [
+   "indigestion",
+   "colic",
+   "cramps",
+   "flatulence",
+   "nausea",
+   "insomnia"
+  ],
+  "partsUsed": [
+   "seed",
+   "leaf",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "distilled",
+   "fresh-juice",
+   "dried",
+   "powder"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "companion-plant",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Generally regarded as a gentle culinary herb; classic folk 'gripe water' carminative for infant colic. Apiaceae-family allergen for sensitive individuals; concentrated seed/essential-oil doses beyond culinary amounts are not advised in pregnancy. Educational folklore, not medical advice.",
+  "constituents": [
+   "volatile oil (carvone, limonene, dillapiole)",
+   "flavonoids",
+   "coumarins",
+   "phenolic acids"
+  ],
+  "references": "Educational herbal/botanical references (e.g. Grieve's A Modern Herbal; EMA Anethum monograph). Folklore only."
+ },
+ {
+  "key": "coriander",
+  "common": "Coriander",
+  "latin": "Coriandrum sativum",
+  "family": "Apiaceae",
+  "origin": "Eastern Mediterranean / Southwest Asia",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "antimicrobial",
+   "calm"
+  ],
+  "ailments": [
+   "indigestion",
+   "flatulence",
+   "cramps",
+   "nausea",
+   "loss-of-appetite"
+  ],
+  "partsUsed": [
+   "seed",
+   "leaf",
+   "aerial",
+   "fruit"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "distilled",
+   "powder",
+   "dried",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "subtropical",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen"
+  ],
+  "cautionsNote": "Widely used culinary and carminative herb; recognised food allergen for some (can cause contact/oral allergy). Concentrated seed extracts/essential oil beyond culinary amounts not advised in pregnancy. Educational folklore, not medical advice.",
+  "constituents": [
+   "volatile oil (linalool, geraniol, camphor)",
+   "flavonoids (quercetin)",
+   "coumarins",
+   "phenolic acids",
+   "fatty acids (petroselinic acid)"
+  ],
+  "references": "Educational herbal/botanical references (e.g. Grieve's A Modern Herbal; EMA Coriandrum monograph). Folklore only."
+ },
+ {
+  "key": "tarragon",
+  "common": "Tarragon",
+  "latin": "Artemisia dracunculus",
+  "family": "Asteraceae",
+  "origin": "Eurasia (Siberia / Central Asia), also native to western North America",
+  "conservationStatus": "least-concern",
+  "effectPath": [
+   "digestive",
+   "calm"
+  ],
+  "ailments": [
+   "indigestion",
+   "loss-of-appetite",
+   "flatulence",
+   "insomnia",
+   "toothache"
+  ],
+  "partsUsed": [
+   "leaf",
+   "aerial"
+  ],
+  "preparations": [
+   "infusion",
+   "tincture",
+   "infused-oil",
+   "dried",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "temperate",
+   "mediterranean",
+   "sun",
+   "easy-garden",
+   "drought-hardy",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "nutritive"
+  ],
+  "cautions": [
+   "allergen",
+   "avoid-in-pregnancy",
+   "not-for-long-term"
+  ],
+  "cautionsNote": "Culinary herb (French tarragon) used as a digestive bitter and appetite stimulant. The essential oil is high in estragole (methylchavicol) and can also contain methyleugenol — both genotoxic carcinogens in concentrated form — so medicinal-strength/long-term internal use and the neat essential oil are avoided in pregnancy and not for prolonged use. Asteraceae-family allergen. (Trace beta-thujone may occur in some chemotypes, but estragole is the defining concern, not thujone.) Educational folklore, not medical advice.",
+  "constituents": [
+   "volatile oil (estragole/methylchavicol, ocimene, capillene)",
+   "methyleugenol (chemotype-dependent)",
+   "beta-thujone (trace, chemotype-dependent)",
+   "coumarins",
+   "flavonoids",
+   "phenolic acids"
+  ],
+  "references": "Educational herbal/botanical references (e.g. Grieve's A Modern Herbal; standard materia medica on Artemisia; phytochemical surveys of A. dracunculus essential-oil chemotypes). Folklore only."
+ },
+ {
+  "key": "parsley",
+  "common": "Parsley",
+  "latin": "Petroselinum crispum",
+  "family": "Apiaceae",
+  "origin": "Mediterranean (central/eastern)",
+  "effectPath": [
+   "digestive",
+   "urinary",
+   "anti-inflammatory"
+  ],
+  "ailments": [
+   "indigestion",
+   "bloating",
+   "halitosis",
+   "edema"
+  ],
+  "partsUsed": [
+   "leaf",
+   "root",
+   "seed"
+  ],
+  "preparations": [
+   "infusion",
+   "dried",
+   "fresh-juice"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "temperate",
+   "sun",
+   "easy-garden",
+   "container"
+  ],
+  "otherUses": [
+   "culinary",
+   "nutritive",
+   "aromatic",
+   "companion-plant"
+  ],
+  "cautions": [
+   "avoid-in-pregnancy",
+   "avoid-breastfeeding",
+   "drug-interactions",
+   "phototoxic"
+  ],
+  "cautionsNote": "Culinary amounts are considered safe in food. Avoid medicinal/concentrated doses (especially seed and seed oil, which contains apiole/myristicin) during pregnancy as it may stimulate the uterus. Large or concentrated amounts (e.g. parsley juice) are a traditional anti-galactagogue and may reduce milk supply when breastfeeding. Furanocoumarins can cause photosensitivity on skin contact with sun. May interact with anticoagulants (warfarin) due to vitamin K content, and theoretically with diuretics.",
+  "constituents": [
+   "apiole",
+   "myristicin",
+   "apigenin",
+   "vitamin c",
+   "vitamin k",
+   "essential oil",
+   "furanocoumarins"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Traditional European herbalism and culinary use; folklore/educational only, not medical advice."
+ },
+ {
+  "key": "caper",
+  "common": "Caper",
+  "latin": "Capparis spinosa",
+  "family": "Capparaceae",
+  "origin": "Mediterranean",
+  "effectPath": [
+   "anti-inflammatory",
+   "digestive",
+   "antimicrobial"
+  ],
+  "ailments": [
+   "indigestion",
+   "inflammation",
+   "joint-pain"
+  ],
+  "partsUsed": [
+   "flower",
+   "fruit",
+   "root",
+   "bark"
+  ],
+  "preparations": [
+   "ferment",
+   "dried",
+   "decoction",
+   "infusion"
+  ],
+  "growsIn": [
+   "mediterranean",
+   "arid",
+   "sun",
+   "drought-hardy"
+  ],
+  "otherUses": [
+   "culinary",
+   "aromatic",
+   "ornamental"
+  ],
+  "cautions": [
+   "allergen",
+   "hypertension-caution"
+  ],
+  "cautionsNote": "Culinary flower buds (capers) are typically brine- or salt-cured and eaten in small amounts; the high salt content of cured capers is a consideration for those limiting sodium or managing blood pressure. Traditional medicinal use of root bark is folkloric. Possible allergic reaction in sensitive individuals.",
+  "constituents": [
+   "rutin",
+   "quercetin",
+   "kaempferol",
+   "glucosinolates",
+   "flavonoids"
+  ],
+  "conservationStatus": "least-concern",
+  "references": "Traditional Mediterranean herbalism and culinary use; folklore/educational only, not medical advice."
+ }
+]

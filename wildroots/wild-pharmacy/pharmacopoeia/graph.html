@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wild Pharmacy — the Pharmacopoeia (3D)</title>
+<style>
+  :root{ --ink:#0e0b08; --cream:#e9dcc4; --gold:#f4c95d; --green:#6ee84e; --mute:#9a8f7e; --edge:#3a2c20;
+    --mono:ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden}
+  #graph{position:fixed;inset:0}
+  #hud{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;
+    padding:14px 18px;gap:14px;pointer-events:none;background:linear-gradient(to bottom,rgba(8,5,3,.7),transparent)}
+  .ttl{font-size:13px;letter-spacing:.14em;color:var(--green)}
+  .ttl b{color:var(--gold);font-weight:500}
+  .sub{font-size:11px;color:var(--mute);margin-top:3px}
+  #panel{pointer-events:auto;text-align:right;font-size:11px;color:var(--mute)}
+  #panel select{font-family:var(--mono);font-size:11px;color:var(--cream);background:rgba(20,14,10,.85);
+    border:1px solid var(--edge);border-radius:7px;padding:5px 9px;margin-left:6px}
+  #legend{position:fixed;left:18px;bottom:16px;z-index:5;display:flex;flex-wrap:wrap;gap:6px 12px;max-width:60vw;
+    font-size:10.5px;color:var(--mute);background:rgba(8,5,3,.45);padding:9px 12px;border-radius:10px}
+  #legend span{display:inline-flex;align-items:center;gap:5px}
+  #legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+  #info{position:fixed;right:18px;bottom:16px;z-index:5;max-width:300px;font-size:11.5px;line-height:1.5;
+    background:rgba(12,8,5,.82);border:1px solid var(--edge);border-radius:11px;padding:12px 14px;display:none}
+  #info.on{display:block}
+  #info h3{font-size:14px;color:var(--gold);font-weight:500;margin-bottom:3px}
+  #info .lat{font-size:10.5px;color:var(--mute);font-style:italic;margin-bottom:7px}
+  #info .row{margin:3px 0} #info .k{color:var(--green)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.4/dist/3d-force-graph.min.js"></script>
+</head>
+<body>
+  <div id="graph"></div>
+  <div id="hud">
+    <div>
+      <div class="ttl">// hexi's <b>pharmacopoeia</b></div>
+      <div class="sub" id="stat">loading the living library…</div>
+    </div>
+    <div id="panel">link lens
+      <select id="lens">
+        <option value="all">all links</option>
+        <option value="effect">effect-path</option>
+        <option value="ailment">ailments</option>
+        <option value="caution">cautions (the minotaurs)</option>
+        <option value="prep">preparations</option>
+        <option value="region">where it grows</option>
+        <option value="part">parts used</option>
+        <option value="use">other uses</option>
+        <option value="constituent">constituents</option>
+        <option value="family">family</option>
+        <option value="origin">origin</option>
+      </select>
+    </div>
+  </div>
+  <div id="legend"></div>
+  <div id="info"></div>
+<script>
+  const COLORS = { plant:"#f4c95d", effect:"#6ee84e", ailment:"#ff6fb0", part:"#5fe3d0", prep:"#ff9d45",
+    region:"#6aa84f", use:"#b07fd8", caution:"#ff5a5a", constituent:"#5aa0ff", family:"#caa15a", origin:"#d9c089" };
+  const LABELS = { plant:"plant", effect:"effect", ailment:"ailment", part:"part", prep:"preparation",
+    region:"grows-in", use:"other-use", caution:"caution", constituent:"constituent", family:"family", origin:"origin" };
+  const leg = document.getElementById("legend");
+  Object.entries(LABELS).forEach(([t,l])=>{ const s=document.createElement("span"); s.innerHTML='<i style="background:'+COLORS[t]+'"></i>'+l; leg.appendChild(s); });
+
+  fetch("graph.json").then(r=>r.json()).then(data=>{
+    const ALL = { nodes: data.nodes, links: data.links };
+    const elem = document.getElementById("graph");
+    const Graph = ForceGraph3D()(elem)
+      .backgroundColor("#0e0b08")
+      .graphData(ALL)
+      .nodeId("id")
+      .nodeLabel(n => `<div style="font-family:monospace;font-size:11px;color:#e9dcc4;background:rgba(8,5,3,.85);padding:3px 7px;border-radius:5px">${n.label}${n.type==='plant'&&n.latin?'<br><i style="color:#9a8f7e">'+n.latin+'</i>':' · '+LABELS[n.type]}</div>`)
+      .nodeColor(n => COLORS[n.type] || "#888")
+      .nodeVal(n => n.type==="plant" ? 4 : 1.3)
+      .nodeOpacity(0.95)
+      .linkColor(l => "rgba(150,130,100,0.18)")
+      .linkWidth(0.4)
+      .linkDirectionalParticles(0)
+      .warmupTicks(60)
+      .cooldownTicks(220)
+      .onNodeClick(focusNode);
+
+    Graph.d3Force("charge").strength(-26);
+    document.getElementById("stat").textContent = data.nodes.length + " nodes · " + data.links.length + " links · " + data.nodes.filter(n=>n.type==="plant").length + " plants";
+
+    // link lens filter
+    document.getElementById("lens").addEventListener("change", e=>{
+      const t = e.target.value;
+      if(t==="all"){ Graph.graphData(ALL); return; }
+      const links = ALL.links.filter(l => l.type===t);
+      const keep = new Set(); links.forEach(l=>{ keep.add(typeof l.source==="object"?l.source.id:l.source); keep.add(typeof l.target==="object"?l.target.id:l.target); });
+      Graph.graphData({ nodes: ALL.nodes.filter(n=>keep.has(n.id)), links });
+    });
+
+    const info = document.getElementById("info");
+    function focusNode(n){
+      const dist=120; const r=Math.hypot(n.x,n.y,n.z)||1;
+      Graph.cameraPosition({ x:n.x*(1+dist/r), y:n.y*(1+dist/r), z:n.z*(1+dist/r) }, n, 900);
+      if(n.type==="plant"){
+        const links = ALL.links.filter(l=>(l.source.id||l.source)==="plant:"+(n.id.split(":")[1])|| (l.source.id||l.source)===n.id);
+        const by={}; links.forEach(l=>{ const tt=l.type; const tgt=(l.target.label)|| (l.target.split? l.target.split(":")[1]:l.target); (by[tt]=by[tt]||[]).push(tgt); });
+        info.classList.add("on");
+        info.innerHTML='<h3>'+n.label+'</h3>'+(n.latin?'<div class="lat">'+n.latin+'</div>':'')+
+          Object.entries(by).map(([k,v])=>'<div class="row"><span class="k">'+LABELS[k]+':</span> '+[...new Set(v)].join(", ")+'</div>').join('');
+      } else { info.classList.remove("on"); }
+    }
+  });
+</script>
+</body>
+</html>
