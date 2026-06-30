@@ -29,7 +29,7 @@ if (!existsSync(join(SRC, "index.html"))) {
 if (existsSync(OUT)) rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 
-for (const item of ["index.html", "stations.json", "slides", "scenes", "audio"]) {
+for (const item of ["index.html", "stations.json", "slides", "scenes", "audio", "assets"]) {
   const s = join(SRC, item);
   if (existsSync(s)) cpSync(s, join(OUT, item), { recursive: true });
 }

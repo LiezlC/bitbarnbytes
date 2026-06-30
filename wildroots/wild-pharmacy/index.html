@@ -88,6 +88,52 @@
   .card.lore .tit{font-size:12.5px;color:#d9c089;border-left:2px solid #5a4632;padding-left:10px}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   @media (max-width:560px){ .nLabel{font-size:9px} }
+  /* --- focus visibility (a11y) --- */
+  .btn:focus-visible,.opt:focus-visible,.chip:focus-visible,.learn:focus-visible,.nodeC:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .opt.kbd{position:relative}
+  .opt .num{display:inline-block;min-width:16px;color:var(--mute);margin-right:7px}
+  .opt:hover .num,.opt:focus-visible .num{color:var(--gold)}
+  /* --- title-screen extras --- */
+  .menurow{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+  .menurow .btn{font-size:12px;padding:8px 16px;color:var(--mute)}
+  .menurow .btn:hover{color:var(--cream)}
+  .diff{display:inline-flex;border:1px solid var(--edge);border-radius:9px;overflow:hidden;margin-top:2px}
+  .diff button{font-family:var(--mono);font-size:11.5px;color:var(--mute);background:none;border:none;padding:7px 14px;cursor:pointer}
+  .diff button.on{background:rgba(244,201,93,.14);color:var(--gold)}
+  /* --- toasts (badge unlocks) --- */
+  #toasts{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:11;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+  .toast{background:linear-gradient(180deg,#241a10,#160f08);border:1px solid var(--gold);border-radius:11px;padding:10px 16px;font-size:12.5px;color:var(--cream);
+    box-shadow:0 8px 30px rgba(0,0,0,.5);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;max-width:90vw}
+  .toast.on{opacity:1;transform:translateY(0)}
+  .toast b{color:var(--gold);font-weight:500}
+  .toast .em{font-size:15px;margin-right:6px}
+  /* --- badges + codex grids --- */
+  .grid2{display:grid;grid-template-columns:1fr;gap:9px;margin-top:6px}
+  .bdg{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--edge);border-radius:10px;padding:9px 12px;background:rgba(26,18,12,.5)}
+  .bdg.locked{opacity:.42}
+  .bdg .em{font-size:20px;line-height:1.1;flex:0 0 auto}
+  .bdg .bt{font-size:13px;color:var(--gold)}.bdg.locked .bt{color:var(--mute)}
+  .bdg .bd{font-size:11.5px;color:var(--mute);line-height:1.5}
+  .cxGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:8px}
+  .cx{border:1px solid var(--edge);border-radius:9px;padding:8px 10px;background:rgba(26,18,12,.5);cursor:pointer;transition:border-color .15s}
+  .cx:hover{border-color:var(--gold)} .cx.unseen{opacity:.5;cursor:default}
+  .cx .cn{font-size:12.5px;color:var(--gold)} .cx.unseen .cn{color:var(--mute)}
+  .cx .cl{font-size:10px;color:var(--mute);font-style:normal}
+  .howimg{width:100%;border-radius:10px;border:1px solid var(--edge);display:block;margin:4px 0 2px}
+  /* --- correct-answer door flourish --- */
+  #flash{position:fixed;inset:0;z-index:8;pointer-events:none;display:none;align-items:center;justify-content:center}
+  #flash.on{display:flex}
+  #flash .door{width:120px;height:120px;border-radius:50%;border:2px solid var(--green);
+    animation:doorpulse .55s ease-out forwards;box-shadow:0 0 40px rgba(110,232,78,.5)}
+  #flash .tick{position:absolute;font-size:40px;color:var(--green);animation:tickpop .55s ease-out forwards}
+  @keyframes doorpulse{0%{transform:scale(.3);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+  @keyframes tickpop{0%{transform:scale(.2);opacity:0}40%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:0}}
+  .shareCanvasWrap{margin-top:14px}
+  #shareCanvas{width:100%;max-width:400px;border-radius:12px;border:1px solid var(--edge)}
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+    .blink{animation:none}
+  }
 </style>
 </head>
 <body>
@@ -100,7 +146,7 @@
 
   <div id="hud">
     <div class="brand">// hexi's <b>wild pharmacy</b> <span id="muteBtn" title="sound on / off" style="cursor:pointer;margin-left:4px">&#9834;</span></div>
-    <div id="clock"><div id="clockface"><div id="clockhand"></div></div><span class="ct">hour <b id="hr">1</b> / 13</span></div>
+    <div id="clock"><div id="clockface"><div id="clockhand"></div></div><span class="ct">hour <b id="hr">1</b> / <b id="lim">13</b></span></div>
     <div id="cab">cabinet <b id="cabN">0</b> / 8</div>
   </div>
 
@@ -109,7 +155,15 @@
     <h1>The Wild Pharmacy</h1>
     <div class="sub">A labyrinth grown in the compost. You have thirteen hours to gather eight true tinctures and reach the cauldron at the heart. Every wrong reach rouses the minotaur, for things are not always what they seem.</div>
     <button class="btn" id="begin">&gt; enter the labyrinth <span class="blink">&#9646;</span></button>
-    <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture</div>
+    <div class="diff" id="diff" role="group" aria-label="difficulty">
+      <button data-d="lore" class="on">13 hours · true</button><button data-d="gentle">16 hours · mercy</button>
+    </div>
+    <div class="menurow">
+      <button class="btn" id="howBtn">the learning loop</button>
+      <button class="btn" id="codexBtn">the codex</button>
+      <button class="btn" id="badgeBtn">trophies</button>
+    </div>
+    <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture &middot; keys 1-4 answer</div>
   </section>
 
   <section id="map" class="screen">
@@ -136,9 +190,15 @@
 
   <section id="end" class="screen center"></section>
 
-  <div class="pop" id="minoPop"><div class="card mino"><div class="ttl">&#9888; the minotaur</div><div class="msg" id="minoMsg"></div><button class="btn" id="minoOk">try again</button></div></div>
-  <div class="pop" id="sagePop"><div class="card sage"><div class="ttl" id="sageTtl">// a keeper speaks</div><div class="msg" id="sageMsg"></div><button class="btn" id="sageOk">thank you</button></div></div>
-  <div class="pop" id="lorePop"><div class="card lore" id="loreCard"></div></div>
+  <div class="pop" id="minoPop"><div class="card mino" role="alertdialog" aria-modal="true" aria-labelledby="minoTtl"><div class="ttl" id="minoTtl">&#9888; the minotaur</div><div class="msg" id="minoMsg"></div><button class="btn" id="minoOk">try again</button></div></div>
+  <div class="pop" id="sagePop"><div class="card sage" role="dialog" aria-modal="true" aria-labelledby="sageTtl"><div class="ttl" id="sageTtl">// a keeper speaks</div><div class="msg" id="sageMsg"></div><button class="btn" id="sageOk">thank you</button></div></div>
+  <div class="pop" id="lorePop"><div class="card lore" id="loreCard" role="dialog" aria-modal="true"></div></div>
+  <div class="pop" id="codexPop"><div class="card lore" id="codexCard" role="dialog" aria-modal="true" aria-label="the codex"></div></div>
+  <div class="pop" id="badgePop"><div class="card lore" id="badgeCard" role="dialog" aria-modal="true" aria-label="trophies"></div></div>
+  <div class="pop" id="howPop"><div class="card lore" id="howCard" role="dialog" aria-modal="true" aria-label="the learning loop"></div></div>
+
+  <div id="flash" aria-hidden="true"><div class="door"></div><div class="tick">&#10003;</div></div>
+  <div id="toasts" aria-live="polite"></div>
 
 <script>
 (function(){
@@ -221,6 +281,80 @@
   EDGES.forEach(function(e){ADJ[e[0]].push(e[1]);ADJ[e[1]].push(e[0]);});
 
   var clock=1, current="gate", got={}, NEED=8, LIMIT=13, rung=0, hintUsed={}, cur=null;
+  var RUN={mino:false,hint:false,curMino:false,steward:{},feather:false};
+
+  // ---------- persistence: codex, run stats, trophies, difficulty ----------
+  var SAVE=(function(){ var d={codex:{},best:null,runs:0,wins:0,tinct:0,badges:{},diff:"lore"};
+    try{ var raw=localStorage.getItem("wp_save"); if(raw){ var p=JSON.parse(raw); for(var k in p)d[k]=p[k]; } }catch(_){}
+    return d; })();
+  function persist(){ try{ localStorage.setItem("wp_save",JSON.stringify(SAVE)); }catch(_){} }
+  function reduceMotion(){ try{ return window.matchMedia("(prefers-reduced-motion:reduce)").matches; }catch(_){ return false; } }
+  function markSeen(key){ if(BY[key]&&!SAVE.codex[key]){ SAVE.codex[key]=true; persist();
+    if(Object.keys(SAVE.codex).length>=QUEST.length) award("all13"); } }
+
+  var BADGES=[
+    {id:"first",em:"🌱",t:"First Tincture",d:"Brew your first remedy."},
+    {id:"open",em:"🔓",t:"Cauldron Opener",d:"Gather eight tinctures and unseal the heart."},
+    {id:"all13",em:"📖",t:"Master Herbalist",d:"Meet all thirteen plants of the labyrinth."},
+    {id:"steward",em:"♻️",t:"Conservation Steward",d:"Harvest pepperbark and wild ginger the right way, first try."},
+    {id:"fleet",em:"⏳",t:"Fleet-footed",d:"Reach the cauldron by the ninth hour."},
+    {id:"clean",em:"🦬",t:"Minotaur-free",d:"Escape without once rousing the minotaur."},
+    {id:"unaided",em:"🌌",t:"Unaided",d:"Escape without asking a keeper for a hint."}
+  ];
+  function award(id){ if(SAVE.badges[id])return; SAVE.badges[id]=true; persist();
+    var b=null; BADGES.forEach(function(x){ if(x.id===id)b=x; }); if(b)toast(b.em,"trophy unlocked","<b>"+b.t+"</b> — "+b.d); }
+  function toast(em,kick,html){ var wrap=$("toasts"); var el=document.createElement("div"); el.className="toast";
+    el.innerHTML='<span class="em">'+em+'</span><b>'+kick+'</b> &middot; '+html; wrap.appendChild(el);
+    requestAnimationFrame(function(){ el.classList.add("on"); });
+    setTimeout(function(){ el.classList.remove("on"); setTimeout(function(){ if(el.parentNode)el.remove(); },360); },4400); }
+
+  // ---------- accessible popups: focus trap + restore ----------
+  var POPF=null;
+  function openPop(id){ var pop=$(id); POPF=document.activeElement; pop.classList.add("on");
+    var f=pop.querySelector("button,a,[tabindex]"); if(f)try{f.focus();}catch(_){}
+    pop._trap=function(e){ if(e.key!=="Tab")return; var els=pop.querySelectorAll("button,a,[href],[tabindex]");
+      if(!els.length)return; var first=els[0],last=els[els.length-1];
+      if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey&&document.activeElement===last){ e.preventDefault(); first.focus(); } };
+    pop.addEventListener("keydown",pop._trap); }
+  function closePop(id){ var pop=$(id); pop.classList.remove("on"); if(pop._trap){ pop.removeEventListener("keydown",pop._trap); pop._trap=null; }
+    try{ if(POPF&&POPF.focus)POPF.focus(); }catch(_){} }
+  function anyPopOpen(){ return !!document.querySelector(".pop.on"); }
+
+  function flourish(){ var f=$("flash"); if(reduceMotion()){ return; } f.classList.remove("on"); void f.offsetWidth; f.classList.add("on"); setTimeout(function(){ f.classList.remove("on"); },580); }
+
+  // ---------- difficulty ----------
+  function applyDiff(){ LIMIT=SAVE.diff==="gentle"?16:13; var l=$("lim"); if(l)l.textContent=LIMIT; }
+  (function(){ var d=$("diff"); if(!d)return; Array.prototype.forEach.call(d.querySelectorAll("button"),function(b){
+    if(b.getAttribute("data-d")===SAVE.diff)b.classList.add("on"); else b.classList.remove("on");
+    b.addEventListener("click",function(){ SAVE.diff=b.getAttribute("data-d"); persist();
+      Array.prototype.forEach.call(d.querySelectorAll("button"),function(x){ x.classList.toggle("on",x===b); }); applyDiff(); }); }); })();
+
+  // ---------- codex / trophies / learning-loop popups ----------
+  function openCodex(){ sfxOpen(); var seen=Object.keys(SAVE.codex).length, s='<h3>the codex</h3>'+
+      '<p style="font-size:11.5px;color:#9a8f7e;margin:1px 0 6px">'+seen+' of '+QUEST.length+' plants discovered'+
+      (SAVE.best!=null?' &middot; best escape: hour '+SAVE.best:'')+(SAVE.runs?' &middot; '+SAVE.runs+' walks, '+SAVE.wins+' escaped':'')+'</p><div class="cxGrid">';
+    QUEST.forEach(function(q){ var ok=SAVE.codex[q.key]; s+='<div class="cx'+(ok?'':' unseen')+'" data-k="'+q.key+'"><div class="cn">'+(ok?esc(q.name):"? ? ?")+'</div><div class="cl">'+(ok?esc(q.latin):"undiscovered")+'</div></div>'; });
+    s+='</div><div style="margin-top:14px"><button class="btn" id="cxClose">close</button></div>';
+    $("codexCard").innerHTML=s; openPop("codexPop"); $("cxClose").onclick=function(){ closePop("codexPop"); };
+    Array.prototype.forEach.call($("codexCard").querySelectorAll(".cx:not(.unseen)"),function(el){ el.onclick=function(){ var q=BY[el.getAttribute("data-k")]; if(q){ closePop("codexPop"); openAlmanac(q); } }; }); }
+  function openBadges(){ sfxOpen(); var got=0; BADGES.forEach(function(b){ if(SAVE.badges[b.id])got++; });
+    var s='<h3>trophies</h3><p style="font-size:11.5px;color:#9a8f7e;margin:1px 0 6px">'+got+' of '+BADGES.length+' earned</p><div class="grid2">';
+    BADGES.forEach(function(b){ var on=SAVE.badges[b.id]; s+='<div class="bdg'+(on?'':' locked')+'"><span class="em">'+b.em+'</span><div><div class="bt">'+esc(b.t)+'</div><div class="bd">'+esc(b.d)+'</div></div></div>'; });
+    s+='</div><div style="margin-top:14px"><button class="btn" id="bdClose">close</button></div>';
+    $("badgeCard").innerHTML=s; openPop("badgePop"); $("bdClose").onclick=function(){ closePop("badgePop"); }; }
+  function openHow(){ sfxOpen();
+    $("howCard").innerHTML='<h3>the learning loop</h3>'+
+      '<img class="howimg" src="assets/learning-loop.png" alt="The four-step loop: identify, harvest, extract, concoct, drawn as a compost-punk diagram." onerror="this.style.display=\'none\'"/>'+
+      '<p style="font-size:13px;line-height:1.6">At every station you walk the same four steps:</p>'+
+      '<div class="seclab">// 1 &middot; identify</div><p>Know the true plant by leaf, flower, scent and name. Beware the look-alike at the riddle-door.</p>'+
+      '<div class="seclab">// 2 &middot; harvest</div><p>Take the one part that holds the medicine, in its season, with a gentle hand. Sir Didymus guards the bridge.</p>'+
+      '<div class="seclab">// 3 &middot; extract</div><p>Draw the gift out and make it keep: infusion, decoction, tincture, ferment or poultice — matched to the plant.</p>'+
+      '<div class="seclab">// 4 &middot; concoct</div><p>The remedy joins your cabinet. Eight tinctures unseal the cauldron at the heart.</p>'+
+      '<p class="tit" style="margin-top:12px">A wrong reach rouses the minotaur — the real caution that plant carries — and costs you an hour of the thirteen.</p>'+
+      '<div style="margin-top:14px"><button class="btn" id="howClose">close</button></div>';
+    openPop("howPop"); $("howClose").onclick=function(){ closePop("howPop"); }; }
+  $("howBtn").onclick=openHow; $("codexBtn").onclick=openCodex; $("badgeBtn").onclick=openBadges;
   var AC=null, muted=false; try{ muted=localStorage.getItem('wp_muted')==='1'; }catch(_){}
   function audio(){ if(!AC){ try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(_){AC=null;} } if(AC&&AC.state==='suspended'){try{AC.resume();}catch(_){}} return AC; }
   function tone(freq,dur,type,vol,when){ if(!AC||muted)return; var t=AC.currentTime+(when||0); var o=AC.createOscillator(),g=AC.createGain(); o.type=type||'sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||0.18,t+0.012); g.gain.exponentialRampToValueAtTime(0.0006,t+dur); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur+0.04); }
@@ -284,7 +418,7 @@
     startStation(key);
   }
 
-  function startStation(key){ cur=BY[key]; sfxStep(); rung=0; hintUsed={}; setBg(cur.clip,0.6); setScene(null); show("station"); applyStationPos(cur.pos||"bl");
+  function startStation(key){ cur=BY[key]; sfxStep(); rung=0; hintUsed={}; RUN.curMino=false; markSeen(key); setBg(cur.clip,0.6); setScene(null); show("station"); applyStationPos(cur.pos||"bl");
     $("stName").textContent="station · "+cur.name; $("stLatin").textContent=cur.latin; renderRung(); }
   function renderRung(){
     var q=cur,lab,ques,correct,opts,lt;
@@ -299,7 +433,8 @@
     var lb=$("learnBtn"); lb.textContent=(rung===0?"? what is the riddle-door":rung===1?"? who is Sir Didymus":"? what is the stair-stack"); lb.onclick=function(){ openLore(lt); };
     $("mechBanner").src=(rung===0?"scenes/riddle-door.jpg":rung===1?"scenes/sir-didymus.jpg":"scenes/stair-stack.jpg");
     var o=$("opts"); o.innerHTML="";
-    opts.forEach(function(opt){ var b=document.createElement("button"); b.className="opt"; b.textContent=opt;
+    opts.forEach(function(opt,i){ var b=document.createElement("button"); b.className="opt kbd"; b.setAttribute("aria-keyshortcuts",String(i+1));
+      b.innerHTML='<span class="num" aria-hidden="true">'+(i+1)+'</span>'+esc(opt);
       b.addEventListener("click",function(){ answer(opt===correct); }); o.appendChild(b); });
     var c=$("companions"); c.innerHTML="";
     if(rung===0) addChip(c,"oracular","ask OraCular (-1 hr)",q.oHint,"OraCular reads the leaves");
@@ -309,26 +444,26 @@
   }
   function addChip(parent,who,label,hint,ttl){
     var b=document.createElement("button"); b.className="chip"; b.textContent=label; if(hintUsed[who])b.disabled=true;
-    b.addEventListener("click",function(){ if(hintUsed[who])return; hintUsed[who]=true; b.disabled=true; if(tick(1))return;
-      $("sageTtl").textContent="// "+ttl; $("sageMsg").textContent=hint; $("sagePop").classList.add("on"); });
+    b.addEventListener("click",function(){ if(hintUsed[who])return; hintUsed[who]=true; RUN.hint=true; b.disabled=true; if(tick(1))return;
+      $("sageTtl").textContent="// "+ttl; $("sageMsg").textContent=hint; openPop("sagePop"); });
     parent.appendChild(b);
   }
   function answer(correct){
-    if(correct){ rung++; if(rung>=3) collect(); else renderRung(); }
-    else { sfxMinotaur(); $("minoMsg").textContent=cur.caution; $("minoPop").classList.add("on"); }
+    if(correct){ sfxOpen(); flourish(); rung++; if(rung>=3) collect(); else renderRung(); }
+    else { sfxMinotaur(); RUN.mino=true; RUN.curMino=true; $("minoMsg").textContent=cur.caution; openPop("minoPop"); }
   }
-  $("minoOk").addEventListener("click",function(){ $("minoPop").classList.remove("on"); tick(1); });
-  $("sageOk").addEventListener("click",function(){ $("sagePop").classList.remove("on"); });
+  $("minoOk").addEventListener("click",function(){ closePop("minoPop"); tick(1); });
+  $("sageOk").addEventListener("click",function(){ closePop("sagePop"); });
   function openLore(type){ sfxOpen(); var L=LORE[type];
     $("loreCard").innerHTML='<h3>'+L.ttl+'</h3>'+
       '<div class="seclab">// the riddle</div><p>'+L.lore+'</p>'+
       '<div class="seclab">// the craft</div><p>'+L.craft+'</p>'+
       '<div class="seclab">// a titbit</div><p class="tit">'+L.titbit+'</p>'+
       '<button class="btn" id="loreClose" style="margin-top:16px">close the guide</button>';
-    $("lorePop").classList.add("on");
-    $("loreClose").onclick=function(){ $("lorePop").classList.remove("on"); };
+    openPop("lorePop");
+    $("loreClose").onclick=function(){ closePop("lorePop"); };
   }
-  $("lorePop").addEventListener("click",function(e){ if(e.target===$("lorePop")){ try{window.speechSynthesis.cancel();}catch(_){}; $("lorePop").classList.remove("on"); } });
+  $("lorePop").addEventListener("click",function(e){ if(e.target===$("lorePop")){ try{window.speechSynthesis.cancel();}catch(_){}; closePop("lorePop"); } });
   function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
   function linkify(t){return esc(t).replace(/((?:https?:\/\/)?[a-z0-9][a-z0-9._-]*\.[a-z]{2,}(?:\/[^\s;,]*)?)/gi,function(m){var h=/^https?:/i.test(m)?m:'https://'+m;return '<a href="'+h+'" target="_blank" rel="noopener" style="color:#5fe3d0">'+m+'</a>';});}
   fetch("stations.json").then(function(r){return r.json();}).then(function(list){list.forEach(function(s){if(BY[s.key])Object.assign(BY[s.key],{uses:s.uses,actives:s.actives,growable:s.growable,note:s.note,alsoKnown:s.alsoKnown,references:s.references,family:s.family,flags:s.flags});});}).catch(function(){});
@@ -349,34 +484,89 @@
       sec("// mind the minotaur", p.caution, true)+
       (p.references?'<div class="seclab">// sources</div><p style="font-size:11.5px;color:#9a8f7e;word-break:break-word">'+linkify(p.references)+'</p>':'')+
       '<div style="margin-top:16px;display:flex;gap:8px">'+(canSpeak?'<button class="btn" id="almSpeak">&#9654; hear it</button>':'')+'<button class="btn" id="loreClose">close</button></div>';
-    $("lorePop").classList.add("on");
-    $("loreClose").onclick=function(){ try{window.speechSynthesis.cancel();}catch(_){}; $("lorePop").classList.remove("on"); };
+    openPop("lorePop");
+    $("loreClose").onclick=function(){ try{window.speechSynthesis.cancel();}catch(_){}; closePop("lorePop"); };
     if(canSpeak)$("almSpeak").onclick=function(){ try{window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(p.name+". "+(p.uses||p.caution||""));u.rate=0.97;window.speechSynthesis.speak(u);}catch(_){}};
   }
   $("almanacBtn").onclick=function(){ if(cur) openAlmanac(cur); };
 
   function collect(){
-    got[cur.key]=true; sfxCollect(); if(tick(1))return;
-    $("sageTtl").textContent="// tincture collected";
-    $("sageMsg").innerHTML="<b style='color:#f4c95d'>"+cur.name+"</b> joins your cabinet — "+cur.effect+".<br><span style='color:#9a8f7e;font-size:12px'>"+cur.latin+"</span>";
-    $("sagePop").classList.add("on");
-    var once=function(){ $("sageOk").removeEventListener("click",once); show("map"); setBg(null); setScene(null); renderMap(); };
+    got[cur.key]=true; SAVE.tinct++; markSeen(cur.key); award("first");
+    if(!RUN.curMino&&(cur.key==="pepperbark"||cur.key==="wild-ginger")){ RUN.steward[cur.key]=true;
+      if(RUN.steward.pepperbark&&RUN.steward["wild-ginger"]) award("steward"); }
+    sfxCollect(); persist(); if(tick(1))return;
+    if(gotCount()>=NEED) award("open");
+    if(gotCount()===NEED&&!RUN.feather){ RUN.feather=true; featherSeekers(); return; }
+    showCollect();
+  }
+  function showCollect(){ $("sageTtl").textContent="// tincture collected";
+    $("sageMsg").innerHTML="<b style='color:#f4c95d'>"+esc(cur.name)+"</b> joins your cabinet — "+esc(cur.effect)+".<br><span style='color:#9a8f7e;font-size:12px'>"+esc(cur.latin)+"</span>";
+    openPop("sagePop");
+    var once=function(){ $("sageOk").removeEventListener("click",once); closePop("sagePop"); show("map"); setBg(null); setScene(null); renderMap(); };
+    $("sageOk").addEventListener("click",once);
+  }
+  function featherSeekers(){ sfxOpen(); setScene("slides/slide_25.webp");
+    $("sageTtl").textContent="// the feather-seekers";
+    $("sageMsg").innerHTML="Daedalus and Icarus drift down on a warm updraft, scattering feathers across your path. The eighth tincture has unsealed the cauldron, and they <b style='color:#5fe3d0'>gift you back an hour</b> for the climb to the heart.";
+    openPop("sagePop");
+    var once=function(){ $("sageOk").removeEventListener("click",once); closePop("sagePop"); setScene(null);
+      if(clock>1){ clock-=1; updateClock(); } showCollect(); };
     $("sageOk").addEventListener("click",once);
   }
 
-  function win(){ sfxWin(); setScene(null); setBg(CLIP_BASE+"26.mp4",0.6); show("end");
+  function win(){ sfxWin(); setScene(null); setBg(CLIP_BASE+"26.mp4",0.6); show("end"); recordRun(true);
+    if(clock<=9) award("fleet"); if(!RUN.mino) award("clean"); if(!RUN.hint) award("unaided");
     $("end").innerHTML='<div class="kick">// the 13th hour holds</div><h1>The earth is a pharmacy</h1>'+
       '<div class="sub">You reached the cauldron with '+gotCount()+' tinctures in hand, at hour '+Math.min(clock,LIMIT)+'. The blue-light composts to green; the labyrinth lets you keep what you have learned.</div>'+
-      '<button class="btn" onclick="location.reload()">&gt; walk it again</button>'; }
-  function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end");
+      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; walk it again</button>';
+    wireShare(true); }
+  function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end"); recordRun(false);
     $("end").innerHTML='<div class="kick" style="color:#ff5a5a">// the 13th hour strikes</div><h1>The minotaur keeps you</h1>'+
       '<div class="sub">The clock ran out with '+gotCount()+' of '+NEED+' tinctures gathered. The hedges close. But the plants you learned are yours to try again.</div>'+
-      '<button class="btn" onclick="location.reload()">&gt; try again</button>'; }
+      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; try again</button>';
+    wireShare(false); }
+  function recordRun(didWin){ SAVE.runs++; if(didWin){ SAVE.wins++; if(SAVE.best==null||clock<SAVE.best)SAVE.best=clock; } persist(); }
 
-  $("begin").addEventListener("click",function(){ audio(); show("map"); setBg(null); setScene(null); updateClock(); renderMap(); });
+  // ---------- shareable result card ----------
+  function shareResult(didWin){ return (didWin
+      ? "I escaped Hexi's Wild Pharmacy in "+Math.min(clock,LIMIT)+" hours with "+gotCount()+" tinctures."
+      : "The minotaur kept me in Hexi's Wild Pharmacy — "+gotCount()+"/"+NEED+" tinctures when the clock struck.")
+      +" 🌿 a compost-punk labyrinth of real healing plants."; }
+  function shareBlock(){ return '<div class="shareCanvasWrap"><canvas id="shareCanvas" width="800" height="420" aria-label="result card image"></canvas></div>'+
+      '<div class="menurow"><button class="btn" id="shareBtn">share result</button><button class="btn" id="dlBtn">save image</button><button class="btn" id="cxBtn2">the codex</button></div>'; }
+  function wireShare(didWin){ drawShareCard(didWin); var txt=shareResult(didWin);
+    var sb=$("shareBtn"); if(sb)sb.onclick=function(){ var c=$("shareCanvas");
+      if(navigator.share&&c.toBlob){ c.toBlob(function(blob){ var file=new File([blob],"wild-pharmacy.png",{type:"image/png"});
+        var data={text:txt,files:[file]}; if(navigator.canShare&&navigator.canShare(data)) navigator.share(data).catch(function(){});
+        else navigator.share({text:txt}).catch(function(){}); }); }
+      else if(navigator.clipboard){ navigator.clipboard.writeText(txt).then(function(){ sb.textContent="copied!"; },function(){}); }
+      else sb.textContent="copy: "+txt; };
+    var db=$("dlBtn"); if(db)db.onclick=function(){ try{ var a=document.createElement("a"); a.download="wild-pharmacy-result.png"; a.href=$("shareCanvas").toDataURL("image/png"); a.click(); }catch(_){} };
+    var cb=$("cxBtn2"); if(cb)cb.onclick=openCodex; }
+  function drawShareCard(didWin){ var c=$("shareCanvas"); if(!c||!c.getContext)return; var x=c.getContext("2d"),W=c.width,H=c.height;
+    var g=x.createLinearGradient(0,0,W,H); g.addColorStop(0,didWin?"#15240f":"#241016"); g.addColorStop(1,"#0a0705"); x.fillStyle=g; x.fillRect(0,0,W,H);
+    x.strokeStyle=didWin?"#6ee84e":"#ff5a5a"; x.lineWidth=3; x.strokeRect(14,14,W-28,H-28);
+    x.fillStyle="#6ee84e"; x.font="16px monospace"; x.fillText("// hexi's wild pharmacy",40,58);
+    x.fillStyle="#f4c95d"; x.font="bold 42px monospace"; x.fillText(didWin?"The earth is a pharmacy":"The minotaur keeps you",40,116);
+    x.fillStyle="#e9dcc4"; x.font="22px monospace";
+    x.fillText(didWin?("Escaped at hour "+Math.min(clock,LIMIT)):"Held when the clock struck",40,176);
+    x.fillText(gotCount()+" / "+NEED+" tinctures gathered",40,210);
+    QUEST.forEach(function(q,i){ x.fillStyle=got[q.key]?"#6ee84e":"#3a2c20"; x.fillRect(40+i*56,244,44,44); });
+    x.fillStyle="#9a8f7e"; x.font="15px monospace"; x.fillText("a labyrinth of thirteen real healing plants",40,330);
+    x.fillStyle="#5fe3d0"; x.fillText("saraloosa.org/wild-pharmacy",40,362); }
+
+  $("begin").addEventListener("click",function(){ audio(); applyDiff();
+    clock=1; got={}; current="gate"; rung=0; RUN={mino:false,hint:false,curMino:false,steward:{},feather:false};
+    show("map"); setBg(null); setScene(null); updateClock(); renderMap(); });
   document.addEventListener("keydown",function(e){
-    if(e.key==="Enter"&&$("boot").classList.contains("on")) $("begin").click();
-    if(e.key==="Escape"){ $("minoPop").classList.remove("on"); $("sagePop").classList.remove("on"); $("lorePop").classList.remove("on"); }
+    if(e.key==="Enter"&&$("boot").classList.contains("on")){ $("begin").click(); return; }
+    if(e.key==="Escape"){
+      if($("minoPop").classList.contains("on")){ $("minoOk").click(); return; }
+      if($("sagePop").classList.contains("on")){ $("sageOk").click(); return; }
+      ["lorePop","codexPop","badgePop","howPop"].forEach(function(p){ if($(p).classList.contains("on")) closePop(p); });
+      return;
+    }
+    if(!anyPopOpen()&&$("station").classList.contains("on")&&/^[1-4]$/.test(e.key)){ var b=$("opts").children[parseInt(e.key,10)-1]; if(b){ e.preventDefault(); b.click(); } }
   });
   function clampPanel(){ var pb=$("playbox"); if(!pb.style.left) return; var w=pb.offsetWidth,h=pb.offsetHeight;
     pb.style.left=Math.max(4,Math.min(parseFloat(pb.style.left),window.innerWidth-w-4))+"px";
