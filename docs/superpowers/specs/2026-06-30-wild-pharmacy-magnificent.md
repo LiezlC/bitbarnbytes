@@ -15,11 +15,11 @@
 - [x] A7 Learning Loop how-to screen (assets/learning-loop.png; staged via stage-wildpharmacy.mjs)
 - [x] A8 Feather-seekers boon (scene 25): on opening the cauldron, Daedalus/Icarus gift an hour back
 
-## Tier B — Distinctive AI (Pinecone Soil Oracle)
-- [ ] B1 Upsert the 13 plants (+ expansion) into existing `saraloosa-soil` index, namespace `wild-pharmacy`
-- [ ] B2 Netlify function `ask-oracle` proxying Pinecone search (key server-side); reuse existing Soil Oracle endpoint if present
-- [ ] B3 In-game "Ask the Oracle" free-text herb Q&A (augments static hints; graceful offline fallback to static)
-- [ ] B4 (opt) Langfuse tracing on Oracle calls
+## Tier B — Distinctive AI (Pinecone Soil Oracle)  ✅ DONE 2026-06-30
+- [x] B1 13 plants upserted into `saraloosa-soil` ns `wild-pharmacy` (MCP now + reproducible `scripts/build-wildpharmacy-pinecone.mjs` / `npm run index:wildpharmacy`). Semantic retrieval verified (burn→Bulbine top hit).
+- [x] B2 `/api/herb` endpoint + `src/lib/herb-oracle.mjs` core: searches ns wild-pharmacy, composes grounded answer via llm.mjs (Gemini→HF), deterministic fallback if no model key. Isolated from main Soil Oracle.
+- [x] B3 In-game "ask the soil oracle" on the map: free-text Q&A → /api/herb, with offline keyword fallback (stemmed) so it works standalone. Verified in preview.
+- [x] B4 Langfuse tracing reused (traceGeneration agent:"herb-oracle"). Deploy needs PINECONE_API_KEY + GOOGLE_GENERATIVE_AI_API_KEY (+ optional HF_TOKEN) in Netlify env — all already in .env.example.
 
 ## Tier C — Visual
 - [ ] C1 Mine frames_anime into tokens/icons (goat familiar, botanicals, bottles) — needs Liezl pointing; Learning Loop already extracted

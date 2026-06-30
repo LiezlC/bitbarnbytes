@@ -14,7 +14,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "index:build": "node scripts/build-pinecone-index.mjs"
+    "index:build": "node scripts/build-pinecone-index.mjs",
+    "index:wildpharmacy": "node scripts/build-wildpharmacy-pinecone.mjs"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",

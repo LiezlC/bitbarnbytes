@@ -120,6 +120,15 @@
   .cx .cn{font-size:12.5px;color:var(--gold)} .cx.unseen .cn{color:var(--mute)}
   .cx .cl{font-size:10px;color:var(--mute);font-style:normal}
   .howimg{width:100%;border-radius:10px;border:1px solid var(--edge);display:block;margin:4px 0 2px}
+  /* --- soil oracle (RAG) --- */
+  .owrap{display:flex;gap:8px;margin:10px 0 4px}
+  #oq{flex:1;min-width:0;font-family:var(--mono);font-size:13px;color:var(--cream);background:rgba(26,18,12,.72);border:1px solid var(--edge);border-radius:9px;padding:9px 12px}
+  #oq:focus{outline:none;border-color:var(--violet)}
+  #oAns{font-size:13px;line-height:1.62;color:var(--cream);margin-top:8px;min-height:18px}
+  #oAns .pn{color:var(--gold)} #oAns .cau{color:#ff9ec6} #oAns .src{font-size:11px;color:var(--mute);margin-top:9px}
+  #oAns .think{color:var(--violet)}
+  .osample{font-size:11px;color:var(--violet);cursor:pointer;border:1px solid #4a3a5a;border-radius:20px;padding:4px 10px;background:rgba(176,127,216,.06);margin:4px 5px 0 0;display:inline-block}
+  .osample:hover{color:var(--cream);border-color:var(--violet)}
   /* --- correct-answer door flourish --- */
   #flash{position:fixed;inset:0;z-index:8;pointer-events:none;display:none;align-items:center;justify-content:center}
   #flash.on{display:flex}
@@ -171,6 +180,7 @@
       <svg id="mapsvg" viewBox="0 0 680 500" role="img" aria-label="The labyrinth map"></svg>
       <div class="mhint" id="mapHint">travel to a glowing station</div>
       <button id="companionBtn" class="btn" style="margin:12px auto 0;display:block;font-size:12px;padding:8px 16px">&#9654; play the audio companion</button>
+      <button id="oracleBtn" class="btn" style="margin:8px auto 0;display:block;font-size:12px;padding:8px 16px;color:#b07fd8;border-color:#4a3a5a">&#10022; ask the soil oracle</button>
     </div>
   </section>
 
@@ -196,6 +206,7 @@
   <div class="pop" id="codexPop"><div class="card lore" id="codexCard" role="dialog" aria-modal="true" aria-label="the codex"></div></div>
   <div class="pop" id="badgePop"><div class="card lore" id="badgeCard" role="dialog" aria-modal="true" aria-label="trophies"></div></div>
   <div class="pop" id="howPop"><div class="card lore" id="howCard" role="dialog" aria-modal="true" aria-label="the learning loop"></div></div>
+  <div class="pop" id="oraclePop"><div class="card sage" id="oracleCard" role="dialog" aria-modal="true" aria-label="the soil oracle"></div></div>
 
   <div id="flash" aria-hidden="true"><div class="door"></div><div class="tick">&#10003;</div></div>
   <div id="toasts" aria-live="polite"></div>
@@ -355,6 +366,42 @@
       '<div style="margin-top:14px"><button class="btn" id="howClose">close</button></div>';
     openPop("howPop"); $("howClose").onclick=function(){ closePop("howPop"); }; }
   $("howBtn").onclick=openHow; $("codexBtn").onclick=openCodex; $("badgeBtn").onclick=openBadges;
+
+  // ---------- the soil oracle (Pinecone RAG, with offline fallback) ----------
+  var ORACLE_URL="/api/herb";
+  var STOP={the:1,and:1,for:1,you:1,your:1,what:1,with:1,that:1,this:1,have:1,here:1,from:1,need:1,want:1,some:1,something:1,which:1,when:1,help:1,helps:1,take:1,good:1,best:1,plant:1,plants:1,herb:1,herbs:1,remedy:1,remedies:1};
+  function stem(w){ return w.slice(0,Math.max(4,w.length-2)); }
+  function localHerb(q){ var words=((q||"").toLowerCase().match(/[a-z]{4,}/g)||[]).filter(function(w){ return !STOP[w]; }); if(!words.length)return null; var best=null,bs=0;
+    QUEST.forEach(function(p){ var hay=((p.name||"")+" "+(p.latin||"")+" "+(p.alsoKnown||"")+" "+(p.uses||"")+" "+(p.effect||"")+" "+(p.part||"")+" "+(p.idClue||"")+" "+(p.caution||"")+" "+(p.growable||"")).toLowerCase();
+      var sc=0; words.forEach(function(w){ if(hay.indexOf(stem(w))>=0)sc+=2; else if(hay.indexOf(w.slice(0,4))>=0)sc+=1; }); if(sc>bs){ bs=sc; best=p; } });
+    if(!best||bs===0)return null;
+    return { answer:"The labyrinth points you to "+best.name+" ("+best.latin+"). Part used: "+best.part+". "+(best.caution?"Mind the minotaur: "+best.caution+" ":"")+"This is folklore, not medical advice — identify carefully and ask a professional before use.",
+      plant:best.name, latin:best.latin, grounded:true, sources:[{title:best.name,latin:best.latin,key:best.key}], local:true }; }
+  function renderHerb(r){ var ans=$("oAns"); if(!ans)return; if(!r){ ans.innerHTML='The oracle could not find that in the garden of thirteen. Try naming a symptom, a feeling, or a plant.'; return; }
+    var s='<p><span class="pn">'+esc(r.plant||"")+'</span>'+(r.latin?' <span style="color:#9a8f7e;font-size:11.5px">'+esc(r.latin)+'</span>':'')+'</p><p>'+esc(r.answer)+'</p>';
+    if(r.sources&&r.sources.length)s+='<div class="src">drawn from: '+r.sources.map(function(x){return esc(x.title);}).join(", ")+(r.local?' &middot; offline corpus':' &middot; soil oracle')+'</div>';
+    ans.innerHTML=s; }
+  function askOracle(q){ q=(q||"").trim(); if(!q)return; var ans=$("oAns"); if(ans)ans.innerHTML='<span class="think">the oracle listens to the soil&hellip;</span>';
+    var fb=function(){ renderHerb(localHerb(q)); };
+    try{ fetch(ORACLE_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({question:q})})
+      .then(function(res){ if(!res.ok)throw 0; return res.json(); })
+      .then(function(j){ if(j&&j.answer)renderHerb(j); else fb(); })
+      .catch(fb); }catch(_){ fb(); } }
+  function openOracle(){ sfxOpen();
+    var samples=["something calming for stress","I burned my hand","a tea for focus and memory","a cough and chest remedy","which plants are endangered?"];
+    $("oracleCard").innerHTML='<div class="ttl" style="color:#b07fd8">&#10022; the soil oracle</div>'+
+      '<p class="msg" style="font-size:12.5px;color:#9a8f7e">Ask about a symptom, a feeling, or a plant. The oracle answers only from the garden of thirteen &mdash; folklore, never medical advice.</p>'+
+      '<div class="owrap"><input id="oq" type="text" maxlength="300" placeholder="what do you seek?" aria-label="ask the soil oracle"/><button class="btn" id="oAsk">ask</button></div>'+
+      '<div>'+samples.map(function(s){ return '<span class="osample">'+esc(s)+'</span>'; }).join("")+'</div>'+
+      '<div id="oAns"></div>'+
+      '<div style="margin-top:14px"><button class="btn" id="oClose">close</button></div>';
+    openPop("oraclePop");
+    var go=function(){ askOracle($("oq").value); };
+    $("oAsk").onclick=go; $("oq").addEventListener("keydown",function(e){ if(e.key==="Enter"){ e.stopPropagation(); go(); } });
+    Array.prototype.forEach.call($("oracleCard").querySelectorAll(".osample"),function(el){ el.onclick=function(){ $("oq").value=el.textContent; askOracle(el.textContent); }; });
+    $("oClose").onclick=function(){ closePop("oraclePop"); };
+    setTimeout(function(){ try{ $("oq").focus(); }catch(_){} },60); }
+  $("oracleBtn").onclick=openOracle;
   var AC=null, muted=false; try{ muted=localStorage.getItem('wp_muted')==='1'; }catch(_){}
   function audio(){ if(!AC){ try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(_){AC=null;} } if(AC&&AC.state==='suspended'){try{AC.resume();}catch(_){}} return AC; }
   function tone(freq,dur,type,vol,when){ if(!AC||muted)return; var t=AC.currentTime+(when||0); var o=AC.createOscillator(),g=AC.createGain(); o.type=type||'sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||0.18,t+0.012); g.gain.exponentialRampToValueAtTime(0.0006,t+dur); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur+0.04); }
@@ -563,7 +610,7 @@
     if(e.key==="Escape"){
       if($("minoPop").classList.contains("on")){ $("minoOk").click(); return; }
       if($("sagePop").classList.contains("on")){ $("sageOk").click(); return; }
-      ["lorePop","codexPop","badgePop","howPop"].forEach(function(p){ if($(p).classList.contains("on")) closePop(p); });
+      ["lorePop","codexPop","badgePop","howPop","oraclePop"].forEach(function(p){ if($(p).classList.contains("on")) closePop(p); });
       return;
     }
     if(!anyPopOpen()&&$("station").classList.contains("on")&&/^[1-4]$/.test(e.key)){ var b=$("opts").children[parseInt(e.key,10)-1]; if(b){ e.preventDefault(); b.click(); } }
