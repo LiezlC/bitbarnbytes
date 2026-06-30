@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Hexi's Wild Pharmacy — the Labyrinth</title>
+<meta name="description" content="A compost-punk labyrinth RPG: solve thirteen real plant-stations against the thirteen-hour clock, ward off the minotaur, and reach the cauldron at the heart." />
+<style>
+  :root{
+    --ink:#120c08; --ink2:#1b1410; --edge:#3a2c20;
+    --cream:#e9dcc4; --mute:#9a8f7e;
+    --gold:#f4c95d; --green:#6ee84e; --teal:#5fe3d0; --mag:#ff6fb0; --violet:#b07fd8; --red:#ff5a5a;
+    --mono:ui-monospace,"SFMono-Regular","IBM Plex Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden;-webkit-font-smoothing:antialiased}
+  .fill{position:fixed;inset:0;pointer-events:none}
+  #bg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.5;background:var(--ink)}
+  #bgImg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;background:var(--ink);display:none}
+  #bgImg.on{display:block}
+  #mechBanner{width:100%;height:108px;object-fit:cover;border-radius:9px;border:1px solid var(--edge);display:block;margin-bottom:8px}
+  #scrim{z-index:1;background:radial-gradient(circle at 50% 40%, rgba(10,7,5,.45), rgba(8,5,3,.86))}
+  .screen{position:relative;z-index:3;display:none;flex-direction:column}
+  .screen.on{display:flex}
+  #hud{position:fixed;top:0;left:0;right:0;z-index:6;display:none;justify-content:space-between;align-items:center;
+    padding:12px 16px;gap:10px;background:linear-gradient(to bottom,rgba(8,5,3,.7),rgba(8,5,3,0));font-size:12px}
+  #hud.on{display:flex}
+  #hud .brand{color:var(--green);letter-spacing:.14em}
+  #hud .brand b{color:var(--gold);font-weight:500}
+  #clock{display:flex;align-items:center;gap:8px}
+  #clockface{position:relative;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--gold);background:#1a1226}
+  #clockhand{position:absolute;left:50%;top:50%;width:1.5px;height:11px;background:var(--gold);transform-origin:bottom center;transform:translate(-50%,-100%)}
+  #clock .ct{color:var(--gold)} #clock.warn .ct{color:var(--red)} #clock.warn #clockface{border-color:var(--red)}
+  #cab{color:var(--teal);text-align:right}#cab b{color:var(--cream);font-weight:500}
+  .center{align-items:center;justify-content:center;text-align:center;padding:26px;gap:14px}
+  .kick{font-size:12px;letter-spacing:.24em;color:var(--green)}
+  h1{font-size:clamp(26px,6vw,50px);font-weight:500;color:var(--gold);letter-spacing:.03em;line-height:1.05}
+  .sub{font-size:13px;color:var(--mute);max-width:460px;line-height:1.65}
+  .btn{font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:var(--teal);border:1px solid var(--edge);
+    padding:11px 22px;border-radius:9px;cursor:pointer;background:rgba(20,14,10,.6);transition:border-color .2s,color .2s,background .2s}
+  .btn:hover{border-color:var(--teal);color:var(--cream);background:rgba(36,26,16,.8)}
+  .blink{animation:blink 1.1s step-end infinite}@keyframes blink{50%{opacity:0}}
+  #map{align-items:center;justify-content:center;padding:54px 12px 16px}
+  #mapwrap{width:100%;max-width:680px}
+  #mapsvg{width:100%;height:auto;display:block}
+  .mhint{text-align:center;font-size:12px;color:var(--mute);margin-top:6px}
+  .edge{stroke:#4a3a2a;stroke-width:1.5}
+  .nLabel{font-family:var(--mono);font-size:10.5px;fill:var(--mute)}
+  .nLabel.near{fill:var(--cream)}
+  #station.on{display:block;position:fixed;inset:0;z-index:3;padding:0}
+  #playbox{position:absolute;left:18px;bottom:18px;width:min(400px,calc(100% - 36px));max-height:calc(100% - 84px);overflow:auto;
+    background:linear-gradient(180deg,rgba(16,11,8,.84),rgba(12,8,5,.93));border:1px solid var(--edge);border-radius:14px;padding:14px 16px 16px;
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  #pbhead{display:flex;gap:8px;align-items:center;margin-bottom:4px;cursor:move;touch-action:none}
+  #pbhead .grip{color:var(--mute);font-size:14px;line-height:1;opacity:.65;flex:0 0 auto}
+  #pbhead:hover .grip{color:var(--cream)}
+  #stName{font-size:16px;color:var(--gold);font-weight:500}
+  #stLatin{font-size:11.5px;color:var(--mute);font-style:normal;margin-left:6px}
+  #rungLab{font-size:11px;letter-spacing:.16em;color:var(--teal);margin:12px 0 4px}
+  #rungQ{font-size:14px;color:var(--cream);line-height:1.5;margin-bottom:10px}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{text-align:left;font-family:var(--mono);font-size:13.5px;color:var(--cream);background:rgba(26,18,12,.72);
+    border:1px solid var(--edge);border-radius:9px;padding:9px 13px;cursor:pointer;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:var(--gold);background:rgba(40,28,16,.8)}
+  .companions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .chip{font-size:11.5px;color:var(--violet);background:rgba(176,127,216,.08);border:1px solid #4a3a5a;border-radius:20px;padding:6px 12px;cursor:pointer}
+  .chip:hover{color:var(--cream);border-color:var(--violet)}
+  .chip:disabled{opacity:.4;cursor:default}
+  #progress{display:flex;gap:5px;margin-top:12px}
+  #progress .pip{width:100%;height:3px;border-radius:2px;background:#3a2c20}
+  #progress .pip.done{background:var(--green)}#progress .pip.cur{background:var(--gold)}
+  .pop{position:fixed;inset:0;z-index:9;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(6,4,2,.7)}
+  .pop.on{display:flex}
+  .card{max-width:460px;background:linear-gradient(180deg,#241019,#160a0d);border:1px solid #5a2a36;border-radius:14px;padding:20px 22px;text-align:center}
+  .card.sage{background:linear-gradient(180deg,#1b1430,#120d22);border-color:#4a3a6a}
+  .card .ttl{font-size:14px;letter-spacing:.12em;margin-bottom:8px}
+  .card.mino .ttl{color:var(--red)} .card.sage .ttl{color:var(--violet)}
+  .card .msg{font-size:13.5px;line-height:1.6;color:var(--cream)}
+  .card .btn{margin-top:16px}
+  .learn{display:inline-block;margin:8px 0 2px;font-family:var(--mono);font-size:11.5px;color:var(--teal);background:none;border:none;border-bottom:1px dashed rgba(95,227,208,.45);padding:0 0 1px;cursor:pointer}
+  .learn:hover{color:var(--cream);border-color:var(--cream)}
+  .learn.alm{color:var(--gold);border-bottom-color:rgba(244,201,93,.5)}
+  .card.lore{max-width:520px;text-align:left;max-height:82vh;overflow:auto;background:linear-gradient(180deg,#1b1612,#120d0a);border-color:#5a4632}
+  .card.lore h3{font-size:16px;color:var(--gold);font-weight:500;margin-bottom:2px}
+  .card.lore .seclab{font-size:10.5px;letter-spacing:.16em;color:var(--teal);margin:13px 0 4px}
+  .card.lore p{font-size:13px;line-height:1.62;color:var(--cream)}
+  .card.lore .tit{font-size:12.5px;color:#d9c089;border-left:2px solid #5a4632;padding-left:10px}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  @media (max-width:560px){ .nLabel{font-size:9px} }
+</style>
+</head>
+<body>
+  <p class="sr" aria-live="polite" id="live"></p>
+  <video id="bg" class="fill" muted loop playsinline></video>
+  <img id="bgImg" class="fill" alt="" />
+  <!-- streams from Cloudinary; swap to audio/WildPharmacy_narration_anime.mp3 for offline use -->
+  <audio id="companion" preload="none" src="https://res.cloudinary.com/dpowc778t/video/upload/wild-pharmacy/audio/WildPharmacy_narration_anime.mp3"></audio>
+  <div id="scrim" class="fill"></div>
+
+  <div id="hud">
+    <div class="brand">// hexi's <b>wild pharmacy</b> <span id="muteBtn" title="sound on / off" style="cursor:pointer;margin-left:4px">&#9834;</span></div>
+    <div id="clock"><div id="clockface"><div id="clockhand"></div></div><span class="ct">hour <b id="hr">1</b> / 13</span></div>
+    <div id="cab">cabinet <b id="cabN">0</b> / 8</div>
+  </div>
+
+  <section id="boot" class="screen on center">
+    <div class="kick">// the barnyard glitchtech mainframe</div>
+    <h1>The Wild Pharmacy</h1>
+    <div class="sub">A labyrinth grown in the compost. You have thirteen hours to gather eight true tinctures and reach the cauldron at the heart. Every wrong reach rouses the minotaur, for things are not always what they seem.</div>
+    <button class="btn" id="begin">&gt; enter the labyrinth <span class="blink">&#9646;</span></button>
+    <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture</div>
+  </section>
+
+  <section id="map" class="screen">
+    <div id="mapwrap">
+      <svg id="mapsvg" viewBox="0 0 680 500" role="img" aria-label="The labyrinth map"></svg>
+      <div class="mhint" id="mapHint">travel to a glowing station</div>
+      <button id="companionBtn" class="btn" style="margin:12px auto 0;display:block;font-size:12px;padding:8px 16px">&#9654; play the audio companion</button>
+    </div>
+  </section>
+
+  <section id="station" class="screen">
+    <div id="playbox">
+      <img id="mechBanner" alt="" />
+      <div id="pbhead" title="drag to move"><span class="grip" aria-hidden="true">&#10303;</span><div><span id="stName">—</span><span id="stLatin"></span></div></div>
+      <button id="almanacBtn" class="learn alm">&#9656; field notes on this plant</button>
+      <div id="rungLab">// identify</div>
+      <div id="rungQ"></div>
+      <button id="learnBtn" class="learn">? what is this place</button>
+      <div class="opts" id="opts"></div>
+      <div class="companions" id="companions"></div>
+      <div id="progress"><span class="pip cur"></span><span class="pip"></span><span class="pip"></span></div>
+    </div>
+  </section>
+
+  <section id="end" class="screen center"></section>
+
+  <div class="pop" id="minoPop"><div class="card mino"><div class="ttl">&#9888; the minotaur</div><div class="msg" id="minoMsg"></div><button class="btn" id="minoOk">try again</button></div></div>
+  <div class="pop" id="sagePop"><div class="card sage"><div class="ttl" id="sageTtl">// a keeper speaks</div><div class="msg" id="sageMsg"></div><button class="btn" id="sageOk">thank you</button></div></div>
+  <div class="pop" id="lorePop"><div class="card lore" id="loreCard"></div></div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var live=$("live");
+
+  var QUEST=[
+    {key:"kanna",scene:11,name:"Kanna",latin:"Sceletium tortuosum",idClue:"kougoed, the chew-things of the shepherds",part:"aerial",method:"ferment",effect:"calm, then a lifted mood",
+     caution:"Do NOT combine with SSRIs or other antidepressants. Avoid in pregnancy.",oHint:"a low fleshy succulent with pale star-flowers; its old name is kougoed.",sHint:"take the aerial parts, then ferment them before tincturing."},
+    {key:"kankerbossie",scene:12,name:"Kankerbossie",latin:"Sutherlandia frutescens",idClue:"insiswa, that which takes away the dark",part:"aerial",method:"infusion (tea)",effect:"immune tonic",
+     caution:"Avoid in pregnancy and breastfeeding; caution with immunosuppressants and active autoimmune disease.",oHint:"the cancer bush; the Zulu called it insiswa.",sHint:"the aerial parts, brewed as an infusion."},
+    {key:"buchu",scene:13,name:"Buchu",latin:"Agathosma betulina",idClue:"boegoe, the aromatic Cape leaf",part:"leaf",method:"tincture",effect:"cleansing tonic",
+     caution:"Avoid in pregnancy and kidney inflammation; can irritate in large doses.",oHint:"a small resinous fynbos leaf; also called boegoe.",sHint:"the leaf, steeped in brandy as a tincture."},
+    {key:"rooibos",scene:14,name:"Rooibos",latin:"Aspalathus linearis",idClue:"the red bush, caffeine-free",part:"leaf",method:"infusion (tea)",effect:"soothing tonic",
+     caution:"Very safe and caffeine-free; rare interaction with some liver-metabolised meds.",oHint:"the red needle-leaf of the Cederberg.",sHint:"the leaf, simply infused."},
+    {key:"honeybush",scene:15,name:"Honeybush",latin:"Cyclopia intermedia",idClue:"heuningbos, the sweet Cape tea",part:"leaf",method:"infusion (tea)",effect:"soothing tonic",
+     caution:"Very safe; mild phyto-estrogen — caution in hormone-sensitive cases.",oHint:"sweet honey-scented fynbos; heuningbos.",sHint:"leaf and herb, infused."},
+    {key:"bulbine",scene:16,name:"Bulbine",latin:"Bulbine frutescens",idClue:"the burn-jelly plant; snap a leaf for gel",part:"leaf",method:"poultice",effect:"skin and burn balm",
+     caution:"External fresh-gel use; do not eat the raw leaf in quantity.",oHint:"snap a leaf and clear cooling gel runs out.",sHint:"the leaf gel, applied fresh as a poultice."},
+    {key:"wild-dagga",scene:17,name:"Wild dagga",latin:"Leonotis leonurus",idClue:"lion's tail, orange spires for the sunbirds",part:"leaf",method:"infusion (tea)",effect:"gentle relaxant",
+     caution:"Sedating in quantity; avoid in pregnancy. Not the same as cannabis — use sensibly.",oHint:"tall orange tubular spires the sunbirds love.",sHint:"the leaf, brewed gently as an infusion."},
+    {key:"pepperbark",scene:18,name:"Pepperbark",latin:"Warburgia salutaris",idClue:"isibhaha, the endangered pepper tree",part:"leaf",method:"infusion (tea)",effect:"chest and immunity",
+     caution:"ENDANGERED — take the leaf only, never strip the bark. Avoid in pregnancy.",oHint:"a peppery-barked tree; isibhaha.",sHint:"take only the LEAF — spare the bark, the tree is endangered.",trap:"bark"},
+    {key:"wild-ginger",scene:19,name:"Wild ginger",latin:"Siphonochilus aethiopicus",idClue:"wilde gemmer, the critically endangered ginger",part:"rhizome",method:"decoction",effect:"warming remedy",
+     caution:"Critically endangered — grow it, never wild-harvest. Large doses thin the blood.",oHint:"a warming subtropical ginger; wilde gemmer.",sHint:"the rhizome, simmered as a decoction — from cultivated stock only."},
+    {key:"rosemary",scene:20,name:"Rosemary",latin:"Salvia rosmarinus",idClue:"the needle-leaf for memory and focus",part:"leaf",method:"infusion (tea)",effect:"focus and circulation",
+     caution:"Safe in normal doses; caution if prone to seizures; large amounts can irritate the gut.",oHint:"Mediterranean needle-leaf, sharp and resinous; for memory.",sHint:"the leaf (and its oil), infused or tinctured."},
+    {key:"gotu-kola",scene:21,name:"Gotu kola",latin:"Centella asiatica",idClue:"Indian pennywort, Brahmi, for memory",part:"leaf",method:"infusion (tea)",effect:"memory and healing",
+     caution:"Avoid in pregnancy and liver disease; may cause drowsiness.",oHint:"round pennywort leaves that love the damp; Brahmi.",sHint:"the leaf and whole herb, infused."},
+    {key:"pelargonium",scene:22,name:"Pelargonium",latin:"Pelargonium sidoides",idClue:"umckaloabo / rooirabas, the cough root",part:"root",method:"tincture",effect:"cough and immunity",
+     caution:"Rare liver reactions reported; avoid with anticoagulants and in pregnancy.",oHint:"dark-red flowers; the cough remedy umckaloabo.",sHint:"the ROOT, drawn into a tincture."},
+    {key:"wormwood",scene:23,name:"Wormwood / wilde-als",latin:"Artemisia afra / absinthium",idClue:"wilde-als, the bitter thujone herb",part:"aerial",method:"tincture",effect:"bitter digestive",
+     caution:"Contains thujone — short-term use only; AVOID in pregnancy and epilepsy.",oHint:"silvery feathery leaves, intensely bitter; wilde-als.",sHint:"the aerial parts, as a short-course bitter tincture."}
+  ];
+  var POS={kanna:"tr",kankerbossie:"tr",buchu:"tr",rooibos:"tr",honeybush:"tr",bulbine:"tl","wild-dagga":"tr",pepperbark:"tr","wild-ginger":"tr",rosemary:"tl","gotu-kola":"tl",pelargonium:"tl",wormwood:"tl"};
+  // Video clips stream from Cloudinary (f_auto,q_auto auto-optimises format+quality).
+  // Set CLIP_BASE="slides/" to fall back to the bundled local clips for offline use.
+  var CLIP_BASE="https://res.cloudinary.com/dpowc778t/video/upload/f_auto,q_auto/wild-pharmacy/slides/";
+  var BY={}; QUEST.forEach(function(q){q.plate="slides/slide_"+q.scene+".webp";q.clip=CLIP_BASE+q.scene+".mp4";q.pos=POS[q.key]||"bl";BY[q.key]=q;});
+
+  var PARTS=["aerial","leaf","flower","root","rhizome","bark","bulb","seed"];
+  var METHODS=["infusion (tea)","decoction","tincture","ferment","poultice","infused oil"];
+
+  var LORE={
+    identify:{ttl:"the riddle-door",
+      lore:"The gate of two doors. In the old maze one guard always lies and one always tells true; you have a single question to find the safe way through. Here the lie is a look-alike, a plant that wears another's face.",
+      craft:"Identification is the herbalist's first and most dangerous skill. Many healing plants have toxic twins. Learn a plant by its whole signature: leaf and flower, scent, where it grows, and the names it carries. Never harvest what you cannot name with certainty.",
+      titbit:"A true name is a key. Kanna's old Khoi name, kougoed (chew-things), is the fermented quid shepherds carried across the dry Karoo."},
+    harvest:{ttl:"the bridge, and Sir Didymus",
+      lore:"Small and fierce, Sir Didymus bars the bridge: none shall pass who cannot answer true. He guards not the crossing but the plant, for to take the wrong part is to waste a life, or end one.",
+      craft:"Harvest is knowing which part holds the medicine, and taking it without harm. Leaf, flower, root, bark, rhizome, the aerial tops: each plant gives its gift from one place, in its own season. The endangered ones ask the gentlest hand.",
+      titbit:"Take the leaf, spare the bark. Pepperbark (isibhaha) is loved to near death for its bark; the steward takes only the leaf, and leaves a living tree."},
+    extract:{ttl:"the stair-stack, the still",
+      lore:"The impossible stair, where the stories fold: Escher's room rebuilt as a still. Here, at last, the plant becomes medicine.",
+      craft:"Extraction draws the actives out and makes them keep. An infusion (steeped like tea) for soft leaves and flowers; a decoction (a long simmer) for hard roots and bark; a tincture (steeped in spirit) to hold a plant against time; a ferment for kanna's kougoed; a fresh poultice for bulbine's cooling gel. Match the method to the plant, or the medicine is lost.",
+      titbit:"Honey never spoils, and a good tincture barely does. The spirit holds the green long after the fresh plant would have faded."}
+  };
+
+  var NODES={
+    gate:{x:340,y:462,label:"the gate",start:true},
+    kanna:{x:150,y:392},buchu:{x:340,y:392},rosemary:{x:540,y:392},
+    kankerbossie:{x:95,y:312},rooibos:{x:255,y:318},"gotu-kola":{x:430,y:318},"wild-dagga":{x:600,y:312},
+    honeybush:{x:175,y:236},bulbine:{x:345,y:240},pelargonium:{x:520,y:236},
+    "wild-ginger":{x:255,y:158},pepperbark:{x:435,y:158},
+    wormwood:{x:345,y:92},
+    cauldron:{x:345,y:34,label:"the cauldron",heart:true}
+  };
+  var EDGES=[
+    ["gate","kanna"],["gate","buchu"],["gate","rosemary"],
+    ["kanna","kankerbossie"],["kanna","rooibos"],
+    ["buchu","rooibos"],["buchu","gotu-kola"],
+    ["rosemary","gotu-kola"],["rosemary","wild-dagga"],
+    ["kankerbossie","honeybush"],["rooibos","honeybush"],["rooibos","bulbine"],
+    ["gotu-kola","bulbine"],["gotu-kola","pelargonium"],["wild-dagga","pelargonium"],
+    ["honeybush","wild-ginger"],["bulbine","wild-ginger"],["bulbine","pepperbark"],["pelargonium","pepperbark"],
+    ["wild-ginger","wormwood"],["pepperbark","wormwood"],["bulbine","wormwood"],
+    ["wormwood","cauldron"]
+  ];
+  var ADJ={}; for(var k in NODES) ADJ[k]=[];
+  EDGES.forEach(function(e){ADJ[e[0]].push(e[1]);ADJ[e[1]].push(e[0]);});
+
+  var clock=1, current="gate", got={}, NEED=8, LIMIT=13, rung=0, hintUsed={}, cur=null;
+  var AC=null, muted=false; try{ muted=localStorage.getItem('wp_muted')==='1'; }catch(_){}
+  function audio(){ if(!AC){ try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(_){AC=null;} } if(AC&&AC.state==='suspended'){try{AC.resume();}catch(_){}} return AC; }
+  function tone(freq,dur,type,vol,when){ if(!AC||muted)return; var t=AC.currentTime+(when||0); var o=AC.createOscillator(),g=AC.createGain(); o.type=type||'sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||0.18,t+0.012); g.gain.exponentialRampToValueAtTime(0.0006,t+dur); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur+0.04); }
+  function sfxCollect(){ audio(); tone(660,0.18,'sine',0.18,0); tone(880,0.22,'sine',0.16,0.08); tone(1320,0.32,'sine',0.12,0.16); }
+  function sfxMinotaur(){ audio(); tone(110,0.5,'sawtooth',0.2,0); tone(82,0.62,'triangle',0.16,0.03); }
+  function sfxOpen(){ audio(); tone(520,0.12,'triangle',0.12,0); tone(760,0.16,'sine',0.09,0.05); }
+  function sfxStep(){ audio(); tone(300,0.09,'sine',0.09,0); }
+  function sfxWin(){ audio(); [523,659,784,1047].forEach(function(f,i){ tone(f,0.45,'sine',0.16,i*0.13); }); }
+  function sfxLose(){ audio(); tone(196,0.55,'sawtooth',0.16,0); tone(147,0.75,'triangle',0.14,0.13); }
+  (function(){ var mb=$("muteBtn"); if(!mb)return; function paint(){ mb.style.opacity=muted?'0.45':'1'; mb.textContent=muted?'♪̸':'♪'; } paint();
+    mb.addEventListener('click',function(){ muted=!muted; try{localStorage.setItem('wp_muted',muted?'1':'0');}catch(_){}; if(!muted)audio(); paint(); }); })();
+
+  function setBg(src,opacity){ var b=$("bg"); if(src){b.src=src;b.style.opacity=opacity||0.5;var p=b.play();if(p&&p.catch)p.catch(function(){});}else{b.removeAttribute("src");} }
+  function setScene(src){ var im=$("bgImg"); if(src){im.src=src;im.classList.add("on");}else{im.classList.remove("on");im.removeAttribute("src");} }
+  function show(id){ ["boot","map","station","end"].forEach(function(s){$(s).classList.toggle("on",s===id);}); $("hud").classList.toggle("on",id==="map"||id==="station"); }
+  function gotCount(){ return Object.keys(got).length; }
+  function tick(n){ clock+=n; updateClock(); if(clock>LIMIT){ lose(); return true; } return false; }
+  function updateClock(){
+    $("hr").textContent=Math.min(clock,LIMIT);
+    $("clockhand").style.transform="translate(-50%,-100%) rotate("+(clock/LIMIT*360)+"deg)";
+    $("clock").classList.toggle("warn",clock>=11);
+    $("cabN").textContent=gotCount();
+  }
+  function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
+  function pickDistract(pool,correct,n,force){
+    var d=[]; if(force&&force!==correct)d.push(force);
+    var rest=pool.filter(function(x){return x!==correct&&d.indexOf(x)<0;}); shuffle(rest);
+    while(d.length<n&&rest.length)d.push(rest.shift());
+    return d;
+  }
+
+  function renderMap(){
+    var svg=$("mapsvg"),s='',near=ADJ[current];
+    EDGES.forEach(function(e){var a=NODES[e[0]],b=NODES[e[1]];s+='<line class="edge" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'"/>';});
+    for(var key in NODES){
+      var n=NODES[key],isNear=near.indexOf(key)>-1,isCur=key===current,r=8,fill="#1a130d",color="#6b5440";
+      if(n.heart){ color=gotCount()>=NEED?"#6ee84e":"#5a4632"; }
+      else if(got[key]){ color="#6ee84e"; }
+      else if(key==="gate"){ color="#f4c95d"; }
+      else { color="#ff6fb0"; }
+      var glow=(isNear||isCur);
+      s+='<g class="nodeC" data-k="'+key+'">';
+      if(isCur) s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="14" fill="none" stroke="'+color+'" stroke-width="1.5" opacity="0.5"><animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/></circle>';
+      s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+r+'" fill="'+((got[key]||isCur)?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.55)+'"/>';
+      if(got[key]) s+='<text x="'+n.x+'" y="'+(n.y+3.5)+'" text-anchor="middle" font-size="10" fill="#102a10">&#10003;</text>';
+      var lbl=n.label||(BY[key]?BY[key].name:key);
+      s+='<text class="nLabel '+(glow?"near":"")+'" x="'+n.x+'" y="'+(n.y<60?n.y-14:n.y+22)+'" text-anchor="middle">'+lbl+'</text>';
+      s+='</g>';
+    }
+    svg.innerHTML=s;
+    var hint=gotCount()>=NEED?"the cauldron is open — make for the heart":("travel to a glowing station ("+gotCount()+"/"+NEED+" tinctures)");
+    $("mapHint").textContent=hint;
+    Array.prototype.forEach.call(svg.querySelectorAll(".nodeC"),function(g){ g.addEventListener("click",function(){travel(g.getAttribute("data-k"));}); });
+  }
+  function travel(key){
+    if(ADJ[current].indexOf(key)<0) return;
+    var n=NODES[key];
+    if(n.heart){ if(gotCount()>=NEED){ current=key; win(); } else { $("mapHint").textContent="the heart is sealed. gather "+(NEED-gotCount())+" more tinctures."; } return; }
+    current=key;
+    if(got[key]){ renderMap(); return; }
+    startStation(key);
+  }
+
+  function startStation(key){ cur=BY[key]; sfxStep(); rung=0; hintUsed={}; setBg(cur.clip,0.6); setScene(null); show("station"); applyStationPos(cur.pos||"bl");
+    $("stName").textContent="station · "+cur.name; $("stLatin").textContent=cur.latin; renderRung(); }
+  function renderRung(){
+    var q=cur,lab,ques,correct,opts,lt;
+    if(rung===0){ lt="identify"; lab="// the riddle-door — identify"; ques="Two doors, and one always lies, for a look-alike wears another plant's face. Which tell is truly "+q.name+"'s?";
+      correct=q.idClue; var others=shuffle(QUEST.filter(function(x){return x.key!==q.key;})); opts=[correct,others[0].idClue,others[1].idClue]; }
+    else if(rung===1){ lt="harvest"; lab="// the bridge — harvest"; ques="Sir Didymus bars the bridge: name the part that holds the medicine. Which part of "+q.name+" do you take?";
+      correct=q.part; opts=[correct].concat(pickDistract(PARTS,correct,3,q.trap)); }
+    else { lt="extract"; lab="// the stair-stack — extract"; ques="The stair-stack is the still where plant becomes medicine. How do you prepare "+q.name+"?";
+      correct=q.method; opts=[correct].concat(pickDistract(METHODS,correct,3)); }
+    shuffle(opts);
+    $("rungLab").textContent=lab; $("rungQ").textContent=ques;
+    var lb=$("learnBtn"); lb.textContent=(rung===0?"? what is the riddle-door":rung===1?"? who is Sir Didymus":"? what is the stair-stack"); lb.onclick=function(){ openLore(lt); };
+    $("mechBanner").src=(rung===0?"scenes/riddle-door.jpg":rung===1?"scenes/sir-didymus.jpg":"scenes/stair-stack.jpg");
+    var o=$("opts"); o.innerHTML="";
+    opts.forEach(function(opt){ var b=document.createElement("button"); b.className="opt"; b.textContent=opt;
+      b.addEventListener("click",function(){ answer(opt===correct); }); o.appendChild(b); });
+    var c=$("companions"); c.innerHTML="";
+    if(rung===0) addChip(c,"oracular","ask OraCular (-1 hr)",q.oHint,"OraCular reads the leaves");
+    else addChip(c,"stellar","ask Stellar Sage (-1 hr)",q.sHint,"Stellar Sage reads the sky");
+    var pips=$("progress").children; for(var i=0;i<3;i++){ pips[i].className="pip"+(i<rung?" done":i===rung?" cur":""); }
+    live.textContent=ques;
+  }
+  function addChip(parent,who,label,hint,ttl){
+    var b=document.createElement("button"); b.className="chip"; b.textContent=label; if(hintUsed[who])b.disabled=true;
+    b.addEventListener("click",function(){ if(hintUsed[who])return; hintUsed[who]=true; b.disabled=true; if(tick(1))return;
+      $("sageTtl").textContent="// "+ttl; $("sageMsg").textContent=hint; $("sagePop").classList.add("on"); });
+    parent.appendChild(b);
+  }
+  function answer(correct){
+    if(correct){ rung++; if(rung>=3) collect(); else renderRung(); }
+    else { sfxMinotaur(); $("minoMsg").textContent=cur.caution; $("minoPop").classList.add("on"); }
+  }
+  $("minoOk").addEventListener("click",function(){ $("minoPop").classList.remove("on"); tick(1); });
+  $("sageOk").addEventListener("click",function(){ $("sagePop").classList.remove("on"); });
+  function openLore(type){ sfxOpen(); var L=LORE[type];
+    $("loreCard").innerHTML='<h3>'+L.ttl+'</h3>'+
+      '<div class="seclab">// the riddle</div><p>'+L.lore+'</p>'+
+      '<div class="seclab">// the craft</div><p>'+L.craft+'</p>'+
+      '<div class="seclab">// a titbit</div><p class="tit">'+L.titbit+'</p>'+
+      '<button class="btn" id="loreClose" style="margin-top:16px">close the guide</button>';
+    $("lorePop").classList.add("on");
+    $("loreClose").onclick=function(){ $("lorePop").classList.remove("on"); };
+  }
+  $("lorePop").addEventListener("click",function(e){ if(e.target===$("lorePop")){ try{window.speechSynthesis.cancel();}catch(_){}; $("lorePop").classList.remove("on"); } });
+  function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
+  function linkify(t){return esc(t).replace(/((?:https?:\/\/)?[a-z0-9][a-z0-9._-]*\.[a-z]{2,}(?:\/[^\s;,]*)?)/gi,function(m){var h=/^https?:/i.test(m)?m:'https://'+m;return '<a href="'+h+'" target="_blank" rel="noopener" style="color:#5fe3d0">'+m+'</a>';});}
+  fetch("stations.json").then(function(r){return r.json();}).then(function(list){list.forEach(function(s){if(BY[s.key])Object.assign(BY[s.key],{uses:s.uses,actives:s.actives,growable:s.growable,note:s.note,alsoKnown:s.alsoKnown,references:s.references,family:s.family,flags:s.flags});});}).catch(function(){});
+  function plantPills(p){var f=p.flags||{},o='';
+    if(f.focus)o+='<span style="font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid #6a5320;color:#f4c95d;background:rgba(244,201,93,.08)">focus</span> ';
+    if(f.sleep)o+='<span style="font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid #3f5a52;color:#5fe3d0;background:rgba(95,227,208,.08)">calm</span> ';
+    if(f.immunity)o+='<span style="font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid #3f5a32;color:#6ee84e;background:rgba(110,232,78,.08)">immunity</span> ';
+    return o;}
+  function openAlmanac(p){ sfxOpen(); var sec=function(lab,body,warn){return body?('<div class="seclab"'+(warn?' style="color:#ff6fb0"':'')+'>'+lab+'</div><p>'+esc(body)+'</p>'):'';};
+    var canSpeak=!!(window.speechSynthesis&&window.SpeechSynthesisUtterance);
+    $("loreCard").innerHTML='<h3>'+esc(p.name)+'</h3>'+
+      '<p style="font-size:11.5px;color:#9a8f7e;margin:1px 0 8px">'+esc(p.latin)+(p.family?' &middot; '+esc(p.family):'')+(p.alsoKnown?'<br>also known as: '+esc(p.alsoKnown):'')+'</p>'+
+      '<div style="margin-bottom:2px">'+plantPills(p)+'</div>'+
+      sec("// what it does", p.uses)+
+      sec("// the actives", p.actives)+
+      sec("// grow it yourself", p.growable)+
+      (p.note?'<div class="seclab">// wildroots note</div><p class="tit">'+esc(p.note)+'</p>':'')+
+      sec("// mind the minotaur", p.caution, true)+
+      (p.references?'<div class="seclab">// sources</div><p style="font-size:11.5px;color:#9a8f7e;word-break:break-word">'+linkify(p.references)+'</p>':'')+
+      '<div style="margin-top:16px;display:flex;gap:8px">'+(canSpeak?'<button class="btn" id="almSpeak">&#9654; hear it</button>':'')+'<button class="btn" id="loreClose">close</button></div>';
+    $("lorePop").classList.add("on");
+    $("loreClose").onclick=function(){ try{window.speechSynthesis.cancel();}catch(_){}; $("lorePop").classList.remove("on"); };
+    if(canSpeak)$("almSpeak").onclick=function(){ try{window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(p.name+". "+(p.uses||p.caution||""));u.rate=0.97;window.speechSynthesis.speak(u);}catch(_){}};
+  }
+  $("almanacBtn").onclick=function(){ if(cur) openAlmanac(cur); };
+
+  function collect(){
+    got[cur.key]=true; sfxCollect(); if(tick(1))return;
+    $("sageTtl").textContent="// tincture collected";
+    $("sageMsg").innerHTML="<b style='color:#f4c95d'>"+cur.name+"</b> joins your cabinet — "+cur.effect+".<br><span style='color:#9a8f7e;font-size:12px'>"+cur.latin+"</span>";
+    $("sagePop").classList.add("on");
+    var once=function(){ $("sageOk").removeEventListener("click",once); show("map"); setBg(null); setScene(null); renderMap(); };
+    $("sageOk").addEventListener("click",once);
+  }
+
+  function win(){ sfxWin(); setScene(null); setBg(CLIP_BASE+"26.mp4",0.6); show("end");
+    $("end").innerHTML='<div class="kick">// the 13th hour holds</div><h1>The earth is a pharmacy</h1>'+
+      '<div class="sub">You reached the cauldron with '+gotCount()+' tinctures in hand, at hour '+Math.min(clock,LIMIT)+'. The blue-light composts to green; the labyrinth lets you keep what you have learned.</div>'+
+      '<button class="btn" onclick="location.reload()">&gt; walk it again</button>'; }
+  function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end");
+    $("end").innerHTML='<div class="kick" style="color:#ff5a5a">// the 13th hour strikes</div><h1>The minotaur keeps you</h1>'+
+      '<div class="sub">The clock ran out with '+gotCount()+' of '+NEED+' tinctures gathered. The hedges close. But the plants you learned are yours to try again.</div>'+
+      '<button class="btn" onclick="location.reload()">&gt; try again</button>'; }
+
+  $("begin").addEventListener("click",function(){ audio(); show("map"); setBg(null); setScene(null); updateClock(); renderMap(); });
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Enter"&&$("boot").classList.contains("on")) $("begin").click();
+    if(e.key==="Escape"){ $("minoPop").classList.remove("on"); $("sagePop").classList.remove("on"); $("lorePop").classList.remove("on"); }
+  });
+  function clampPanel(){ var pb=$("playbox"); if(!pb.style.left) return; var w=pb.offsetWidth,h=pb.offsetHeight;
+    pb.style.left=Math.max(4,Math.min(parseFloat(pb.style.left),window.innerWidth-w-4))+"px";
+    pb.style.top=Math.max(44,Math.min(parseFloat(pb.style.top),window.innerHeight-h-4))+"px"; }
+  function applyStationPos(pos){ var pb=$("playbox"); pb.style.left=pb.style.right=pb.style.top=pb.style.bottom="auto";
+    if(pos==="tr"){ pb.style.right="18px"; pb.style.top="54px"; }
+    else if(pos==="br"){ pb.style.right="18px"; pb.style.bottom="18px"; }
+    else if(pos==="tl"){ pb.style.left="18px"; pb.style.top="54px"; }
+    else { pb.style.left="18px"; pb.style.bottom="18px"; } }
+  (function(){ var pb=$("playbox"), head=$("pbhead"), d=null;
+    head.addEventListener("pointerdown",function(e){ var r=pb.getBoundingClientRect(); d={dx:e.clientX-r.left,dy:e.clientY-r.top};
+      pb.style.bottom="auto"; pb.style.left=r.left+"px"; pb.style.top=r.top+"px"; try{head.setPointerCapture(e.pointerId);}catch(_){}; e.preventDefault(); });
+    head.addEventListener("pointermove",function(e){ if(!d)return; var w=pb.offsetWidth,h=pb.offsetHeight;
+      pb.style.left=Math.max(4,Math.min(e.clientX-d.dx,window.innerWidth-w-4))+"px";
+      pb.style.top=Math.max(44,Math.min(e.clientY-d.dy,window.innerHeight-h-4))+"px"; });
+    function end(){ d=null; }
+    head.addEventListener("pointerup",end); head.addEventListener("pointercancel",end);
+    window.addEventListener("resize",clampPanel);
+  })();
+  (function(){ var au=$("companion"), btn=$("companionBtn"); if(!au||!btn)return;
+    btn.addEventListener('click',function(){ if(au.paused){ var p=au.play(); if(p&&p.then){p.then(function(){btn.innerHTML='&#10073;&#10073; pause the companion';}).catch(function(){});} else btn.innerHTML='&#10073;&#10073; pause the companion'; } else { au.pause(); btn.innerHTML='&#9654; play the audio companion'; } });
+    au.addEventListener('ended',function(){ btn.innerHTML='&#9654; play the audio companion'; });
+  })();
+  updateClock();
+})();
+</script>
+</body>
+</html>

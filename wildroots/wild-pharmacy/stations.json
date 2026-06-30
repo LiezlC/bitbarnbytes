@@ -1,0 +1,262 @@
+[
+  {
+    "key": "kanna",
+    "scene": 11,
+    "common": "Sceletium (Kanna)",
+    "latin": "Mesembryanthemum tortuosum (syn. Sceletium tortuosum)",
+    "family": "Aizoaceae",
+    "part": "Aerial parts, fermented",
+    "flags": {
+      "focus": true,
+      "sleep": true,
+      "immunity": true
+    },
+    "actives": "Mesembrine, mesembrenone (alkaloids)",
+    "uses": "Used successfully by psychiatrists/psychologists for anxiety and mild-to-moderate depression; lay use to elevate mood and ease stress and tension; traditional appetite suppressant on long arid walks. Not hallucinogenic; no documented severe adverse effects or withdrawal.",
+    "growable": "Easy — SA native succulent, drought-hardy",
+    "note": "★ SA native; signature Wildroots story plant (your Parceval thread)",
+    "cautions": "Do NOT combine with SSRIs / other antidepressants (serotonergic). Avoid in pregnancy. Intoxicating doses cause euphoria then sedation.",
+    "alsoKnown": "Kanna; kougoed",
+    "references": "sceletium.com/sceletium-uses.asp; sceletium.org"
+  },
+  {
+    "key": "kankerbossie",
+    "scene": 12,
+    "common": "Kankerbossie (Cancer bush)",
+    "latin": "Sutherlandia frutescens (Lessertia frutescens)",
+    "family": "Fabaceae",
+    "part": "Aerial parts",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": true
+    },
+    "actives": "L-canavanine, pinitol, GABA, SU1 saponins",
+    "uses": "Native SA tonic: well-being, immune support, longevity, stress/depression/anxiety; wasting from cancer, TB, AIDS; flu, CFS/ME, viral hepatitis, asthma, bronchitis, type-2 diabetes, mild hypertension, rheumatoid arthritis, peptic ulcer/reflux, menopause. Zulu warriors used it to unwind; widows as an anti-depressant.",
+    "growable": "Easy — SA native, drought-hardy",
+    "note": "★ SA native standout — strong Wildroots fit",
+    "cautions": "Avoid in pregnancy & breastfeeding; caution with immunosuppressants and in active autoimmune disease.",
+    "alsoKnown": "Cancer bush; insiswa ('that which takes away the dark')",
+    "references": "sutherlandia.org; sutherlandia.com"
+  },
+  {
+    "key": "buchu",
+    "scene": 13,
+    "common": "Buchu",
+    "latin": "Agathosma betulina (Barosma b.)",
+    "family": "Rutaceae",
+    "part": "Leaf",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Diosphenol, pulegone, flavonoids",
+    "uses": "Valued in Cape herbal practice for urinary and digestive support; reputed for its aromatic volatile oils and diuretic properties; long history in SA indigenous wellness.",
+    "growable": "Easy — Overberg fynbos native",
+    "note": "★ SA fynbos native — flagship local-apothecary plant",
+    "cautions": "Avoid in pregnancy & kidney inflammation; can irritate in large doses.",
+    "alsoKnown": "boegoe, bookoo",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "rooibos",
+    "scene": 14,
+    "common": "Rooibos",
+    "latin": "Aspalathus linearis",
+    "family": "Fabaceae",
+    "part": "Leaf",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Aspalathin, nothofagin (antioxidants)",
+    "uses": "South African endemic taken as a caffeine-free infusion; valued for general wellness and as a soothing beverage, with a notable antioxidant profile.",
+    "growable": "With care — needs acid sandy fynbos soil",
+    "note": "★ SA fynbos native (Cederberg); iconic",
+    "cautions": "Very safe, caffeine-free; rare interaction with some liver-metabolised meds.",
+    "alsoKnown": "red bush, rooibos tea",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "honeybush",
+    "scene": 15,
+    "common": "Honeybush",
+    "latin": "Cyclopia intermedia",
+    "family": "Fabaceae",
+    "part": "Leaf / herb",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Mangiferin, flavonoids",
+    "uses": "Cape native brewed as a sweet herbal tea; valued in SA folk practice for respiratory comfort and general vitality.",
+    "growable": "Easy — Cape fynbos incl. Overberg",
+    "note": "★ SA fynbos native — local-grow tea",
+    "cautions": "Very safe, caffeine-free; mild phyto-estrogen — caution in hormone-sensitive cases.",
+    "alsoKnown": "heuningbos",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "bulbine",
+    "scene": 16,
+    "common": "Bulbine (burn jelly)",
+    "latin": "Bulbine frutescens",
+    "family": "Asphodelaceae",
+    "part": "Leaf (gel)",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Glycosides, anthraquinones",
+    "uses": "South African succulent used in Xhosa and Zulu herbalism for skin and wound care; the cooling fresh gel applied topically.",
+    "growable": "Easy — SA native succulent, hardy",
+    "note": "★ SA native; effortless garden medicine",
+    "cautions": "External/fresh-gel use; do not eat the raw leaf in quantity.",
+    "alsoKnown": "jelly leaf, burn jelly plant, snake flower",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "wild-dagga",
+    "scene": 17,
+    "common": "Wild dagga / Lion's tail",
+    "latin": "Leonotis leonurus",
+    "family": "Lamiaceae",
+    "part": "Leaf / flower",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Leonurine, marrubiin, labdane diterpenes",
+    "uses": "Southern African native traditionally smoked or brewed; valued for relaxation and mild euphoric effect; part of regional indigenous botanical knowledge.",
+    "growable": "Easy — SA native, bird-friendly",
+    "note": "★ SA native; easy & striking",
+    "cautions": "Sedating in quantity; avoid in pregnancy; not the same as cannabis but use sensibly.",
+    "alsoKnown": "lion's ear, minaret flower",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "pepperbark",
+    "scene": 18,
+    "common": "Pepperbark",
+    "latin": "Warburgia salutaris",
+    "family": "Canellaceae",
+    "part": "Bark / leaf",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": true
+    },
+    "actives": "Drimane sesquiterpenes (warburganal)",
+    "uses": "SA expectorant for dry cough; colds, chest infections, sinusitis, malaria, stomach ulcers, toothache, skin; bark/leaf smoked or as snuff to clear sinuses.",
+    "growable": "With care — SA native tree, ENDANGERED",
+    "note": "★ SA native (use leaf, conserve; do not strip bark)",
+    "cautions": "ENDANGERED — use cultivated leaf only, never wild bark. Avoid in pregnancy.",
+    "alsoKnown": "Pepperbark tree; isibhaha",
+    "references": "sahealthinfo.org warburgia; plantzafrica.com/plantwxyz/warburg.htm"
+  },
+  {
+    "key": "wild-ginger",
+    "scene": 19,
+    "common": "African wild ginger",
+    "latin": "Siphonochilus aethiopicus",
+    "family": "Zingiberaceae",
+    "part": "Rhizome",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Sesquiterpenoids",
+    "uses": "Southern African plant used in indigenous herbalism for colds, coughs and warming digestive support; culinary and remedial; limited modern documentation.",
+    "growable": "With care — subtropical; CRITICALLY ENDANGERED",
+    "note": "★ SA native — grow to conserve, never wild-harvest",
+    "cautions": "Generally safe; large doses thin blood / caution with anticoagulants & gallstones.",
+    "alsoKnown": "wilde gemmer, isiphephetho",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  },
+  {
+    "key": "rosemary",
+    "scene": 20,
+    "common": "Rosemary",
+    "latin": "Salvia rosmarinus (Rosmarinus officinalis)",
+    "family": "Lamiaceae",
+    "part": "Leaf / oil",
+    "flags": {
+      "focus": true,
+      "sleep": false,
+      "immunity": false
+    },
+    "actives": "Carnosic acid, 1,8-cineole, rosmarinic acid",
+    "uses": "Tonic, astringent, diaphoretic, stimulant; internally for depression, apathy, nervous exhaustion, headaches, poor circulation, anxiety-driven digestion; relaxes smooth muscle (digestion, menstrual cramps); topical for rheumatism, hair, skin, circulation; antioxidant/anti-ageing.",
+    "growable": "Easy — fynbos-friendly Mediterranean",
+    "note": "★ Easy garden grow",
+    "cautions": "Generally safe in culinary/therapeutic doses; caution if prone to epileptic seizures or allergy; large amounts can irritate the gut.",
+    "alsoKnown": "Rosemary",
+    "references": "gardenguides.com; ageless.co.za/rosemary4.htm"
+  },
+  {
+    "key": "gotu-kola",
+    "scene": 21,
+    "common": "Gotu kola",
+    "latin": "Centella asiatica",
+    "family": "Apiaceae",
+    "part": "Leaf / whole herb",
+    "flags": {
+      "focus": true,
+      "sleep": false,
+      "immunity": true
+    },
+    "actives": "Triterpenes (asiaticoside, madecassoside)",
+    "uses": "Wound healing, circulation, memory & concentration, general/adaptogenic tonic, skin (psoriasis, eczema, scars), connective tissue, blood purifier, mild diuretic, anti-stress/anti-anxiety, calming. 3,000 yrs Ayurvedic use; China's 'Fountain of Youth'.",
+    "growable": "Easy — moist/shade, container-friendly",
+    "note": "★ Easy local grow (loves damp)",
+    "cautions": "Avoid in pregnancy & liver disease. May cause drowsiness; large doses can irritate.",
+    "alsoKnown": "Indian Pennywort; Mandookaparni; Brahmi",
+    "references": "Wikipedia; ageless.co.za/herb-centella.htm; anyvitamins.com"
+  },
+  {
+    "key": "pelargonium",
+    "scene": 22,
+    "common": "Pelargonium (Umckaloabo)",
+    "latin": "Pelargonium sidoides",
+    "family": "Geraniaceae",
+    "part": "Root",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": true
+    },
+    "actives": "Coumarins, gallic-acid derivatives",
+    "uses": "Coughs & chest troubles (essential oils); antibacterial vs Streptococci, Staphylococci, Bacillus cereus; rich in phytochemicals, vitamins, minerals, amino acids; rapidly eases cough, fever, sore throat, fatigue, weakness.",
+    "growable": "Easy — SA native, drought-hardy",
+    "note": "★ SA native standout — strong Wildroots fit",
+    "cautions": "Rare liver reactions reported; avoid with anticoagulants & in pregnancy.",
+    "alsoKnown": "Rooirabas; Umckaloabo",
+    "references": "herbalafrica.co.za/HerbsPelargonium.htm"
+  },
+  {
+    "key": "wormwood",
+    "scene": 23,
+    "common": "Wormwood / Wilde-als",
+    "latin": "Artemisia absinthium (SA Wilde-als = A. afra)",
+    "family": "Asteraceae",
+    "part": "Aerial parts",
+    "flags": {
+      "focus": false,
+      "sleep": false,
+      "immunity": true
+    },
+    "actives": "Thujone, absinthin, artemisinin (related spp.)",
+    "uses": "Digestive bitter, antiparasitic; A. afra (native) for colds, fever, coughs, flu.",
+    "growable": "Easy — esp. native A. afra",
+    "note": "★ Native A. afra is easy & traditional",
+    "cautions": "Contains thujone — short-term only; AVOID in pregnancy & epilepsy. Not for long use.",
+    "alsoKnown": "Wilde-als; absinthe wormwood (SA als = Artemisia afra)",
+    "references": "General herb sources: Wikipedia; Mount Sinai/UMM herb DB; EMA HMPC monographs; ageless.co.za"
+  }
+]

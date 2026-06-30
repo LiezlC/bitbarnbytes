@@ -7,8 +7,9 @@
   },
   "scripts": {
     "stage-digdeeper": "node scripts/stage-digdeeper.mjs",
-    "predev": "node scripts/stage-digdeeper.mjs",
-    "prebuild": "node scripts/stage-digdeeper.mjs",
+    "stage-wildpharmacy": "node scripts/stage-wildpharmacy.mjs",
+    "predev": "node scripts/stage-digdeeper.mjs && node scripts/stage-wildpharmacy.mjs",
+    "prebuild": "node scripts/stage-digdeeper.mjs && node scripts/stage-wildpharmacy.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
