@@ -18,7 +18,8 @@ const HERE = dirname(fileURLToPath(import.meta.url));         // saraloosa-os/sc
 const REPO = join(HERE, "..", "..");                          // repo root
 const WILDROOTS = join(REPO, "wildroots");
 const SRC_HTML = join(WILDROOTS, "dig-deeper", "index.html");
-const OUT = join(HERE, "..", "public", "dig-deeper");
+const PUBLIC = join(HERE, "..", "public");
+const OUT = join(PUBLIC, "dig-deeper");
 
 if (!existsSync(SRC_HTML)) {
   console.warn(`[stage-digdeeper] ${SRC_HTML} not found — skipping (dig-deeper not staged).`);
@@ -62,6 +63,9 @@ for (const rel of [...refs].sort()) {
   if (!existsSync(src)) {
     const hit = findByName(basename(rel));
     if (hit) { src = hit; outRel = relative(WILDROOTS, hit).split("\\").join("/"); }
+    // absolute refs like /img/cover/*.webp are committed static assets under
+    // public/ — served directly, not staged from wildroots/. Not missing.
+    else if (existsSync(join(PUBLIC, rel))) { continue; }
     else { missing.push(rel); continue; }
   }
   const dst = join(OUT, outRel);
