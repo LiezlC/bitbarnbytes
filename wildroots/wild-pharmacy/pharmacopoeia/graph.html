@@ -35,6 +35,18 @@
   #info h3{font-size:14px;color:var(--gold);font-weight:500;margin-bottom:3px}
   #info .lat{font-size:10.5px;color:var(--mute);font-style:italic;margin-bottom:7px}
   #info .row{margin:4px 0} #info .k{font-weight:500}
+
+  #info .close{display:none}
+  @media (max-width:640px){
+    #hud{padding:10px 12px} .ttl{font-size:12px} .sub{font-size:10px}
+    #panel select{padding:4px 7px;max-width:46vw}
+    #legend{left:8px;right:8px;bottom:8px;max-width:none;gap:7px 9px;font-size:11px;justify-content:center;max-height:78px;overflow:auto}
+    #legend span{padding:2px 1px}
+    #legend i{width:11px;height:11px}
+    #hint{display:none} .scene-nav-info{display:none!important}
+    #info{left:8px;right:8px;bottom:98px;max-width:none;max-height:40vh;font-size:12px}
+    #info .close{display:block;position:absolute;top:7px;right:11px;color:#caa15a;font-size:20px;line-height:1;cursor:pointer}
+  }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.4/dist/3d-force-graph.min.js"></script>
@@ -69,6 +81,7 @@
     region:"grows-in", use:"other-use", caution:"caution", constituent:"constituent", family:"family", origin:"origin" };
   const data = window.__GRAPH__;
   const byId = new Map(data.nodes.map(n => [n.id, n]));
+  const isMobile = matchMedia("(pointer:coarse)").matches || innerWidth < 700;
   function end(x) { return typeof x === "object" ? x : byId.get(x); }
 
   // probe for the garden backdrop (only show it if the file exists)
@@ -118,10 +131,11 @@
     .linkDirectionalParticles(l => hl.links.has(l) ? 4 : 0)
     .linkDirectionalParticleSpeed(0.012).linkDirectionalParticleWidth(1.8)
     .linkCurvature(0.16)
-    .warmupTicks(60).cooldownTicks(220)
+    .warmupTicks(60).cooldownTicks(isMobile?140:220)
     .onNodeClick(onNodeClick).onBackgroundClick(reset);
   Graph.d3Force("charge").strength(-32);
-  let _fitted=false; Graph.onEngineStop(()=>{ if(!_fitted){ _fitted=true; Graph.zoomToFit(700,90); } });
+  try{ Graph.renderer().setPixelRatio(Math.min(window.devicePixelRatio||1, isMobile?1.5:2)); }catch(_){}
+  let _fitted=false; Graph.onEngineStop(()=>{ if(!_fitted){ _fitted=true; Graph.zoomToFit(700, isMobile?26:90); } });
 
   const neigh = new Map(), inc = new Map();
   for (const l of data.links) {
@@ -173,11 +187,11 @@
     if (n.type === "plant") {
       const g = {};
       (inc.get(n.id) || []).forEach(l => { const o = end(l.source).id === n.id ? end(l.target) : end(l.source); (g[o.type] = g[o.type] || []).push(o.label); });
-      info.innerHTML = '<h3>' + n.label + '</h3>' + (n.latin ? '<div class="lat">' + n.latin + '</div>' : '') +
+      info.innerHTML = '<span class="close" onclick="window.PHARMA.reset()">&times;</span><h3>' + n.label + '</h3>' + (n.latin ? '<div class="lat">' + n.latin + '</div>' : '') +
         Object.keys(LABELS).filter(t => g[t]).map(t => '<div class="row"><span class="k" style="color:' + COLORS[t] + '">' + LABELS[t] + ':</span> ' + [...new Set(g[t])].join(", ") + '</div>').join('');
     } else {
       const plants = (inc.get(n.id) || []).map(l => end(l.source).id === n.id ? end(l.target) : end(l.source)).filter(x => x.type === "plant");
-      info.innerHTML = '<h3 style="color:' + COLORS[n.type] + '">' + n.label + '</h3><div class="lat">' + LABELS[n.type] + ' · shared by ' + plants.length + ' plants</div>' +
+      info.innerHTML = '<span class="close" onclick="window.PHARMA.reset()">&times;</span><h3 style="color:' + COLORS[n.type] + '">' + n.label + '</h3><div class="lat">' + LABELS[n.type] + ' · shared by ' + plants.length + ' plants</div>' +
         '<div class="row">' + plants.map(p => p.label).sort().join(" · ") + '</div>';
     }
   }
