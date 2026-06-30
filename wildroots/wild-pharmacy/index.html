@@ -37,6 +37,8 @@
   html,body{height:100%}
   body{background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden;-webkit-font-smoothing:antialiased}
   .fill{position:fixed;inset:0;pointer-events:none}
+  #worldbg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease;background:var(--ink)}
+  #worldbg.on{opacity:.5}
   #bg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.5;background:var(--ink)}
   #bgImg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;background:var(--ink);display:none}
   #bgImg.on{display:block}
@@ -168,6 +170,7 @@
 </head>
 <body>
   <p class="sr" aria-live="polite" id="live"></p>
+  <img id="worldbg" class="fill" alt="" />
   <video id="bg" class="fill" muted loop playsinline></video>
   <img id="bgImg" class="fill" alt="" />
   <!-- streams from Cloudinary; swap to audio/WildPharmacy_narration_anime.mp3 for offline use -->
@@ -437,7 +440,8 @@
 
   function setBg(src,opacity){ var b=$("bg"); if(src){b.src=src;b.style.opacity=opacity||0.5;var p=b.play();if(p&&p.catch)p.catch(function(){});}else{b.removeAttribute("src");} }
   function setScene(src){ var im=$("bgImg"); if(src){im.src=src;im.classList.add("on");}else{im.classList.remove("on");im.removeAttribute("src");} }
-  function show(id){ ["boot","map","station","end"].forEach(function(s){$(s).classList.toggle("on",s===id);}); $("hud").classList.toggle("on",id==="map"||id==="station"); }
+  function show(id){ ["boot","map","station","end"].forEach(function(s){$(s).classList.toggle("on",s===id);}); $("hud").classList.toggle("on",id==="map"||id==="station");
+    var wb=$("worldbg"); if(wb){ if(!wb.getAttribute("src"))wb.src="assets/map-bg.jpg"; wb.classList.toggle("on",id==="boot"||id==="map"); } }
   function gotCount(){ return Object.keys(got).length; }
   function tick(n){ clock+=n; updateClock(); if(clock>LIMIT){ lose(); return true; } return false; }
   function updateClock(){
@@ -658,6 +662,7 @@
     btn.addEventListener('click',function(){ if(au.paused){ var p=au.play(); if(p&&p.then){p.then(function(){btn.innerHTML='&#10073;&#10073; pause the companion';}).catch(function(){});} else btn.innerHTML='&#10073;&#10073; pause the companion'; } else { au.pause(); btn.innerHTML='&#9654; play the audio companion'; } });
     au.addEventListener('ended',function(){ btn.innerHTML='&#9654; play the audio companion'; });
   })();
+  (function(){ var wb=$("worldbg"); if(wb){ wb.src="assets/map-bg.jpg"; wb.classList.add("on"); } })();
   updateClock();
 })();
 </script>

@@ -23,7 +23,7 @@
 
 ## Tier C — Visual
 - [~] C1 Mine frames_anime into tokens/icons — Learning Loop extracted (assets/learning-loop.png); goat/botanicals/bottles still need Liezl pointing at a contact sheet
-- [ ] C2 Dark nim (Seedream) scenes for gate / cauldron / map backdrop (handover polish; needs credits)
+- [x] C2 Dark nim (Seedream 4.5) atmospheric labyrinth backdrop (assets/map-bg.jpg) wired as a faint wash behind the title + map screens (opacity .5 under scrim). Generated 2 variations, picked the symmetric cauldron-centred one. ~20 credits.
 - [x] C3 Favicon (assets/favicon.svg) + app icons (icon-192/512/180 from the cauldron plate) + composed OG share image (assets/og.jpg, 1200x630 over slide_06)
 
 ## Tier D — Distribution
