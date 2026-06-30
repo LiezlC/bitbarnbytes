@@ -52,7 +52,7 @@ const loreArticleSchemas = lore.map((entry) => ({
 
     <!-- ============ EXILE LOGS ============ -->
     <div class="space-y-5">
-      <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// EXILE_LOGS</h2>
+      <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// EXILE_LOGS</h2>
       {lore.length === 0 && (
         <p class="text-sm text-soil-700 font-mono">&gt; no chronicles compiled yet. The compost is still warming.</p>
       )}
@@ -61,7 +61,7 @@ const loreArticleSchemas = lore.map((entry) => ({
         return (
           <article class="border border-soil-700 p-6 space-y-3">
             <div class="flex items-center justify-between gap-4 flex-wrap">
-              <span class="text-[10px] uppercase tracking-wider text-terminal-amber font-bold border border-terminal-amber/40 px-2 py-1">exile: {entry.exile}</span>
+              <span class="text-[10px] uppercase tracking-wider text-leaf font-bold border border-leaf/40 px-2 py-1">exile: {entry.exile}</span>
               <time datetime={entry.date} class="text-[10px] text-soil-700 font-mono">{entry.date}</time>
             </div>
             <h3 class="text-terminal-amber font-bold text-lg">{entry.title}</h3>
@@ -73,7 +73,7 @@ const loreArticleSchemas = lore.map((entry) => ({
 
     <!-- ============ SYSTEM / FIELD LOGS ============ -->
     <div class="space-y-4">
-      <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// FIELD_NOTES — SYS_LOG</h2>
+      <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// FIELD_NOTES — SYS_LOG</h2>
       <div class="border border-soil-700 divide-y divide-soil-700">
         {notes.map((note) => {
           const Body = note.Body;
@@ -88,7 +88,7 @@ const loreArticleSchemas = lore.map((entry) => ({
     </div>
 
     <div class="text-center pt-2">
-      <a href="/the_syllabus" class="inline-block text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors font-mono px-4 py-2">&gt; the cure: boot the syllabus</a>
+      <a href="/the_syllabus" class="inline-block text-xs text-leaf border border-leaf/60 hover:bg-leaf hover:text-soil-900 transition-colors font-mono px-4 py-2">&gt; the cure: boot the syllabus</a>
     </div>
 
   </section>

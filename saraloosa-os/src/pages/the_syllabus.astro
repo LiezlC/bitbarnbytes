@@ -43,7 +43,7 @@ const courseListSchema = {
 
     <!-- ============ BOOT SEQUENCE DIAGNOSTIC ============ -->
     <div class="border border-terminal-amber/40 p-6 space-y-4" id="boot">
-      <h2 class="text-xs uppercase tracking-wider text-terminal-amber font-bold">// THE_BOOT_SEQUENCE</h2>
+      <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// THE_BOOT_SEQUENCE</h2>
       <p class="font-serif text-sm text-soil-100">Describe how you're running lately — the fatigue, the loops, the thing that's off. SageByte will match you to your Exile archetype and the module that recompiles it.</p>
 
       <label for="bootInput" class="sr-only">Describe how you are running lately — fatigue, loops, what is off</label>
@@ -54,7 +54,7 @@ const courseListSchema = {
       <p id="bootHint" class="text-[10px] text-soil-700 font-mono">Max 600 characters. Press Ctrl+Enter or Cmd+Enter to run.</p>
 
       <button id="bootBtn" type="button" aria-controls="bootResult"
-        class="text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors font-mono px-4 py-2 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">
+        class="text-xs text-leaf border border-leaf/60 hover:bg-leaf hover:text-soil-900 transition-colors font-mono px-4 py-2 disabled:opacity-40 focus-visible:outline focus-visible:outline-2 focus-visible:outline-leaf">
         &gt; run_diagnostic
       </button>
 
@@ -63,15 +63,15 @@ const courseListSchema = {
 
     <!-- ============ THE MODULES ============ -->
     <div class="space-y-4">
-      <h2 class="text-xs uppercase tracking-wider text-soil-700 font-bold">// THE_FOUR_MODULES</h2>
+      <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// THE_FOUR_MODULES</h2>
       <div class="grid md:grid-cols-2 gap-4">
         {MODULES.map((m) => (
           <div id={`module-${m.number}`} class="border border-soil-700 p-5 space-y-2 scroll-mt-24">
-            <div class="text-[10px] uppercase tracking-wider text-soil-700 font-bold">// 0{m.number} / {m.subtitle}</div>
+            <div class="text-[10px] uppercase tracking-wider text-leaf font-bold">// 0{m.number} / {m.subtitle}</div>
             <h3 class="text-terminal-amber font-bold text-lg">{m.title}</h3>
             <p class="font-serif text-sm text-soil-100">{m.skill}</p>
-            <p class="text-xs text-soil-100/80"><span class="text-terminal-amber">lab:</span> {m.lab}</p>
-            <p class="text-xs italic text-terminal-amber/90 border-l-2 border-terminal-amber/40 pl-3 mt-2">"{m.keyPhrase}"</p>
+            <p class="text-xs text-soil-100/80"><span class="text-leaf">lab:</span> {m.lab}</p>
+            <p class="text-xs italic text-leaf/90 border-l-2 border-leaf/40 pl-3 mt-2">"{m.keyPhrase}"</p>
           </div>
         ))}
       </div>
@@ -95,12 +95,12 @@ const courseListSchema = {
     const n = v.moduleNumber;
     out.innerHTML = `
       <div class="border border-terminal-amber/60 bg-soil-900 p-4 mt-2 space-y-3 font-mono">
-        <div class="text-[10px] uppercase tracking-wider text-soil-700">// diagnostic_complete</div>
+        <div class="text-[10px] uppercase tracking-wider text-leaf">// diagnostic_complete</div>
         <div class="text-terminal-amber font-bold text-lg">${esc(v.glyph)} ${esc(v.archetype)}</div>
         <p class="font-serif text-sm text-soil-100 leading-relaxed">${esc(v.diagnosis)}</p>
-        <p class="text-xs italic text-terminal-amber/90 border-l-2 border-terminal-amber/40 pl-3">"${esc(v.keyPhrase)}"</p>
-        <div class="text-xs text-soil-100/80"><span class="text-terminal-amber">prescription:</span> ${esc(v.prescription)}</div>
-        <a href="#module-${n}" class="inline-block text-xs text-terminal-amber border border-terminal-amber/60 hover:bg-terminal-amber hover:text-soil-900 transition-colors px-4 py-2 mt-1">&gt; boot Module 0${n}: ${esc(v.module?.title)}</a>
+        <p class="text-xs italic text-leaf/90 border-l-2 border-leaf/40 pl-3">"${esc(v.keyPhrase)}"</p>
+        <div class="text-xs text-soil-100/80"><span class="text-leaf">prescription:</span> ${esc(v.prescription)}</div>
+        <a href="#module-${n}" class="inline-block text-xs text-leaf border border-leaf/60 hover:bg-leaf hover:text-soil-900 transition-colors px-4 py-2 mt-1">&gt; boot Module 0${n}: ${esc(v.module?.title)}</a>
       </div>`;
     const card = document.getElementById('module-' + n);
     if (card) {
@@ -113,7 +113,7 @@ const courseListSchema = {
     const text = input.value.trim();
     if (!text) { input.focus(); return; }
     btn.disabled = true;
-    out.innerHTML = `<div class="text-terminal-amber/80 font-mono text-xs mt-2 animate-pulse">&gt; reading runtime… compiling diagnosis…</div>`;
+    out.innerHTML = `<div class="text-leaf/80 font-mono text-xs mt-2 animate-pulse">&gt; reading runtime… compiling diagnosis…</div>`;
     try {
       const r = await fetch('/api/boot', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ input: text }) });
       const data = await r.json();
