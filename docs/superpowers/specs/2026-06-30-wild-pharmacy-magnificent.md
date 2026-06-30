@@ -32,8 +32,8 @@
 - [x] D3 PWA: manifest.webmanifest + sw.js service worker (same-origin shell cache; Cloudinary + /api/ pass through) → installable, offline shell. SW registered + controlling (verified).
 
 ## Tier E — Depth
-- [ ] E1 Expansion herbs from Apothecary_Index.xlsx beyond 13
-- [ ] E2 Restructure labyrinth by ORIGIN + EFFECT-PATH branching hallways (keeps the de-claimed 13)
+- [x] E2 (framing slice) "The Garden" view: the 13 grouped by EFFECT-PATH (Focus, Calm, Immunity & Breath, Digestive, Skin, Tonic) and labelled by ORIGIN (10 SA-native; rosemary Mediterranean, gotu kola Asian, wormwood hedged). Discovery-gated, on the title menu. Brings the origin/effect-path framing into the live game without map surgery.
+- [ ] E1 + full E2 (next sub-project): mine more herbs from Apothecary_Index.xlsx, generate clips/scenes for them, and grow the actual labyrinth into branching origin/effect-path HALLWAYS. Needs its own brainstorm → spec → clips. The Garden view is the seed of its information architecture.
 
 ## Arsenal notes
 - Cloudinary LIVE (cloud `dpowc778t`); clips + audio streamed. Creds in gitignored `saraloosa-os/.env`.

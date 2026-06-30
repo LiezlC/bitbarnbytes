@@ -193,6 +193,7 @@
     </div>
     <div class="menurow">
       <button class="btn" id="howBtn">the learning loop</button>
+      <button class="btn" id="gardenBtn">the garden</button>
       <button class="btn" id="codexBtn">the codex</button>
       <button class="btn" id="badgeBtn">trophies</button>
     </div>
@@ -231,6 +232,7 @@
   <div class="pop" id="badgePop"><div class="card lore" id="badgeCard" role="dialog" aria-modal="true" aria-label="trophies"></div></div>
   <div class="pop" id="howPop"><div class="card lore" id="howCard" role="dialog" aria-modal="true" aria-label="the learning loop"></div></div>
   <div class="pop" id="oraclePop"><div class="card sage" id="oracleCard" role="dialog" aria-modal="true" aria-label="the soil oracle"></div></div>
+  <div class="pop" id="gardenPop"><div class="card lore" id="gardenCard" role="dialog" aria-modal="true" aria-label="the garden"></div></div>
 
   <div id="flash" aria-hidden="true"><div class="door"></div><div class="tick">&#10003;</div></div>
   <div id="toasts" aria-live="polite"></div>
@@ -426,6 +428,28 @@
     $("oClose").onclick=function(){ closePop("oraclePop"); };
     setTimeout(function(){ try{ $("oq").focus(); }catch(_){} },60); }
   $("oracleBtn").onclick=openOracle;
+
+  // ---------- the garden: the thirteen by effect-path + origin (Tier E framing) ----------
+  var EFFECTPATH={ kanna:"calm","wild-dagga":"calm", kankerbossie:"immune",pepperbark:"immune","wild-ginger":"immune",pelargonium:"immune",
+    buchu:"digest",wormwood:"digest", bulbine:"skin", rosemary:"focus","gotu-kola":"focus", rooibos:"tonic",honeybush:"tonic" };
+  var PATHMETA={ focus:{name:"Focus & Memory",em:"&#129504;"}, calm:{name:"Calm & Unwind",em:"&#127769;"}, immune:{name:"Immunity & Breath",em:"&#128737;"},
+    digest:{name:"Digestive & Bitter",em:"&#127861;"}, skin:{name:"Skin & Wound",em:"&#129657;"}, tonic:{name:"Daily Tonic",em:"&#9749;"} };
+  var ORIGIN={ rosemary:"Mediterranean", "gotu-kola":"Asian", wormwood:"SA / European (hedged)" };
+  function originOf(k){ return ORIGIN[k]||"SA native"; }
+  function openGarden(){ sfxOpen();
+    var sa=QUEST.filter(function(q){return originOf(q.key)==="SA native";}).length;
+    var s='<h3>the garden</h3>'+
+      '<p style="font-size:12px;color:#9a8f7e;margin:1px 0 4px">The thirteen, grouped by the path they walk. '+sa+' of '+QUEST.length+' are Southern African natives; the rest are old travellers (Mediterranean, Asian). The labyrinth does not claim them all as one soil.</p>';
+    ["focus","calm","immune","digest","skin","tonic"].forEach(function(pk){ var pm=PATHMETA[pk];
+      var members=QUEST.filter(function(q){ return EFFECTPATH[q.key]===pk; }); if(!members.length)return;
+      s+='<div class="seclab" style="color:#f4c95d">'+pm.em+' '+pm.name+'</div><div class="cxGrid">';
+      members.forEach(function(q){ var seen=SAVE.codex[q.key];
+        s+='<div class="cx'+(seen?'':' unseen')+'" data-k="'+q.key+'"><div class="cn">'+(seen?esc(q.name):"? ? ?")+'</div><div class="cl">'+esc(originOf(q.key))+'</div></div>'; });
+      s+='</div>'; });
+    s+='<div style="margin-top:14px"><button class="btn" id="gdClose">close</button></div>';
+    $("gardenCard").innerHTML=s; openPop("gardenPop"); $("gdClose").onclick=function(){ closePop("gardenPop"); };
+    Array.prototype.forEach.call($("gardenCard").querySelectorAll(".cx:not(.unseen)"),function(el){ el.onclick=function(){ var q=BY[el.getAttribute("data-k")]; if(q){ closePop("gardenPop"); openAlmanac(q); } }; }); }
+  $("gardenBtn").onclick=openGarden;
   var AC=null, muted=false; try{ muted=localStorage.getItem('wp_muted')==='1'; }catch(_){}
   function audio(){ if(!AC){ try{AC=new (window.AudioContext||window.webkitAudioContext)();}catch(_){AC=null;} } if(AC&&AC.state==='suspended'){try{AC.resume();}catch(_){}} return AC; }
   function tone(freq,dur,type,vol,when){ if(!AC||muted)return; var t=AC.currentTime+(when||0); var o=AC.createOscillator(),g=AC.createGain(); o.type=type||'sine'; o.frequency.value=freq; g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(vol||0.18,t+0.012); g.gain.exponentialRampToValueAtTime(0.0006,t+dur); o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur+0.04); }
@@ -635,7 +659,7 @@
     if(e.key==="Escape"){
       if($("minoPop").classList.contains("on")){ $("minoOk").click(); return; }
       if($("sagePop").classList.contains("on")){ $("sageOk").click(); return; }
-      ["lorePop","codexPop","badgePop","howPop","oraclePop"].forEach(function(p){ if($(p).classList.contains("on")) closePop(p); });
+      ["lorePop","codexPop","badgePop","howPop","oraclePop","gardenPop"].forEach(function(p){ if($(p).classList.contains("on")) closePop(p); });
       return;
     }
     if(!anyPopOpen()&&$("station").classList.contains("on")&&/^[1-4]$/.test(e.key)){ var b=$("opts").children[parseInt(e.key,10)-1]; if(b){ e.preventDefault(); b.click(); } }
