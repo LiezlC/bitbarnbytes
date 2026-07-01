@@ -38,3 +38,21 @@ export const POST: APIRoute = async ({ request }) => {
     return json(200, { ok: false, stored: false });
   }
 };
+
+/* GET /api/subscribe?token=… — export the captured list as JSON.
+   Guarded by the SUBSCRIBE_EXPORT_TOKEN env var; returns 401 unless it matches. */
+export const GET: APIRoute = async ({ url }) => {
+  const token = import.meta.env.SUBSCRIBE_EXPORT_TOKEN;
+  if (!token || url.searchParams.get("token") !== token) {
+    return json(401, { error: "Set SUBSCRIBE_EXPORT_TOKEN and pass ?token=… to export." });
+  }
+  try {
+    const store = getStore("pharmacopoeia-emails");
+    const { blobs } = await store.list();
+    const emails = await Promise.all(blobs.map((b) => store.get(b.key, { type: "json" })));
+    emails.sort((a: any, b: any) => (a?.at < b?.at ? 1 : -1)); // newest first
+    return json(200, { count: emails.length, emails });
+  } catch (err: any) {
+    return json(500, { error: err?.message || "Couldn't read the list." });
+  }
+};
