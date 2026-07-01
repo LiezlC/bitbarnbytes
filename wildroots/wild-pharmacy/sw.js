@@ -2,7 +2,7 @@
    Caches the same-origin shell (index.html, stations.json, scenes, plates,
    assets) so the labyrinth opens offline. Cross-origin media (Cloudinary
    clips/audio) and /api/ oracle calls always go to the network. */
-const CACHE = "wildpharmacy-v3";
+const CACHE = "wildpharmacy-v4";
 const CORE = [
   "./", "index.html", "stations.json", "manifest.webmanifest",
   "assets/favicon.svg", "assets/learning-loop.png", "assets/og.jpg",

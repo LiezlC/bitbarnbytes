@@ -1,6 +1,36 @@
 {
  "chapters": [
   {
+   "id": "maze",
+   "kind": "stills",
+   "title": "The Labyrinth Ledger",
+   "note": "an atlas of the living labyrinth \u2014 the maze-ways themselves, freshly surveyed",
+   "dir": "maze",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp"
+   ],
+   "hero": "01.webp",
+   "walk": [
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "10.webp"
+   ]
+  },
+  {
    "id": "hexi-1",
    "kind": "stills",
    "title": "Hexi's Wild Pharmacy \u2014 I",
