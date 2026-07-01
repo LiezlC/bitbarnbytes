@@ -23,6 +23,11 @@ const orgSchema = {
   "description": "A living learning world of soil, food and the digitally shipwrecked — educational storytelling where compost meets code.",
   "sameAs": ["https://saraloosa.org"],
 };
+
+// Umami analytics — env-gated, privacy-friendly, free. Set UMAMI_WEBSITE_ID in
+// the Netlify site env to switch it on; nothing renders until then.
+const umamiId = import.meta.env.UMAMI_WEBSITE_ID;
+const umamiSrc = import.meta.env.UMAMI_SRC || "https://cloud.umami.is/script.js";
 ---
 <html lang="en">
   <head>
@@ -48,6 +53,7 @@ const orgSchema = {
     <meta name="twitter:image" content={ogImage} />
     <!-- Structured data -->
     <JsonLd schema={orgSchema} />
+    {umamiId && <script defer src={umamiSrc} data-website-id={umamiId} is:inline></script>}
   </head>
   <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:p-8 flex flex-col selection:bg-terminal-amber selection:text-soil-900">
     <!-- Skip-to-content for keyboard/AT users -->

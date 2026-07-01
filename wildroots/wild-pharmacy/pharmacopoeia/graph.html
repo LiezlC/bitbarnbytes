@@ -137,6 +137,7 @@
   const data = window.__GRAPH__;
   const byId = new Map(data.nodes.map(n => [n.id, n]));
   const isMobile = matchMedia("(pointer:coarse)").matches || innerWidth < 700;
+  const track = (name, data) => { try { window.umami && window.umami.track(name, data); } catch (_) {} };
   function end(x) { return typeof x === "object" ? x : byId.get(x); }
 
   (function(){ const im=new Image(); im.onload=()=>{ document.getElementById("bg").classList.add("img"); window.__BGIMG__=im; }; im.src="garden-bg.jpg"; })();
@@ -227,6 +228,7 @@
     (neigh.get(node.id) || new Set()).forEach(id => { const m = byId.get(id); if (m) hl.nodes.add(m); });
     hl.links = new Set(inc.get(node.id) || []);
     refreshHL(); setHash(node.id); showInfo(node); showPic(node); focusCam(node);
+    if (node.type === "plant") track("plant-view", { plant: node.id.slice(6) });
   }
   function reset() {
     selected = null; hl.nodes.clear(); hl.links.clear(); refreshHL(); clearHash();
@@ -353,7 +355,7 @@
       pending = node; open(d); return true;
     }
     const close = () => gate.classList.remove("on");
-    function open(kind) { gbody.innerHTML = kind === "email" ? emailHTML() : buyHTML(); gate.classList.add("on"); wire(kind); }
+    function open(kind) { gbody.innerHTML = kind === "email" ? emailHTML() : buyHTML(); gate.classList.add("on"); wire(kind); track(kind === "email" ? "meter-email-gate" : "meter-buy-gate"); }
     const err = m => { const e = gate.querySelector("#gerr"); if (e) e.textContent = m || ""; };
 
     const emailHTML = () => `
@@ -387,7 +389,7 @@
               body: JSON.stringify({ email, source: "pharmacopoeia" }),
               signal: AbortSignal.timeout ? AbortSignal.timeout(5000) : undefined }).catch(() => {});
           } catch (_) {}
-          LS.set("wp_email", email); tier = "email"; LS.set("wp_tier", tier);
+          LS.set("wp_email", email); tier = "email"; LS.set("wp_tier", tier); track("meter-email-unlock");
           close(); if (pending) window.PHARMA.click(pending);
         };
         btn.onclick = go; inp.onkeydown = e => { if (e.key === "Enter") go(); };
@@ -400,7 +402,7 @@
           try {
             const r = await fetch("/api/verify-license", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ license_key: key }), signal: AbortSignal.timeout ? AbortSignal.timeout(12000) : undefined });
             const j = await r.json().catch(() => ({}));
-            if (j.valid) { tier = "full"; LS.set("wp_tier", tier); close(); T("unlocked — the whole garden's yours \u{1F33F}"); if (pending) window.PHARMA.click(pending); return; }
+            if (j.valid) { tier = "full"; LS.set("wp_tier", tier); track("meter-purchase-unlock"); close(); T("unlocked — the whole garden's yours \u{1F33F}"); if (pending) window.PHARMA.click(pending); return; }
             err(j.error || j.reason || "that key didn't check out");
           } catch (_) { err("couldn't reach the licence service — try again"); }
           btn.disabled = false; btn.textContent = "unlock";
