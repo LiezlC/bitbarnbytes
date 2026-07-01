@@ -2,9 +2,10 @@
    STAGE WILD PHARMACY into the Astro public/ folder  (runs as `prebuild`)
    ---------------------------------------------------------------------
    Copies the self-contained Hexi's Wild Pharmacy labyrinth
-   (wildroots/wild-pharmacy/: index.html + stations.json + slides/) into
-   saraloosa-os/public/wild-pharmacy/ so it ships with the Astro site at
-   /wild-pharmacy/. Sibling of stage-digdeeper.mjs.
+   (wildroots/wild-pharmacy/: index.html + stations.json + slides/) AND the
+   125-plant Pharmacopoeia 3D explorer (pharmacopoeia/ -> /wild-pharmacy/
+   pharmacopoeia/) into saraloosa-os/public/wild-pharmacy/ so they ship with
+   the Astro site at /wild-pharmacy/. Sibling of stage-digdeeper.mjs.
 
    public/wild-pharmacy/ is gitignored and regenerated on every build.
    NOTE: the heavy clips (slides/*.mp4) and narration audio (audio/*.mp3)
@@ -32,6 +33,22 @@ mkdirSync(OUT, { recursive: true });
 for (const item of ["index.html", "stations.json", "slides", "scenes", "audio", "assets", "manifest.webmanifest", "sw.js"]) {
   const s = join(SRC, item);
   if (existsSync(s)) cpSync(s, join(OUT, item), { recursive: true });
+}
+
+// --- Pharmacopoeia: the 125-plant 3D knowledge-graph explorer ---
+// Self-contained graph.html (graph data inlined; three + 3d-force-graph via CDN)
+// with the garden backdrop and per-plant botanical plates. Light enough to ship
+// directly (~2.6 MB), served at /wild-pharmacy/pharmacopoeia/. The heavy source
+// JSON (graph.json/plants.json) is not needed at runtime, so it is not copied.
+const PSRC = join(SRC, "pharmacopoeia");
+if (existsSync(join(PSRC, "graph.html"))) {
+  const POUT = join(OUT, "pharmacopoeia");
+  mkdirSync(POUT, { recursive: true });
+  cpSync(join(PSRC, "graph.html"), join(POUT, "index.html"));
+  for (const item of ["garden-bg.jpg", "pics"]) {
+    const s = join(PSRC, item);
+    if (existsSync(s)) cpSync(s, join(POUT, item), { recursive: true });
+  }
 }
 
 let bytes = 0, files = 0;
