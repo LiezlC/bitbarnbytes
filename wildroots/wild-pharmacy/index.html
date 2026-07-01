@@ -196,6 +196,7 @@
       <button class="btn" id="gardenBtn">the garden</button>
       <button class="btn" id="codexBtn">the codex</button>
       <button class="btn" id="badgeBtn">trophies</button>
+      <a class="btn" href="pharmacopoeia/" style="color:#6ee84e;border-color:#3a5a2c;text-decoration:none">the pharmacopoeia &rarr;</a>
     </div>
     <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture &middot; keys 1-4 answer</div>
   </section>
@@ -614,7 +615,9 @@
     if(clock<=9) award("fleet"); if(!RUN.mino) award("clean"); if(!RUN.hint) award("unaided");
     $("end").innerHTML='<div class="kick">// the 13th hour holds</div><h1>The earth is a pharmacy</h1>'+
       '<div class="sub">You reached the cauldron with '+gotCount()+' tinctures in hand, at hour '+Math.min(clock,LIMIT)+'. The blue-light composts to green; the labyrinth lets you keep what you have learned.</div>'+
-      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; walk it again</button>';
+      shareBlock()+
+      '<a class="btn" href="pharmacopoeia/" style="display:block;max-width:300px;margin:0 auto 10px;color:#6ee84e;border-color:#3a5a2c;text-decoration:none">&#10022; step into the pharmacopoeia &rarr;</a>'+
+      '<button class="btn" onclick="location.reload()">&gt; walk it again</button>';
     wireShare(true); }
   function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end"); recordRun(false);
     $("end").innerHTML='<div class="kick" style="color:#ff5a5a">// the 13th hour strikes</div><h1>The minotaur keeps you</h1>'+
