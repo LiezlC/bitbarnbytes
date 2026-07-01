@@ -60,6 +60,34 @@
    "transcript": "tale-1/transcript.txt"
   },
   {
+   "id": "maze-film",
+   "kind": "stills",
+   "title": "Walking the Maze-Ways (film)",
+   "note": "stills from the maze fly-through overview \u2014 the thread, the walls, the minotaur's pit",
+   "dir": "maze-film",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp"
+   ],
+   "hero": "04.webp",
+   "walk": [
+    "04.webp",
+    "05.webp",
+    "07.webp",
+    "09.webp"
+   ],
+   "transcript": "maze-film/transcript.txt"
+  },
+  {
    "id": "hexi-1",
    "kind": "stills",
    "title": "Hexi's Wild Pharmacy \u2014 I",
