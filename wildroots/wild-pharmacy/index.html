@@ -105,6 +105,24 @@
   .learn:hover{color:var(--cream);border-color:var(--cream)}
   .learn.alm{color:var(--gold);border-bottom-color:rgba(244,201,93,.5)}
   .card.lore{max-width:520px;text-align:left;max-height:82vh;overflow:auto;background:linear-gradient(180deg,#1b1612,#120d0a);border-color:#5a4632}
+  .card.cine{max-width:740px;width:min(740px,94vw);text-align:left;max-height:86vh;overflow:auto;background:linear-gradient(180deg,#17120c,#0f0b07);border-color:#4a3a26}
+  .card.cine h3{font-size:16px;color:var(--gold);font-weight:500;margin-bottom:2px}
+  .cineSub{font-size:11.5px;color:var(--mute);margin-bottom:8px}
+  .cineTabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+  .cineTab{font-family:var(--mono);font-size:11px;padding:5px 11px;border:1px solid var(--edge);border-radius:20px;background:none;color:var(--mute);cursor:pointer}
+  .cineTab:hover{color:var(--cream)}
+  .cineTab.on{color:var(--gold);border-color:var(--gold)}
+  .cineNote{font-size:11.5px;color:var(--teal);margin:0 0 10px;font-style:italic}
+  .cineGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px}
+  .cineGrid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--edge);cursor:pointer;display:block;background:#0d0906;transition:transform .22s cubic-bezier(.2,.9,.25,1),border-color .22s}
+  .cineGrid img:hover,.cineGrid img:focus-visible{transform:scale(1.05);border-color:var(--gold)}
+  #lux{position:fixed;inset:0;z-index:11;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(6,4,2,.9);padding:20px}
+  #lux.on{display:flex}
+  #luxImg{max-width:min(1100px,94vw);max-height:74vh;border-radius:12px;border:1px solid #4a3a26;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+  #luxCap{font-family:var(--mono);font-size:12.5px;color:var(--cream);margin-top:12px;min-height:1.4em;text-align:center;max-width:640px}
+  #luxCap .cur{display:inline-block;width:.6em;background:var(--gold);height:1em;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  .luxNav{display:flex;gap:10px;margin-top:10px}
+  .luxNav .btn{font-size:12px;padding:7px 16px}
   .card.lore h3{font-size:16px;color:var(--gold);font-weight:500;margin-bottom:2px}
   .card.lore .seclab{font-size:10.5px;letter-spacing:.16em;color:var(--teal);margin:13px 0 4px}
   .card.lore p{font-size:13px;line-height:1.62;color:var(--cream)}
@@ -196,6 +214,7 @@
       <button class="btn" id="gardenBtn">the garden</button>
       <button class="btn" id="codexBtn">the codex</button>
       <button class="btn" id="badgeBtn">trophies</button>
+      <button class="btn" id="cineBtn" style="color:#ff6fb0;border-color:#5a2a40">the picture-house</button>
       <a class="btn" href="pharmacopoeia/" style="color:#6ee84e;border-color:#3a5a2c;text-decoration:none">the pharmacopoeia &rarr;</a>
     </div>
     <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture &middot; keys 1-4 answer</div>
@@ -234,6 +253,11 @@
   <div class="pop" id="howPop"><div class="card lore" id="howCard" role="dialog" aria-modal="true" aria-label="the learning loop"></div></div>
   <div class="pop" id="oraclePop"><div class="card sage" id="oracleCard" role="dialog" aria-modal="true" aria-label="the soil oracle"></div></div>
   <div class="pop" id="gardenPop"><div class="card lore" id="gardenCard" role="dialog" aria-modal="true" aria-label="the garden"></div></div>
+  <div class="pop" id="cinePop"><div class="card cine" id="cineCard" role="dialog" aria-modal="true" aria-label="the picture-house"></div></div>
+  <div id="lux" role="dialog" aria-modal="true" aria-label="picture viewer">
+    <img id="luxImg" alt="" /><div id="luxCap"></div>
+    <div class="luxNav"><button class="btn" id="luxPrev">&larr; prev</button><button class="btn" id="luxClose">close</button><button class="btn" id="luxNext">next &rarr;</button></div>
+  </div>
 
   <div id="flash" aria-hidden="true"><div class="door"></div><div class="tick">&#10003;</div></div>
   <div id="toasts" aria-live="polite"></div>
@@ -393,6 +417,74 @@
       '<div style="margin-top:14px"><button class="btn" id="howClose">close</button></div>';
     openPop("howPop"); $("howClose").onclick=function(){ closePop("howPop"); }; }
   $("howBtn").onclick=openHow; $("codexBtn").onclick=openCodex; $("badgeBtn").onclick=openBadges;
+
+  /* ---- the picture-house: stills, decks & the broadsheet from the notebook ---- */
+  var CINE=null, LUX={ch:null,i:0}, luxTimer=null;
+  function cineEsc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function typeCaption(text){
+    var cap=$("luxCap"); if(luxTimer){ clearInterval(luxTimer); luxTimer=null; }
+    if(reduceMotion()){ cap.textContent=text; return; }
+    var i=0; cap.innerHTML='<span class="t"></span><span class="cur"></span>';
+    var t=cap.querySelector(".t");
+    luxTimer=setInterval(function(){ i+=2; t.textContent=text.slice(0,i); if(i>=text.length){ clearInterval(luxTimer); luxTimer=null; } },24);
+  }
+  function luxShow(ch,i){
+    LUX.ch=ch; LUX.i=(i+ch.images.length)%ch.images.length;
+    var base="assets/gallery/"+(ch.dir?ch.dir+"/":"");
+    $("luxImg").src=base+ch.images[LUX.i];
+    $("luxImg").alt=ch.title+" — plate "+(LUX.i+1);
+    typeCaption("// "+ch.title.toLowerCase()+" · plate "+(LUX.i+1)+" of "+ch.images.length);
+    $("lux").classList.add("on");
+  }
+  function luxClose(){ $("lux").classList.remove("on"); if(luxTimer){clearInterval(luxTimer);luxTimer=null;} }
+  $("luxClose").onclick=luxClose;
+  $("luxPrev").onclick=function(){ if(LUX.ch) luxShow(LUX.ch,LUX.i-1); };
+  $("luxNext").onclick=function(){ if(LUX.ch) luxShow(LUX.ch,LUX.i+1); };
+  $("lux").addEventListener("click",function(e){ if(e.target===$("lux")) luxClose(); });
+  document.addEventListener("keydown",function(e){
+    if(!$("lux").classList.contains("on")) return;
+    if(e.key==="Escape") luxClose();
+    else if(e.key==="ArrowLeft"){ if(LUX.ch) luxShow(LUX.ch,LUX.i-1); }
+    else if(e.key==="ArrowRight"){ if(LUX.ch) luxShow(LUX.ch,LUX.i+1); }
+  });
+  function renderCine(chId){
+    var ch=CINE.chapters.filter(function(c){return c.id===chId;})[0]||CINE.chapters[0];
+    var tabs=CINE.chapters.map(function(c){
+      return '<button class="cineTab'+(c.id===ch.id?" on":"")+'" data-ch="'+c.id+'">'+cineEsc(c.title.replace(/ \(deck\)$/," ▤").replace(/^The /,""))+'</button>';
+    }).join("");
+    var base="assets/gallery/"+(ch.dir?ch.dir+"/":"");
+    var grid=ch.images.map(function(f,i){
+      return '<img loading="lazy" tabindex="0" src="'+base+f+'" alt="'+cineEsc(ch.title)+' plate '+(i+1)+'" data-i="'+i+'">';
+    }).join("");
+    $("cineCard").innerHTML='<h3>// the picture-house</h3>'
+      +'<div class="cineSub">plates, decks &amp; broadsheets that drifted up from the notebook &middot; click any plate to step closer</div>'
+      +'<div class="cineTabs">'+tabs+'</div>'
+      +'<div class="cineNote">'+cineEsc(ch.note)+'</div>'
+      +(ch.transcript?'<button class="learn" id="cineFn">&#9656; read the field notes from this reel</button><div id="cineFnBody" style="display:none;font-size:12px;line-height:1.62;color:var(--cream);border-left:2px solid #4a3a26;padding-left:10px;margin:8px 0;white-space:pre-line"></div>':'')
+      +'<div class="cineGrid">'+grid+'</div>'
+      +'<div style="text-align:center;margin-top:14px"><button class="btn" id="cineClose">back to the labyrinth</button></div>';
+    $("cineClose").onclick=function(){ closePop("cinePop"); };
+    if(ch.transcript){ $("cineFn").onclick=function(){
+      var b=$("cineFnBody");
+      if(b.style.display!=="none"){ b.style.display="none"; return; }
+      if(b.textContent){ b.style.display="block"; return; }
+      fetch("assets/gallery/"+ch.transcript).then(function(r){return r.text();}).then(function(t){ b.textContent=t; b.style.display="block"; })
+        .catch(function(){ b.textContent="(the notes blew away in the wind)"; b.style.display="block"; });
+    }; }
+    Array.prototype.forEach.call($("cineCard").querySelectorAll(".cineTab"),function(el){
+      el.onclick=function(){ renderCine(el.getAttribute("data-ch")); };
+    });
+    Array.prototype.forEach.call($("cineCard").querySelectorAll(".cineGrid img"),function(el){
+      var go=function(){ luxShow(ch,parseInt(el.getAttribute("data-i"),10)||0); };
+      el.onclick=go; el.onkeydown=function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } };
+    });
+  }
+  $("cineBtn").onclick=function(){
+    if(CINE){ renderCine(CINE.chapters[0].id); openPop("cinePop"); return; }
+    fetch("assets/gallery/manifest.json?v=20260701").then(function(r){return r.json();}).then(function(m){
+      CINE=m; renderCine(m.chapters[0].id); openPop("cinePop");
+    }).catch(function(){ toast("&#127916;","picture-house","still being built &mdash; come back soon"); });
+  };
 
   // ---------- the soil oracle (Pinecone RAG, with offline fallback) ----------
   var ORACLE_URL="/api/herb";
