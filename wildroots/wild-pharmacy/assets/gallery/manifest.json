@@ -241,5 +241,42 @@
    ],
    "hero": "infographic.webp"
   }
+ ],
+ "gramophone": [
+  {
+   "id": "sa-plants-in-vr",
+   "title": "South African Medicinal Plants in VR",
+   "file": "audio/sa-plants-in-vr.mp3",
+   "mins": 11,
+   "note": "a guided wander through the fynbos apothecary"
+  },
+  {
+   "id": "hacking-soil",
+   "title": "Hacking Soil to Cure Digital Burnout",
+   "file": "audio/hacking-soil.mp3",
+   "mins": 22,
+   "note": "deep-dive: the dirt as debugging environment"
+  },
+  {
+   "id": "composting-digital-burnout",
+   "title": "Composting Digital Burnout with Living Soil",
+   "file": "audio/composting-digital-burnout.mp3",
+   "mins": 43,
+   "note": "the long-form conversation"
+  },
+  {
+   "id": "pivot-to-mud",
+   "title": "Pivot to Mud (BitSoil SageByte)",
+   "file": "audio/pivot-to-mud.mp3",
+   "mins": 19,
+   "note": "the barnyard glitchtech briefing"
+  },
+  {
+   "id": "compost-the-algorithm",
+   "title": "Compost the Algorithm (BitSoil SageByte)",
+   "file": "audio/compost-the-algorithm.mp3",
+   "mins": 2,
+   "note": "a two-minute manifesto"
+  }
  ]
 }

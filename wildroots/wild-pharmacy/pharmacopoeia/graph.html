@@ -369,7 +369,12 @@
         + '<div class="cgrid">' + cur.images.map((f, i) =>
             '<img loading="lazy" src="' + base(cur) + f + '" alt="' + esc(cur.title) + ' plate ' + (i + 1) + '" data-i="' + i + '">').join("") + '</div>'
         + '<div id="cluxWrap"><img id="clux" alt=""/><div id="cluxCap"></div>'
-        + '<button class="btn2" id="cprev">&larr; prev</button><button class="btn2" id="cnext">next &rarr;</button></div>';
+        + '<button class="btn2" id="cprev">&larr; prev</button><button class="btn2" id="cnext">next &rarr;</button></div>'
+        + (M.gramophone && M.gramophone.length ? '<div style="margin-top:16px;border-top:1px dashed var(--edge);padding-top:12px">'
+          + '<div style="font-size:10.5px;letter-spacing:.18em;color:var(--teal);margin-bottom:8px">&#9836; THE GRAMOPHONE SHELF</div>'
+          + M.gramophone.map(g => '<div style="margin:0 0 10px"><div style="font-size:11.5px;color:var(--gold)">' + esc(g.title)
+            + ' <span style="color:var(--mute);font-size:10px">&middot; ' + g.mins + ' min &middot; ' + esc(g.note) + '</span></div>'
+            + '<audio controls preload="none" style="width:100%;height:28px;margin-top:3px" src="../assets/gallery/' + g.file + '"></audio></div>').join("") + '</div>' : '');
       ccard.querySelector(".cx").onclick = () => cine.classList.remove("on");
       const cfn = document.getElementById("cfn");
       if (cfn) cfn.onclick = () => {
@@ -388,7 +393,7 @@
     document.getElementById("cineBtn").onclick = () => {
       track("picture-house-open");
       if (M) { render(M.chapters[0].id); cine.classList.add("on"); return; }
-      fetch("../assets/gallery/manifest.json?v=20260701").then(r => r.json())
+      fetch("../assets/gallery/manifest.json?v=20260701b").then(r => r.json())
         .then(m => { M = m; render(m.chapters[0].id); cine.classList.add("on"); })
         .catch(() => toast("the picture-house is still being built…"));
     };
@@ -401,7 +406,7 @@
     });
 
     // ambient backdrop: hero plates drifting slowly behind the web
-    fetch("../assets/gallery/manifest.json?v=20260701").then(r => r.json()).then(m => {
+    fetch("../assets/gallery/manifest.json?v=20260701b").then(r => r.json()).then(m => {
       M = M || m;
       if (rm) return;
       const heroes = m.chapters.filter(c => c.kind === "stills").map(c => base(c) + c.hero);

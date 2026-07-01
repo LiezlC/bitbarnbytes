@@ -319,17 +319,28 @@
       titbit:"Honey never spoils, and a good tincture barely does. The spirit holds the green long after the fresh plant would have faded."}
   };
 
-  var NODES={
-    gate:{x:340,y:462,label:"the gate",start:true},
-    kanna:{x:150,y:392},buchu:{x:340,y:392},rosemary:{x:540,y:392},
-    kankerbossie:{x:95,y:312},rooibos:{x:255,y:318},"gotu-kola":{x:430,y:318},"wild-dagga":{x:600,y:312},
-    honeybush:{x:175,y:236},bulbine:{x:345,y:240},pelargonium:{x:520,y:236},
-    "wild-ginger":{x:255,y:158},pepperbark:{x:435,y:158},
-    wormwood:{x:345,y:92},
-    cauldron:{x:345,y:34,label:"the cauldron",heart:true}
+  /* The doors of the labyrinth — property doorways, so no single plant is ever
+     the only way in. Each door knows its plants; plants may answer to several
+     doors, which is how a web (not a corridor) is grown. */
+  var DOORS={
+    "door-calm":   {x:105,y:424,label:"calm",     color:"#6ee84e", plants:["kanna","rooibos","honeybush","wild-dagga"]},
+    "door-mind":   {x:200,y:424,label:"clear mind",color:"#b07fd8", plants:["rosemary","gotu-kola","kanna"]},
+    "door-breath": {x:293,y:424,label:"breath",   color:"#5aa0ff", plants:["pelargonium","wild-ginger"]},
+    "door-waters": {x:387,y:424,label:"bitter waters",color:"#ff9d45", plants:["wormwood","buchu","wild-ginger"]},
+    "door-skin":   {x:480,y:424,label:"skin & salve",color:"#5fe3d0", plants:["bulbine","gotu-kola"]},
+    "door-shield": {x:575,y:424,label:"the shield",color:"#ff6fb0", plants:["kankerbossie","pelargonium","pepperbark"]}
   };
+  var NODES={
+    gate:{x:340,y:476,label:"the gate",start:true},
+    kanna:{x:150,y:352},buchu:{x:340,y:352},rosemary:{x:540,y:352},
+    kankerbossie:{x:95,y:282},rooibos:{x:255,y:285},"gotu-kola":{x:430,y:285},"wild-dagga":{x:600,y:282},
+    honeybush:{x:175,y:212},bulbine:{x:345,y:214},pelargonium:{x:520,y:212},
+    "wild-ginger":{x:255,y:148},pepperbark:{x:435,y:148},
+    wormwood:{x:345,y:88},
+    cauldron:{x:345,y:30,label:"the cauldron",heart:true}
+  };
+  for(var dk in DOORS) NODES[dk]={x:DOORS[dk].x,y:DOORS[dk].y,label:DOORS[dk].label,door:true,color:DOORS[dk].color};
   var EDGES=[
-    ["gate","kanna"],["gate","buchu"],["gate","rosemary"],
     ["kanna","kankerbossie"],["kanna","rooibos"],
     ["buchu","rooibos"],["buchu","gotu-kola"],
     ["rosemary","gotu-kola"],["rosemary","wild-dagga"],
@@ -339,8 +350,11 @@
     ["wild-ginger","wormwood"],["pepperbark","wormwood"],["bulbine","wormwood"],
     ["wormwood","cauldron"]
   ];
+  for(var dk2 in DOORS){ EDGES.push(["gate",dk2]); DOORS[dk2].plants.forEach(function(p){ EDGES.push([dk2,p]); }); }
   var ADJ={}; for(var k in NODES) ADJ[k]=[];
   EDGES.forEach(function(e){ADJ[e[0]].push(e[1]);ADJ[e[1]].push(e[0]);});
+  // a plant always opens back onto every door it belongs to, wherever you stand
+  for(var dk3 in DOORS) DOORS[dk3].plants.forEach(function(p){ if(ADJ[p].indexOf(dk3)<0) ADJ[p].push(dk3); });
 
   var clock=1, current="gate", got={}, NEED=8, LIMIT=13, rung=0, hintUsed={}, cur=null;
   var RUN={mino:false,hint:false,curMino:false,steward:{},feather:false};
@@ -447,6 +461,16 @@
     else if(e.key==="ArrowLeft"){ if(LUX.ch) luxShow(LUX.ch,LUX.i-1); }
     else if(e.key==="ArrowRight"){ if(LUX.ch) luxShow(LUX.ch,LUX.i+1); }
   });
+  function gramHTML(){
+    if(!CINE||!CINE.gramophone||!CINE.gramophone.length) return "";
+    return '<div style="margin-top:16px;border-top:1px dashed var(--edge);padding-top:12px">'
+      +'<div style="font-size:11px;letter-spacing:.18em;color:var(--teal);margin-bottom:8px">&#9836; THE GRAMOPHONE SHELF</div>'
+      +CINE.gramophone.map(function(g){
+        return '<div style="margin:0 0 10px"><div style="font-size:12px;color:var(--gold)">'+cineEsc(g.title)
+          +' <span style="color:var(--mute);font-size:10.5px">&middot; '+g.mins+' min &middot; '+cineEsc(g.note)+'</span></div>'
+          +'<audio controls preload="none" style="width:100%;height:30px;margin-top:3px" src="assets/gallery/'+g.file+'"></audio></div>';
+      }).join("")+'</div>';
+  }
   function renderCine(chId){
     var ch=CINE.chapters.filter(function(c){return c.id===chId;})[0]||CINE.chapters[0];
     var tabs=CINE.chapters.map(function(c){
@@ -462,6 +486,7 @@
       +'<div class="cineNote">'+cineEsc(ch.note)+'</div>'
       +(ch.transcript?'<button class="learn" id="cineFn">&#9656; read the field notes from this reel</button><div id="cineFnBody" style="display:none;font-size:12px;line-height:1.62;color:var(--cream);border-left:2px solid #4a3a26;padding-left:10px;margin:8px 0;white-space:pre-line"></div>':'')
       +'<div class="cineGrid">'+grid+'</div>'
+      +gramHTML()
       +'<div style="text-align:center;margin-top:14px"><button class="btn" id="cineClose">back to the labyrinth</button></div>';
     $("cineClose").onclick=function(){ closePop("cinePop"); };
     if(ch.transcript){ $("cineFn").onclick=function(){
@@ -481,7 +506,7 @@
   }
   $("cineBtn").onclick=function(){
     if(CINE){ renderCine(CINE.chapters[0].id); openPop("cinePop"); return; }
-    fetch("assets/gallery/manifest.json?v=20260701").then(function(r){return r.json();}).then(function(m){
+    fetch("assets/gallery/manifest.json?v=20260701b").then(function(r){return r.json();}).then(function(m){
       CINE=m; renderCine(m.chapters[0].id); openPop("cinePop");
     }).catch(function(){ toast("&#127916;","picture-house","still being built &mdash; come back soon"); });
   };
@@ -575,26 +600,55 @@
     return d;
   }
 
+  function doorColorOf(key){ // a plant borrows the hue of its first door; doors keep their own
+    if(NODES[key].door) return NODES[key].color;
+    for(var d in DOORS) if(DOORS[d].plants.indexOf(key)>-1) return DOORS[d].color;
+    return "#f4c95d";
+  }
+  function curveEdge(a,b,cls,stroke,op,w){
+    var mx=(a.x+b.x)/2, my=(a.y+b.y)/2, dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1;
+    var k=Math.min(18,len*0.14), cx=mx-dy/len*k, cy=my+dx/len*k;
+    return '<path class="'+cls+'" d="M'+a.x+' '+a.y+' Q'+cx+' '+cy+' '+b.x+' '+b.y+'" fill="none" stroke="'+stroke+'" stroke-width="'+w+'" opacity="'+op+'"/>';
+  }
   function renderMap(){
-    var svg=$("mapsvg"),s='',near=ADJ[current];
-    EDGES.forEach(function(e){var a=NODES[e[0]],b=NODES[e[1]];s+='<line class="edge" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'"/>';});
+    var svg=$("mapsvg"),near=ADJ[current];
+    var s='<defs><filter id="nglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+    EDGES.forEach(function(e){
+      var a=NODES[e[0]],b=NODES[e[1]];
+      var lit=(e[0]===current&&near.indexOf(e[1])>-1)||(e[1]===current&&near.indexOf(e[0])>-1);
+      var col="#4a3a2a",op=0.55,w=1.2;
+      if(lit){ col=doorColorOf(NODES[e[0]].door?e[0]:(NODES[e[1]].door?e[1]:e[0])); op=0.9; w=1.8; }
+      else if(NODES[e[0]].door||NODES[e[1]].door){ col=(NODES[e[0]].door?NODES[e[0]].color:NODES[e[1]].color); op=0.22; }
+      s+=curveEdge(a,b,"edge",col,op,w);
+    });
     for(var key in NODES){
-      var n=NODES[key],isNear=near.indexOf(key)>-1,isCur=key===current,r=8,fill="#1a130d",color="#6b5440";
+      var n=NODES[key],isNear=near.indexOf(key)>-1,isCur=key===current,glow=(isNear||isCur);
+      var color,fill="#1a130d";
       if(n.heart){ color=gotCount()>=NEED?"#6ee84e":"#5a4632"; }
+      else if(n.door){ color=n.color; }
       else if(got[key]){ color="#6ee84e"; }
       else if(key==="gate"){ color="#f4c95d"; }
-      else { color="#ff6fb0"; }
-      var glow=(isNear||isCur);
+      else { color=doorColorOf(key); }
       s+='<g class="nodeC" data-k="'+key+'">';
       if(isCur) s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="14" fill="none" stroke="'+color+'" stroke-width="1.5" opacity="0.5"><animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/></circle>';
-      s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+r+'" fill="'+((got[key]||isCur)?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.55)+'"/>';
+      if(n.door){
+        s+='<rect x="'+(n.x-7)+'" y="'+(n.y-7)+'" width="14" height="14" transform="rotate(45 '+n.x+' '+n.y+')" fill="'+(isCur?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.75)+'"'+(glow?' filter="url(#nglow)"':'')+'/>';
+      } else {
+        var r=n.heart||key==="gate"?9:8;
+        s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+r+'" fill="'+((got[key]||isCur)?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.6)+'"'+(glow?' filter="url(#nglow)"':'')+'/>';
+      }
       if(got[key]) s+='<text x="'+n.x+'" y="'+(n.y+3.5)+'" text-anchor="middle" font-size="10" fill="#102a10">&#10003;</text>';
       var lbl=n.label||(BY[key]?BY[key].name:key);
-      s+='<text class="nLabel '+(glow?"near":"")+'" x="'+n.x+'" y="'+(n.y<60?n.y-14:n.y+22)+'" text-anchor="middle">'+lbl+'</text>';
+      var ly=n.door?n.y+22:(n.y<60?n.y-14:n.y+22);
+      s+='<text class="nLabel '+(glow?"near":"")+'" x="'+n.x+'" y="'+ly+'" text-anchor="middle"'+(n.door?' fill="'+color+'" opacity="'+(glow?1:0.7)+'"':'')+'>'+lbl+'</text>';
       s+='</g>';
     }
     svg.innerHTML=s;
-    var hint=gotCount()>=NEED?"the cauldron is open — make for the heart":("travel to a glowing station ("+gotCount()+"/"+NEED+" tinctures)");
+    var hint;
+    if(gotCount()>=NEED) hint="the cauldron is open — make for the heart";
+    else if(current==="gate") hint="six doors, one for every kind of ailing — choose your way in";
+    else if(NODES[current]&&NODES[current].door) hint="the door of "+NODES[current].label+" — "+DOORS[current].plants.map(function(p){return BY[p].name;}).join(", ")+" answer to it";
+    else hint="travel the glowing threads ("+gotCount()+"/"+NEED+" tinctures)";
     $("mapHint").textContent=hint;
     Array.prototype.forEach.call(svg.querySelectorAll(".nodeC"),function(g){ g.addEventListener("click",function(){travel(g.getAttribute("data-k"));}); });
   }
@@ -603,7 +657,7 @@
     var n=NODES[key];
     if(n.heart){ if(gotCount()>=NEED){ current=key; win(); } else { $("mapHint").textContent="the heart is sealed. gather "+(NEED-gotCount())+" more tinctures."; } return; }
     current=key;
-    if(got[key]){ renderMap(); return; }
+    if(n.door||got[key]){ renderMap(); return; }
     startStation(key);
   }
 
