@@ -520,7 +520,7 @@
   }
   $("cineBtn").onclick=function(){
     if(CINE){ renderCine(CINE.chapters[0].id); openPop("cinePop"); return; }
-    fetch("assets/gallery/manifest.json?v=20260702").then(function(r){return r.json();}).then(function(m){
+    fetch("assets/gallery/manifest.json?v=20260702b").then(function(r){return r.json();}).then(function(m){
       CINE=m; renderCine(m.chapters[0].id); openPop("cinePop");
     }).catch(function(){ toast("&#127916;","picture-house","still being built &mdash; come back soon"); });
   };
@@ -671,13 +671,17 @@
   function mazeImgs(){
     if(MAZE_IMGS) return MAZE_IMGS;
     var pool=["scenes/riddle-door.jpg","scenes/sir-didymus.jpg","scenes/stair-stack.jpg"];
-    if(CINE&&CINE.chapters){ CINE.chapters.forEach(function(c){
-      if(c.id==="maze") pool=(c.walk||c.images).map(function(f){return "assets/gallery/"+c.dir+"/"+f;});
-    }); }
+    if(CINE&&CINE.chapters){
+      var wp=[];
+      CINE.chapters.forEach(function(c){
+        if(c.walk) wp=wp.concat(c.walk.map(function(f){return "assets/gallery/"+c.dir+"/"+f;}));
+      });
+      if(wp.length) pool=wp;
+    }
     MAZE_IMGS=pool; return pool;
   }
   // warm the manifest early so the maze chapter (if present) feeds the walk
-  fetch("assets/gallery/manifest.json?v=20260702").then(function(r){return r.json();})
+  fetch("assets/gallery/manifest.json?v=20260702b").then(function(r){return r.json();})
     .then(function(m){ CINE=CINE||m; MAZE_IMGS=null; }).catch(function(){});
   function mazeWalk(label,done){
     if(reduceMotion()||WALKING){ done(); return; }
