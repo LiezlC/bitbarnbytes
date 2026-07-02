@@ -37,8 +37,11 @@
   html,body{height:100%}
   body{background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden;-webkit-font-smoothing:antialiased}
   .fill{position:fixed;inset:0;pointer-events:none}
-  #worldbg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .7s ease;background:var(--ink)}
-  #worldbg.on{opacity:.5}
+  #worldbg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2.2s ease;background:var(--ink)}
+  #worldbg.on{opacity:.96}
+  #worldbg2{z-index:0;position:fixed;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2.2s ease}
+  #worldbg2.on{opacity:.96}
+  #worldveil{z-index:0;position:fixed;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(10,7,4,.34),rgba(10,7,4,.04) 32%,rgba(10,7,4,.04) 60%,rgba(10,7,4,.38))}
   #bg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.5;background:var(--ink)}
   #bgImg{z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;background:var(--ink);display:none}
   #bgImg.on{display:block}
@@ -57,9 +60,9 @@
   #clock .ct{color:var(--gold)} #clock.warn .ct{color:var(--red)} #clock.warn #clockface{border-color:var(--red)}
   #cab{color:var(--teal);text-align:right}#cab b{color:var(--cream);font-weight:500}
   .center{align-items:center;justify-content:center;text-align:center;padding:26px;gap:14px}
-  .kick{font-size:12px;letter-spacing:.24em;color:var(--green)}
-  h1{font-size:clamp(26px,6vw,50px);font-weight:500;color:var(--gold);letter-spacing:.03em;line-height:1.05}
-  .sub{font-size:13px;color:var(--mute);max-width:460px;line-height:1.65}
+  .kick{font-size:12px;letter-spacing:.24em;color:var(--green);text-shadow:0 1px 8px rgba(6,4,2,.95)}
+  h1{font-size:clamp(26px,6vw,50px);font-weight:500;color:var(--gold);letter-spacing:.03em;line-height:1.05;text-shadow:0 2px 14px rgba(6,4,2,.95),0 0 34px rgba(6,4,2,.8)}
+  .sub{font-size:13px;color:#cfc2a8;max-width:460px;line-height:1.65;text-shadow:0 1px 8px rgba(6,4,2,.95),0 0 18px rgba(6,4,2,.85)}
   .btn{font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:var(--teal);border:1px solid var(--edge);
     padding:11px 22px;border-radius:9px;cursor:pointer;background:rgba(20,14,10,.6);transition:border-color .2s,color .2s,background .2s}
   .btn:hover{border-color:var(--teal);color:var(--cream);background:rgba(36,26,16,.8)}
@@ -69,7 +72,7 @@
   #mapsvg{width:100%;height:auto;display:block}
   .mhint{text-align:center;font-size:12px;color:var(--mute);margin-top:6px}
   .edge{stroke:#4a3a2a;stroke-width:1.5}
-  .nLabel{font-family:var(--mono);font-size:10.5px;fill:var(--mute)}
+  .nLabel{font-family:var(--mono);font-size:10.5px;fill:#cfc2a8;paint-order:stroke;stroke:rgba(8,5,3,.85);stroke-width:3px}
   .nLabel.near{fill:var(--cream)}
   #station.on{display:block;position:fixed;inset:0;z-index:3;padding:0}
   #playbox{position:absolute;left:18px;bottom:18px;width:min(400px,calc(100% - 36px));max-height:calc(100% - 84px);overflow:auto;
@@ -202,6 +205,8 @@
 <body>
   <p class="sr" aria-live="polite" id="live"></p>
   <img id="worldbg" class="fill" alt="" />
+  <img id="worldbg2" alt="" />
+  <div id="worldveil" aria-hidden="true"></div>
   <video id="bg" class="fill" muted loop playsinline></video>
   <img id="bgImg" class="fill" alt="" />
   <!-- streams from Cloudinary; swap to audio/WildPharmacy_narration_anime.mp3 for offline use -->
@@ -885,7 +890,30 @@
     btn.addEventListener('click',function(){ if(au.paused){ var p=au.play(); if(p&&p.then){p.then(function(){btn.innerHTML='&#10073;&#10073; pause the companion';}).catch(function(){});} else btn.innerHTML='&#10073;&#10073; pause the companion'; } else { au.pause(); btn.innerHTML='&#9654; play the audio companion'; } });
     au.addEventListener('ended',function(){ btn.innerHTML='&#9654; play the audio companion'; });
   })();
-  (function(){ var wb=$("worldbg"); if(wb){ wb.src="assets/map-bg.jpg"; wb.classList.add("on"); } })();
+  /* the world backdrop: Ledger plates drift behind the boot screen & map */
+  (function(){
+    var wb=$("worldbg"), wb2=$("worldbg2");
+    if(!wb) return;
+    wb.src="assets/map-bg.jpg"; wb.classList.add("on");
+    var plates=["assets/gallery/maze/01.webp","assets/gallery/maze/03.webp","assets/gallery/maze/06.webp",
+                "assets/gallery/maze/04.webp","assets/gallery/maze/10.webp","assets/gallery/maze/08.webp",
+                "assets/gallery/tale-1/02.webp","assets/gallery/maze/05.webp"];
+    var idx=0, fading=false;
+    function onWorld(){ var sc=document.querySelector(".screen.on"); return sc&&(sc.id==="boot"||sc.id==="map"); }
+    function step(){
+      if(!onWorld()||fading) return;
+      var im=new Image();
+      im.onload=function(){
+        fading=true;
+        wb2.src=im.src; wb2.classList.add("on");           // fade the new plate in over the old
+        setTimeout(function(){ wb.src=im.src; wb2.classList.remove("on"); fading=false; },2500);
+        idx=(idx+1)%plates.length;
+      };
+      im.src=plates[idx];
+    }
+    setTimeout(step, reduceMotion()?0:1200);               // first plate replaces map-bg soon after load
+    if(!reduceMotion()) setInterval(step, 26000);
+  })();
   updateClock();
 })();
 </script>
