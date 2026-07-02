@@ -10,8 +10,8 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden}
   #bg{position:fixed;inset:0;z-index:0;background:#0c0a07 center/cover no-repeat;}
-  #bg.img{background-image:linear-gradient(rgba(8,6,4,.3),rgba(8,6,4,.45)),url("garden-bg.jpg");}
-  #bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(8,5,3,.6) 100%);}
+  #bg.img{background-image:linear-gradient(rgba(8,6,4,.15),rgba(8,6,4,.25)),url("garden-bg.jpg");}
+  #bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%, transparent 62%, rgba(8,5,3,.38) 100%);}
   #graph{position:fixed;inset:0;z-index:1;transition:bottom .25s ease}
   #hud{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;
     padding:14px 18px;gap:14px;pointer-events:none;background:linear-gradient(to bottom,rgba(8,5,3,.74),transparent)}
@@ -61,7 +61,7 @@
   #info.on{animation:infoIn .34s cubic-bezier(.2,.9,.25,1)}
   @keyframes infoIn{0%{opacity:0;transform:translateX(14px) skewX(-4deg)}55%{opacity:1;transform:translateX(-3px) skewX(1.5deg)}100%{transform:none}}
   #bg .amb{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 6s ease;filter:sepia(.15) brightness(.82) saturate(.95)}
-  #bg .amb.on{opacity:.55}
+  #bg .amb.on{opacity:.78}
   #cine{position:fixed;inset:0;z-index:22;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,4,2,.82);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
   #cine.on{display:flex;animation:picExp .22s ease}
   #cine .ccard{max-width:760px;width:min(760px,94vw);max-height:88vh;overflow:auto;background:rgba(14,10,6,.98);border:1px solid #4a3a26;border-radius:16px;padding:20px 22px}
@@ -175,10 +175,15 @@
   let toastT; function toast(m){ const el=document.getElementById("toast"); el.textContent=m; el.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>el.classList.remove("on"),2300); }
 
   const active = new Set(Object.keys(LABELS));
+  // the quieter layers start hidden — the web reads (and renders) far better
+  // with ~300 nodes than 730; one legend tap brings any layer back
+  const DEFAULT_OFF = ["constituent", "family", "origin", "use"];
+  DEFAULT_OFF.forEach(t => active.delete(t));
   const leg = document.getElementById("legend");
   Object.entries(LABELS).forEach(([t, l]) => {
     const s = document.createElement("span"); s.dataset.t = t;
     s.innerHTML = '<i style="background:' + COLORS[t] + ';color:' + COLORS[t] + '"></i><span style="color:#9a8f7e">' + l + '</span>';
+    if (!active.has(t)) s.classList.add("off");
     s.onclick = () => { active.has(t) ? active.delete(t) : active.add(t); s.classList.toggle("off", !active.has(t)); refreshVis(); };
     leg.appendChild(s);
   });
@@ -195,8 +200,9 @@
   const glowOf = new Map();
   function baseGlow(n) { return n.type === "plant" ? 0.75 : 0.5; }
   function makeGlow(n) {
+    if (n.type !== "plant") return undefined;          // glow sprites only on the 125 plants — 730 additive sprites was the framerate killer
     const m = new THREE.SpriteMaterial({ map: GTEX, color: COLORS[n.type] || "#888", blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: baseGlow(n) });
-    const s = new THREE.Sprite(m); const sz = n.type === "plant" ? 13 : 5.5; s.scale.set(sz, sz, 1);
+    const s = new THREE.Sprite(m); const sz = 9; s.scale.set(sz, sz, 1);
     glowOf.set(n.id, { s, n }); return s;
   }
 
@@ -206,8 +212,8 @@
     .graphData(data).nodeId("id")
     .nodeLabel(n => `<div style="font-family:monospace;font-size:11px;color:#e9dcc4;background:rgba(8,5,3,.9);padding:3px 7px;border-radius:5px">${n.label}${n.type==='plant'&&n.latin?'<br><i style="color:#9a8f7e">'+n.latin+'</i>':' &middot; '+LABELS[n.type]}</div>`)
     .nodeColor(nodeColor)
-    .nodeVal(n => (n.type === "plant" ? 3.4 : 1.1) * (hl.nodes.has(n) ? 1.7 : 1))
-    .nodeOpacity(0.9)
+    .nodeVal(n => (n.type === "plant" ? 2.6 : 0.8) * (hl.nodes.has(n) ? 1.7 : 1))
+    .nodeOpacity(0.82).nodeResolution(6)
     .nodeThreeObjectExtend(true).nodeThreeObject(makeGlow)
     .nodeVisibility(n => active.has(n.type))
     .linkVisibility(l => active.has(end(l.source).type) && active.has(end(l.target).type) && (lens === "all" || l.type === lens))
@@ -215,11 +221,11 @@
     .linkWidth(l => hl.links.has(l) ? 1.8 : 0.3)
     .linkDirectionalParticles(l => hl.links.has(l) ? 4 : 0)
     .linkDirectionalParticleSpeed(0.012).linkDirectionalParticleWidth(1.8)
-    .linkCurvature(0.16)
-    .warmupTicks(60).cooldownTicks(isMobile ? 140 : 220)
+    .linkCurvature(0)
+    .warmupTicks(80).cooldownTicks(isMobile ? 90 : 140)
     .onNodeClick(onNodeClick).onBackgroundClick(reset);
   Graph.d3Force("charge").strength(-32);
-  try { Graph.renderer().setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2)); } catch (_) {}
+  try { Graph.renderer().setPixelRatio(Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.5)); } catch (_) {}
 
   const neigh = new Map(), inc = new Map();
   for (const l of data.links) {
