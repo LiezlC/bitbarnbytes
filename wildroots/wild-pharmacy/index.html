@@ -525,7 +525,7 @@
   }
   $("cineBtn").onclick=function(){
     if(CINE){ renderCine(CINE.chapters[0].id); openPop("cinePop"); return; }
-    fetch("assets/gallery/manifest.json?v=20260702d").then(function(r){return r.json();}).then(function(m){
+    fetch("assets/gallery/manifest.json?v=20260702e").then(function(r){return r.json();}).then(function(m){
       CINE=m; renderCine(m.chapters[0].id); openPop("cinePop");
     }).catch(function(){ toast("&#127916;","picture-house","still being built &mdash; come back soon"); });
   };
@@ -686,7 +686,7 @@
     MAZE_IMGS=pool; return pool;
   }
   // warm the manifest early so the maze chapter (if present) feeds the walk
-  fetch("assets/gallery/manifest.json?v=20260702d").then(function(r){return r.json();})
+  fetch("assets/gallery/manifest.json?v=20260702e").then(function(r){return r.json();})
     .then(function(m){ CINE=CINE||m; MAZE_IMGS=null; }).catch(function(){});
   function mazeWalk(label,done){
     if(reduceMotion()||WALKING){ done(); return; }
