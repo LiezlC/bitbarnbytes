@@ -13,7 +13,7 @@
    so on CI only the .webp plates + transcripts copy here. The existsSync
    guards below tolerate the missing media. index.html points at the CDN.
    ===================================================================== */
-import { existsSync, rmSync, mkdirSync, cpSync, statSync, readdirSync } from "node:fs";
+import { existsSync, rmSync, mkdirSync, cpSync, statSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -49,6 +49,21 @@ if (existsSync(join(PSRC, "graph.html"))) {
     const s = join(PSRC, item);
     if (existsSync(s)) cpSync(s, join(POUT, item), { recursive: true });
   }
+}
+
+// --- Umami analytics: inject the tracker into the static pages (env-gated) ---
+// One env var (UMAMI_WEBSITE_ID) lights up both the labyrinth and the
+// pharmacopoeia; the Astro pages get it via TerminalLayout.astro.
+const umamiId = process.env.UMAMI_WEBSITE_ID;
+if (umamiId) {
+  const tag = `<script defer src="${process.env.UMAMI_SRC || "https://cloud.umami.is/script.js"}" data-website-id="${umamiId}"></script>`;
+  for (const f of [join(OUT, "index.html"), join(OUT, "pharmacopoeia", "index.html")]) {
+    if (existsSync(f)) {
+      const h = readFileSync(f, "utf8");
+      if (!h.includes("data-website-id")) writeFileSync(f, h.replace("</head>", `  ${tag}\n</head>`));
+    }
+  }
+  console.log(`[stage-wildpharmacy] injected Umami tracker (${umamiId.slice(0, 8)}…)`);
 }
 
 let bytes = 0, files = 0;

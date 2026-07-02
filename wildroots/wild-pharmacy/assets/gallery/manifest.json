@@ -1,0 +1,369 @@
+{
+ "chapters": [
+  {
+   "id": "maze",
+   "kind": "stills",
+   "title": "The Labyrinth Ledger",
+   "note": "an atlas of the living labyrinth \u2014 the maze-ways themselves, freshly surveyed",
+   "dir": "maze",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp"
+   ],
+   "hero": "01.webp",
+   "walk": [
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "10.webp"
+   ]
+  },
+  {
+   "id": "tale-1",
+   "kind": "stills",
+   "title": "Ch.1 \u2014 The Door of Bitter Waters",
+   "note": "chapter one of the Wanderer's Tale, illustrated \u2014 read the field notes for the story itself",
+   "dir": "tale-1",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp"
+   ],
+   "hero": "11.webp",
+   "walk": [
+    "02.webp",
+    "09.webp"
+   ],
+   "transcript": "tale-1/transcript.txt"
+  },
+  {
+   "id": "maze-film",
+   "kind": "stills",
+   "title": "Walking the Maze-Ways (film)",
+   "note": "stills from the maze fly-through overview \u2014 the thread, the walls, the minotaur's pit",
+   "dir": "maze-film",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp"
+   ],
+   "hero": "04.webp",
+   "walk": [
+    "04.webp",
+    "05.webp",
+    "07.webp",
+    "09.webp"
+   ],
+   "transcript": "maze-film/transcript.txt"
+  },
+  {
+   "id": "hexi-1",
+   "kind": "stills",
+   "title": "Hexi's Wild Pharmacy \u2014 I",
+   "note": "Watercolor apothecary-journal style: sage green, dusty lavender, ochre; herbs, roots, cauldrons.",
+   "dir": "hexi-1",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp"
+   ],
+   "hero": "09.webp",
+   "transcript": "hexi-1/transcript.txt"
+  },
+  {
+   "id": "hexi-2",
+   "kind": "stills",
+   "title": "Hexi's Wild Pharmacy \u2014 II",
+   "note": "Kawaii pastel slides punctuated by strong sepia engraving panels (ivy gate, seedling in hand).",
+   "dir": "hexi-2",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp"
+   ],
+   "hero": "10.webp",
+   "transcript": "hexi-2/transcript.txt"
+  },
+  {
+   "id": "tinctures",
+   "kind": "stills",
+   "title": "How Tinctures Freeze Plants in Time",
+   "note": "Hand-drawn watercolor/ink botanical illustrations on cream paper over dark wood; warm sepia-and-sage palette.",
+   "dir": "tinctures",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp"
+   ],
+   "hero": "05.webp",
+   "transcript": "tinctures/transcript.txt"
+  },
+  {
+   "id": "ghost-grain",
+   "kind": "stills",
+   "title": "The Ghost in the Grain",
+   "note": "Sepia engraving style: millstones, grain, chickens, soil-internet panels; the cinematic deck.",
+   "dir": "ghost-grain",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp"
+   ],
+   "hero": "01.webp",
+   "transcript": "ghost-grain/transcript.txt"
+  },
+  {
+   "id": "earth-os",
+   "kind": "stills",
+   "title": "The Earth as an Operating System",
+   "note": "Engraving + glitch-neon accents; millstone motion sequence deduped to one representative frame.",
+   "dir": "earth-os",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp",
+    "15.webp",
+    "16.webp",
+    "17.webp"
+   ],
+   "hero": "04.webp",
+   "transcript": "earth-os/transcript.txt"
+  },
+  {
+   "id": "bitsoil-sagebyte",
+   "kind": "stills",
+   "title": "BitSoil SageByte",
+   "note": "Botanical-punk: storybook art with teal-cyan circuit glow, anime characters, compost-punk labyrinth.",
+   "dir": "bitsoil-sagebyte",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp",
+    "15.webp"
+   ],
+   "hero": "10.webp",
+   "transcript": "bitsoil-sagebyte/transcript.txt"
+  },
+  {
+   "id": "deck-grimoire",
+   "kind": "deck",
+   "title": "Compostpunk Grimoire (deck)",
+   "note": "a slide-deck grown in the notebook",
+   "dir": "decks/deck-grimoire",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp"
+   ],
+   "hero": "01.webp"
+  },
+  {
+   "id": "deck-composting",
+   "kind": "deck",
+   "title": "Composting the Algorithm (deck)",
+   "note": "a slide-deck grown in the notebook",
+   "dir": "decks/deck-composting",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp",
+    "15.webp"
+   ],
+   "hero": "01.webp"
+  },
+  {
+   "id": "deck-sagebyte",
+   "kind": "deck",
+   "title": "BitSoil SageByte (deck)",
+   "note": "a slide-deck grown in the notebook",
+   "dir": "decks/deck-sagebyte",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp",
+    "15.webp",
+    "16.webp",
+    "17.webp",
+    "18.webp",
+    "19.webp",
+    "20.webp",
+    "21.webp"
+   ],
+   "hero": "01.webp"
+  },
+  {
+   "id": "deck-sagebyte-os",
+   "kind": "deck",
+   "title": "BitSoil SageByte OS (deck)",
+   "note": "a slide-deck grown in the notebook",
+   "dir": "decks/deck-sagebyte-os",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp"
+   ],
+   "hero": "01.webp"
+  },
+  {
+   "id": "infographic",
+   "kind": "single",
+   "title": "The Wild Pharmacy Infographic",
+   "note": "the whole pharmacy on one broadsheet",
+   "dir": "",
+   "images": [
+    "infographic.webp"
+   ],
+   "hero": "infographic.webp"
+  }
+ ],
+ "gramophone": [
+  {
+   "id": "sa-plants-in-vr",
+   "title": "South African Medicinal Plants in VR",
+   "file": "audio/sa-plants-in-vr.mp3",
+   "mins": 11,
+   "note": "a guided wander through the fynbos apothecary"
+  },
+  {
+   "id": "hacking-soil",
+   "title": "Hacking Soil to Cure Digital Burnout",
+   "file": "audio/hacking-soil.mp3",
+   "mins": 22,
+   "note": "deep-dive: the dirt as debugging environment"
+  },
+  {
+   "id": "composting-digital-burnout",
+   "title": "Composting Digital Burnout with Living Soil",
+   "file": "audio/composting-digital-burnout.mp3",
+   "mins": 43,
+   "note": "the long-form conversation"
+  },
+  {
+   "id": "pivot-to-mud",
+   "title": "Pivot to Mud (BitSoil SageByte)",
+   "file": "audio/pivot-to-mud.mp3",
+   "mins": 19,
+   "note": "the barnyard glitchtech briefing"
+  },
+  {
+   "id": "compost-the-algorithm",
+   "title": "Compost the Algorithm (BitSoil SageByte)",
+   "file": "audio/compost-the-algorithm.mp3",
+   "mins": 2,
+   "note": "a two-minute manifesto"
+  }
+ ]
+}

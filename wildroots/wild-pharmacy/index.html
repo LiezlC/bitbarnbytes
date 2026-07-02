@@ -105,6 +105,37 @@
   .learn:hover{color:var(--cream);border-color:var(--cream)}
   .learn.alm{color:var(--gold);border-bottom-color:rgba(244,201,93,.5)}
   .card.lore{max-width:520px;text-align:left;max-height:82vh;overflow:auto;background:linear-gradient(180deg,#1b1612,#120d0a);border-color:#5a4632}
+  .card.cine{max-width:740px;width:min(740px,94vw);text-align:left;max-height:86vh;overflow:auto;background:linear-gradient(180deg,#17120c,#0f0b07);border-color:#4a3a26}
+  .card.cine h3{font-size:16px;color:var(--gold);font-weight:500;margin-bottom:2px}
+  .cineSub{font-size:11.5px;color:var(--mute);margin-bottom:8px}
+  .cineTabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 12px}
+  .cineTab{font-family:var(--mono);font-size:11px;padding:5px 11px;border:1px solid var(--edge);border-radius:20px;background:none;color:var(--mute);cursor:pointer}
+  .cineTab:hover{color:var(--cream)}
+  .cineTab.on{color:var(--gold);border-color:var(--gold)}
+  .cineNote{font-size:11.5px;color:var(--teal);margin:0 0 10px;font-style:italic}
+  .cineGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px}
+  .cineGrid img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--edge);cursor:pointer;display:block;background:#0d0906;transition:transform .22s cubic-bezier(.2,.9,.25,1),border-color .22s}
+  .cineGrid img:hover,.cineGrid img:focus-visible{transform:scale(1.05);border-color:var(--gold)}
+  /* the maze-walk: a first-person drift down the corridor between stations */
+  #walk{position:fixed;inset:0;z-index:8;display:none;background:#080503;overflow:hidden}
+  #walk.on{display:block}
+  #walk img{position:absolute;top:-6%;left:-6%;width:112%;height:112%;object-fit:cover;opacity:0;transform:scale(1.02)}
+  #walk img.go{animation:walkstep 1.1s cubic-bezier(.3,.05,.6,1) forwards}
+  @keyframes walkstep{
+    0%{opacity:0;transform:scale(1.02) rotate(.4deg)}
+    18%{opacity:1}
+    82%{opacity:1}
+    100%{opacity:0;transform:scale(1.62) rotate(-.6deg)}
+  }
+  #walk::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 50%, transparent 34%, rgba(5,3,2,.88) 100%)}
+  #walk .wlab{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);z-index:2;font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--cream);text-shadow:0 2px 10px #000;opacity:.85}
+  #lux{position:fixed;inset:0;z-index:11;display:none;flex-direction:column;align-items:center;justify-content:center;background:rgba(6,4,2,.9);padding:20px}
+  #lux.on{display:flex}
+  #luxImg{max-width:min(1100px,94vw);max-height:74vh;border-radius:12px;border:1px solid #4a3a26;box-shadow:0 18px 60px rgba(0,0,0,.6)}
+  #luxCap{font-family:var(--mono);font-size:12.5px;color:var(--cream);margin-top:12px;min-height:1.4em;text-align:center;max-width:640px}
+  #luxCap .cur{display:inline-block;width:.6em;background:var(--gold);height:1em;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+  .luxNav{display:flex;gap:10px;margin-top:10px}
+  .luxNav .btn{font-size:12px;padding:7px 16px}
   .card.lore h3{font-size:16px;color:var(--gold);font-weight:500;margin-bottom:2px}
   .card.lore .seclab{font-size:10.5px;letter-spacing:.16em;color:var(--teal);margin:13px 0 4px}
   .card.lore p{font-size:13px;line-height:1.62;color:var(--cream)}
@@ -196,6 +227,8 @@
       <button class="btn" id="gardenBtn">the garden</button>
       <button class="btn" id="codexBtn">the codex</button>
       <button class="btn" id="badgeBtn">trophies</button>
+      <button class="btn" id="cineBtn" style="color:#ff6fb0;border-color:#5a2a40">the picture-house</button>
+      <a class="btn" href="pharmacopoeia/" style="color:#6ee84e;border-color:#3a5a2c;text-decoration:none">the pharmacopoeia &rarr;</a>
     </div>
     <div class="sub" style="font-size:11px">click a glowing node to travel &middot; solve each station to earn its tincture &middot; keys 1-4 answer</div>
   </section>
@@ -233,7 +266,13 @@
   <div class="pop" id="howPop"><div class="card lore" id="howCard" role="dialog" aria-modal="true" aria-label="the learning loop"></div></div>
   <div class="pop" id="oraclePop"><div class="card sage" id="oracleCard" role="dialog" aria-modal="true" aria-label="the soil oracle"></div></div>
   <div class="pop" id="gardenPop"><div class="card lore" id="gardenCard" role="dialog" aria-modal="true" aria-label="the garden"></div></div>
+  <div class="pop" id="cinePop"><div class="card cine" id="cineCard" role="dialog" aria-modal="true" aria-label="the picture-house"></div></div>
+  <div id="lux" role="dialog" aria-modal="true" aria-label="picture viewer">
+    <img id="luxImg" alt="" /><div id="luxCap"></div>
+    <div class="luxNav"><button class="btn" id="luxPrev">&larr; prev</button><button class="btn" id="luxClose">close</button><button class="btn" id="luxNext">next &rarr;</button></div>
+  </div>
 
+  <div id="walk" aria-hidden="true"><div class="wlab"></div></div>
   <div id="flash" aria-hidden="true"><div class="door"></div><div class="tick">&#10003;</div></div>
   <div id="toasts" aria-live="polite"></div>
 
@@ -294,17 +333,28 @@
       titbit:"Honey never spoils, and a good tincture barely does. The spirit holds the green long after the fresh plant would have faded."}
   };
 
-  var NODES={
-    gate:{x:340,y:462,label:"the gate",start:true},
-    kanna:{x:150,y:392},buchu:{x:340,y:392},rosemary:{x:540,y:392},
-    kankerbossie:{x:95,y:312},rooibos:{x:255,y:318},"gotu-kola":{x:430,y:318},"wild-dagga":{x:600,y:312},
-    honeybush:{x:175,y:236},bulbine:{x:345,y:240},pelargonium:{x:520,y:236},
-    "wild-ginger":{x:255,y:158},pepperbark:{x:435,y:158},
-    wormwood:{x:345,y:92},
-    cauldron:{x:345,y:34,label:"the cauldron",heart:true}
+  /* The doors of the labyrinth — property doorways, so no single plant is ever
+     the only way in. Each door knows its plants; plants may answer to several
+     doors, which is how a web (not a corridor) is grown. */
+  var DOORS={
+    "door-calm":   {x:105,y:424,label:"calm",     color:"#6ee84e", plants:["kanna","rooibos","honeybush","wild-dagga"]},
+    "door-mind":   {x:200,y:424,label:"clear mind",color:"#b07fd8", plants:["rosemary","gotu-kola","kanna"]},
+    "door-breath": {x:293,y:424,label:"breath",   color:"#5aa0ff", plants:["pelargonium","wild-ginger"]},
+    "door-waters": {x:387,y:424,label:"bitter waters",color:"#ff9d45", plants:["wormwood","buchu","wild-ginger"]},
+    "door-skin":   {x:480,y:424,label:"skin & salve",color:"#5fe3d0", plants:["bulbine","gotu-kola"]},
+    "door-shield": {x:575,y:424,label:"the shield",color:"#ff6fb0", plants:["kankerbossie","pelargonium","pepperbark"]}
   };
+  var NODES={
+    gate:{x:340,y:476,label:"the gate",start:true},
+    kanna:{x:150,y:352},buchu:{x:340,y:352},rosemary:{x:540,y:352},
+    kankerbossie:{x:95,y:282},rooibos:{x:255,y:285},"gotu-kola":{x:430,y:285},"wild-dagga":{x:600,y:282},
+    honeybush:{x:175,y:212},bulbine:{x:345,y:214},pelargonium:{x:520,y:212},
+    "wild-ginger":{x:255,y:148},pepperbark:{x:435,y:148},
+    wormwood:{x:345,y:88},
+    cauldron:{x:345,y:30,label:"the cauldron",heart:true}
+  };
+  for(var dk in DOORS) NODES[dk]={x:DOORS[dk].x,y:DOORS[dk].y,label:DOORS[dk].label,door:true,color:DOORS[dk].color};
   var EDGES=[
-    ["gate","kanna"],["gate","buchu"],["gate","rosemary"],
     ["kanna","kankerbossie"],["kanna","rooibos"],
     ["buchu","rooibos"],["buchu","gotu-kola"],
     ["rosemary","gotu-kola"],["rosemary","wild-dagga"],
@@ -314,8 +364,11 @@
     ["wild-ginger","wormwood"],["pepperbark","wormwood"],["bulbine","wormwood"],
     ["wormwood","cauldron"]
   ];
+  for(var dk2 in DOORS){ EDGES.push(["gate",dk2]); DOORS[dk2].plants.forEach(function(p){ EDGES.push([dk2,p]); }); }
   var ADJ={}; for(var k in NODES) ADJ[k]=[];
   EDGES.forEach(function(e){ADJ[e[0]].push(e[1]);ADJ[e[1]].push(e[0]);});
+  // a plant always opens back onto every door it belongs to, wherever you stand
+  for(var dk3 in DOORS) DOORS[dk3].plants.forEach(function(p){ if(ADJ[p].indexOf(dk3)<0) ADJ[p].push(dk3); });
 
   var clock=1, current="gate", got={}, NEED=8, LIMIT=13, rung=0, hintUsed={}, cur=null;
   var RUN={mino:false,hint:false,curMino:false,steward:{},feather:false};
@@ -392,6 +445,85 @@
       '<div style="margin-top:14px"><button class="btn" id="howClose">close</button></div>';
     openPop("howPop"); $("howClose").onclick=function(){ closePop("howPop"); }; }
   $("howBtn").onclick=openHow; $("codexBtn").onclick=openCodex; $("badgeBtn").onclick=openBadges;
+
+  /* ---- the picture-house: stills, decks & the broadsheet from the notebook ---- */
+  var CINE=null, LUX={ch:null,i:0}, luxTimer=null;
+  function cineEsc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  function typeCaption(text){
+    var cap=$("luxCap"); if(luxTimer){ clearInterval(luxTimer); luxTimer=null; }
+    if(reduceMotion()){ cap.textContent=text; return; }
+    var i=0; cap.innerHTML='<span class="t"></span><span class="cur"></span>';
+    var t=cap.querySelector(".t");
+    luxTimer=setInterval(function(){ i+=2; t.textContent=text.slice(0,i); if(i>=text.length){ clearInterval(luxTimer); luxTimer=null; } },24);
+  }
+  function luxShow(ch,i){
+    LUX.ch=ch; LUX.i=(i+ch.images.length)%ch.images.length;
+    var base="assets/gallery/"+(ch.dir?ch.dir+"/":"");
+    $("luxImg").src=base+ch.images[LUX.i];
+    $("luxImg").alt=ch.title+" — plate "+(LUX.i+1);
+    typeCaption("// "+ch.title.toLowerCase()+" · plate "+(LUX.i+1)+" of "+ch.images.length);
+    $("lux").classList.add("on");
+  }
+  function luxClose(){ $("lux").classList.remove("on"); if(luxTimer){clearInterval(luxTimer);luxTimer=null;} }
+  $("luxClose").onclick=luxClose;
+  $("luxPrev").onclick=function(){ if(LUX.ch) luxShow(LUX.ch,LUX.i-1); };
+  $("luxNext").onclick=function(){ if(LUX.ch) luxShow(LUX.ch,LUX.i+1); };
+  $("lux").addEventListener("click",function(e){ if(e.target===$("lux")) luxClose(); });
+  document.addEventListener("keydown",function(e){
+    if(!$("lux").classList.contains("on")) return;
+    if(e.key==="Escape") luxClose();
+    else if(e.key==="ArrowLeft"){ if(LUX.ch) luxShow(LUX.ch,LUX.i-1); }
+    else if(e.key==="ArrowRight"){ if(LUX.ch) luxShow(LUX.ch,LUX.i+1); }
+  });
+  function gramHTML(){
+    if(!CINE||!CINE.gramophone||!CINE.gramophone.length) return "";
+    return '<div style="margin-top:16px;border-top:1px dashed var(--edge);padding-top:12px">'
+      +'<div style="font-size:11px;letter-spacing:.18em;color:var(--teal);margin-bottom:8px">&#9836; THE GRAMOPHONE SHELF</div>'
+      +CINE.gramophone.map(function(g){
+        return '<div style="margin:0 0 10px"><div style="font-size:12px;color:var(--gold)">'+cineEsc(g.title)
+          +' <span style="color:var(--mute);font-size:10.5px">&middot; '+g.mins+' min &middot; '+cineEsc(g.note)+'</span></div>'
+          +'<audio controls preload="none" style="width:100%;height:30px;margin-top:3px" src="assets/gallery/'+g.file+'"></audio></div>';
+      }).join("")+'</div>';
+  }
+  function renderCine(chId){
+    var ch=CINE.chapters.filter(function(c){return c.id===chId;})[0]||CINE.chapters[0];
+    var tabs=CINE.chapters.map(function(c){
+      return '<button class="cineTab'+(c.id===ch.id?" on":"")+'" data-ch="'+c.id+'">'+cineEsc(c.title.replace(/ \(deck\)$/," ▤").replace(/^The /,""))+'</button>';
+    }).join("");
+    var base="assets/gallery/"+(ch.dir?ch.dir+"/":"");
+    var grid=ch.images.map(function(f,i){
+      return '<img loading="lazy" tabindex="0" src="'+base+f+'" alt="'+cineEsc(ch.title)+' plate '+(i+1)+'" data-i="'+i+'">';
+    }).join("");
+    $("cineCard").innerHTML='<h3>// the picture-house</h3>'
+      +'<div class="cineSub">plates, decks &amp; broadsheets that drifted up from the notebook &middot; click any plate to step closer</div>'
+      +'<div class="cineTabs">'+tabs+'</div>'
+      +'<div class="cineNote">'+cineEsc(ch.note)+'</div>'
+      +(ch.transcript?'<button class="learn" id="cineFn">&#9656; read the field notes from this reel</button><div id="cineFnBody" style="display:none;font-size:12px;line-height:1.62;color:var(--cream);border-left:2px solid #4a3a26;padding-left:10px;margin:8px 0;white-space:pre-line"></div>':'')
+      +'<div class="cineGrid">'+grid+'</div>'
+      +gramHTML()
+      +'<div style="text-align:center;margin-top:14px"><button class="btn" id="cineClose">back to the labyrinth</button></div>';
+    $("cineClose").onclick=function(){ closePop("cinePop"); };
+    if(ch.transcript){ $("cineFn").onclick=function(){
+      var b=$("cineFnBody");
+      if(b.style.display!=="none"){ b.style.display="none"; return; }
+      if(b.textContent){ b.style.display="block"; return; }
+      fetch("assets/gallery/"+ch.transcript).then(function(r){return r.text();}).then(function(t){ b.textContent=t; b.style.display="block"; })
+        .catch(function(){ b.textContent="(the notes blew away in the wind)"; b.style.display="block"; });
+    }; }
+    Array.prototype.forEach.call($("cineCard").querySelectorAll(".cineTab"),function(el){
+      el.onclick=function(){ renderCine(el.getAttribute("data-ch")); };
+    });
+    Array.prototype.forEach.call($("cineCard").querySelectorAll(".cineGrid img"),function(el){
+      var go=function(){ luxShow(ch,parseInt(el.getAttribute("data-i"),10)||0); };
+      el.onclick=go; el.onkeydown=function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } };
+    });
+  }
+  $("cineBtn").onclick=function(){
+    if(CINE){ renderCine(CINE.chapters[0].id); openPop("cinePop"); return; }
+    fetch("assets/gallery/manifest.json?v=20260702c").then(function(r){return r.json();}).then(function(m){
+      CINE=m; renderCine(m.chapters[0].id); openPop("cinePop");
+    }).catch(function(){ toast("&#127916;","picture-house","still being built &mdash; come back soon"); });
+  };
 
   // ---------- the soil oracle (Pinecone RAG, with offline fallback) ----------
   var ORACLE_URL="/api/herb";
@@ -482,36 +614,101 @@
     return d;
   }
 
+  function doorColorOf(key){ // a plant borrows the hue of its first door; doors keep their own
+    if(NODES[key].door) return NODES[key].color;
+    for(var d in DOORS) if(DOORS[d].plants.indexOf(key)>-1) return DOORS[d].color;
+    return "#f4c95d";
+  }
+  function curveEdge(a,b,cls,stroke,op,w){
+    var mx=(a.x+b.x)/2, my=(a.y+b.y)/2, dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1;
+    var k=Math.min(18,len*0.14), cx=mx-dy/len*k, cy=my+dx/len*k;
+    return '<path class="'+cls+'" d="M'+a.x+' '+a.y+' Q'+cx+' '+cy+' '+b.x+' '+b.y+'" fill="none" stroke="'+stroke+'" stroke-width="'+w+'" opacity="'+op+'"/>';
+  }
   function renderMap(){
-    var svg=$("mapsvg"),s='',near=ADJ[current];
-    EDGES.forEach(function(e){var a=NODES[e[0]],b=NODES[e[1]];s+='<line class="edge" x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'"/>';});
+    var svg=$("mapsvg"),near=ADJ[current];
+    var s='<defs><filter id="nglow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="3.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
+    EDGES.forEach(function(e){
+      var a=NODES[e[0]],b=NODES[e[1]];
+      var lit=(e[0]===current&&near.indexOf(e[1])>-1)||(e[1]===current&&near.indexOf(e[0])>-1);
+      var col="#4a3a2a",op=0.55,w=1.2;
+      if(lit){ col=doorColorOf(NODES[e[0]].door?e[0]:(NODES[e[1]].door?e[1]:e[0])); op=0.9; w=1.8; }
+      else if(NODES[e[0]].door||NODES[e[1]].door){ col=(NODES[e[0]].door?NODES[e[0]].color:NODES[e[1]].color); op=0.22; }
+      s+=curveEdge(a,b,"edge",col,op,w);
+    });
     for(var key in NODES){
-      var n=NODES[key],isNear=near.indexOf(key)>-1,isCur=key===current,r=8,fill="#1a130d",color="#6b5440";
+      var n=NODES[key],isNear=near.indexOf(key)>-1,isCur=key===current,glow=(isNear||isCur);
+      var color,fill="#1a130d";
       if(n.heart){ color=gotCount()>=NEED?"#6ee84e":"#5a4632"; }
+      else if(n.door){ color=n.color; }
       else if(got[key]){ color="#6ee84e"; }
       else if(key==="gate"){ color="#f4c95d"; }
-      else { color="#ff6fb0"; }
-      var glow=(isNear||isCur);
+      else { color=doorColorOf(key); }
       s+='<g class="nodeC" data-k="'+key+'">';
       if(isCur) s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="14" fill="none" stroke="'+color+'" stroke-width="1.5" opacity="0.5"><animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/></circle>';
-      s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+r+'" fill="'+((got[key]||isCur)?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.55)+'"/>';
+      if(n.door){
+        s+='<rect x="'+(n.x-7)+'" y="'+(n.y-7)+'" width="14" height="14" transform="rotate(45 '+n.x+' '+n.y+')" fill="'+(isCur?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.75)+'"'+(glow?' filter="url(#nglow)"':'')+'/>';
+      } else {
+        var r=n.heart||key==="gate"?9:8;
+        s+='<circle cx="'+n.x+'" cy="'+n.y+'" r="'+r+'" fill="'+((got[key]||isCur)?color:fill)+'" stroke="'+color+'" stroke-width="2" opacity="'+(glow?1:0.6)+'"'+(glow?' filter="url(#nglow)"':'')+'/>';
+      }
       if(got[key]) s+='<text x="'+n.x+'" y="'+(n.y+3.5)+'" text-anchor="middle" font-size="10" fill="#102a10">&#10003;</text>';
       var lbl=n.label||(BY[key]?BY[key].name:key);
-      s+='<text class="nLabel '+(glow?"near":"")+'" x="'+n.x+'" y="'+(n.y<60?n.y-14:n.y+22)+'" text-anchor="middle">'+lbl+'</text>';
+      var ly=n.door?n.y+22:(n.y<60?n.y-14:n.y+22);
+      s+='<text class="nLabel '+(glow?"near":"")+'" x="'+n.x+'" y="'+ly+'" text-anchor="middle"'+(n.door?' fill="'+color+'" opacity="'+(glow?1:0.7)+'"':'')+'>'+lbl+'</text>';
       s+='</g>';
     }
     svg.innerHTML=s;
-    var hint=gotCount()>=NEED?"the cauldron is open — make for the heart":("travel to a glowing station ("+gotCount()+"/"+NEED+" tinctures)");
+    var hint;
+    if(gotCount()>=NEED) hint="the cauldron is open — make for the heart";
+    else if(current==="gate") hint="six doors, one for every kind of ailing — choose your way in";
+    else if(NODES[current]&&NODES[current].door) hint="the door of "+NODES[current].label+" — "+DOORS[current].plants.map(function(p){return BY[p].name;}).join(", ")+" answer to it";
+    else hint="travel the glowing threads ("+gotCount()+"/"+NEED+" tinctures)";
     $("mapHint").textContent=hint;
     Array.prototype.forEach.call(svg.querySelectorAll(".nodeC"),function(g){ g.addEventListener("click",function(){travel(g.getAttribute("data-k"));}); });
+  }
+  /* ---- the maze-walk: corridor images drift past as you move ---- */
+  var MAZE_IMGS=null, WALKING=false;
+  function mazeImgs(){
+    if(MAZE_IMGS) return MAZE_IMGS;
+    var pool=["scenes/riddle-door.jpg","scenes/sir-didymus.jpg","scenes/stair-stack.jpg"];
+    if(CINE&&CINE.chapters){
+      var wp=[];
+      CINE.chapters.forEach(function(c){
+        if(c.walk) wp=wp.concat(c.walk.map(function(f){return "assets/gallery/"+c.dir+"/"+f;}));
+      });
+      if(wp.length) pool=wp;
+    }
+    MAZE_IMGS=pool; return pool;
+  }
+  // warm the manifest early so the maze chapter (if present) feeds the walk
+  fetch("assets/gallery/manifest.json?v=20260702c").then(function(r){return r.json();})
+    .then(function(m){ CINE=CINE||m; MAZE_IMGS=null; }).catch(function(){});
+  function mazeWalk(label,done){
+    if(reduceMotion()||WALKING){ done(); return; }
+    var pool=mazeImgs(); if(!pool.length){ done(); return; }
+    WALKING=true;
+    var w=$("walk"); w.querySelector(".wlab").textContent="// "+label;
+    var steps=[],used={};
+    for(var i=0;i<2;i++){ var pI; do{ pI=Math.floor(Math.random()*pool.length); }while(used[pI]&&pool.length>2); used[pI]=true; steps.push(pool[pI]); }
+    w.classList.add("on");
+    var si=0;
+    function step(){
+      if(si>=steps.length){ w.classList.remove("on"); Array.prototype.forEach.call(w.querySelectorAll("img"),function(im){im.remove();}); WALKING=false; done(); return; }
+      var im=document.createElement("img"); im.src=steps[si]; im.alt="";
+      im.onload=function(){ im.classList.add("go"); };
+      im.onerror=function(){ im.remove(); };
+      w.insertBefore(im,w.querySelector(".wlab"));
+      si++; setTimeout(step,900);
+    }
+    step();
   }
   function travel(key){
     if(ADJ[current].indexOf(key)<0) return;
     var n=NODES[key];
     if(n.heart){ if(gotCount()>=NEED){ current=key; win(); } else { $("mapHint").textContent="the heart is sealed. gather "+(NEED-gotCount())+" more tinctures."; } return; }
     current=key;
-    if(got[key]){ renderMap(); return; }
-    startStation(key);
+    if(n.door||got[key]){ renderMap(); return; }
+    mazeWalk("the maze-ways to "+(BY[key]?BY[key].name.toLowerCase():key),function(){ startStation(key); });
   }
 
   function startStation(key){ cur=BY[key]; sfxStep(); rung=0; hintUsed={}; RUN.curMino=false; markSeen(key); setBg(cur.clip,0.6); setScene(null); show("station"); applyStationPos(cur.pos||"bl");
@@ -614,7 +811,9 @@
     if(clock<=9) award("fleet"); if(!RUN.mino) award("clean"); if(!RUN.hint) award("unaided");
     $("end").innerHTML='<div class="kick">// the 13th hour holds</div><h1>The earth is a pharmacy</h1>'+
       '<div class="sub">You reached the cauldron with '+gotCount()+' tinctures in hand, at hour '+Math.min(clock,LIMIT)+'. The blue-light composts to green; the labyrinth lets you keep what you have learned.</div>'+
-      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; walk it again</button>';
+      shareBlock()+
+      '<a class="btn" href="pharmacopoeia/" style="display:block;max-width:300px;margin:0 auto 10px;color:#6ee84e;border-color:#3a5a2c;text-decoration:none">&#10022; step into the pharmacopoeia &rarr;</a>'+
+      '<button class="btn" onclick="location.reload()">&gt; walk it again</button>';
     wireShare(true); }
   function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end"); recordRun(false);
     $("end").innerHTML='<div class="kick" style="color:#ff5a5a">// the 13th hour strikes</div><h1>The minotaur keeps you</h1>'+
