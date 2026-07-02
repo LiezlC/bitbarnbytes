@@ -407,5 +407,15 @@
    "mins": 2,
    "note": "a two-minute manifesto"
   }
+ ],
+ "ambient": [
+  "field-guide/05.webp",
+  "field-guide/06.webp",
+  "maze/06.webp",
+  "field-guide/02.webp",
+  "maze/04.webp",
+  "field-guide/19.webp",
+  "field-guide/09.webp",
+  "maze/10.webp"
  ]
 }

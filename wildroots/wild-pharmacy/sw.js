@@ -2,7 +2,7 @@
    Caches the same-origin shell (index.html, stations.json, scenes, plates,
    assets) so the labyrinth opens offline. Cross-origin media (Cloudinary
    clips/audio) and /api/ oracle calls always go to the network. */
-const CACHE = "wildpharmacy-v4";
+const CACHE = "wildpharmacy-v5";
 const CORE = [
   "./", "index.html", "stations.json", "manifest.webmanifest",
   "assets/favicon.svg", "assets/learning-loop.png", "assets/og.jpg",
@@ -33,6 +33,17 @@ self.addEventListener("fetch", (e) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;      // Cloudinary etc -> network
   if (url.pathname.includes("/api/")) return;       // oracle calls -> network
+  const isPage = req.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
+  if (isPage) {
+    // pages: network-first so deploys reach returning visitors; cache only as offline fallback
+    e.respondWith(
+      fetch(req).then((res) => {
+        if (res && res.ok) { const cp = res.clone(); caches.open(CACHE).then((c) => c.put(req, cp)); }
+        return res;
+      }).catch(() => caches.match(req).then((hit) => hit || caches.match("index.html")))
+    );
+    return;
+  }
   e.respondWith(
     caches.match(req).then((hit) =>
       hit ||
