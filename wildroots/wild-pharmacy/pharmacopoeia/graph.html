@@ -10,7 +10,7 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%;background:var(--ink);color:var(--cream);font-family:var(--mono);overflow:hidden}
   #bg{position:fixed;inset:0;z-index:0;background:#0c0a07 center/cover no-repeat;}
-  #bg.img{background-image:linear-gradient(rgba(8,6,4,.55),rgba(8,6,4,.72)),url("garden-bg.jpg");}
+  #bg.img{background-image:linear-gradient(rgba(8,6,4,.3),rgba(8,6,4,.45)),url("garden-bg.jpg");}
   #bg::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%, transparent 40%, rgba(8,5,3,.6) 100%);}
   #graph{position:fixed;inset:0;z-index:1;transition:bottom .25s ease}
   #hud{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:flex-start;
@@ -60,8 +60,8 @@
   @keyframes picExp{from{opacity:0}to{opacity:1}}
   #info.on{animation:infoIn .34s cubic-bezier(.2,.9,.25,1)}
   @keyframes infoIn{0%{opacity:0;transform:translateX(14px) skewX(-4deg)}55%{opacity:1;transform:translateX(-3px) skewX(1.5deg)}100%{transform:none}}
-  #bg .amb{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 6s ease;filter:sepia(.35) brightness(.55) saturate(.8)}
-  #bg .amb.on{opacity:.22}
+  #bg .amb{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transition:opacity 6s ease;filter:sepia(.15) brightness(.82) saturate(.95)}
+  #bg .amb.on{opacity:.55}
   #cine{position:fixed;inset:0;z-index:22;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,4,2,.82);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
   #cine.on{display:flex;animation:picExp .22s ease}
   #cine .ccard{max-width:760px;width:min(760px,94vw);max-height:88vh;overflow:auto;background:rgba(14,10,6,.98);border:1px solid #4a3a26;border-radius:16px;padding:20px 22px}
