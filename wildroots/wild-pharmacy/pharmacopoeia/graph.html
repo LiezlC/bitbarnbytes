@@ -393,7 +393,7 @@
     document.getElementById("cineBtn").onclick = () => {
       track("picture-house-open");
       if (M) { render(M.chapters[0].id); cine.classList.add("on"); return; }
-      fetch("../assets/gallery/manifest.json?v=20260702c").then(r => r.json())
+      fetch("../assets/gallery/manifest.json?v=20260702d").then(r => r.json())
         .then(m => { M = m; render(m.chapters[0].id); cine.classList.add("on"); })
         .catch(() => toast("the picture-house is still being built…"));
     };
@@ -406,7 +406,7 @@
     });
 
     // ambient backdrop: hero plates drifting slowly behind the web
-    fetch("../assets/gallery/manifest.json?v=20260702c").then(r => r.json()).then(m => {
+    fetch("../assets/gallery/manifest.json?v=20260702d").then(r => r.json()).then(m => {
       M = M || m;
       if (rm) return;
       const heroes = m.chapters.filter(c => c.kind === "stills").map(c => base(c) + c.hero);

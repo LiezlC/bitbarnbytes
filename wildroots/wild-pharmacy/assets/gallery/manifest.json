@@ -88,6 +88,41 @@
    "transcript": "maze-film/transcript.txt"
   },
   {
+   "id": "field-guide",
+   "kind": "stills",
+   "title": "The Wild Pharmacy Field Guide (film)",
+   "note": "naturalist plates from the field-guide film \u2014 identify, harvest, extract, concoct",
+   "dir": "field-guide",
+   "images": [
+    "01.webp",
+    "02.webp",
+    "03.webp",
+    "04.webp",
+    "05.webp",
+    "06.webp",
+    "07.webp",
+    "08.webp",
+    "09.webp",
+    "10.webp",
+    "11.webp",
+    "12.webp",
+    "13.webp",
+    "14.webp",
+    "15.webp",
+    "16.webp",
+    "17.webp",
+    "18.webp",
+    "19.webp"
+   ],
+   "hero": "06.webp",
+   "walk": [
+    "06.webp",
+    "13.webp",
+    "19.webp"
+   ],
+   "transcript": "field-guide/transcript.txt"
+  },
+  {
    "id": "hexi-1",
    "kind": "stills",
    "title": "Hexi's Wild Pharmacy \u2014 I",
@@ -330,6 +365,13 @@
   }
  ],
  "gramophone": [
+  {
+   "id": "field-guide-audio",
+   "title": "The Wild Pharmacy Field Guide (narration)",
+   "file": "audio/field-guide.mp3",
+   "mins": 4,
+   "note": "the field-guide film, for the ears"
+  },
   {
    "id": "sa-plants-in-vr",
    "title": "South African Medicinal Plants in VR",
