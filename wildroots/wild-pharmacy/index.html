@@ -822,8 +822,8 @@
     wireShare(true); }
   function lose(){ sfxLose(); setScene(null); setBg(CLIP_BASE+"24.mp4",0.6); show("end"); recordRun(false);
     $("end").innerHTML='<div class="kick" style="color:#ff5a5a">// the 13th hour strikes</div><h1>The minotaur keeps you</h1>'+
-      '<div class="sub">The clock ran out with '+gotCount()+' of '+NEED+' tinctures gathered. The hedges close. But the plants you learned are yours to try again.</div>'+
-      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; try again</button>';
+      '<div class="sub">The clock ran out with '+gotCount()+' of '+NEED+' tinctures gathered. The hedges close &mdash; but the codex remembers. You now know '+Object.keys(SAVE.codex).length+' of '+QUEST.length+' plants'+(SAVE.runs>1?' across '+SAVE.runs+' runs':'')+'; your next walk starts smarter.</div>'+
+      shareBlock()+'<button class="btn" onclick="location.reload()">&gt; walk it again, wiser</button>';
     wireShare(false); }
   function recordRun(didWin){ SAVE.runs++; if(didWin){ SAVE.wins++; if(SAVE.best==null||clock<SAVE.best)SAVE.best=clock; } persist(); }
 

@@ -38,6 +38,11 @@
   #legend span.off{opacity:.26;text-decoration:line-through}
   #legend i{width:9px;height:9px;border-radius:50%;display:inline-block;box-shadow:0 0 6px currentColor}
   #hint{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:4;font-size:10.5px;color:#7a6a4e;pointer-events:none;text-align:center}
+  #quickChips{pointer-events:auto;margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;max-width:340px;transition:opacity .3s}
+  #quickChips.hide{opacity:0;pointer-events:none}
+  #quickChips .lbl{width:100%;font-size:9.5px;letter-spacing:.14em;color:#6f6450;text-transform:uppercase}
+  #quickChips .chip{font-family:var(--mono);font-size:11.5px;border-radius:16px;padding:5px 11px;cursor:pointer;background:rgba(14,10,6,.72);border:1px solid var(--edge)}
+  #quickChips .chip:hover{background:rgba(40,28,16,.8)}
   #info{position:fixed;right:18px;bottom:16px;z-index:6;max-width:320px;max-height:62vh;overflow:auto;font-size:11.5px;line-height:1.5;
     background:rgba(12,8,5,.88);border:1px solid var(--edge);border-radius:11px;padding:12px 14px;display:none;
     -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -112,7 +117,8 @@
     #panel select,#panel .btn{padding:5px 8px}
     #legend{left:8px;right:8px;bottom:8px;max-width:none;gap:7px 9px;font-size:11px;justify-content:center;max-height:78px;overflow:auto}
     #legend span{padding:2px 1px} #legend i{width:11px;height:11px}
-    #hint{display:none} .scene-nav-info{display:none!important}
+    #hint{left:8px;right:8px;transform:none;bottom:96px;font-size:10px} .scene-nav-info{display:none!important}
+    #quickChips .chip{font-size:11px;padding:5px 10px}
     #info{left:8px;right:8px;bottom:98px;max-width:none;max-height:40vh;font-size:12px}
     #info .close{display:block;position:absolute;top:7px;right:11px;color:var(--gold);font-size:20px;line-height:1;cursor:pointer}
     body.boxopen #graph{bottom:calc(40vh + 104px)}
@@ -134,6 +140,7 @@
       <div class="ttl">// hexi's <b>pharmacopoeia</b></div>
       <div class="sub" id="stat">loading the living library…</div>
       <div id="search"><input id="q" type="text" placeholder="search a plant… or pick a query" autocomplete="off" spellcheck="false" /><div id="results"></div></div>
+      <div id="quickChips"></div>
     </div>
     <div id="panel">
       <a class="btn" href="../" style="text-decoration:none" title="back to the labyrinth game">&larr; labyrinth</a>
@@ -247,13 +254,28 @@
     (inc.get(t) || inc.set(t, []).get(t)).push(l);
   }
   let _fitted = false;
-  Graph.onEngineStop(() => { if (!_fitted) { _fitted = true; Graph.zoomToFit(700, isMobile ? 26 : 90); const h = decodeURIComponent((location.hash || "").slice(1)); if (h && byId.get(h)) setTimeout(() => onNodeClick(byId.get(h)), 750); } });
+  Graph.onEngineStop(() => { if (!_fitted) { _fitted = true; Graph.zoomToFit(700, isMobile ? 26 : 90);
+    const h = decodeURIComponent((location.hash || "").slice(1));
+    if (h && byId.get(h)) { setTimeout(() => onNodeClick(byId.get(h)), 750); return; }
+    // first visit, no deep link: fly to one charismatic herb so the opening move
+    // is a guided reveal, not 300 anonymous dots and a blank search box
+    let seen = false; try { seen = !!localStorage.getItem("wp_intro"); } catch (_) {}
+    if (!seen) {
+      try { localStorage.setItem("wp_intro", "1"); } catch (_) {}
+      const kanna = byId.get("plant:sceletium-kanna");
+      if (kanna) setTimeout(() => { onNodeClick(kanna); toast("this is Kanna — everything it touches is lit. " + (isMobile ? "tap" : "click") + " any plant to find yours"); track("intro-reveal"); }, 1100);
+    }
+  } });
 
   document.getElementById("stat").textContent = data.nodes.length + " nodes · " + data.links.length + " links · " + data.nodes.filter(n => n.type === "plant").length + " plants";
 
-  function nodeColor(n) { if (!selected) return COLORS[n.type] || "#888"; return hl.nodes.has(n) ? (COLORS[n.type] || "#888") : "rgba(74,64,52,0.12)"; }
+  const hintEl = document.getElementById("hint");
+  if (isMobile) hintEl.textContent = "drag to spin · pinch to zoom · tap a plant to light its web";
+
+  const isLocked = n => !!(window.__METER__ && window.__METER__.locked && window.__METER__.locked(n));
+  function nodeColor(n) { if (!selected) return isLocked(n) ? "rgba(122,110,90,0.28)" : (COLORS[n.type] || "#888"); return hl.nodes.has(n) ? (COLORS[n.type] || "#888") : "rgba(74,64,52,0.12)"; }
   function linkColor(l) { if (hl.links.has(l)) return COLORS[l.type] || "#caa15a"; return selected ? "rgba(90,78,60,0.04)" : "rgba(150,130,100,0.13)"; }
-  function updateGlows() { glowOf.forEach(({ s, n }) => { const b = baseGlow(n); s.material.opacity = !selected ? b : (hl.nodes.has(byId.get(n.id)) ? Math.min(1, b + 0.3) : 0.05); }); }
+  function updateGlows() { glowOf.forEach(({ s, n }) => { const b = baseGlow(n); s.material.opacity = !selected ? (isLocked(n) ? 0.08 : b) : (hl.nodes.has(byId.get(n.id)) ? Math.min(1, b + 0.3) : 0.05); }); }
   function refreshHL() { Graph.nodeColor(Graph.nodeColor()).nodeVal(Graph.nodeVal()).linkColor(Graph.linkColor()).linkWidth(Graph.linkWidth()).linkDirectionalParticles(Graph.linkDirectionalParticles()); updateGlows(); }
   function refreshVis() { Graph.nodeVisibility(Graph.nodeVisibility()).linkVisibility(Graph.linkVisibility()); }
 
@@ -276,16 +298,20 @@
     (neigh.get(node.id) || new Set()).forEach(id => { const m = byId.get(id); if (m) hl.nodes.add(m); });
     hl.links = new Set(inc.get(node.id) || []);
     refreshHL(); setHash(node.id); showInfo(node); showPic(node); focusCam(node);
+    hintEl.style.opacity = "0"; document.getElementById("quickChips").classList.add("hide");
     if (node.type === "plant") track("plant-view", { plant: node.id.slice(6) });
   }
   function reset() {
     selected = null; hl.nodes.clear(); hl.links.clear(); refreshHL(); clearHash();
+    hintEl.style.opacity = ""; document.getElementById("quickChips").classList.remove("hide");
     document.getElementById("info").classList.remove("on");
     document.getElementById("pic").classList.remove("on", "expanded");
     if (document.body.classList.contains("boxopen")) { document.body.classList.remove("boxopen"); requestAnimationFrame(() => window.dispatchEvent(new Event("resize"))); }
   }
 
   const info = document.getElementById("info");
+  // the 13 herbs that hold stations in the labyrinth game (stations.json keys → node ids)
+  const LAB_HEROES = new Set(["plant:sceletium-kanna","plant:kankerbossie-cancer-bush","plant:buchu","plant:rooibos","plant:honeybush","plant:bulbine","plant:wild-dagga","plant:pepperbark","plant:african-wild-ginger","plant:rosemary","plant:gotu-kola","plant:pelargonium","plant:wormwood"]);
   const PICS = new Set(["african-wild-ginger","alfalfa","aloe-vera","amaranth","angelica-dong-quai","argan","ashwagandha","asparagus","bacopa","bamboo","baobab","basil","bilberry","black-seed","blue-lotus","borage","buchu","bulbine","burdock","cacao","calendula","cannabis","caper","cardamom","cats-claw","cayenne","celery","chaga","chickweed","christmas-berry","cinnamon","clove","coconut","coffee","cola-nut","comfrey","cordyceps","coriander","dandelion","dill","echinacea","elderberry","elecampane","eucalyptus","evening-primrose","eyebright","fennel","fenugreek","feverfew","garlic","german-chamomile","ginger","ginkgo","globe-artichoke","goldenrod","goldenseal","gotu-kola","guarana","guava","hawthorn","honeybush","hops","horsetail","hyssop","jasmine","kankerbossie-cancer-bush","king-of-bitters","lavender","lemon-balm","lemon-verbena","lemongrass","licorice","lime-linden-flower","lions-mane","lungwort","marshmallow","meadowsweet","milk-thistle","moringa","motherwort","mullein","nasturtium","neem","oats","opium-poppy","oregano","panax-ginseng","parsley","passion-flower","pelargonium","pepperbark","peppermint","pine","plantain-ribwort","pokeweed","raspberry-leaf","red-clover","reishi","rhodiola","rhubarb","roman-chamomile","rooibos","rosemary","sage","sceletium-kanna","schisandra","siberian-ginseng","skullcap","slippery-elm","st-johns-wort","stinging-nettle","tarragon","tea","thyme","tobacco","tulsi","turmeric","valerian","vervain","white-willow","wild-dagga","wild-olive","witch-hazel","wormwood","yarrow"]);
   const pic = document.getElementById("pic"), picImg = pic.querySelector("img"), picCap = pic.querySelector(".cap");
   pic.addEventListener("click", () => { if (isMobile) pic.classList.toggle("expanded"); });
@@ -301,7 +327,8 @@
       const g = {};
       (inc.get(n.id) || []).forEach(l => { const o = end(l.source).id === n.id ? end(l.target) : end(l.source); (g[o.type] = g[o.type] || []).push(o.label); });
       info.innerHTML = close + '<h3>' + n.label + '</h3>' + (n.latin ? '<div class="lat">' + n.latin + '</div>' : '') +
-        Object.keys(LABELS).filter(t => g[t]).map(t => '<div class="row"><span class="k" style="color:' + COLORS[t] + '">' + LABELS[t] + ':</span> ' + [...new Set(g[t])].join(", ") + '</div>').join('');
+        Object.keys(LABELS).filter(t => g[t]).map(t => '<div class="row"><span class="k" style="color:' + COLORS[t] + '">' + LABELS[t] + ':</span> ' + [...new Set(g[t])].join(", ") + '</div>').join('') +
+        (LAB_HEROES.has(n.id) ? '<div class="row" style="margin-top:8px;border-top:1px dashed var(--edge);padding-top:7px">&#9876; this herb guards a station in <a href="../" style="color:var(--green)">the labyrinth</a> — go play it</div>' : '');
     } else {
       const plants = (inc.get(n.id) || []).map(l => end(l.source).id === n.id ? end(l.target) : end(l.source)).filter(x => x.type === "plant");
       info.innerHTML = close + '<h3 style="color:' + COLORS[n.type] + '">' + n.label + '</h3><div class="lat">' + LABELS[n.type] + ' · shared by ' + plants.length + ' plants</div>' +
@@ -314,6 +341,15 @@
   const q = document.getElementById("q"), results = document.getElementById("results");
   const quick = data.nodes.filter(n => n.type === "ailment" || n.type === "effect")
     .map(n => ({ n, d: (inc.get(n.id) || []).length })).sort((a, b) => b.d - a.d).slice(0, 14).map(x => x.n);
+  // a handful of "what can I take for…" chips visible on the empty state —
+  // questions about yourself are a faster hook than a taxonomy of 730 nodes
+  (function () {
+    const qc = document.getElementById("quickChips");
+    qc.innerHTML = '<span class="lbl">what can I take for…</span>' +
+      quick.slice(0, isMobile ? 4 : 6).map(n => '<span class="chip" data-id="' + n.id + '" style="color:' + COLORS[n.type] + '">' + n.label + '</span>').join('');
+    qc.querySelectorAll(".chip").forEach(c => c.onclick = () => { track("quick-chip", { q: c.textContent }); pick(byId.get(c.dataset.id)); });
+  })();
+
   function renderChips() {
     results.innerHTML = '<div class="lbl">what can I take for…</div><div class="chips">' +
       quick.map(n => '<span class="chip" data-id="' + n.id + '" style="color:' + COLORS[n.type] + ';border:1px solid ' + COLORS[n.type] + '55">' + n.label + '</span>').join('') + '</div>';
@@ -353,7 +389,7 @@
     } catch (e) { toast("save blocked (try it on the live site)"); }
   };
 
-  window.PHARMA = { Graph, click: onNodeClick, reset, byId, data };
+  window.PHARMA = { Graph, click: onNodeClick, reset, byId, data, refresh: refreshHL };
 
   // ---- the picture-house: plates & broadsheets shared with the labyrinth ----
   (function () {
@@ -499,19 +535,19 @@
       pending = node; open(d); return true;
     }
     const close = () => gate.classList.remove("on");
-    function open(kind) { gbody.innerHTML = kind === "email" ? emailHTML() : buyHTML(); gate.classList.add("on"); wire(kind); track(kind === "email" ? "meter-email-gate" : "meter-buy-gate"); }
+    function open(kind) { gbody.innerHTML = kind === "email" ? emailHTML() : buyHTML(); gate.classList.add("on"); wire(kind); try { window.PHARMA.refresh(); } catch (_) {} track(kind === "email" ? "meter-email-gate" : "meter-buy-gate"); }
     const err = m => { const e = gate.querySelector("#gerr"); if (e) e.textContent = m || ""; };
 
     const emailHTML = () => `
       <h2>&#127807; you've met your first herb</h2>
-      <p>The pharmacopoeia holds all 125 — every effect, ailment and thread between them. Leave an email and two more open up, on the house.</p>
+      <p>Hexi keeps 125 in this garden — every effect, ailment and thread between them, and the frosted beds you can see waiting beyond the hedge. Leave an email and she'll hand you the keys to two more, on the house.</p>
       <div class="err" id="gerr"></div>
       <input class="field" id="gemail" type="email" inputmode="email" placeholder="you@example.com" autocomplete="email" />
       <button class="go" id="gsend">open 2 more &rarr;</button>
       <div class="tiny" id="gskip">just looking, thanks &rarr;</div>`;
     const buyHTML = () => `
-      <h2>unlock the whole garden</h2>
-      <p>You've wandered your three free herbs. The full pharmacopoeia — all 125 plants and the living web between them — is yours for ${METER.price}.</p>
+      <h2>&#127793; unlock the whole garden</h2>
+      <p>You've walked your three free beds — and the rest of the garden is right there, frosted over behind the hedge. Hexi's full pharmacopoeia — all 125 plants and the living web between them — is yours for ${METER.price}, for keeps.</p>
       <a class="go" href="${METER.productUrl}" target="_blank" rel="noopener">get full access &middot; ${METER.price} &rarr;</a>
       <div class="div">already a member</div>
       <div class="err" id="gerr"></div>
@@ -534,7 +570,7 @@
               signal: AbortSignal.timeout ? AbortSignal.timeout(5000) : undefined }).catch(() => {});
           } catch (_) {}
           LS.set("wp_email", email); tier = "email"; LS.set("wp_tier", tier); track("meter-email-unlock");
-          close(); if (pending) window.PHARMA.click(pending);
+          close(); try { window.PHARMA.refresh(); } catch (_) {} if (pending) window.PHARMA.click(pending);
         };
         btn.onclick = go; inp.onkeydown = e => { if (e.key === "Enter") go(); };
       } else {
@@ -546,7 +582,7 @@
           try {
             const r = await fetch("/api/verify-license", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ license_key: key }), signal: AbortSignal.timeout ? AbortSignal.timeout(12000) : undefined });
             const j = await r.json().catch(() => ({}));
-            if (j.valid) { tier = "full"; LS.set("wp_tier", tier); track("meter-purchase-unlock"); close(); T("unlocked — the whole garden's yours \u{1F33F}"); if (pending) window.PHARMA.click(pending); return; }
+            if (j.valid) { tier = "full"; LS.set("wp_tier", tier); track("meter-purchase-unlock"); close(); try { window.PHARMA.refresh(); } catch (_) {} T("unlocked — the whole garden's yours \u{1F33F}"); if (pending) window.PHARMA.click(pending); return; }
             err(j.error || j.reason || "that key didn't check out");
           } catch (_) { err("couldn't reach the licence service — try again"); }
           btn.disabled = false; btn.textContent = "unlock";
@@ -558,7 +594,10 @@
     gate.querySelector(".gx").onclick = close;
     gate.addEventListener("click", e => { if (e.target === gate) close(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape" && gate.classList.contains("on")) close(); });
-    window.__METER__ = { guard };
+    // frost check for the renderer: a plant reads locked once the visitor has
+    // spent their tier's views and this one isn't among them
+    const locked = n => n.type === "plant" && tier !== "full" && viewed.size >= limit() && !viewed.has(n.id.slice(6));
+    window.__METER__ = { guard, locked };
   })();
 </script>
 </body>
