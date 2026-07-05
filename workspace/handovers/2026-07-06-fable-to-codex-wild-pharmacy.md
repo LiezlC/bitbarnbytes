@@ -36,7 +36,7 @@ Liezl asked for a full "catchier & stickier" pass over https://saraloosa.org/wil
 1. `node -e "const h=require('fs').readFileSync('<file>','utf8');[...h.matchAll(/<script>([\s\S]*?)<\/script>/g)].forEach((m,i)=>{try{new Function(m[1]);console.log(i,'OK')}catch(e){console.log(i,'FAIL',e.message)}})"` on both files.
 2. `cd saraloosa-os && npm run build` must pass (stage script runs in prebuild).
 3. Open the staged pages locally; click through boot → teaser → game start; pharmacopoeia load → chips → node click.
-4. Commit with clear message, push `origin HEAD:main`, then `curl -s https://saraloosa.org/wild-pharmacy/ | grep "<your new string>"` to verify deploy (Netlify takes a few minutes).
+4. Commit with clear message, push `origin HEAD:main`. **Pushing does NOT deploy** — no git CI. Deploy manually from the MAIN checkout (fast-forward it to origin/main first): `cd saraloosa-os && npx netlify-cli deploy --prod --site e6f1eae9-27d8-4937-b73c-6f23cd2d220a --message "<what>"` (auth already stored). Then `curl -s https://saraloosa.org/wild-pharmacy/ | grep "<your new string>"` to verify.
 
 ## Don'ts
 - Don't commit anything in `saraloosa-os/public/`, `*.bak-*/`, or Liezl's Gumroad WIP files.
