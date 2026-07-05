@@ -9,3 +9,6 @@ wildroots/_media/
 # Mirrors the convention in sociable.systems. NB: wildroots/_deploy/ is pre-deploy
 # STAGING (Netlify serves saraloosa-os/dist, not _deploy), so keeping it out of git is correct.
 _*/
+
+# Local dated backup folders (e.g. gumroad-uploads.bak-20260626) — not for git
+*.bak-*/
