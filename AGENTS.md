@@ -14,6 +14,8 @@ Liezl works from the **main checkout** working tree (`C:/Users/Liezl/Documents/G
 
 Do **not** report something as done until all four hold. If you deliberately leave something unmerged (a genuine draft), say so explicitly and say why.
 
+**Continuity:** on start, run `python C:\Users\Liezl\.agents\agentops.py orient` (or read `C:\Users\Liezl\.agents\PORTFOLIO_RESUME.md`) to pick up where the last agent left off, and leave a handover on finish. Portfolio agent-ops system: `agent-command-center/docs/agent-ops/`.
+
 ## Branch & deploy reality (so you don't ship from a stale copy)
 - **`main` is the source of truth for the live site, but pushing it does NOT deploy.** The Netlify site `bitbarnbytes` (id `e6f1eae9-27d8-4937-b73c-6f23cd2d220a`) has **no git-triggered CI** — every production deploy is a manual CLI run (verified 2026-07-06: deploys show `deploy_source: "cli"`, `commit_ref: null`). Build config: base `saraloosa-os`, `npm run build`, publish `dist`.
 - **To actually ship after landing on `main`:** from the **MAIN checkout** (`C:/Users/Liezl/Documents/Github/bitbarnbytes`) — the CLI resolves base/publish there even when run from a worktree — first fast-forward it to `origin/main`, then:
