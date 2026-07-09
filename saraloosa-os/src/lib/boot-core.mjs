@@ -7,10 +7,7 @@
    and routes into the syllabus. Content-as-agent: the failure-mode
    taxonomy becomes runnable. Used by src/pages/api/boot.ts.
    ===================================================================== */
-import { callStructured, resolveGeminiKey } from "./llm.mjs";
-
-/** Gemini key resolver — re-exported for the /api/{boot,brew,ask} routes. */
-export const resolveKey = resolveGeminiKey;
+import { callStructured } from "./llm.mjs";
 
 export const MAX_INPUT = 600;
 

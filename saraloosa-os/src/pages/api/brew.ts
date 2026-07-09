@@ -2,11 +2,8 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-// @ts-expect-error — plain .mjs core, no types
 import { brew } from "../../lib/brew-core.mjs";
-// @ts-expect-error — plain .mjs core, no types
-import { resolveKey } from "../../lib/boot-core.mjs";
-// @ts-ignore — plain .mjs helper, no types declaration
+import { resolveGeminiKey as resolveKey } from "../../lib/llm.mjs";
 import { traceGeneration } from "../../lib/langfuse.mjs";
 
 const json = (status: number, obj: unknown) =>

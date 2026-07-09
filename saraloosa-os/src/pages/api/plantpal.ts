@@ -2,9 +2,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-// @ts-expect-error — plain .mjs core, no types
 import { identifyPlant } from "../../lib/plantpal-core.mjs";
-// @ts-ignore — plain .mjs helper, no types declaration
 import { traceGeneration } from "../../lib/langfuse.mjs";
 
 const json = (status: number, obj: unknown) =>

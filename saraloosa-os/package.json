@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
-    "@astrojs/tailwind": "^6.0.2",
     "@langfuse/otel": "^5.5.3",
     "@langfuse/tracing": "^5.5.3",
     "@opentelemetry/sdk-node": "^0.219.0",
@@ -27,7 +26,6 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.4",
-    "cloudinary": "^2.6.1",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
