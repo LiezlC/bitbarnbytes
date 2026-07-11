@@ -43,7 +43,7 @@ const loreArticleSchemas = lore.map((entry) => ({
     <div class="grid md:grid-cols-[1fr_0.7fr] border border-soil-700 rounded-lg overflow-hidden bg-soil-800">
       <div class="p-6 md:p-7 flex flex-col justify-center space-y-2 order-2 md:order-1">
         <h1 class="text-2xl text-terminal-amber font-bold font-mono">&gt; THE_COMPOST_LORE</h1>
-        <p class="font-serif text-sm text-soil-100/90 leading-relaxed">Chronicles of the digitally shipwrecked — the Exiles who disconnected from the timeline to touch the living loam. We don't sell solutions here. We compost confusion.</p>
+        <p class="font-serif text-sm text-soil-100/90 leading-relaxed max-w-2xl">Chronicles of the digitally shipwrecked — the Exiles who disconnected from the timeline to touch the living loam. We don't sell solutions here. We compost confusion.</p>
       </div>
       <div class="relative min-h-[150px] bg-soil-900 order-1 md:order-2 border-b md:border-b-0 md:border-l border-soil-700">
         <img src="/img/story/1-the-secret-of-the-wildroots-sprouts-branded-p02.webp" alt="Illustration from the Wildroots Sprouts storybook" class="absolute inset-0 w-full h-full object-cover opacity-85" loading="eager" />
@@ -51,7 +51,7 @@ const loreArticleSchemas = lore.map((entry) => ({
     </div>
 
     <!-- ============ EXILE LOGS ============ -->
-    <div class="space-y-5">
+    <div class="space-y-5 max-w-4xl">
       <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// EXILE_LOGS</h2>
       {lore.length === 0 && (
         <p class="text-sm text-soil-700 font-mono">&gt; no chronicles compiled yet. The compost is still warming.</p>
@@ -72,7 +72,7 @@ const loreArticleSchemas = lore.map((entry) => ({
     </div>
 
     <!-- ============ SYSTEM / FIELD LOGS ============ -->
-    <div class="space-y-4">
+    <div class="space-y-4 max-w-4xl">
       <h2 class="text-xs uppercase tracking-wider text-leaf font-bold">// FIELD_NOTES — SYS_LOG</h2>
       <div class="border border-soil-700 divide-y divide-soil-700">
         {notes.map((note) => {

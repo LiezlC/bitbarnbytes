@@ -55,7 +55,7 @@ const umamiSrc = import.meta.env.UMAMI_SRC || "https://cloud.umami.is/script.js"
     <JsonLd schema={orgSchema} />
     {umamiId && <script defer src={umamiSrc} data-website-id={umamiId} is:inline></script>}
   </head>
-  <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:p-8 flex flex-col selection:bg-terminal-amber selection:text-soil-900">
+  <body class="bg-soil-900 text-soil-100 min-h-screen font-mono p-4 md:py-8 md:px-[3vw] flex flex-col selection:bg-terminal-amber selection:text-soil-900">
     <!-- Skip-to-content for keyboard/AT users -->
     <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-terminal-amber focus:text-soil-900 focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:rounded focus:outline-none">
       Skip to main content
@@ -74,7 +74,7 @@ const umamiSrc = import.meta.env.UMAMI_SRC || "https://cloud.umami.is/script.js"
       </nav>
     </header>
 
-    <main id="main-content" class="flex-grow max-w-4xl mx-auto w-full">
+    <main id="main-content" class="flex-grow w-full">
       <slot />
     </main>
 
