@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.13",
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/tailwind": "^6.0.2",
     "@langfuse/otel": "^5.5.3",
     "@langfuse/tracing": "^5.5.3",
