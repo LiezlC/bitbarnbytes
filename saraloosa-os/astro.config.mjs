@@ -4,6 +4,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import netlify from '@astrojs/netlify';
 
+import sitemap from '@astrojs/sitemap';
+
 // output stays 'static' — every page prerenders as before. Only the Boot
 // Sequence endpoint (src/pages/api/boot.ts) opts into on-demand rendering
 // via `export const prerender = false`, becoming a Netlify function at build.
@@ -17,9 +19,13 @@ const isBuild = process.argv.includes('build');
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://saraloosa.org',
   output: 'static',
   ...(isBuild ? { adapter: netlify() } : {}),
+
   vite: {
     plugins: [tailwindcss()]
-  }
+  },
+
+  integrations: [sitemap()]
 });
