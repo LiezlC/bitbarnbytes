@@ -78,7 +78,7 @@ const cards = [
     </div>
 
     <!-- ============ CARDS ============ -->
-    <div class="grid md:grid-cols-3 gap-5">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-5">
       {cards.map((c) => (
         <a href={c.href} aria-label={`${c.title} — ${c.label}`}
            class="group flex flex-col border border-soil-700 hover:border-leaf rounded-lg overflow-hidden bg-soil-800 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-terminal-amber">

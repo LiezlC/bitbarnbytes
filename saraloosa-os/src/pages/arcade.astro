@@ -42,7 +42,7 @@ const arcadeSchema = {
     </div>
 
     <!-- ============ CABINETS ============ -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" role="list" aria-label="Game cabinets">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5" role="list" aria-label="Game cabinets">
       {games.map((g) => (
         <a href={`/arcade/${g.slug}/`} aria-label={`Play ${g.title} — ${g.tag}: ${g.objective}`}
            role="listitem"
