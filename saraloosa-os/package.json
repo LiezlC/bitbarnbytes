@@ -23,6 +23,7 @@
     "@astrojs/tailwind": "^6.0.2",
     "@langfuse/otel": "^5.5.3",
     "@langfuse/tracing": "^5.5.3",
+    "@netlify/blobs": "^10.7.9",
     "@opentelemetry/sdk-node": "^0.219.0",
     "@pinecone-database/pinecone": "^5.1.1",
     "@tailwindcss/typography": "^0.5.19",
