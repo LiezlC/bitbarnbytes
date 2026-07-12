@@ -17,14 +17,8 @@ Do **not** report something as done until all four hold. If you deliberately lea
 **Continuity:** on start, run `python C:\Users\Liezl\.agents\agentops.py orient` (or read `C:\Users\Liezl\.agents\PORTFOLIO_RESUME.md`) to pick up where the last agent left off, and leave a handover on finish. Portfolio agent-ops system: `agent-command-center/docs/agent-ops/`.
 
 ## Branch & deploy reality (so you don't ship from a stale copy)
-- **`main` is the source of truth for the live site, but pushing it does NOT deploy.** The Netlify site `bitbarnbytes` (id `e6f1eae9-27d8-4937-b73c-6f23cd2d220a`) has **no git-triggered CI** — every production deploy is a manual CLI run (verified 2026-07-06: deploys show `deploy_source: "cli"`, `commit_ref: null`). Build config: base `saraloosa-os`, `npm run build`, publish `dist`.
-- **To actually ship after landing on `main`:** from the **MAIN checkout** (`C:/Users/Liezl/Documents/Github/bitbarnbytes`) — the CLI resolves base/publish there even when run from a worktree — first fast-forward it to `origin/main`, then:
-  ```
-  cd saraloosa-os
-  npm install   # only if astro is missing
-  npx netlify-cli deploy --prod --site e6f1eae9-27d8-4937-b73c-6f23cd2d220a --message "<what shipped>"
-  ```
-  Auth is already stored in `%APPDATA%\netlify\Config\config.json` — don't ask Liezl to log in. Then `curl` the real saraloosa.org URL to confirm the change is live (definition-of-done step 4).
+- **`main` is the source of truth for the live site, and pushing it DOES trigger deployment.** The Netlify site `bitbarnbytes` is hooked up to GitHub CI. Every push to the `main` branch automatically builds and deploys to production.
+- **To actually ship after landing on `main`:** Simply push your merged changes to `origin main`. Wait a few minutes for the Netlify CI to finish the build, and then `curl` the real saraloosa.org URL to confirm the change is live (definition-of-done step 4). Do **NOT** run manual `netlify-cli` deploys unless the CI specifically fails.
 - **`feat/soft-meter` is a shared, active integration branch** — multiple sessions/agents commit to it, and `main` is kept in sync via merges. It can drift **behind** `main` when fixes land via other branches. **Before editing any file, run `git diff HEAD origin/main -- <file>`** so you don't clobber newer `main` content or build on a stale base. (This exact drift stranded a dig-deeper edit once — don't repeat it.)
 - **`wildroots/*` content is staged into the site at build** by `saraloosa-os/scripts/stage-*.mjs` (prebuild) → gitignored `public/`. Edit the **source** in `wildroots/` **and** the stage script; never commit `public/`.
 
