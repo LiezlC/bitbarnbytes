@@ -13,6 +13,7 @@
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, rmSync, readdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, basename, relative } from "node:path";
+import { injectNav } from "./site-nav.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));         // saraloosa-os/scripts
 const REPO = join(HERE, "..", "..");                          // repo root
@@ -75,7 +76,7 @@ for (const rel of [...refs].sort()) {
 }
 
 // the page itself, served from /dig-deeper/ with ../ rewritten to ./
-writeFileSync(join(OUT, "index.html"), html.replaceAll('"../', '"./').replaceAll("'../", "'./"), "utf8");
+writeFileSync(join(OUT, "index.html"), injectNav(html.replaceAll('"../', '"./').replaceAll("'../", "'./"), "/dig-deeper/"), "utf8");
 
 // moat artifacts: at /dig-deeper/ and (llms.txt) at the site root
 for (const a of ["corpus.json", "llms.txt"]) {

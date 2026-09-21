@@ -16,6 +16,7 @@
 import { existsSync, rmSync, mkdirSync, cpSync, statSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
+import { injectNav } from "./site-nav.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));      // saraloosa-os/scripts
 const REPO = join(HERE, "..", "..");                       // repo root
@@ -49,6 +50,11 @@ if (existsSync(join(PSRC, "graph.html"))) {
     const s = join(PSRC, item);
     if (existsSync(s)) cpSync(s, join(POUT, item), { recursive: true });
   }
+}
+
+// --- Shared site nav: a floating pill back into the main site ---
+for (const [f, cur] of [[join(OUT, "index.html"), "/wild-pharmacy/"], [join(OUT, "pharmacopoeia", "index.html"), "/wild-pharmacy/pharmacopoeia/"]]) {
+  if (existsSync(f)) writeFileSync(f, injectNav(readFileSync(f, "utf8"), cur));
 }
 
 // --- Umami analytics: inject the tracker into the static pages (env-gated) ---
