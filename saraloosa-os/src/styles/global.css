@@ -1,31 +1,66 @@
 /* Tailwind v4 entry (this project uses @tailwindcss/vite — the old
    `@tailwind base/components/utilities` directives generate nothing here). */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 @import "tailwindcss";
 
-/* v4 reads its theme from CSS, not tailwind.config.mjs. These tokens generate
-   the bg-soil-*, text-terminal-*, border-soil-*, font-mono/serif utilities. */
+/* ── SOLARPUNK THEME ──────────────────────────────────────────────────────
+   Sunlit, green, hand-made optimism. Token NAMES are kept from the old
+   terminal theme so every page restyles without markup churn:
+     soil-900 = page ground (sunlit cream)   soil-800 = card surface
+     soil-700 = hairlines (sage)             soil-100 = ink (deep forest)
+     terminal-amber = copper/terracotta accent (headings, CTAs)
+     leaf = living green (labels, links)      ember = sunflower hover   */
 @theme {
-  --color-soil-900: #121110; /* deep compost black */
-  --color-soil-800: #1c1a18; /* loam charcoal */
-  --color-soil-700: #2a2724; /* bark brown */
-  --color-soil-100: #f5f4f0; /* raw unbleached paper */
+  --color-soil-900: #f3ecd6;
+  --color-soil-800: #fffbef;
+  --color-soil-700: #b9c79a;
+  --color-soil-100: #1d3b2c;
 
-  --color-terminal-green: #39ff14;
-  --color-terminal-amber: #ffb300;
-  --color-terminal-white: #ffffff;
+  --color-terminal-green: #2f8f4e;
+  --color-terminal-amber: #b4540f;
+  --color-terminal-white: #1d3b2c;
 
-  /* warm homestead accents (the "cosy cabin" half of compost-meets-code) */
-  --color-leaf: #6aa84f;
-  --color-leaf-deep: #4e7d3a;
+  --color-leaf: #3a7a3c;
+  --color-leaf-deep: #275a2c;
   --color-parchment: #f5e9c9;
-  --color-cream: #fdf6e3;
-  --color-ember: #ff9d45;
+  --color-cream: #fffbef;
+  --color-ember: #e0891f;
+  --color-sun: #f2b632;
+  --color-sky: #7fb8b0;
 
-  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-  --font-serif: 'Merriweather', 'Playfair Display', Georgia, serif;
+  --font-mono: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Lora', Georgia, serif;
+  --font-display: 'Fraunces', 'Lora', Georgia, serif;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--color-soil-900);
+  background-image:
+    radial-gradient(1100px 520px at 88% -8%, rgba(242,182,50,0.30), transparent 62%),
+    radial-gradient(900px 600px at -10% 110%, rgba(127,184,176,0.28), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%233a7a3c' stroke-opacity='0.07' stroke-width='1.2'%3E%3Cpath d='M20 100c10-30 30-40 50-42-4 20-20 38-50 42z'/%3E%3Cpath d='M20 100L64 62'/%3E%3Ccircle cx='96' cy='26' r='9'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+/* Headings get the soft, bookish display face */
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
+h1 { font-weight: 800; }
+
+/* Cards & panels: rounder, softer, sun-lifted */
+.rounded-lg, .rounded-xl { border-radius: 1.25rem; }
+.bg-soil-800 {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 10px 30px -18px rgba(39,90,44,0.45);
+}
+a.group:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(39,90,44,0.6); }
+a.group { transition: transform .25s ease, box-shadow .25s ease, border-color .2s; }
+
+/* Pill-shaped buttons */
+a.rounded, button.rounded { border-radius: 999px; }
+
+::selection { background: var(--color-sun); color: var(--color-soil-100); }
+
+@media (prefers-reduced-motion: reduce) {
+  a.group, a.group:hover { transform: none; transition: none; }
 }

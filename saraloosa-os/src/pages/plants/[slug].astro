@@ -47,7 +47,7 @@ const schema = {
 
     <header class="border border-soil-700 bg-soil-800 rounded-xl p-8 mb-8 relative overflow-hidden">
       <div class="relative z-10">
-        <h1 class="text-3xl md:text-5xl font-bold text-terminal-amber font-mono mb-2">{plant.common}</h1>
+        <h1 class="text-3xl md:text-5xl font-bold text-terminal-amber font-display mb-2">{plant.common}</h1>
         {plant.latin && <h2 class="text-xl text-soil-100/70 italic font-serif mb-4">{plant.latin}</h2>}
         <div class="flex flex-wrap gap-2 text-xs font-mono">
           {plant.family && <span class="bg-soil-900 border border-soil-700 px-3 py-1 rounded-full text-leaf">Family: {plant.family}</span>}
@@ -58,7 +58,7 @@ const schema = {
 
     <div class="grid md:grid-cols-2 gap-6 mb-8">
       <div class="border border-soil-700 bg-soil-800/50 rounded-xl p-6">
-        <h3 class="text-leaf font-mono uppercase text-sm mb-4 border-b border-soil-700 pb-2">// Effects & Ailments</h3>
+        <h3 class="text-leaf font-display uppercase text-sm mb-4 border-b border-soil-700 pb-2">// Effects & Ailments</h3>
         <div class="space-y-4">
           {plant.effectPath && plant.effectPath.length > 0 && (
             <div>
@@ -80,7 +80,7 @@ const schema = {
       </div>
 
       <div class="border border-soil-700 bg-soil-800/50 rounded-xl p-6">
-        <h3 class="text-leaf font-mono uppercase text-sm mb-4 border-b border-soil-700 pb-2">// Materia Medica</h3>
+        <h3 class="text-leaf font-display uppercase text-sm mb-4 border-b border-soil-700 pb-2">// Materia Medica</h3>
         <div class="space-y-4">
           {plant.partsUsed && plant.partsUsed.length > 0 && (
             <div>
@@ -105,15 +105,15 @@ const schema = {
     </div>
 
     {plant.cautionsNote && (
-      <div class="border border-red-900/50 bg-red-950/20 rounded-xl p-6 mb-8">
-        <h3 class="text-red-400 font-mono uppercase text-sm mb-3">// Cautions</h3>
+      <div class="border border-red-300 bg-red-50 rounded-xl p-6 mb-8">
+        <h3 class="text-red-700 font-display uppercase text-sm mb-3">// Cautions</h3>
         <p class="text-soil-100/80 text-sm">{plant.cautionsNote}</p>
       </div>
     )}
 
     <!-- Funnel / CTAs -->
     <div class="mt-12 text-center p-8 border border-terminal-amber/30 bg-terminal-amber/5 rounded-2xl">
-      <h3 class="text-terminal-amber font-mono text-lg mb-4">Discover {plant.common} in the Pharmacopoeia</h3>
+      <h3 class="text-terminal-amber font-display text-lg mb-4">Discover {plant.common} in the Pharmacopoeia</h3>
       <p class="text-soil-100/80 text-sm mb-6 max-w-lg mx-auto">Explore the interactive 3D web to see how {plant.common} connects to other healing plants, ailments, and preparations in the Wild Pharmacy.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
         <a href="/wild-pharmacy/pharmacopoeia/" class="inline-block bg-terminal-amber text-soil-900 font-mono text-sm px-6 py-3 rounded hover:bg-ember transition-colors">
