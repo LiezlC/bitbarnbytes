@@ -1,6 +1,6 @@
 /* Tailwind v4 entry (this project uses @tailwindcss/vite — the old
    `@tailwind base/components/utilities` directives generate nothing here). */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Space+Grotesk:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&family=Merriweather:wght@400;700&display=swap');
 @import "tailwindcss";
 
 /* ── SOLARPUNK THEME ──────────────────────────────────────────────────────
@@ -35,7 +35,26 @@
 
 html { scroll-behavior: smooth; }
 
-body {
+/* ── OS THEME (the original compost-terminal look) ── toggled via
+   <html data-theme="os">; Tailwind utilities read these vars, so the
+   whole site flips without markup changes. */
+html[data-theme="os"] {
+  --color-soil-900: #121110;
+  --color-soil-800: #1c1a18;
+  --color-soil-700: #2a2724;
+  --color-soil-100: #f5f4f0;
+  --color-terminal-green: #39ff14;
+  --color-terminal-amber: #ffb300;
+  --color-terminal-white: #ffffff;
+  --color-leaf: #6aa84f;
+  --color-leaf-deep: #6aa84f;
+  --color-ember: #ff9d45;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  --font-serif: 'Merriweather', Georgia, serif;
+  --font-display: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html:not([data-theme="os"]) body {
   background-color: var(--color-soil-900);
   background-image:
     radial-gradient(1100px 520px at 88% -8%, rgba(242,182,50,0.30), transparent 62%),
@@ -48,19 +67,30 @@ body {
 h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; }
 h1 { font-weight: 800; }
 
+html[data-theme="os"] body { background: var(--color-soil-900); }
+html[data-theme="os"] h1 { font-weight: 700; }
+
 /* Cards & panels: rounder, softer, sun-lifted */
-.rounded-lg, .rounded-xl { border-radius: 1.25rem; }
-.bg-soil-800 {
+:root:not([data-theme="os"]) :is(.rounded-lg, .rounded-xl) { border-radius: 1.25rem; }
+:root:not([data-theme="os"]) .bg-soil-800 {
   box-shadow: 0 1px 0 rgba(255,255,255,0.8) inset, 0 10px 30px -18px rgba(39,90,44,0.45);
 }
-a.group:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(39,90,44,0.6); }
+:root:not([data-theme="os"]) a.group:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -22px rgba(39,90,44,0.6); }
 a.group { transition: transform .25s ease, box-shadow .25s ease, border-color .2s; }
 
 /* Pill-shaped buttons */
-a.rounded, button.rounded { border-radius: 999px; }
+:root:not([data-theme="os"]) :is(a.rounded, button.rounded) { border-radius: 999px; }
 
-::selection { background: var(--color-sun); color: var(--color-soil-100); }
+::selection { background: var(--color-sun); color: #1d3b2c; }
+html[data-theme="os"] ::selection { background: #ffb300; color: #121110; }
 
 @media (prefers-reduced-motion: reduce) {
   a.group, a.group:hover { transform: none; transition: none; }
 }
+
+.theme-toggle { border: 1px solid var(--color-soil-700); border-radius: 999px; padding: .15rem .7rem; cursor: pointer; background: transparent; color: inherit; font: inherit; }
+.theme-toggle:hover { color: var(--color-terminal-amber); border-color: var(--color-terminal-amber); }
+html[data-theme="os"] .theme-toggle { border-radius: 4px; }
+html[data-theme="os"] .sp-only, html:not([data-theme="os"]) .os-only { display: none; }
+html[data-theme="os"] .site-header { border-radius: 0; border-width: 0 0 1px; background: transparent; backdrop-filter: none; padding: 0 0 1rem; font-size: .75rem; }
+html[data-theme="os"] .sp-only.flex { display: none; }
